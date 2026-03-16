@@ -1,3 +1,5 @@
+import { buildIssueMarkdownDocument } from './markdown.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     setupEventListeners();
@@ -34,6 +36,7 @@ function setupEventListeners() {
     document.getElementById('productSelect').addEventListener('change', generateJSON);
     document.getElementById('issueTypeSelect').addEventListener('change', generateJSON);
     document.getElementById('versionInput').addEventListener('input', generateJSON);
+    document.getElementById('copyMarkdownBtn').addEventListener('click', copyToClipboard);
 
     document.getElementById('productSelect').addEventListener('change', persistFormState);
     document.getElementById('issueTypeSelect').addEventListener('change', persistFormState);
@@ -70,66 +73,16 @@ function generateJSON() {
         caveat: issue.caveat || ''
     }));
 
-    const jsonData = {
+    const markdownText = buildIssueMarkdownDocument({
         type: issueType,
         product,
         version,
         issues
-    };
+    });
 
-    const markdownText = buildMarkdownOutput(jsonData);
     document.getElementById('markdownOutput').value = markdownText;
     updateDownloadLink(markdownText, version);
     setParseStatus(`Parsed ${issues.length} issues from input.`);
-}
-
-function buildMarkdownOutput(payload) {
-    const lines = [];
-    lines.push('---');
-    lines.push(`type: ${payload.type}`);
-    lines.push(`product: ${payload.product}`);
-    lines.push(`version: ${payload.version}`);
-    lines.push('---');
-    lines.push('');
-
-    if (!payload.issues || payload.issues.length === 0) {
-        lines.push('_No issues_');
-        lines.push('');
-        return lines.join('\n');
-    }
-
-    payload.issues.forEach(issue => {
-        lines.push(`## ${issue.id}`);
-        lines.push('');
-
-        if (issue.caveat) {
-            lines.push('```caveat');
-            lines.push(issue.caveat);
-            lines.push('```');
-            lines.push('');
-        }
-
-        const paragraphs = String(issue.description || '')
-            .split(/\n{2,}/)
-            .map(text => text.trim())
-            .filter(Boolean);
-
-        if (paragraphs.length === 0) {
-            lines.push('');
-        } else {
-            paragraphs.forEach(paragraph => {
-                lines.push(paragraph);
-                lines.push('');
-            });
-        }
-
-        if (Array.isArray(issue.platforms) && issue.platforms.length > 0) {
-            lines.push(`Platforms: ${issue.platforms.join(', ')}`);
-            lines.push('');
-        }
-    });
-
-    return lines.join('\n');
 }
 
 function parseIssuesInput(inputText) {
@@ -292,14 +245,6 @@ function sanitizeTableCellText(text) {
     return normalizeWhitespace(text).replace(/\|/g, '\\|');
 }
 
-function extractCellTextLegacy(cell) {
-    const withLineBreaks = (cell.innerHTML || '')
-        .replace(/<br\s*\/?>/gi, '\n')
-        .replace(/<[^>]+>/g, ' ');
-
-    return normalizeWhitespace(withLineBreaks).replace(/\s*\n\s*/g, '\n').trim();
-}
-
 function parseIssuesFromLinePairs(rawText) {
     const lines = rawText
         .split(/\r?\n/)
@@ -361,17 +306,6 @@ function copyToClipboard(event) {
         .catch(() => {
             setParseStatus('Clipboard copy failed. Copy manually from preview.', true);
         });
-}
-
-function clearForm() {
-    document.getElementById('productSelect').value = '';
-    document.getElementById('issueTypeSelect').value = '';
-    document.getElementById('versionInput').value = '';
-    document.getElementById('issuesInput').value = '';
-    document.getElementById('markdownOutput').value = '';
-    resetDownloadLink();
-    setParseStatus('');
-    clearPersistedFormState();
 }
 
 function persistFormState() {
@@ -445,14 +379,6 @@ function applyPersistedProductSelection() {
     }
 }
 
-function clearPersistedFormState() {
-    try {
-        localStorage.removeItem(PROCESS_FORM_STATE_KEY);
-    } catch (error) {
-        console.warn('Could not clear process form state:', error);
-    }
-}
-
 function updateDownloadLink(markdownText, version) {
     const link = document.getElementById('downloadMarkdownLink');
     resetDownloadLink();
@@ -482,7 +408,3 @@ function resetDownloadLink() {
     link.style.pointerEvents = 'none';
     link.style.opacity = '0.6';
 }
-
-window.generateJSON = generateJSON;
-window.copyToClipboard = copyToClipboard;
-window.clearForm = clearForm;

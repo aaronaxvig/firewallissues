@@ -1,3 +1,11 @@
+import { stripMarkdownFrontmatter } from './markdown.js';
+import { marked, Renderer } from '../vendor/marked.esm.js';
+
+const summaryMarkdownRenderer = new Renderer();
+summaryMarkdownRenderer.html = token => {
+    return escapeHtml(typeof token === 'string' ? token : (token.raw || token.text || ''));
+};
+
 export function clearIssues() {
     document.getElementById('addressed-issues').innerHTML = '';
     document.getElementById('known-issues').innerHTML = '';
@@ -134,7 +142,7 @@ function fetchIssueFile(productKey, fileName, issueType) {
 }
 
 function parseMarkdownIssues(markdownText) {
-    const lines = String(markdownText || '').split(/\r?\n/);
+    const lines = String(stripMarkdownFrontmatter(markdownText) || '').split(/\r?\n/);
     const issues = [];
     let currentIssue = null;
     let inCaveatBlock = false;
@@ -188,7 +196,7 @@ function parseMarkdownIssues(markdownText) {
             return;
         }
 
-        currentIssue.descriptionLines.push(trimmed);
+        currentIssue.descriptionLines.push(line.trimEnd());
     });
 
     finalizeMarkdownIssue(currentIssue, issues);
@@ -200,11 +208,12 @@ function finalizeMarkdownIssue(issue, issues) {
         return;
     }
 
-    const description = issue.descriptionLines
-        .map(line => line.trimEnd())
-        .join('\n')
-        .replace(/\n{3,}/g, '\n\n')
-        .trim();
+    const description = Array.isArray(issue.descriptionLines)
+        ? issue.descriptionLines
+            .join('\n')
+            .replace(/\n{3,}/g, '\n\n')
+            .trim()
+        : '';
 
     let summary = description;
     if (issue.caveat) {
@@ -556,79 +565,25 @@ function markdownSummaryToHtml(summaryText) {
 }
 
 function renderMarkdownBodyToHtml(markdownText) {
-    const lines = String(markdownText || '').split(/\r?\n/);
-    const htmlParts = [];
-    let paragraphLines = [];
-
-    function flushParagraph() {
-        if (paragraphLines.length === 0) {
-            return;
-        }
-        const text = paragraphLines.join(' ').replace(/\s+/g, ' ').trim();
-        if (text) {
-            htmlParts.push(`<p>${escapeHtml(text)}</p>`);
-        }
-        paragraphLines = [];
+    const input = String(markdownText || '').trim();
+    if (!input) {
+        return '';
     }
 
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        const trimmed = line.trim();
-
-        if (!trimmed) {
-            flushParagraph();
-            continue;
-        }
-
-        const next = i + 1 < lines.length ? lines[i + 1].trim() : '';
-        if (isTableRow(trimmed) && isTableSeparator(next)) {
-            flushParagraph();
-
-            const headerCells = parseMarkdownTableRow(trimmed);
-            const rows = [];
-            i += 2;
-            while (i < lines.length && isTableRow(lines[i].trim())) {
-                rows.push(parseMarkdownTableRow(lines[i].trim()));
-                i++;
-            }
-            i -= 1;
-
-            htmlParts.push(renderHtmlTable(headerCells, rows));
-            continue;
-        }
-
-        paragraphLines.push(trimmed);
-    }
-
-    flushParagraph();
-    return htmlParts.join('');
+    const html = marked.parse(input, {
+        gfm: true,
+        async: false,
+        renderer: summaryMarkdownRenderer
+    });
+    return addIssueTableClasses(typeof html === 'string' ? html : '');
 }
 
-function isTableRow(line) {
-    return /\|/.test(line);
-}
-
-function isTableSeparator(line) {
-    return /^\|?\s*:?-{3,}:?(\s*\|\s*:?-{3,}:?)*\s*\|?$/.test(line);
-}
-
-function parseMarkdownTableRow(line) {
-    const raw = line.trim().replace(/^\|/, '').replace(/\|$/, '');
-    return raw.split('|').map(cell => cell.trim());
-}
-
-function renderHtmlTable(headerCells, rows) {
-    const colCount = headerCells.length;
-    const thead = `<thead><tr>${headerCells.map(cell => `<th>${escapeHtml(cell)}</th>`).join('')}</tr></thead>`;
-    const tbodyRows = rows.map(row => {
-        const normalized = [...row];
-        while (normalized.length < colCount) {
-            normalized.push('');
-        }
-        return `<tr>${normalized.slice(0, colCount).map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`;
-    }).join('');
-
-    return `<table class="issues-table">${thead}<tbody>${tbodyRows}</tbody></table>`;
+function addIssueTableClasses(html) {
+    const doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
+    doc.querySelectorAll('table').forEach(table => {
+        table.classList.add('issues-table');
+    });
+    return doc.body.innerHTML;
 }
 
 function escapeHtml(value) {

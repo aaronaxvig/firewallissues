@@ -125,12 +125,12 @@
                 <h2>Markdown Preview</h2>
                 <label for="markdownOutput">Copy the Markdown below:</label>
                 <textarea id="markdownOutput" readonly></textarea>
-                <button onclick="copyToClipboard(event)" style="margin-top: 10px; width: 100%;">Copy Markdown</button>
+                <button id="copyMarkdownBtn" style="margin-top: 10px; width: 100%;">Copy Markdown</button>
                 <a id="downloadMarkdownLink" href="#" style="display: block; margin-top: 10px; text-align: center; color: #2c7be5; text-decoration: none; pointer-events: none; opacity: 0.6;">Download Markdown File</a>
             </section>
         </div>
     </main>
 
-    <script src="process.js"></script>
+    <script type="module" src="js/process.js"></script>
 </body>
 </html>

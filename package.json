@@ -1,0 +1,10 @@
+{
+  "name": "firewallissues",
+  "private": true,
+  "scripts": {
+    "vendor:marked": "mkdir -p web/vendor && cp node_modules/marked/lib/marked.esm.js web/vendor/marked.esm.js"
+  },
+  "devDependencies": {
+    "marked": "^16.3.0"
+  }
+}
