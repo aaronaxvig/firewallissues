@@ -1,6 +1,6 @@
-import { loadIssuesForCheckedPaths } from './js/issues.js';
-import { getCheckedFileRefs, initializeTree, renderProductTree, restoreTreeState } from './js/tree.js';
-import { applyIssueSearchFilter, getIssueTypeFilters, initializeUI } from './js/ui.js';
+import { loadIssuesForCheckedPaths } from './issues.js';
+import { getCheckedFileRefs, initializeTree, renderProductTree, restoreTreeState } from './tree.js';
+import { applyIssueSearchFilter, getIssueTypeFilters, initializeUI } from './ui.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeUI({ onSelectionChange: refreshIssuesForCurrentSelection });
