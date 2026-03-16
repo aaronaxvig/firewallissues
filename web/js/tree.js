@@ -84,8 +84,8 @@ export function getCheckedFileRefs() {
     });
 
     return {
-        addressedFiles,
-        knownFiles
+        addressedFiles: dedupeFileRefs(addressedFiles),
+        knownFiles: dedupeFileRefs(knownFiles)
     };
 }
 
@@ -93,8 +93,12 @@ function createTreeNode(name, value, path) {
     const container = document.createElement('div');
     container.className = 'tree-item';
 
-    const isLeafWithFiles = value && typeof value === 'object' && ('addressed' in value || 'known' in value);
-    const hasChildren = value && typeof value === 'object' && !isLeafWithFiles && Object.keys(value).length > 0;
+    const isObjectValue = value && typeof value === 'object';
+    const hasFiles = isObjectValue && ('addressed' in value || 'known' in value);
+    const childKeys = isObjectValue
+        ? getSortedKeys(value).filter(key => key !== 'addressed' && key !== 'known')
+        : [];
+    const hasChildren = childKeys.length > 0;
 
     if (hasChildren) {
         container.classList.add('parent');
@@ -105,14 +109,14 @@ function createTreeNode(name, value, path) {
         toggle.style.cursor = 'pointer';
 
         const label = document.createElement('label');
-        const checkbox = createCheckbox(path);
+        const checkbox = createCheckbox(path, hasFiles ? value : undefined);
         label.appendChild(checkbox);
         label.appendChild(document.createTextNode(name));
 
         const childrenContainer = document.createElement('div');
         childrenContainer.className = 'tree-children';
 
-        getSortedKeys(value).forEach(childKey => {
+        childKeys.forEach(childKey => {
             const childNode = createTreeNode(childKey, value[childKey], [...path, childKey]);
             childrenContainer.appendChild(childNode);
         });
@@ -136,7 +140,7 @@ function createTreeNode(name, value, path) {
     }
 
     const label = document.createElement('label');
-    if (isLeafWithFiles) {
+    if (hasFiles) {
         const checkbox = createCheckbox(path, value);
         label.appendChild(checkbox);
     }
@@ -151,7 +155,7 @@ function shouldStartCollapsed(name, value) {
         return false;
     }
 
-    const childKeys = Object.keys(value);
+    const childKeys = Object.keys(value).filter(key => key !== 'addressed' && key !== 'known');
     if (childKeys.length === 0) {
         return false;
     }
@@ -162,6 +166,25 @@ function shouldStartCollapsed(name, value) {
     });
 
     return hotfixChildren.length > 0;
+}
+
+function dedupeFileRefs(fileRefs) {
+    const seen = new Set();
+    return fileRefs.filter(ref => {
+        const productKey = String(ref && ref.productKey ? ref.productKey : '');
+        const fileName = String(ref && ref.fileName ? ref.fileName : '');
+        if (!productKey || !fileName) {
+            return false;
+        }
+
+        const key = `${productKey}::${fileName}`;
+        if (seen.has(key)) {
+            return false;
+        }
+
+        seen.add(key);
+        return true;
+    });
 }
 
 function createCheckbox(path, value) {

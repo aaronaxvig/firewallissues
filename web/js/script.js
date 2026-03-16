@@ -45,45 +45,56 @@ function transformNode(node) {
 
     const hasIssueArrays = Object.prototype.hasOwnProperty.call(node, 'addressed') ||
         Object.prototype.hasOwnProperty.call(node, 'known');
+    const childKeys = Object.keys(node).filter(key => key !== 'addressed' && key !== 'known');
 
-    if (hasIssueArrays) {
-        const addressed = Array.isArray(node.addressed) ? node.addressed : [];
-        const known = Array.isArray(node.known) ? node.known : [];
-        const allFiles = [...addressed, ...known];
+    const transformedChildren = {};
+    childKeys.forEach(key => {
+        transformedChildren[key] = transformNode(node[key]);
+    });
 
-        if (allFiles.length === 0) {
-            return {
-                addressed: [],
-                known: []
-            };
-        }
-
-        const groupedByPrefix = {};
-
-        addressed.forEach(fileName => {
-            const prefix = getFilePrefix(fileName);
-            if (!groupedByPrefix[prefix]) {
-                groupedByPrefix[prefix] = { addressed: [], known: [] };
-            }
-            groupedByPrefix[prefix].addressed.push(fileName);
-        });
-
-        known.forEach(fileName => {
-            const prefix = getFilePrefix(fileName);
-            if (!groupedByPrefix[prefix]) {
-                groupedByPrefix[prefix] = { addressed: [], known: [] };
-            }
-            groupedByPrefix[prefix].known.push(fileName);
-        });
-
-        return groupHotfixPrefixes(groupedByPrefix);
+    if (!hasIssueArrays) {
+        return transformedChildren;
     }
 
-    const transformed = {};
-    Object.keys(node).forEach(key => {
-        transformed[key] = transformNode(node[key]);
+    const addressed = Array.isArray(node.addressed) ? node.addressed : [];
+    const known = Array.isArray(node.known) ? node.known : [];
+    const allFiles = [...addressed, ...known];
+
+    if (allFiles.length === 0) {
+        if (childKeys.length > 0) {
+            return transformedChildren;
+        }
+
+        return {
+            addressed: [],
+            known: []
+        };
+    }
+
+    const groupedByPrefix = {};
+
+    addressed.forEach(fileName => {
+        const prefix = getFilePrefix(fileName);
+        if (!groupedByPrefix[prefix]) {
+            groupedByPrefix[prefix] = { addressed: [], known: [] };
+        }
+        groupedByPrefix[prefix].addressed.push(fileName);
     });
-    return transformed;
+
+    known.forEach(fileName => {
+        const prefix = getFilePrefix(fileName);
+        if (!groupedByPrefix[prefix]) {
+            groupedByPrefix[prefix] = { addressed: [], known: [] };
+        }
+        groupedByPrefix[prefix].known.push(fileName);
+    });
+
+    const transformedIssueFiles = groupHotfixPrefixes(groupedByPrefix);
+    if (childKeys.length === 0) {
+        return transformedIssueFiles;
+    }
+
+    return mergeTreeNodes(transformedChildren, transformedIssueFiles);
 }
 
 function groupHotfixPrefixes(groupedByPrefix) {
@@ -129,4 +140,40 @@ function getFilePrefix(fileName) {
         return baseName.replace(/\.json$/i, '') || 'unknown';
     }
     return baseName.slice(0, underscoreIndex);
+}
+
+function mergeTreeNodes(left, right) {
+    if (!isObjectNode(left)) {
+        return right;
+    }
+    if (!isObjectNode(right)) {
+        return left;
+    }
+
+    const merged = { ...left };
+
+    Object.keys(right).forEach(key => {
+        const leftValue = merged[key];
+        const rightValue = right[key];
+
+        if (key === 'addressed' || key === 'known') {
+            const leftFiles = Array.isArray(leftValue) ? leftValue : [];
+            const rightFiles = Array.isArray(rightValue) ? rightValue : [];
+            merged[key] = Array.from(new Set([...leftFiles, ...rightFiles]));
+            return;
+        }
+
+        if (isObjectNode(leftValue) && isObjectNode(rightValue)) {
+            merged[key] = mergeTreeNodes(leftValue, rightValue);
+            return;
+        }
+
+        merged[key] = rightValue;
+    });
+
+    return merged;
+}
+
+function isObjectNode(value) {
+    return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }
