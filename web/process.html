@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Issues - Palo Alto Issues Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .process-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-section, .preview-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-section h2, .preview-section h2 {
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            font-family: monospace;
+            resize: vertical;
+        }
+        #issuesInput {
+            height: 200px;
+        }
+        #markdownOutput {
+            height: 350px;
+            background-color: #f5f5f5;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            margin: 0;
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .process-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Process Issues</h1>
+    </header>
+    <main>
+        <div class="process-container">
+            <section class="form-section">
+                <h2>Input</h2>
+                <div class="form-group">
+                    <label for="productSelect">Software Product:</label>
+                    <select id="productSelect">
+                        <option value="">-- Select a product --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="issueTypeSelect">Type of Issue:</label>
+                    <select id="issueTypeSelect">
+                        <option value="">-- Select type --</option>
+                        <option value="Addressed">Addressed</option>
+                        <option value="Known">Known</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="versionInput">Version:</label>
+                    <input type="text" id="versionInput" placeholder="e.g., 6.3.3">
+                </div>
+                <div class="form-group">
+                    <label for="issuesInput">Issues Table HTML (paste table node here):</label>
+                    <textarea id="issuesInput" placeholder="Paste the full HTML table element that contains Issue ID and Description columns..."></textarea>
+                </div>
+                <div id="parseStatus" style="margin-top: 10px; font-size: 13px; color: #333;"></div>
+            </section>
+
+            <section class="preview-section">
+                <h2>Markdown Preview</h2>
+                <label for="markdownOutput">Copy the Markdown below:</label>
+                <textarea id="markdownOutput" readonly></textarea>
+                <button onclick="copyToClipboard(event)" style="margin-top: 10px; width: 100%;">Copy Markdown</button>
+                <a id="downloadMarkdownLink" href="#" style="display: block; margin-top: 10px; text-align: center; color: #2c7be5; text-decoration: none; pointer-events: none; opacity: 0.6;">Download Markdown File</a>
+            </section>
+        </div>
+    </main>
+
+    <script src="process.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    color: #333;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    flex: 0 0 250px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    height: fit-content;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+}
+
+.issue-search {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 6px 8px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.issue-search:focus {
+    outline: 2px solid #9ec5fe;
+    outline-offset: 1px;
+    border-color: #6ea8fe;
+}
+
+.issue-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.issue-filters label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.issue-filters input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+#product-tree {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.tree-item {
+    margin: 1px 0;
+}
+
+.tree-item > label {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 0;
+}
+
+/* Keep label text aligned whether or not a node has a toggle icon. */
+.tree-item:not(.parent) > label {
+    margin-left: 18px;
+}
+
+.tree-item.parent > label {
+    font-weight: 500;
+}
+
+.tree-toggle {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 1.4em;
+    margin-right: 2px;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.tree-children {
+    margin-left: 16px;
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.tree-children .tree-children {
+    margin-left: 33px;
+}
+
+.tree-children.collapsed {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.tree-item input[type="checkbox"] {
+    cursor: pointer;
+    margin-right: 4px;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.tree-item input[type="checkbox"]:indeterminate {
+    accent-color: #f39c12;
+}
+
+.tree-item label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.tree-item label:hover {
+    color: #2c3e50;
+}
+
+#issues {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#issues h2 {
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 8px;
+}
+
+.issue-count {
+    color: #5b6b7a;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#addressed-issues {
+    overflow-x: auto;
+}
+
+.issues-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.issues-table th,
+.issues-table td {
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.issues-table th {
+    background-color: #eef3f7;
+    color: #22313f;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.issues-table tbody tr:hover {
+    background-color: #f7fbff;
+}
+
+.issues-table .issue-id-col {
+    width: 160px;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.issues-table .issue-version-col {
+    width: 180px;
+}
+
+li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+li:hover {
+    background-color: #f0f0f0;
+}

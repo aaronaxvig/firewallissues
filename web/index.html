@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palo Alto Issues Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Palo Alto Issues Tracker</h1>
+    </header>
+    <main class="container">
+        <aside class="sidebar">
+            <h2>Search</h2>
+            <input
+                type="text"
+                id="issue-search"
+                class="issue-search"
+                placeholder="Filter displayed issues..."
+                autocomplete="off"
+            >
+            <h2>Type</h2>
+            <div id="issue-type-filters" class="issue-filters">
+                <label>
+                    <input type="checkbox" id="filter-addressed" checked>
+                    Addressed
+                </label>
+                <label>
+                    <input type="checkbox" id="filter-known" checked>
+                    Known
+                </label>
+            </div>
+            <h2>Products</h2>
+            <div id="product-tree"></div>
+        </aside>
+        <section id="issues" class="content">
+            <section id="addressed-section">
+                <h2>Addressed Issues <span id="addressed-count" class="issue-count">(0)</span></h2>
+                <div id="addressed-issues"></div>
+            </section>
+            <section id="known-section">
+                <h2>Known Issues <span id="known-count" class="issue-count">(0)</span></h2>
+                <div id="known-issues"></div>
+            </section>
+        </section>
+    </main>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

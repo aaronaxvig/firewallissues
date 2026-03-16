@@ -1,0 +1,23 @@
+{
+  "reddit": {
+    "display": "Reddit",
+    "entries": [
+      {
+      "id": "PAN-290235",
+      "url": "https://www.reddit.com/r/paloaltonetworks/comments/1qi7zoy/pan290235_dscd_and_low_quality_control/"
+      }
+    ]
+  },
+  "facebook": {
+    "display": "Facebook",
+    "entries": []
+  },
+  "twitter": {
+    "display": "Twitter",
+    "entries": []
+  },
+  "other_web": {
+    "display": "Other Web",
+    "entries": []
+  }
+}
