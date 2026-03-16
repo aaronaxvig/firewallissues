@@ -1,6 +1,6 @@
 const TYPE_FILTER_KEY = 'bugmedley.ui.typeFilters.v1';
 
-let issueSearchTerm = '';
+let issueSearchTerms = [];
 let issueTypeFilters = loadTypeFilters();
 
 function loadTypeFilters() {
@@ -38,7 +38,7 @@ export function applyIssueSearchFilter() {
 
     issueItems.forEach(item => {
         const itemText = item.textContent.toLowerCase();
-        const matches = issueSearchTerm === '' || itemText.includes(issueSearchTerm);
+        const matches = issueSearchTerms.length === 0 || issueSearchTerms.every(term => itemText.includes(term));
         if (item.tagName === 'TR') {
             item.style.display = matches ? 'table-row' : 'none';
         } else {
@@ -52,7 +52,7 @@ export function applyIssueSearchFilter() {
 function initializeIssueSearch() {
     const searchInput = document.getElementById('issue-search');
     searchInput.addEventListener('input', () => {
-        issueSearchTerm = searchInput.value.trim().toLowerCase();
+        issueSearchTerms = searchInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
         applyIssueSearchFilter();
     });
 }
