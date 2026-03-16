@@ -12,6 +12,7 @@ export function clearIssues() {
 }
 
 let socialRefsByIssueId = new Map();
+const ISSUE_ID_LINE_PATTERN = /^((?:[A-Z]{2,6}|WF500)-\d{4,8})\s*[:\-]?\s*(.*)$/i;
 const socialRefsReady = loadSocialRefs();
 const issueFileDataCache = new Map();
 const issueFilePromiseCache = new Map();
@@ -415,7 +416,7 @@ function dedupeIssues(issues, versionKey) {
 
 function parseIssueLine(text) {
     const value = String(text || '').trim();
-    const match = value.match(/^([A-Z]{2,6}-\d{4,8})\s*[:\-]?\s*(.*)$/i);
+    const match = value.match(ISSUE_ID_LINE_PATTERN);
     if (match) {
         return {
             id: match[1].toUpperCase(),

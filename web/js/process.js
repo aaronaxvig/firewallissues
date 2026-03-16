@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
+const ISSUE_ID_PATTERN = /\b((?:[A-Z]{2,6}|WF500)-\d{4,8})\b/i;
 
 function loadProducts() {
     fetch('data/products.json')
@@ -120,7 +121,7 @@ function parseIssuesFromHtmlTable(htmlText) {
             return;
         }
 
-        const issueIdMatch = leftCellText.match(/\b([A-Z]{2,6}-\d{4,8})\b/i);
+        const issueIdMatch = leftCellText.match(ISSUE_ID_PATTERN);
         if (!issueIdMatch) {
             return;
         }
@@ -258,7 +259,7 @@ function parseIssuesFromLinePairs(rawText) {
             continue;
         }
 
-        const issueIdMatch = lines[i].match(/\b([A-Z]{2,6}-\d{4,8})\b/i);
+        const issueIdMatch = lines[i].match(ISSUE_ID_PATTERN);
         if (!issueIdMatch) {
             continue;
         }
