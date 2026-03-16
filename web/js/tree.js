@@ -1,5 +1,7 @@
 import { getSortedKeys } from './sort.js';
 
+const STORAGE_KEY = 'tree-state';
+
 let treeContainer = null;
 let onSelectionChangeHandler = null;
 
@@ -124,6 +126,7 @@ function createTreeNode(name, value, path) {
             event.stopPropagation();
             childrenContainer.classList.toggle('collapsed');
             toggle.textContent = childrenContainer.classList.contains('collapsed') ? '▶' : '▼';
+            saveTreeState();
         });
 
         container.appendChild(toggle);
@@ -213,6 +216,7 @@ function handleCheckboxChange(event) {
     if (typeof onSelectionChangeHandler === 'function') {
         onSelectionChangeHandler();
     }
+    saveTreeState();
 }
 
 function updateParentCheckboxes(checkbox) {
@@ -248,5 +252,78 @@ function updateParentCheckboxes(checkbox) {
 
         currentItem = parentItem;
         parentItem = currentItem.parentElement.closest('.tree-item');
+    }
+}
+
+function saveTreeState() {
+    if (!treeContainer) {
+        return;
+    }
+
+    const checkedPaths = Array.from(
+        treeContainer.querySelectorAll('input[type="checkbox"]:checked[data-has-files="1"]')
+    ).map(cb => cb.dataset.path).filter(Boolean);
+
+    const collapsedPaths = Array.from(
+        treeContainer.querySelectorAll('.tree-children.collapsed')
+    ).map(children => {
+        const cb = children.parentElement.querySelector(':scope > label > input[type="checkbox"]');
+        return cb?.dataset.path ?? null;
+    }).filter(Boolean);
+
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ checkedPaths, collapsedPaths }));
+    } catch {
+        // Storage unavailable or quota exceeded — silently ignore
+    }
+}
+
+export function restoreTreeState() {
+    if (!treeContainer) {
+        return;
+    }
+
+    let state;
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+            return;
+        }
+        state = JSON.parse(raw);
+    } catch {
+        return;
+    }
+
+    if (!state || typeof state !== 'object') {
+        return;
+    }
+
+    if (Array.isArray(state.checkedPaths) && state.checkedPaths.length > 0) {
+        const checkedSet = new Set(state.checkedPaths);
+        treeContainer.querySelectorAll('input[type="checkbox"][data-has-files="1"]').forEach(cb => {
+            cb.checked = checkedSet.has(cb.dataset.path);
+        });
+        treeContainer.querySelectorAll('input[type="checkbox"][data-has-files="1"]:checked').forEach(cb => {
+            updateParentCheckboxes(cb);
+        });
+    }
+
+    if (Array.isArray(state.collapsedPaths)) {
+        const collapsedSet = new Set(state.collapsedPaths);
+        treeContainer.querySelectorAll('.tree-children').forEach(childrenDiv => {
+            const cb = childrenDiv.parentElement.querySelector(':scope > label > input[type="checkbox"]');
+            if (!cb) {
+                return;
+            }
+            const toggle = childrenDiv.parentElement.querySelector(':scope > .tree-toggle');
+            const shouldBeCollapsed = collapsedSet.has(cb.dataset.path);
+            const isCollapsed = childrenDiv.classList.contains('collapsed');
+            if (shouldBeCollapsed !== isCollapsed) {
+                childrenDiv.classList.toggle('collapsed');
+                if (toggle) {
+                    toggle.textContent = shouldBeCollapsed ? '▶' : '▼';
+                }
+            }
+        });
     }
 }

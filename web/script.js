@@ -1,5 +1,5 @@
 import { loadIssuesForCheckedPaths } from './js/issues.js';
-import { getCheckedFileRefs, initializeTree, renderProductTree } from './js/tree.js';
+import { getCheckedFileRefs, initializeTree, renderProductTree, restoreTreeState } from './js/tree.js';
 import { applyIssueSearchFilter, getIssueTypeFilters, initializeUI } from './js/ui.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +24,8 @@ function loadProductTree() {
         .then(data => {
             productsData = expandFilePrefixLevel(data);
             renderProductTree(productsData);
+            restoreTreeState();
+            refreshIssuesForCurrentSelection();
         })
         .catch(error => console.error('Error loading products:', error));
 }
