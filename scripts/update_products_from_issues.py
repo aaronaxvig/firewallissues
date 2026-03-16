@@ -196,7 +196,8 @@ def update_products(issues_dir: Path, products_path: Path) -> None:
 
 def main() -> int:
     args = parse_args()
-    repo_root = Path(__file__).resolve().parent
+    script_dir = Path(__file__).resolve().parent
+    repo_root = script_dir.parent
     issues_dir = (repo_root / args.issues_dir).resolve()
     products_path = (repo_root / args.products_json).resolve()
 
