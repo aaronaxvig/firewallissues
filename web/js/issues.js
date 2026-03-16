@@ -17,10 +17,10 @@ const issueFileDataCache = new Map();
 const issueFilePromiseCache = new Map();
 
 function loadSocialRefs() {
-    return fetch('data/social_refs.json')
+    return fetch('data/external_refs.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Failed to load data/social_refs.json (${response.status})`);
+                throw new Error(`Failed to load data/external_refs.json (${response.status})`);
             }
             return response.json();
         })
@@ -28,7 +28,7 @@ function loadSocialRefs() {
             socialRefsByIssueId = normalizeSocialRefs(data);
         })
         .catch(error => {
-            console.warn('Social refs unavailable:', error);
+            console.warn('External refs unavailable:', error);
             socialRefsByIssueId = new Map();
         });
 }
@@ -477,71 +477,30 @@ function getSocialRefsForIssue(issueId) {
 
 function normalizeSocialRefs(data) {
     const map = new Map();
-    if (!data || typeof data !== 'object') {
+    if (!Array.isArray(data)) {
         return map;
     }
 
-    Object.keys(data).forEach(sourceKey => {
-        const sourceValue = data[sourceKey];
-        const entries = getSourceEntries(sourceValue);
-        const label = getSourceDisplayLabel(sourceKey, sourceValue);
+    data.forEach(entry => {
+        if (!entry || typeof entry !== 'object') {
+            return;
+        }
 
-        entries.forEach(entry => {
-            if (!entry || typeof entry !== 'object') {
-                return;
-            }
+        const id = String(entry.id || '').trim().toUpperCase();
+        const url = String(entry.url || '').trim();
+        const label = String(entry.display || '').trim() || 'Link';
+        if (!id || !url) {
+            return;
+        }
 
-            const id = String(entry.id || '').trim().toUpperCase();
-            const url = String(entry.url || '').trim();
-            if (!id || !url) {
-                return;
-            }
+        if (!map.has(id)) {
+            map.set(id, []);
+        }
 
-            if (!map.has(id)) {
-                map.set(id, []);
-            }
-
-            map.get(id).push({ label, url });
-        });
+        map.get(id).push({ label, url });
     });
 
     return map;
-}
-
-function getSourceEntries(sourceValue) {
-    if (Array.isArray(sourceValue)) {
-        return sourceValue;
-    }
-
-    if (sourceValue && typeof sourceValue === 'object' && Array.isArray(sourceValue.entries)) {
-        return sourceValue.entries;
-    }
-
-    return [];
-}
-
-function getSourceDisplayLabel(sourceKey, sourceValue) {
-    if (sourceValue && typeof sourceValue === 'object' && !Array.isArray(sourceValue)) {
-        const display = String(sourceValue.display || '').trim();
-        if (display) {
-            return display;
-        }
-    }
-
-    return sourceLabelFromKey(sourceKey);
-}
-
-function sourceLabelFromKey(sourceKey) {
-    const key = String(sourceKey || '').trim().toLowerCase();
-    if (!key) {
-        return 'Link';
-    }
-
-    return key
-        .split(/[_\-\s]+/)
-        .filter(Boolean)
-        .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-        .join(' ');
 }
 
 function markdownSummaryToHtml(summaryText, caveatText) {
