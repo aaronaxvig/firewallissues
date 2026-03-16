@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
 const ISSUE_ID_PATTERN = /\b((?:[A-Z]{2,6}|WF500)-\d{4,8})\b/i;
+const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
 
 function loadProducts() {
     fetch('data/products.json')
@@ -171,47 +172,130 @@ function extractIssueDetails(cell) {
 
 function extractCellText(cell) {
     const clone = cell.cloneNode(true);
-    const nestedTables = Array.from(clone.querySelectorAll('table'));
-    const markdownTables = nestedTables
-        .map(table => convertHtmlTableToMarkdown(table))
-        .filter(Boolean);
+    return collectMarkdownBlocks(clone)
+        .join('\n\n')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+}
 
-    nestedTables.forEach(table => table.remove());
+function collectMarkdownBlocks(root, nestedListDepth = 0) {
+    const blocks = [];
+    let paragraphBuffer = '';
 
-    const blockLikeNodes = clone.querySelectorAll('div, p, li, pre, code');
-    let mainText = '';
-
-    if (blockLikeNodes.length > 0) {
-        const parts = [];
-        blockLikeNodes.forEach(node => {
-            const text = normalizeWhitespace(node.textContent || '');
-            if (text) {
-                parts.push(text);
-            }
-        });
-
-        if (parts.length > 0) {
-            mainText = parts.join('\n\n');
+    const flushParagraph = () => {
+        const text = normalizeInlineMarkdown(paragraphBuffer);
+        if (text) {
+            blocks.push(text);
         }
+        paragraphBuffer = '';
+    };
+
+    Array.from(root.childNodes).forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            paragraphBuffer += node.textContent || '';
+            return;
+        }
+
+        if (node.nodeType !== Node.ELEMENT_NODE) {
+            return;
+        }
+
+        const tagName = node.tagName.toUpperCase();
+
+        if (tagName === 'BR') {
+            paragraphBuffer += '\n';
+            return;
+        }
+
+        if (tagName === 'TABLE') {
+            flushParagraph();
+            const tableMarkdown = convertHtmlTableToMarkdown(node);
+            if (tableMarkdown) {
+                blocks.push(tableMarkdown);
+            }
+            return;
+        }
+
+        if (tagName === 'UL' || tagName === 'OL') {
+            flushParagraph();
+            const listMarkdown = convertHtmlListToMarkdown(node, nestedListDepth);
+            if (listMarkdown) {
+                blocks.push(listMarkdown);
+            }
+            return;
+        }
+
+        if (BLOCK_CONTAINER_TAGS.has(tagName)) {
+            flushParagraph();
+            blocks.push(...collectMarkdownBlocks(node, nestedListDepth));
+            return;
+        }
+
+        paragraphBuffer += node.textContent || '';
+    });
+
+    flushParagraph();
+    return blocks;
+}
+
+function convertHtmlListToMarkdown(list, depth = 0) {
+    const items = Array.from(list.children).filter(child => child.tagName && child.tagName.toUpperCase() === 'LI');
+    if (items.length === 0) {
+        return '';
     }
 
-    if (!mainText) {
-        const withLineBreaks = (clone.innerHTML || '')
-            .replace(/<br\s*\/?>/gi, '\n')
-            .replace(/<[^>]+>/g, ' ');
+    const isOrdered = list.tagName.toUpperCase() === 'OL';
+    return items
+        .map((item, index) => convertListItemToMarkdown(item, isOrdered ? `${index + 1}.` : '-', depth))
+        .filter(Boolean)
+        .join('\n');
+}
 
-        mainText = normalizeWhitespace(withLineBreaks).replace(/\s*\n\s*/g, '\n').trim();
+function convertListItemToMarkdown(item, marker, depth) {
+    const blocks = collectMarkdownBlocks(item, depth + 1);
+    const indent = '  '.repeat(depth);
+    const continuationIndent = `${indent}  `;
+
+    if (blocks.length === 0) {
+        return `${indent}${marker}`;
     }
 
-    if (markdownTables.length === 0) {
-        return mainText;
+    const [firstBlock, ...remainingBlocks] = blocks;
+    const firstLines = String(firstBlock || '').split('\n');
+    let output = `${indent}${marker} ${firstLines[0] || ''}`;
+
+    if (firstLines.length > 1) {
+        output += `\n${firstLines.slice(1).map(line => line ? `${continuationIndent}${line}` : continuationIndent.trimEnd()).join('\n')}`;
     }
 
-    if (!mainText) {
-        return markdownTables.join('\n\n');
-    }
+    remainingBlocks.forEach(block => {
+        if (!block) {
+            return;
+        }
 
-    return [mainText, ...markdownTables].join('\n\n');
+        if (isIndentedListBlock(block, depth + 1)) {
+            output += `\n${block}`;
+            return;
+        }
+
+        output += `\n${block.split('\n').map(line => line ? `${continuationIndent}${line}` : '').join('\n')}`;
+    });
+
+    return output.trimEnd();
+}
+
+function isIndentedListBlock(block, depth) {
+    const indent = '  '.repeat(depth);
+    const lines = String(block || '').split('\n').filter(Boolean);
+    return lines.length > 0 && lines.every(line => line.startsWith(indent) && /^\s*(?:-|\d+\.)\s/.test(line));
+}
+
+function normalizeInlineMarkdown(value) {
+    return String(value || '')
+        .replace(/\u00a0/g, ' ')
+        .replace(/[\t\f\v\r ]+/g, ' ')
+        .replace(/ *\n+ */g, '\n')
+        .trim();
 }
 
 function convertHtmlTableToMarkdown(table) {
