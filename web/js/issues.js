@@ -85,6 +85,7 @@ function loadIssuesFromFiles(fileRefs, issueType, elementId, applyIssueSearchFil
                     allIssues.push({
                         id: issue.id || '',
                         summary: issue.summary || '',
+                            caveat: issue.caveat || '',
                         sourceVersion
                     });
                 });
@@ -142,90 +143,82 @@ function fetchIssueFile(productKey, fileName, issueType) {
 }
 
 function parseMarkdownIssues(markdownText) {
-    const lines = String(stripMarkdownFrontmatter(markdownText) || '').split(/\r?\n/);
-    const issues = [];
-    let currentIssue = null;
-    let inCaveatBlock = false;
-    let caveatLines = [];
+    const input = String(stripMarkdownFrontmatter(markdownText) || '');
+    if (!input.trim()) {
+        return [];
+    }
 
-    lines.forEach(line => {
-        const issueHeaderMatch = line.match(/^##\s+(.+)$/);
-        if (issueHeaderMatch) {
-            finalizeMarkdownIssue(currentIssue, issues);
-            currentIssue = {
-                id: issueHeaderMatch[1].trim(),
-                descriptionLines: [],
-                caveat: ''
-            };
-            inCaveatBlock = false;
-            caveatLines = [];
-            return;
-        }
+    try {
+        const tokens = marked.lexer(input, {
+            gfm: true
+        });
 
-        if (!currentIssue) {
-            return;
-        }
+        const issues = [];
+        let currentIssueId = '';
+        let currentIssueBodyParts = [];
+        let currentIssueCaveatBlocks = [];
 
-        if (/^```caveat\s*$/i.test(line.trim())) {
-            inCaveatBlock = true;
-            caveatLines = [];
-            return;
-        }
-
-        if (inCaveatBlock) {
-            if (/^```\s*$/.test(line.trim())) {
-                currentIssue.caveat = caveatLines.join(' ').replace(/\s+/g, ' ').trim();
-                inCaveatBlock = false;
-                caveatLines = [];
+        const finalizeIssue = () => {
+            if (!currentIssueId) {
                 return;
             }
 
-            const caveatLine = line.trim();
-            if (caveatLine) {
-                caveatLines.push(caveatLine);
+            const summaryBody = currentIssueBodyParts
+                .join('')
+                .replace(/\n{3,}/g, '\n\n')
+                .trim();
+
+            const summary = summaryBody;
+            const caveat = currentIssueCaveatBlocks.join('\n\n').trim();
+
+            issues.push({
+                id: currentIssueId,
+                summary,
+                caveat
+            });
+        };
+
+        tokens.forEach(token => {
+            if (token.type === 'heading' && token.depth === 2) {
+                finalizeIssue();
+                currentIssueId = String(token.text || '').trim();
+                currentIssueBodyParts = [];
+                currentIssueCaveatBlocks = [];
+                return;
             }
-            return;
-        }
 
-        const trimmed = line.trim();
-        if (!trimmed || /^---\s*$/.test(trimmed)) {
-            return;
-        }
+            if (!currentIssueId) {
+                return;
+            }
 
-        if (/^(type|product|version|date):\s*/i.test(trimmed)) {
-            return;
-        }
+            if (token.type === 'code' && String(token.lang || '').trim().toLowerCase() === 'caveat') {
+                const caveatText = String(token.text || '').trim();
+                if (caveatText) {
+                    currentIssueCaveatBlocks.push(caveatText);
+                }
+                return;
+            }
 
-        currentIssue.descriptionLines.push(line.trimEnd());
-    });
+            if (token.type === 'space' || token.type === 'hr') {
+                return;
+            }
 
-    finalizeMarkdownIssue(currentIssue, issues);
-    return issues;
-}
+            if (typeof token.raw === 'string' && token.raw) {
+                currentIssueBodyParts.push(token.raw);
+                return;
+            }
 
-function finalizeMarkdownIssue(issue, issues) {
-    if (!issue || !issue.id) {
-        return;
+            if (typeof token.text === 'string' && token.text.trim()) {
+                currentIssueBodyParts.push(`${token.text.trim()}\n\n`);
+            }
+        });
+
+        finalizeIssue();
+        return issues;
+    } catch (error) {
+        console.error('Marked token parser failed.', error);
+        return [];
     }
-
-    const description = Array.isArray(issue.descriptionLines)
-        ? issue.descriptionLines
-            .join('\n')
-            .replace(/\n{3,}/g, '\n\n')
-            .trim()
-        : '';
-
-    let summary = description;
-    if (issue.caveat) {
-        summary = summary
-            ? `[Caveat: ${issue.caveat}] ${summary}`
-            : `[Caveat: ${issue.caveat}]`;
-    }
-
-    issues.push({
-        id: issue.id,
-        summary
-    });
 }
 
 function normalizeIssuesFromPayload(data) {
@@ -239,7 +232,8 @@ function normalizeIssuesFromPayload(data) {
                 if (item.id && (item.description || item.summary)) {
                     return {
                         id: String(item.id).trim(),
-                        summary: String(item.summary || item.description).trim()
+                        summary: String(item.summary || item.description).trim(),
+                        caveat: String(item.caveat || '').trim()
                     };
                 }
 
@@ -255,7 +249,8 @@ function normalizeIssuesFromPayload(data) {
             if (issue && typeof issue === 'object' && issue.id && issue.description) {
                 return {
                     id: String(issue.id).trim(),
-                    summary: String(issue.description).trim()
+                    summary: String(issue.description).trim(),
+                    caveat: String(issue.caveat || '').trim()
                 };
             }
             return parseIssueLine(JSON.stringify(issue));
@@ -394,15 +389,19 @@ function dedupeIssues(issues, versionKey) {
     issues.forEach(issue => {
         const id = (issue.id || '').trim();
         const summary = (issue.summary || '').trim();
+        const caveat = (issue.caveat || '').trim();
         if (!id) return;
 
         if (!map.has(id)) {
-            map.set(id, { id, summary, [versionKey]: [] });
+            map.set(id, { id, summary, caveat, [versionKey]: [] });
         }
 
         const entry = map.get(id);
         if (!entry.summary && summary) {
             entry.summary = summary;
+        }
+        if (!entry.caveat && caveat) {
+            entry.caveat = caveat;
         }
 
         const version = (issue.sourceVersion || '').trim();
@@ -441,7 +440,7 @@ function getSourceVersionFromFileName(fileName) {
 }
 
 function renderSummaryCell(cell, issue) {
-    cell.innerHTML = markdownSummaryToHtml(issue.summary);
+    cell.innerHTML = markdownSummaryToHtml(issue.summary, issue.caveat);
 
     const refs = getSocialRefsForIssue(issue.id);
     if (!refs.length) {
@@ -545,22 +544,22 @@ function sourceLabelFromKey(sourceKey) {
         .join(' ');
 }
 
-function markdownSummaryToHtml(summaryText) {
+function markdownSummaryToHtml(summaryText, caveatText) {
     const input = String(summaryText || '').trim();
-    if (!input) {
+    const caveat = String(caveatText || '').trim();
+
+    if (!input && !caveat) {
         return '';
     }
 
-    const caveatMatch = input.match(/^\[Caveat:\s*([^\]]+)\]\s*/i);
-    const caveatText = caveatMatch ? caveatMatch[1].trim() : '';
-    const body = caveatMatch ? input.slice(caveatMatch[0].length) : input;
-
     const htmlParts = [];
-    if (caveatText) {
-        htmlParts.push(`<div><em>Caveat: ${escapeHtml(caveatText)}</em></div>`);
+    if (caveat) {
+        htmlParts.push(`<div><em>Caveat: ${escapeHtml(caveat)}</em></div>`);
     }
 
-    htmlParts.push(renderMarkdownBodyToHtml(body));
+    if (input) {
+        htmlParts.push(renderMarkdownBodyToHtml(input));
+    }
     return htmlParts.join('');
 }
 
