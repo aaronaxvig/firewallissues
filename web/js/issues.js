@@ -9,10 +9,10 @@ const issueFileDataCache = new Map();
 const issueFilePromiseCache = new Map();
 
 function loadSocialRefs() {
-    return fetch('social_refs.json')
+    return fetch('data/social_refs.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Failed to load social_refs.json (${response.status})`);
+                throw new Error(`Failed to load data/social_refs.json (${response.status})`);
             }
             return response.json();
         })

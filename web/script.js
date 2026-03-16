@@ -19,7 +19,7 @@ function refreshIssuesForCurrentSelection() {
 }
 
 function loadProductTree() {
-    fetch('products.json')
+    fetch('data/products.json')
         .then(response => response.json())
         .then(data => {
             productsData = expandFilePrefixLevel(data);

@@ -8,7 +8,7 @@ let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
 
 function loadProducts() {
-    fetch('products.json')
+    fetch('data/products.json')
         .then(response => response.json())
         .then(data => {
             const productSelect = document.getElementById('productSelect');
@@ -25,7 +25,7 @@ function loadProducts() {
         })
         .catch(error => {
             console.error('Error loading products:', error);
-            setParseStatus('Could not load products.json', true);
+            setParseStatus('Could not load data/products.json', true);
         });
 }
 
