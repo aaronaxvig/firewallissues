@@ -13,6 +13,8 @@ New versions are easily added using the process.html page
 - Fix up the products.json file manually or run `update_products_from_issues.py`.
 - Submit a pull request.
 
+The date on the end of the file name is to have some idea of when the data was grabbed.  I would imagine that sometimes there are updates.
+
 There is intentionally no automated scaping, to avoid abuse of server resources.  Also releases are not that frequent.
 
 ## External references ##
