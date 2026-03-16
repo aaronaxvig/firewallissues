@@ -115,6 +115,11 @@ function createTreeNode(name, value, path) {
             childrenContainer.appendChild(childNode);
         });
 
+        if (shouldStartCollapsed(name, value)) {
+            childrenContainer.classList.add('collapsed');
+            toggle.textContent = '▶';
+        }
+
         toggle.addEventListener('click', event => {
             event.stopPropagation();
             childrenContainer.classList.toggle('collapsed');
@@ -136,6 +141,24 @@ function createTreeNode(name, value, path) {
     label.appendChild(document.createTextNode(name));
     container.appendChild(label);
     return container;
+}
+
+function shouldStartCollapsed(name, value) {
+    if (!value || typeof value !== 'object') {
+        return false;
+    }
+
+    const childKeys = Object.keys(value);
+    if (childKeys.length === 0) {
+        return false;
+    }
+
+    const hotfixChildren = childKeys.filter(key => {
+        const match = key.match(/^(.*)-h\d+$/i);
+        return match && match[1] === name;
+    });
+
+    return hotfixChildren.length > 0;
 }
 
 function createCheckbox(path, value) {

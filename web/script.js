@@ -56,25 +56,25 @@ function transformNode(node) {
             };
         }
 
-        const grouped = {};
+        const groupedByPrefix = {};
 
         addressed.forEach(fileName => {
             const prefix = getFilePrefix(fileName);
-            if (!grouped[prefix]) {
-                grouped[prefix] = { addressed: [], known: [] };
+            if (!groupedByPrefix[prefix]) {
+                groupedByPrefix[prefix] = { addressed: [], known: [] };
             }
-            grouped[prefix].addressed.push(fileName);
+            groupedByPrefix[prefix].addressed.push(fileName);
         });
 
         known.forEach(fileName => {
             const prefix = getFilePrefix(fileName);
-            if (!grouped[prefix]) {
-                grouped[prefix] = { addressed: [], known: [] };
+            if (!groupedByPrefix[prefix]) {
+                groupedByPrefix[prefix] = { addressed: [], known: [] };
             }
-            grouped[prefix].known.push(fileName);
+            groupedByPrefix[prefix].known.push(fileName);
         });
 
-        return grouped;
+        return groupHotfixPrefixes(groupedByPrefix);
     }
 
     const transformed = {};
@@ -82,6 +82,42 @@ function transformNode(node) {
         transformed[key] = transformNode(node[key]);
     });
     return transformed;
+}
+
+function groupHotfixPrefixes(groupedByPrefix) {
+    const byFamily = {};
+
+    Object.keys(groupedByPrefix).forEach(prefix => {
+        const family = getReleaseFamily(prefix);
+        if (!byFamily[family]) {
+            byFamily[family] = [];
+        }
+        byFamily[family].push(prefix);
+    });
+
+    const result = {};
+
+    Object.keys(byFamily).forEach(family => {
+        const members = byFamily[family];
+        const hasHotfixes = members.length > 1 || members.some(member => member !== family);
+
+        if (!hasHotfixes && members[0] === family) {
+            result[family] = groupedByPrefix[family];
+            return;
+        }
+
+        const branch = {};
+        members.forEach(member => {
+            branch[member] = groupedByPrefix[member];
+        });
+        result[family] = branch;
+    });
+
+    return result;
+}
+
+function getReleaseFamily(prefix) {
+    return String(prefix || '').replace(/-h\d+$/i, '');
 }
 
 function getFilePrefix(fileName) {
