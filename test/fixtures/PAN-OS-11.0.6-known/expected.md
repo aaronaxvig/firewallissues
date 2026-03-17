@@ -1,0 +1,289 @@
+---
+type: Known
+product: PAN-OS
+version: 11.0.6
+---
+
+## WF500-5632
+
+The number of registered WildFire appliances reported in Panorama (**Panorama** > **Managed WildFire Appliances** > **Firewalls Connected** > **View**) does not accurately reflect the current status of connected WildFire appliances.
+
+## PAN-260851
+
+From the NGFW or Panorama CLI, you can override the existing application tag even if Disable Override is enabled for the application (**Objects** > **Applications**) tag.
+
+## PAN-250062
+
+Device telemetry might fail at configured intervals due to bundle generation issues.
+
+## PAN-234015
+
+The X-Forwarded-For (XFF) value is not displayed in traffic logs.
+
+## PAN-252744
+
+After upgrading PA-3200 Series, PA-5200 Series, or PA-7000 Series firewalls that are equipped with OCTEON 7x00 dataplane chips to PAN-OS 11.0.4 or 11.0.4-h1, the firewall might see continuous crashes, reboot repeatedly, and/or go into a non-functional state.
+
+**Workaround:** If you have already upgraded to one of those releases, downgrade to an earlier release or upgrade to PAN-OS 11.0.4-h2.
+
+## PAN-241041
+
+On the Panorama management server exporting template or template stack variables (**Panorama** > **Templates**) in CSV format results in an empty CSV file.
+
+## PAN-234929
+
+The tabs in the **ACC**, such as **Network Activity**, **Threat Activity**, and **Blocked Activity**, may not display any data when you apply a Time filter for the Last 15 minutes, Last Hour, Last 6 Hours, or Last 12 Hours. With the Last 24 Hours filter, the data displayed may not be accurate. Additionally, reports run against summary logs may not display accurate results.
+
+## PAN-225886
+
+If you enable explicit proxy mode for the web proxy, intermittent errors and unexpected TCP reconnections may occur.
+
+## PAN-233677
+
+```caveat
+PA-3410, PA-3420, PA-3430, PA-3440, PA-5410, PA-5420, PA-5430, and PA-5440 firewalls
+```
+
+By enabling [Lockless QoS feature](https://docs.paloaltonetworks.com/pan-os/11-0/pan-os-admin/quality-of-service/configure-lockless-qos.html), a slight degradation in App-ID and Threat performance is expected.
+
+## PAN-222586
+
+On PA-5410, PA-5420, PA-5430, and PA-5440 firewalls, the Filter dropdown menus, Forward Methods, and Built-In Actions for Correlation Log settings (**Device** > **Log Settings**) are not displayed and cannot be configured.
+
+## PAN-220176
+
+```caveat
+PAN-OS 11.0.1-h2 hotfix
+```
+
+System process crashes might occur with VoIP traffic when NAT is enabled with Persistent Dynamic IP and Port settings.
+
+## PAN-216314
+
+Upon upgrade or downgrade to or from PAN-OS 10.1.9 or 10.1.9-h1, offloaded application traffic sessions may disconnect after a period of time even if a session is active. The disconnect occurs after the application's default session timeout value is exceeded. This behavior affects only PAN-OS 10.1.9 and 10.1.9-h1. If you are on PAN-OS 10.1.9 and 10.1.9-h1, please use the following workaround. If you have already upgraded or downgraded to another PAN-OS version, use the following workaround in that version.
+
+**Workaround:** Run the CLI command `debug dataplane internal pdt fe100 csr wr_sem_ctrl_ctr_scan_dis value 0` to set the value to zero (0).
+
+## PAN-216214
+
+For Panorama-managed firewalls in an Active/Active High Availability (HA) configuration where you configure the firewall HA settings (**Device** > **High Availability**) in a template or template stack (**Panorama** > **Templates**), performing a local commit on one of the HA firewalls triggers an HA config sync on the peer firewall. This causes the HA peer configuration to go `Out of Sync`.
+
+## PAN-213746
+
+On the Panorama management server, the **Hostkey** displayed as `undefined undefined` if you override an SSH Service Profile (**Device** > **Certificate Management** > **SSH Service Profile**) Hostkey configured in a Template from the Template Stack.
+
+## PAN-213119
+
+PA-5410 and PA-5420 firewalls display the following error when you view the Block IP list (**Monitor** > **Block IP**):
+
+`show -> dis-block-table is unexpected`
+
+## PAN-212978
+
+The Palo Alto Networks firewall stops responding when executing an SD-WAN debug operational CLI command.
+
+## PAN-212889
+
+On the Panorama management server, different threat names are used when querying the same threat in the Threat Monitor (**Monitor** > **App Scope** > **Threat Monitor**) and **ACC**. This results in the ACC displaying `no data to display` when you are redirected to the ACC after clicking a threat name in the Threat Monitor and filtering the same threat name in the Global Filters.
+
+## PAN-211531
+
+On the Panorama management server, admins can still perform a selective push to managed firewalls when **Push All Changes** and **Push for Other Admins** are disabled in the admin role profile (**Panorama** > **Admin Roles**).
+
+## PAN-207770
+
+Data filtering logs (**Monitor** > **Logs** > **Data Filtering**) incorrectly display the traffic Direction as `server-to-client` instead of `client-to-server` for upload traffic that matches Enterprise data loss prevention (DLP) data patterns (**Objects** > **DLP** > **Data Filtering Patterns**) in an Enterprise DLP data filtering profile (**Objects** > **DLP** > **Data Filtering Profiles**).
+
+## PAN-207733
+
+When a DHCPv6 client is configured on HA Active/Passive firewalls, if the DHCPv6 server goes down, after the lease time expires, the DHCPv6 client should enter SOLICIT state on both the Active and Passive firewalls. Instead, the client is stuck in BOUND state with an IPv6 address having lease time 0 on the Passive firewall.
+
+## PAN-207616
+
+On the Panorama management server, after selecting managed firewalls and creating a new **Tag** (**Panorama** > **Managed Devices** > **Summary**) the managed firewalls are automatically unselected and any new tag created is applied to the managed firewalls for which you initially created the new tag.
+
+**Workaround:** Select and then unselect the managed firewalls for which you created a new tag.
+
+## PAN-207611
+
+When a DHCPv6 client is configured on HA Active/Passive firewalls, the Passive firewall sometimes crashes.
+
+## PAN-207442
+
+For M-700 appliances in an active/passive high availability (**Panorama** > **High Availability**) configuration, the `active-primary` HA peer configuration sync to the `secondary-passive` HA peer may fail. When the config sync fails, the job Results is `Successful` (**Tasks**), however the sync status on the **Dashboard** displays as `Out of Sync` for both HA peers.
+
+**Workaround**: Perform a local commit on the `active-primary` HA peer and then synchronize the HA configuration.
+
+1. [Log in to the Panorama web interface](https://docs.paloaltonetworks.com/panorama/11-0/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface) of the `active-primary` HA peer.
+2. Select **Commit** and **Commit to Panorama**.
+3. In the `active-primary` HA peer **Dashboard**, click **Sync to Peer** in the High Availability widget.
+
+## PAN-207040
+
+If you disable Advanced Routing, remove logical routers, and downgrade from PAN-OS 11.0.0 to a PAN-OS 10.2.x or 10.1.x release, subsequent commits fail and SD-WAN devices on Panorama have no Virtual Router name.
+
+## PAN-206913
+
+When a DHCPv6 client is configured on HA Active/Passive firewalls, releasing the IPv6 address from the client (using Release in the UI or using the `request dhcp client ipv6 release all` CLI command) releases the IPv6 address from the Active firewall, but not the Passive firewall.
+
+## PAN-206909
+
+The Dedicated Log Collector is unable to reconnect to the Panorama management server if the `configd` process crashes. This results in the Dedicated Log Collector losing connectivity to Panorama despite the managed collector connection `Status` (**Panorama** > **Managed Collector**) displaying `connected` and the managed colletor `Health` status displaying as healthy.
+
+This results in the local Panorama config and system logs not being forwarded to the Dedicated Log Collector. Firewall log forwarding to the disconnected Dedicated Log Collector is not impacted.
+
+**Workaround:** Restart the `mgmtsrvr` process on the Dedicated Log Collector.
+
+1. [Log in to the Dedicated Log Collector CLI](https://docs.paloaltonetworks.com/panorama/11-0/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-cli).
+2. Confirm the Dedicated Log Collector is disconnected from Panorama.
+  `admin>``show panorama-status`
+  Verify the `Connected` status is `no`.
+3. Restart the `mgmtsrvr` process.
+  `admin>``debug software restart process management-server`
+
+## PAN-206416
+
+On the Panorama management server, no data filtering log (**Monitor** > **Logs** > **Data Filtering**) is generated when the managed firewall loses connectivity to the following cloud services, and as a result fails to forward matched traffic for inspection.
+
+- DLP cloud service
+- Advanced Threat Protection inline cloud analysis service
+- Advanced URL Filtering cloud service
+
+## PAN-206315
+
+```caveat
+PA-1420 firewall only
+```
+
+In an active/passive high availability (HA) configuration, the `show session info` CLI command shows that the passive firewall has packet rate and throughput values. The packet rate and throughput of the passive firewall should be zero since it is not processing traffic.
+
+## PAN-205009
+
+```caveat
+PA-1420 firewall only
+```
+
+In an active/passive high availability (HA) configuration, the `show interface all`, `show-high availability interface ha2`, and `show high-availability all` CLI commands display the HSCI port state as unknown on both the active and passive firewalls.
+
+## PAN-204689
+
+Upon upgrade to PAN-OS 11.0.1, the following GlobalProtect settings do not work:
+
+- **Allow user to disconnect GlobalProtect App** > **Allow with Passcode**
+- **Allow user to Disable GlobalProtect App** > **Allow with Passcode**
+- **Allow User to Uninstall GlobalProtect App** > **Allow with Password**
+
+## PAN-201910
+
+PAN-OS security profiles might consume a large amount of memory depending on the profile configuration and quantity. In some cases, this might reduce the number of supported security profiles below the stated maximum for a given platform.
+
+## PAN-197588
+
+The PAN-OS ACC (Application Command Center) does not display a widget detailing statistics and data associated with vulnerability exploits that have been detected using inline cloud analysis.
+
+## PAN-197419
+
+```caveat
+PA-1400 Series firewalls only
+```
+
+In **Network** > **Interface** > **Ethernet**, the power over Ethernet (PoE) ports do not display a **Tag** value.
+
+## PAN-197097
+
+Large Scale VPN (LSVPN) does not support IPv6 addresses on the satellite firewall.
+
+## PAN-196758
+
+On the Panorama management server, pushing a configuration change to firewalls leveraging SD-WAN erroneously show the auto-provisioned BGP configurations for SD-WAN as being edited or deleted despite no edits or deletions being made when you **Preview Changes** (**Commit** > **Push to Devices** > **Edit Selections** or **Commit** > **Commit and Push** > **Edit Selections**).
+
+## PAN-195968
+
+```caveat
+PA-1400 Series firewalls only
+```
+
+When using the CLI to configure power over Ethernet (PoE) on a non-PoE port, the CLI prints an error depending on whether an interface type was selected on the non-PoE port or not. If an interface type, such as tap, Layer 2, or virtual wire, was selected before PoE was configured, the error message will not include the interface name (eg. ethernet1/4). If an interface type was not selected before PoE was configured, the error message will include the interface name.
+
+## PAN-195342
+
+On the Panorama management server, Context Switch fails when you try to Context Switch from a managed firewall running PAN-OS 10.1.7 or earlier release back to Panorama and the following error is displayed:
+
+`Could not find start token '@start@'`
+
+## PAN-194978
+
+```caveat
+PA-1400 Series firewalls only
+```
+
+In **Network** > **Interface** > **Ethernet**, hovering the mouse over a power over Ethernet (PoE) **Link State** icon does not display link speed and link duplex details.
+
+## PAN-194424
+
+```caveat
+PA-5450 firewall only
+```
+
+Upgrading to PAN-OS 10.2.2 while having a log interface configured can cause both the log interface and the management interface to remain connected to the log collector.
+
+**Workaround:** Restart the log receiver service by running the following CLI command:
+
+`debug software restart process log-receiver`
+
+## PAN-187685
+
+On the Panorama management server, the Template Status displays no synchronization status (**Panorama** > **Managed Devices** > **Summary**) after a bootstrapped firewall is successfully added to Panorama.
+
+**Workaround:** After the bootstrapped firewall is successfully added to Panorama, [log in to the Panorama web interface](https://docs.paloaltonetworks.com/panorama/10-2/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface.html) and select **Commit** > **Push to Devices**.
+
+## PAN-187407
+
+The configured Advanced Threat Prevention inline cloud analysis action for a given model might not be honored under the following condition: If the firewall is set to **Hold client request for category lookup**and the action set to **Reset-Both** and the URL cache has been cleared, the first request for inline cloud analysis will be bypassed.
+
+## PAN-186283
+
+Templates appear out-of-sync on Panorama after successfully deploying the CFT stack using the Panorama plugin for AWS.
+
+**Workaround**: Use **Commit** > **Push to Devices** to synchronize the templates.
+
+## PAN-184708
+
+```caveat
+Panorama managed firewalls
+```
+
+Scheduled report emails (**Monitor** > **PDF Reports** > **Email Scheduler**) are not emailed if:
+
+- A scheduled report email contains a Report Group (**Monitor** > **PDF Reports** > **Report Group**) which includes a SaaS Application Usage report.
+- A scheduled report contains only a SaaS Application Usage Report.
+
+**Workaround:** To receive a scheduled report email for all other PDF report types:
+
+1. Select **Monitor** > **PDF Reports** > **Report Groups** and remove all SaaS Application Usage reports from all Report Groups.
+2. Select **Monitor** > **PDF Reports** > **Email Scheduler** and edit the scheduled report email that contains only a SaaS Application Usage report. For the Recurrence, select **Disable** and click **OK**.
+  Repeat this step for all scheduled report emails that contain only a SaaS Application Usage report.
+3. **Commit**.
+  () Select **Commit** > **Commit and Push**
+
+## PAN-184406
+
+Using the CLI to add a RAID disk pair to an M-700 appliance causes the dmdb process to crash.
+
+**Workaround:** Contact customer support to stop the dmdb process before adding a RAID disk pair to a M-700 appliance.
+
+## PAN-183404
+
+Static IP addresses are not recognized when "and" operators are used with IP CIDR range.
+
+## PAN-181933
+
+If you use multiple log forwarding cards (LFCs) on the PA-7000 series, all of the cards may not receive all of the updates and the mappings for the clients may become out of sync, which causes the firewall to not correctly populate the Source User column in the session logs.
+
+## PAN-171938
+
+No results are displayed when you **Show Application Filter** for a Security policy rule (**Policies** > **Security** > **Application** > **Value** > **Show Application Filter**).
+
+## PAN-164885
+
+On the Panorama management server, pushes to managed firewalls (**Commit** > **Push to Devices** or **Commit and Push**) may fail when an EDL (**Objects** > **External Dynamic Lists**) is configured to **Check for updates** every 5 minutes due to the commit and EDL fetch processes overlapping. This is more likely to occur when multiple EDLs are configured to check for updates every 5 minutes.
