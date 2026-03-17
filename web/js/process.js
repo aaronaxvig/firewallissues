@@ -1,16 +1,24 @@
 import { buildIssueMarkdownDocument } from './markdown.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadProducts();
-    setupEventListeners();
-    restoreFormState();
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!document.getElementById('issuesInput')) {
+            return;
+        }
+
+        loadProducts();
+        setupEventListeners();
+        restoreFormState();
+    });
+}
 
 let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
 const ISSUE_ID_PATTERN = /\b((?:[A-Z]{2,6}|WF500)-\d{4,8})\b/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
 const RESOLVED_LINE_PATTERN = /^resolved\s+in\b/i;
+const TEXT_NODE = 3;
+const ELEMENT_NODE = 1;
 
 function loadProducts() {
     fetch('data/products.json')
@@ -89,7 +97,7 @@ function generateJSON() {
     setParseStatus(`Parsed ${issues.length} issues from input.`);
 }
 
-function parseIssuesFromHtmlTable(htmlText) {
+export function parseIssuesFromHtmlTable(htmlText) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
     const table = doc.querySelector('table');
@@ -193,21 +201,16 @@ function collectMarkdownBlocks(root, nestedListDepth = 0) {
     };
 
     Array.from(root.childNodes).forEach(node => {
-        if (node.nodeType === Node.TEXT_NODE) {
-            paragraphBuffer += node.textContent || '';
+        if (node.nodeType === TEXT_NODE) {
+            paragraphBuffer = appendInlineText(paragraphBuffer, node.textContent || '');
             return;
         }
 
-        if (node.nodeType !== Node.ELEMENT_NODE) {
+        if (node.nodeType !== ELEMENT_NODE) {
             return;
         }
 
         const tagName = node.tagName.toUpperCase();
-
-        if (tagName === 'BR') {
-            paragraphBuffer += '\n';
-            return;
-        }
 
         if (tagName === 'TABLE') {
             flushParagraph();
@@ -233,11 +236,80 @@ function collectMarkdownBlocks(root, nestedListDepth = 0) {
             return;
         }
 
-        paragraphBuffer += node.textContent || '';
+        paragraphBuffer = appendInlineText(paragraphBuffer, convertInlineNodeToMarkdown(node));
     });
 
     flushParagraph();
     return blocks;
+}
+
+function convertInlineNodeToMarkdown(node) {
+    if (!node || node.nodeType !== ELEMENT_NODE) {
+        return '';
+    }
+
+    const className = String(node.getAttribute('class') || '');
+
+    if (/\bmenucascade\b/i.test(className)) {
+        const parts = extractMenuCascadeParts(node);
+        if (parts.length > 0) {
+            return parts.map(part => `**${part}**`).join(' > ');
+        }
+    }
+
+    if (/\buicontrol\b/i.test(className)) {
+        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        return content ? `**${content}**` : '';
+    }
+
+    const tagName = (node.tagName || '').toUpperCase();
+
+    if (tagName === 'BR') {
+        return '\u0000';
+    }
+
+    if (tagName === 'STRONG' || tagName === 'B') {
+        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        return content ? `**${content}**` : '';
+    }
+
+    if (tagName === 'EM' || tagName === 'I') {
+        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        return content ? `*${content}*` : '';
+    }
+
+    return renderInlineChildren(node);
+}
+
+function renderInlineChildren(node) {
+    let output = '';
+
+    Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === TEXT_NODE) {
+            output = appendInlineText(output, child.textContent || '');
+            return;
+        }
+
+        if (child.nodeType !== ELEMENT_NODE) {
+            return;
+        }
+
+        output = appendInlineText(output, convertInlineNodeToMarkdown(child));
+    });
+
+    return output;
+}
+
+function extractMenuCascadeParts(node) {
+    const controls = Array.from(node.querySelectorAll('.uicontrol'));
+    if (controls.length === 0) {
+        const fallback = normalizeInlineMarkdown(renderInlineChildren(node));
+        return fallback ? [fallback] : [];
+    }
+
+    return controls
+        .map(control => normalizeInlineMarkdown(renderInlineChildren(control)))
+        .filter(Boolean);
 }
 
 function convertHtmlListToMarkdown(list, depth = 0) {
@@ -296,8 +368,29 @@ function normalizeInlineMarkdown(value) {
     return String(value || '')
         .replace(/\u00a0/g, ' ')
         .replace(/[\t\f\v\r ]+/g, ' ')
+        .replace(/\s*\n+\s*/g, ' ')
+        .replace(/\u0000/g, '\n')
         .replace(/ *\n+ */g, '\n')
         .trim();
+}
+
+function appendInlineText(existing, fragment) {
+    const current = String(existing || '');
+    const next = String(fragment || '');
+
+    if (!next) {
+        return current;
+    }
+
+    if (!current) {
+        return next;
+    }
+
+    if (/[A-Za-z0-9)\]]$/.test(current) && /^[A-Za-z0-9([\]]/.test(next)) {
+        return `${current} ${next}`;
+    }
+
+    return `${current}${next}`;
 }
 
 function convertHtmlTableToMarkdown(table) {

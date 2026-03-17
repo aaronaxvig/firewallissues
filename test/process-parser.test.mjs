@@ -1,0 +1,56 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { JSDOM } from 'jsdom';
+
+const { window } = new JSDOM('<!doctype html><html><body></body></html>');
+globalThis.DOMParser = window.DOMParser;
+
+const { parseIssuesFromHtmlTable } = await import('../web/js/process.js');
+const { buildIssueMarkdownDocument } = await import('../web/js/markdown.js');
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const fixturesDir = join(__dirname, 'fixtures');
+
+// Discover all test fixtures
+const fixtures = readdirSync(fixturesDir).filter(file => {
+    const stat = readdirSync(join(fixturesDir, file), { withFileTypes: true }).map(d => d.name);
+    return stat.includes('input.html') && stat.includes('expected.md');
+});
+
+fixtures.forEach(fixtureId => {
+    const fixturePath = join(fixturesDir, fixtureId);
+    const inputPath = join(fixturePath, 'input.html');
+    const expectedPath = join(fixturePath, 'expected.md');
+
+    test(`parses ${fixtureId} correctly`, () => {
+        const inputHtml = readFileSync(inputPath, 'utf-8');
+        const expectedMarkdown = readFileSync(expectedPath, 'utf-8');
+
+        // Extract metadata from expected markdown frontmatter
+        const frontmatterMatch = expectedMarkdown.match(/^---\n([\s\S]*?)\n---/);
+        if (!frontmatterMatch) {
+            throw new Error(`No frontmatter found in ${expectedPath}`);
+        }
+
+        const frontmatterLines = frontmatterMatch[1].split('\n');
+        const metadata = {};
+        frontmatterLines.forEach(line => {
+            const [key, ...valueParts] = line.split(':');
+            metadata[key.trim()] = valueParts.join(':').trim();
+        });
+
+        const parsedIssues = parseIssuesFromHtmlTable(inputHtml);
+
+        const markdown = buildIssueMarkdownDocument({
+            type: metadata.type,
+            product: metadata.product,
+            version: metadata.version,
+            issues: parsedIssues
+        });
+
+        assert.equal(markdown.trim(), expectedMarkdown.trim());
+    });
+});

@@ -2,9 +2,11 @@
   "name": "firewallissues",
   "private": true,
   "scripts": {
+    "test": "node --test --experimental-default-type=module",
     "vendor:marked": "mkdir -p web/vendor && cp node_modules/marked/lib/marked.esm.js web/vendor/marked.esm.js"
   },
   "devDependencies": {
+    "jsdom": "^26.1.0",
     "marked": "^16.3.0"
   }
 }
