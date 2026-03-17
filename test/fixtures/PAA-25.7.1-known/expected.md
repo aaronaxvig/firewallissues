@@ -1,0 +1,25 @@
+---
+type: Known
+product: Prisma Access Agent
+version: 25.7.1
+---
+
+## PANG-10158
+
+When attempting to install Prisma Access Agent on an Ubuntu 24 virtual machine (VM) via SSH or RDP, the installation fails with an error indicating that the user environment was not preserved, even when the `sudo -E` option is used.
+
+## PANG-10342
+
+An issue exists where the Prisma Access Agent on Debian Linux experiences intermittent SSL tunnel disconnection and automatic reconnection due to health keepalive timeouts. When using the agent with an SSL tunnel configuration on Debian, the tunnel repeatedly disconnects and reconnects without any manual intervention from the user. This behavior disrupts the stability of the connection, potentially affecting user productivity and network reliability.
+
+## PANG-10309
+
+An issue exists where the Prisma Access Agent on Linux fails to perform HIP updates when using the PACLI command. When administrators attempt to execute the `pacli hip update` command while the agent is connected, the operation fails because HIP updates are not supported yet.
+
+## PANG-10271
+
+When upgrading Prisma Access Agent from version 25.7.1.1 to 25.7.1.2 on a Debian ARM system, a crash file is automatically generated upon launching or using Prisma Access Agent.
+
+## PANG-10019
+
+After installing Prisma Access Agent 25.6.0.10 on an Arch Linux x86 system, a coredump occurs when attempting to connect to an endpoint management (EPM) system and a gateway.

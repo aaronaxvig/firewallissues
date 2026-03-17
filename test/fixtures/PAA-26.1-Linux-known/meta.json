@@ -1,0 +1,3 @@
+{
+  "description": "Resolved text in bold divs should go to resolved block, not caveat; tests mixed resolved/unresolved and `userinput` with angle brackets"
+}

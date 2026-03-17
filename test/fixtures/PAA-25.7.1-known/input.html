@@ -1,0 +1,57 @@
+<table class="table colsep rowsep  table-striped">
+    <colgroup><col style="width: 33.003300330033%"><col style="width: 66.996699669967%"></colgroup>
+    <thead class="thead">
+        <tr class="row"><th class="entry">Issue ID</th><th class="entry">Description</th></tr>
+    </thead>
+    <tbody class="tbody">
+        <tr class="row">
+            <td class="entry">
+                <div class="p">PANG-10158</div>
+            </td>
+            <td class="entry relcol">
+                <div class="p">When attempting to install Prisma Access Agent on an Ubuntu 24
+                    virtual machine (VM) via SSH or RDP, the installation fails with an
+                    error indicating that the user environment was not preserved, even
+                    when the <span class="ph userinput">sudo -E</span> option is used.</div>
+            </td>
+        </tr>
+        <tr class="row">
+            <td class="entry">PANG-10342</td>
+            <td class="entry relcol">An issue exists where the Prisma Access Agent on Debian Linux
+                experiences intermittent SSL tunnel disconnection and automatic
+                reconnection due to health keepalive timeouts. When using the agent with
+                an SSL tunnel configuration on Debian, the tunnel repeatedly disconnects
+                and reconnects without any manual intervention from the user. This
+                behavior disrupts the stability of the connection, potentially affecting
+                user productivity and network reliability.</td>
+        </tr>
+        <tr class="row">
+            <td class="entry">PANG-10309</td>
+            <td class="entry relcol">An issue exists where the Prisma Access Agent on Linux fails to
+                perform HIP updates when using the PACLI command. When administrators
+                attempt to execute the <span class="ph userinput">pacli hip update</span> command
+                while the agent is connected, the operation fails because HIP updates
+                are not supported yet.</td>
+        </tr>
+        <tr class="row">
+            <td class="entry">
+                <div class="p">PANG-10271</div>
+            </td>
+            <td class="entry relcol">
+                <div class="p">When upgrading Prisma Access Agent from version 25.7.1.1 to 25.7.1.2
+                    on a Debian ARM system, a crash file is automatically generated upon
+                    launching or using Prisma Access Agent.</div>
+            </td>
+        </tr>
+        <tr class="row">
+            <td class="entry">
+                <div class="p">PANG-10019</div>
+            </td>
+            <td class="entry relcol">
+                <div class="p">After installing Prisma Access Agent 25.6.0.10 on an Arch Linux x86
+                    system, a coredump occurs when attempting to connect to an endpoint
+                    management (EPM) system and a gateway.</div>
+            </td>
+        </tr>
+    </tbody>
+</table>

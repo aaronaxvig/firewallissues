@@ -16,7 +16,7 @@ let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
 const ISSUE_ID_PATTERN = /\b((?:[A-Z]{2,6}|WF500)-\d{4,8})\b/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
-const RESOLVED_LINE_PATTERN = /^resolved\s+in\b/i;
+const RESOLVED_LINE_PATTERN = /^(?:resolved|fixed)\s+in\b/i;
 const TEXT_NODE = 3;
 const ELEMENT_NODE = 1;
 
@@ -136,7 +136,10 @@ export function parseIssuesFromHtmlTable(htmlText) {
         const leftCellTrailingText = normalizeWhitespace(
             leftCellText.replace(issueIdMatch[0], '').replace(/^[-:;,.\s]+/, '')
         );
-        const resolved = RESOLVED_LINE_PATTERN.test(leftCellTrailingText) ? leftCellTrailingText : '';
+        
+        // Strip markdown formatting to check if this is resolved text
+        const plainTrailingText = stripMarkdownFormatting(leftCellTrailingText);
+        const resolved = RESOLVED_LINE_PATTERN.test(plainTrailingText) ? plainTrailingText : '';
         const description = rightCellText;
 
         if (!description) {
@@ -147,11 +150,19 @@ export function parseIssuesFromHtmlTable(htmlText) {
             id,
             description,
             resolved,
-            caveat: issueDetails.caveat || (resolved ? '' : leftCellTrailingText)
+            caveat: resolved ? '' : leftCellTrailingText
         });
     });
 
     return issues;
+}
+
+function stripMarkdownFormatting(text) {
+    return String(text || '')
+        .replace(/\*\*(.*?)\*\*/g, '$1')
+        .replace(/\*(.*?)\*/g, '$1')
+        .replace(/`(.*?)`/g, '$1')
+        .replace(/~~(.*?)~~/g, '$1');
 }
 
 function extractIssueDetails(cell) {
@@ -260,6 +271,11 @@ function convertInlineNodeToMarkdown(node) {
     if (/\buicontrol\b/i.test(className)) {
         const content = normalizeInlineMarkdown(renderInlineChildren(node));
         return content ? `**${content}**` : '';
+    }
+
+    if (/\buserinput\b/i.test(className)) {
+        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        return content ? `\`${content}\`` : '';
     }
 
     const tagName = (node.tagName || '').toUpperCase();

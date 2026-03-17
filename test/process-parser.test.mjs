@@ -24,8 +24,20 @@ fixtures.forEach(fixtureId => {
     const fixturePath = join(fixturesDir, fixtureId);
     const inputPath = join(fixturePath, 'input.html');
     const expectedPath = join(fixturePath, 'expected.md');
+    const metaPath = join(fixturePath, 'meta.json');
 
-    test(`parses ${fixtureId} correctly`, () => {
+    let description = '';
+    try {
+        const metaJson = readFileSync(metaPath, 'utf-8');
+        const meta = JSON.parse(metaJson);
+        description = meta.description || '';
+    } catch {
+        // meta.json is optional
+    }
+
+    const testName = description ? `${fixtureId} — ${description}` : fixtureId;
+
+    test(`parses ${testName}`, () => {
         const inputHtml = readFileSync(inputPath, 'utf-8');
         const expectedMarkdown = readFileSync(expectedPath, 'utf-8');
 
