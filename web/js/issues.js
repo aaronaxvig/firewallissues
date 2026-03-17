@@ -86,7 +86,8 @@ function loadIssuesFromFiles(fileRefs, issueType, elementId, applyIssueSearchFil
                     allIssues.push({
                         id: issue.id || '',
                         summary: issue.summary || '',
-                            caveat: issue.caveat || '',
+                        resolved: issue.resolved || '',
+                        caveat: issue.caveat || '',
                         sourceVersion
                     });
                 });
@@ -157,6 +158,7 @@ function parseMarkdownIssues(markdownText) {
         const issues = [];
         let currentIssueId = '';
         let currentIssueBodyParts = [];
+        let currentIssueResolvedBlocks = [];
         let currentIssueCaveatBlocks = [];
 
         const finalizeIssue = () => {
@@ -170,11 +172,13 @@ function parseMarkdownIssues(markdownText) {
                 .trim();
 
             const summary = summaryBody;
+            const resolved = currentIssueResolvedBlocks.join('\n\n').trim();
             const caveat = currentIssueCaveatBlocks.join('\n\n').trim();
 
             issues.push({
                 id: currentIssueId,
                 summary,
+                resolved,
                 caveat
             });
         };
@@ -184,11 +188,20 @@ function parseMarkdownIssues(markdownText) {
                 finalizeIssue();
                 currentIssueId = String(token.text || '').trim();
                 currentIssueBodyParts = [];
+                currentIssueResolvedBlocks = [];
                 currentIssueCaveatBlocks = [];
                 return;
             }
 
             if (!currentIssueId) {
+                return;
+            }
+
+            if (token.type === 'code' && String(token.lang || '').trim().toLowerCase() === 'resolved') {
+                const resolvedText = String(token.text || '').trim();
+                if (resolvedText) {
+                    currentIssueResolvedBlocks.push(resolvedText);
+                }
                 return;
             }
 
@@ -234,6 +247,7 @@ function normalizeIssuesFromPayload(data) {
                     return {
                         id: String(item.id).trim(),
                         summary: String(item.summary || item.description).trim(),
+                        resolved: String(item.resolved || '').trim(),
                         caveat: String(item.caveat || '').trim()
                     };
                 }
@@ -251,6 +265,7 @@ function normalizeIssuesFromPayload(data) {
                 return {
                     id: String(issue.id).trim(),
                     summary: String(issue.description).trim(),
+                    resolved: String(issue.resolved || '').trim(),
                     caveat: String(issue.caveat || '').trim()
                 };
             }
@@ -390,16 +405,20 @@ function dedupeIssues(issues, versionKey) {
     issues.forEach(issue => {
         const id = (issue.id || '').trim();
         const summary = (issue.summary || '').trim();
+        const resolved = (issue.resolved || '').trim();
         const caveat = (issue.caveat || '').trim();
         if (!id) return;
 
         if (!map.has(id)) {
-            map.set(id, { id, summary, caveat, [versionKey]: [] });
+            map.set(id, { id, summary, resolved, caveat, [versionKey]: [] });
         }
 
         const entry = map.get(id);
         if (!entry.summary && summary) {
             entry.summary = summary;
+        }
+        if (!entry.resolved && resolved) {
+            entry.resolved = resolved;
         }
         if (!entry.caveat && caveat) {
             entry.caveat = caveat;
@@ -441,7 +460,7 @@ function getSourceVersionFromFileName(fileName) {
 }
 
 function renderSummaryCell(cell, issue) {
-    cell.innerHTML = markdownSummaryToHtml(issue.summary, issue.caveat);
+    cell.innerHTML = markdownSummaryToHtml(issue.summary, issue.resolved, issue.caveat);
 
     const refs = getSocialRefsForIssue(issue.id);
     if (!refs.length) {
@@ -504,15 +523,19 @@ function normalizeSocialRefs(data) {
     return map;
 }
 
-function markdownSummaryToHtml(summaryText, caveatText) {
+function markdownSummaryToHtml(summaryText, resolvedText, caveatText) {
     const input = String(summaryText || '').trim();
+    const resolved = String(resolvedText || '').trim();
     const caveat = String(caveatText || '').trim();
 
-    if (!input && !caveat) {
+    if (!input && !resolved && !caveat) {
         return '';
     }
 
     const htmlParts = [];
+    if (resolved) {
+        htmlParts.push(`<div><strong>Resolved:</strong> ${escapeHtml(resolved)}</div>`);
+    }
     if (caveat) {
         htmlParts.push(`<div><em>Caveat: ${escapeHtml(caveat)}</em></div>`);
     }

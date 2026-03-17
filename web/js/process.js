@@ -10,6 +10,7 @@ let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
 const ISSUE_ID_PATTERN = /\b((?:[A-Z]{2,6}|WF500)-\d{4,8})\b/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
+const RESOLVED_LINE_PATTERN = /^resolved\s+in\b/i;
 
 function loadProducts() {
     fetch('data/products.json')
@@ -60,7 +61,7 @@ function generateJSON() {
         return;
     }
 
-    const parsedIssues = parseIssuesInput(inputText);
+    const parsedIssues = parseIssuesFromHtmlTable(inputText);
 
     if (parsedIssues.length === 0) {
         document.getElementById('markdownOutput').value = '';
@@ -72,6 +73,7 @@ function generateJSON() {
     const issues = parsedIssues.map(issue => ({
         id: issue.id,
         description: issue.description,
+        resolved: issue.resolved || '',
         caveat: issue.caveat || ''
     }));
 
@@ -87,15 +89,6 @@ function generateJSON() {
     setParseStatus(`Parsed ${issues.length} issues from input.`);
 }
 
-function parseIssuesInput(inputText) {
-    const fromHtml = parseIssuesFromHtmlTable(inputText);
-    if (fromHtml.length > 0) {
-        return fromHtml;
-    }
-
-    return parseIssuesFromLinePairs(inputText);
-}
-
 function parseIssuesFromHtmlTable(htmlText) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
@@ -105,16 +98,20 @@ function parseIssuesFromHtmlTable(htmlText) {
         return [];
     }
 
-    const rows = table.querySelectorAll(':scope > tr, :scope > tbody > tr, :scope > thead > tr, :scope > tfoot > tr');
+    const rows = Array.from(table.querySelectorAll('tr'));
     const issues = [];
 
     rows.forEach(row => {
-        const cells = row.querySelectorAll('td, th');
+        const cells = Array.from(row.children).filter(cell => {
+            const tag = (cell.tagName || '').toUpperCase();
+            return tag === 'TD' || tag === 'TH';
+        });
+
         if (cells.length < 2) {
             return;
         }
 
-        const leftCellText = normalizeWhitespace(cells[0].textContent || '');
+        const leftCellText = extractCellText(cells[0]);
         const issueDetails = extractIssueDetails(cells[1]);
         const rightCellText = issueDetails.description;
 
@@ -128,6 +125,10 @@ function parseIssuesFromHtmlTable(htmlText) {
         }
 
         const id = issueIdMatch[1].toUpperCase();
+        const leftCellTrailingText = normalizeWhitespace(
+            leftCellText.replace(issueIdMatch[0], '').replace(/^[-:;,.\s]+/, '')
+        );
+        const resolved = RESOLVED_LINE_PATTERN.test(leftCellTrailingText) ? leftCellTrailingText : '';
         const description = rightCellText;
 
         if (!description) {
@@ -137,7 +138,8 @@ function parseIssuesFromHtmlTable(htmlText) {
         issues.push({
             id,
             description,
-            caveat: issueDetails.caveat
+            resolved,
+            caveat: issueDetails.caveat || (resolved ? '' : leftCellTrailingText)
         });
     });
 
@@ -328,33 +330,6 @@ function convertHtmlTableToMarkdown(table) {
 
 function sanitizeTableCellText(text) {
     return normalizeWhitespace(text).replace(/\|/g, '\\|');
-}
-
-function parseIssuesFromLinePairs(rawText) {
-    const lines = rawText
-        .split(/\r?\n/)
-        .map(line => line.trim())
-        .filter(Boolean);
-
-    const issues = [];
-
-    for (let i = 0; i < lines.length; i += 2) {
-        if (i + 1 >= lines.length) {
-            continue;
-        }
-
-        const issueIdMatch = lines[i].match(ISSUE_ID_PATTERN);
-        if (!issueIdMatch) {
-            continue;
-        }
-
-        issues.push({
-            id: issueIdMatch[1].toUpperCase(),
-            description: lines[i + 1]
-        });
-    }
-
-    return issues;
 }
 
 function normalizeWhitespace(value) {

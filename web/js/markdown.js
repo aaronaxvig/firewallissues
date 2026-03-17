@@ -17,6 +17,13 @@ export function buildIssueMarkdownDocument(payload) {
         lines.push(`## ${issue.id}`);
         lines.push('');
 
+        if (issue.resolved) {
+            lines.push('```resolved');
+            lines.push(issue.resolved);
+            lines.push('```');
+            lines.push('');
+        }
+
         if (issue.caveat) {
             lines.push('```caveat');
             lines.push(issue.caveat);
