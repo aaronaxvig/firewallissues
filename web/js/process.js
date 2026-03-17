@@ -122,6 +122,7 @@ export function parseIssuesFromHtmlTable(htmlText) {
         const leftCellText = extractCellText(cells[0]);
         const issueDetails = extractIssueDetails(cells[1]);
         const rightCellText = issueDetails.description;
+        const rightCellCaveat = issueDetails.caveat;
 
         if (/^issue\s*id$/i.test(leftCellText) || /^description$/i.test(rightCellText)) {
             return;
@@ -150,7 +151,7 @@ export function parseIssuesFromHtmlTable(htmlText) {
             id,
             description,
             resolved,
-            caveat: resolved ? '' : leftCellTrailingText
+            caveat: resolved ? '' : (rightCellCaveat || plainTrailingText)
         });
     });
 
@@ -278,7 +279,18 @@ function convertInlineNodeToMarkdown(node) {
         return content ? `\`${content}\`` : '';
     }
 
+    if (/\bsystemoutput\b/i.test(className)) {
+        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        return content ? `\`${content}\`` : '';
+    }
+
     const tagName = (node.tagName || '').toUpperCase();
+
+    if (tagName === 'A' && /\bxref\b/i.test(className)) {
+        const href = node.getAttribute('href') || '';
+        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        return content && href ? `[${content}](${href})` : content;
+    }
 
     if (tagName === 'BR') {
         return '\u0000';
