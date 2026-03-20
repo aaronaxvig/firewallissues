@@ -15,12 +15,13 @@ if (typeof document !== 'undefined') {
 let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
 const ISSUE_ID_PATTERN = /((?:[A-Z]{2,6}|WF500)-\d{4,8})/i;
+const ISSUE_ID_LIST_PREFIX_PATTERN = /^\s*((?:(?:[A-Z]{2,6}|WF500)-\d{4,8})(?:\s*(?:,|and|&)\s*(?:(?:[A-Z]{2,6}|WF500)-\d{4,8}))*)/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
 const TEXT_NODE = 3;
 const ELEMENT_NODE = 1;
 
 function loadProducts() {
-    fetch('data/products.json')
+    fetch('data/products.json', { cache: 'no-cache' })
         .then(response => response.json())
         .then(data => {
             const productSelect = document.getElementById('productSelect');
@@ -134,13 +135,21 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
             return;
         }
 
-        const issueIdMatch = leftCellText.match(ISSUE_ID_PATTERN);
-        if (!issueIdMatch) {
+        const issueIdListMatch = leftCellText.match(ISSUE_ID_LIST_PREFIX_PATTERN);
+        if (!issueIdListMatch) {
             return;
         }
 
-        const id = issueIdMatch[1].toUpperCase();
-        const leftCellTrailingText = normalizeWhitespace(leftCellText.replace(issueIdMatch[0], ''));
+        const issueIdListText = String(issueIdListMatch[1] || '');
+        const issueIds = Array.from(issueIdListText.matchAll(new RegExp(ISSUE_ID_PATTERN.source, 'ig')))
+            .map(match => String(match[1] || '').toUpperCase())
+            .filter(Boolean);
+
+        if (issueIds.length === 0) {
+            return;
+        }
+
+        const leftCellTrailingText = normalizeWhitespace(leftCellText.slice(issueIdListMatch[0].length));
         const metadataText = leftCellTrailingText.replace(/^[-:;,.\s]+/, '');
         const resolved = isResolvedMetadataText(metadataText) ? metadataText : '';
         const description = rightCellText;
@@ -149,11 +158,13 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
             return;
         }
 
-        issues.push({
-            id,
-            description,
-            resolved,
-            caveat: resolved ? '' : (rightCellCaveat || metadataText)
+        issueIds.forEach(id => {
+            issues.push({
+                id,
+                description,
+                resolved,
+                caveat: resolved ? '' : (rightCellCaveat || metadataText)
+            });
         });
     });
 
