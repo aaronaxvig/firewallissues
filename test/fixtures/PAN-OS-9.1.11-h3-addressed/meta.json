@@ -1,0 +1,3 @@
+{
+  "description": "Tests the scenario where the issue ID cell contains only a dash (no ID disclosed), which should produce BLANK-000000."
+}

@@ -136,21 +136,25 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
         }
 
         const issueIdListMatch = leftCellText.match(ISSUE_ID_LIST_PREFIX_PATTERN);
-        if (!issueIdListMatch) {
+        const isBlankId = !issueIdListMatch && /^[\u2014\u2013\-]+$/.test(leftCellText.trim());
+
+        if (!issueIdListMatch && !isBlankId) {
             return;
         }
 
-        const issueIdListText = String(issueIdListMatch[1] || '');
-        const issueIds = Array.from(issueIdListText.matchAll(new RegExp(ISSUE_ID_PATTERN.source, 'ig')))
-            .map(match => String(match[1] || '').toUpperCase())
-            .filter(Boolean);
+        const issueIds = isBlankId
+            ? ['BLANK-000000']
+            : Array.from(String(issueIdListMatch[1] || '').matchAll(new RegExp(ISSUE_ID_PATTERN.source, 'ig')))
+                .map(match => String(match[1] || '').toUpperCase())
+                .filter(Boolean);
 
         if (issueIds.length === 0) {
             return;
         }
 
-        const leftCellTrailingText = normalizeWhitespace(leftCellText.slice(issueIdListMatch[0].length));
-        const metadataText = leftCellTrailingText.replace(/^[-:;,.\s]+/, '');
+        const metadataText = isBlankId
+            ? ''
+            : normalizeWhitespace(leftCellText.slice(issueIdListMatch[0].length)).replace(/^[-:;,.\s]+/, '');
         const resolved = isResolvedMetadataText(metadataText) ? metadataText : '';
         const description = rightCellText;
 
