@@ -14,7 +14,7 @@ if (typeof document !== 'undefined') {
 
 let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
-const ISSUE_ID_PATTERN = /\b((?:[A-Z]{2,6}|WF500)-\d{4,8})\b/i;
+const ISSUE_ID_PATTERN = /((?:[A-Z]{2,6}|WF500)-\d{4,8})/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
 const RESOLVED_LINE_PATTERN = /^(?:resolved|fixed)\s+in\b/i;
 const TEXT_NODE = 3;
@@ -69,7 +69,7 @@ function generateJSON() {
         return;
     }
 
-    const parsedIssues = parseIssuesFromHtmlTable(inputText);
+    const parsedIssues = parseIssuesFromHtmlTable(inputText, { type: issueType });
 
     if (parsedIssues.length === 0) {
         document.getElementById('markdownOutput').value = '';
@@ -97,7 +97,7 @@ function generateJSON() {
     setParseStatus(`Parsed ${issues.length} issues from input.`);
 }
 
-export function parseIssuesFromHtmlTable(htmlText) {
+export function parseIssuesFromHtmlTable(htmlText, options = {}) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, 'text/html');
     const table = doc.querySelector('table');
@@ -109,6 +109,10 @@ export function parseIssuesFromHtmlTable(htmlText) {
     const rows = Array.from(table.querySelectorAll('tr'));
     const issues = [];
 
+    const parsedType = normalizeWhitespace(String(options.type || '')).toLowerCase();
+    const includeDescriptionCaveats = parsedType !== 'addressed';
+    const includeInlineCodeFormatting = parsedType !== 'addressed';
+
     rows.forEach(row => {
         const cells = Array.from(row.children).filter(cell => {
             const tag = (cell.tagName || '').toUpperCase();
@@ -119,8 +123,11 @@ export function parseIssuesFromHtmlTable(htmlText) {
             return;
         }
 
-        const leftCellText = extractCellText(cells[0]);
-        const issueDetails = extractIssueDetails(cells[1]);
+        const leftCellText = extractCellPlainText(cells[0]);
+        const issueDetails = extractIssueDetails(cells[1], {
+            includeCaveat: includeDescriptionCaveats,
+            includeInlineCode: includeInlineCodeFormatting
+        });
         const rightCellText = issueDetails.description;
         const rightCellCaveat = issueDetails.caveat;
 
@@ -134,13 +141,9 @@ export function parseIssuesFromHtmlTable(htmlText) {
         }
 
         const id = issueIdMatch[1].toUpperCase();
-        const leftCellTrailingText = normalizeWhitespace(
-            leftCellText.replace(issueIdMatch[0], '').replace(/^[-:;,.\s]+/, '')
-        );
-        
-        // Strip markdown formatting to check if this is resolved text
-        const plainTrailingText = stripMarkdownFormatting(leftCellTrailingText);
-        const resolved = RESOLVED_LINE_PATTERN.test(plainTrailingText) ? plainTrailingText : '';
+        const leftCellTrailingText = normalizeWhitespace(leftCellText.replace(issueIdMatch[0], ''));
+        const metadataText = leftCellTrailingText.replace(/^[-:;,.\s]+/, '');
+        const resolved = RESOLVED_LINE_PATTERN.test(metadataText) ? metadataText : '';
         const description = rightCellText;
 
         if (!description) {
@@ -151,39 +154,29 @@ export function parseIssuesFromHtmlTable(htmlText) {
             id,
             description,
             resolved,
-            caveat: resolved ? '' : (rightCellCaveat || plainTrailingText)
+            caveat: resolved ? '' : (rightCellCaveat || metadataText)
         });
     });
 
     return issues;
 }
 
-function stripMarkdownFormatting(text) {
-    return String(text || '')
-        .replace(/\*\*(.*?)\*\*/g, '$1')
-        .replace(/\*(.*?)\*/g, '$1')
-        .replace(/`(.*?)`/g, '$1')
-        .replace(/~~(.*?)~~/g, '$1');
-}
-
-function extractIssueDetails(cell) {
-    const caveatNode = cell.querySelector('tt');
-    const caveat = caveatNode ? normalizeWhitespace(caveatNode.textContent || '') : '';
-
-    if (!caveatNode) {
-        return {
-            description: extractCellText(cell),
-            caveat: ''
-        };
-    }
-
+function extractIssueDetails(cell, options = {}) {
     const clone = cell.cloneNode(true);
-    const cloneCaveatNode = clone.querySelector('tt');
-    if (cloneCaveatNode) {
-        cloneCaveatNode.remove();
+    const includeCaveat = options.includeCaveat !== false;
+    const includeInlineCode = options.includeInlineCode !== false;
+
+    let caveat = '';
+    const firstTtNode = clone.querySelector('tt');
+
+    if (firstTtNode && includeCaveat) {
+        caveat = normalizeWhitespace(firstTtNode.textContent || '');
+        firstTtNode.remove();
+    } else if (firstTtNode) {
+        Array.from(clone.querySelectorAll('tt')).forEach(node => node.remove());
     }
 
-    let description = extractCellText(clone);
+    let description = extractCellText(clone, { includeInlineCode });
     description = description.replace(/^\(\s*\)\s*/, '').trim();
 
     return {
@@ -192,15 +185,19 @@ function extractIssueDetails(cell) {
     };
 }
 
-function extractCellText(cell) {
+function extractCellPlainText(cell) {
+    return normalizeWhitespace(cell.textContent || '');
+}
+
+function extractCellText(cell, options = {}) {
     const clone = cell.cloneNode(true);
-    return collectMarkdownBlocks(clone)
+    return collectMarkdownBlocks(clone, 0, options)
         .join('\n\n')
         .replace(/\n{3,}/g, '\n\n')
         .trim();
 }
 
-function collectMarkdownBlocks(root, nestedListDepth = 0) {
+function collectMarkdownBlocks(root, nestedListDepth = 0, options = {}) {
     const blocks = [];
     let paragraphBuffer = '';
 
@@ -235,7 +232,7 @@ function collectMarkdownBlocks(root, nestedListDepth = 0) {
 
         if (tagName === 'UL' || tagName === 'OL') {
             flushParagraph();
-            const listMarkdown = convertHtmlListToMarkdown(node, nestedListDepth);
+            const listMarkdown = convertHtmlListToMarkdown(node, nestedListDepth, options);
             if (listMarkdown) {
                 blocks.push(listMarkdown);
             }
@@ -244,18 +241,18 @@ function collectMarkdownBlocks(root, nestedListDepth = 0) {
 
         if (BLOCK_CONTAINER_TAGS.has(tagName)) {
             flushParagraph();
-            blocks.push(...collectMarkdownBlocks(node, nestedListDepth));
+            blocks.push(...collectMarkdownBlocks(node, nestedListDepth, options));
             return;
         }
 
-        paragraphBuffer = appendInlineText(paragraphBuffer, convertInlineNodeToMarkdown(node));
+        paragraphBuffer = appendInlineText(paragraphBuffer, convertInlineNodeToMarkdown(node, options));
     });
 
     flushParagraph();
     return blocks;
 }
 
-function convertInlineNodeToMarkdown(node) {
+function convertInlineNodeToMarkdown(node, options = {}) {
     if (!node || node.nodeType !== ELEMENT_NODE) {
         return '';
     }
@@ -270,25 +267,33 @@ function convertInlineNodeToMarkdown(node) {
     }
 
     if (/\buicontrol\b/i.test(className)) {
-        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         return content ? `**${content}**` : '';
     }
 
     if (/\buserinput\b/i.test(className)) {
-        const content = normalizeInlineMarkdown(renderInlineChildren(node));
-        return content ? `\`${content}\`` : '';
+        const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
+        if (!content) {
+            return '';
+        }
+
+        return options.includeInlineCode === false ? content : `\`${content}\``;
     }
 
     if (/\bsystemoutput\b/i.test(className)) {
-        const content = normalizeInlineMarkdown(renderInlineChildren(node));
-        return content ? `\`${content}\`` : '';
+        const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
+        if (!content) {
+            return '';
+        }
+
+        return options.includeInlineCode === false ? content : `\`${content}\``;
     }
 
     const tagName = (node.tagName || '').toUpperCase();
 
     if (tagName === 'A' && /\bxref\b/i.test(className)) {
         const href = node.getAttribute('href') || '';
-        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         return content && href ? `[${content}](${href})` : content;
     }
 
@@ -297,19 +302,19 @@ function convertInlineNodeToMarkdown(node) {
     }
 
     if (tagName === 'STRONG' || tagName === 'B') {
-        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         return content ? `**${content}**` : '';
     }
 
     if (tagName === 'EM' || tagName === 'I') {
-        const content = normalizeInlineMarkdown(renderInlineChildren(node));
+        const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         return content ? `*${content}*` : '';
     }
 
-    return renderInlineChildren(node);
+    return renderInlineChildren(node, options);
 }
 
-function renderInlineChildren(node) {
+function renderInlineChildren(node, options = {}) {
     let output = '';
 
     Array.from(node.childNodes).forEach(child => {
@@ -322,7 +327,7 @@ function renderInlineChildren(node) {
             return;
         }
 
-        output = appendInlineText(output, convertInlineNodeToMarkdown(child));
+        output = appendInlineText(output, convertInlineNodeToMarkdown(child, options));
     });
 
     return output;
@@ -340,7 +345,7 @@ function extractMenuCascadeParts(node) {
         .filter(Boolean);
 }
 
-function convertHtmlListToMarkdown(list, depth = 0) {
+function convertHtmlListToMarkdown(list, depth = 0, options = {}) {
     const items = Array.from(list.children).filter(child => child.tagName && child.tagName.toUpperCase() === 'LI');
     if (items.length === 0) {
         return '';
@@ -348,13 +353,13 @@ function convertHtmlListToMarkdown(list, depth = 0) {
 
     const isOrdered = list.tagName.toUpperCase() === 'OL';
     return items
-        .map((item, index) => convertListItemToMarkdown(item, isOrdered ? `${index + 1}.` : '-', depth))
+        .map((item, index) => convertListItemToMarkdown(item, isOrdered ? `${index + 1}.` : '-', depth, options))
         .filter(Boolean)
         .join('\n');
 }
 
-function convertListItemToMarkdown(item, marker, depth) {
-    const blocks = collectMarkdownBlocks(item, depth + 1);
+function convertListItemToMarkdown(item, marker, depth, options = {}) {
+    const blocks = collectMarkdownBlocks(item, depth + 1, options);
     const indent = '  '.repeat(depth);
     const continuationIndent = `${indent}  `;
 

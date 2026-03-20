@@ -54,11 +54,10 @@ fixtures.forEach(fixtureId => {
             metadata[key.trim()] = valueParts.join(':').trim();
         });
 
-        const parsedIssues = parseIssuesFromHtmlTable(inputHtml);
-
         // Extract type from folder name (e.g., "PAA-25.6.2-known" → "Known")
         const typeFromFolder = fixtureId.split('-').pop().toLowerCase();
         const capitalizedType = typeFromFolder.charAt(0).toUpperCase() + typeFromFolder.slice(1);
+        const parsedIssues = parseIssuesFromHtmlTable(inputHtml, { type: capitalizedType });
 
         const markdown = buildIssueMarkdownDocument({
             type: capitalizedType,
