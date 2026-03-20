@@ -12,7 +12,7 @@ export function clearIssues() {
 }
 
 let socialRefsByIssueId = new Map();
-const ISSUE_ID_LINE_PATTERN = /^((?:[A-Z]{2,6}|WF500)-\d{4,8})\s*[:\-]?\s*(.*)$/i;
+const ISSUE_ID_LINE_PATTERN = /^([A-Z][A-Z0-9]{1,15}-\d{3,8})\s*[:\-]?\s*(.*)$/i;
 const socialRefsReady = loadSocialRefs();
 const issueFileDataCache = new Map();
 const issueFilePromiseCache = new Map();
@@ -409,11 +409,13 @@ function dedupeIssues(issues, versionKey) {
         const caveat = (issue.caveat || '').trim();
         if (!id) return;
 
-        if (!map.has(id)) {
-            map.set(id, { id, summary, resolved, caveat, [versionKey]: [] });
+        const dedupeKey = getIssueDedupeKey(id, summary, resolved, caveat);
+
+        if (!map.has(dedupeKey)) {
+            map.set(dedupeKey, { id, summary, resolved, caveat, [versionKey]: [] });
         }
 
-        const entry = map.get(id);
+        const entry = map.get(dedupeKey);
         if (!entry.summary && summary) {
             entry.summary = summary;
         }
@@ -431,6 +433,23 @@ function dedupeIssues(issues, versionKey) {
     });
 
     return Array.from(map.values()).sort((a, b) => b.id.localeCompare(a.id));
+}
+
+function getIssueDedupeKey(id, summary, resolved, caveat) {
+    const normalizedId = String(id || '').trim().toUpperCase();
+
+    if (normalizedId !== 'BLANK-000000') {
+        return normalizedId;
+    }
+
+    const normalizedSummary = normalizeWhitespace(String(summary || ''));
+    const normalizedResolved = normalizeWhitespace(String(resolved || ''));
+    const normalizedCaveat = normalizeWhitespace(String(caveat || ''));
+    return `${normalizedId}|${normalizedSummary}|${normalizedResolved}|${normalizedCaveat}`;
+}
+
+function normalizeWhitespace(text) {
+    return String(text || '').replace(/\s+/g, ' ').trim();
 }
 
 function parseIssueLine(text) {

@@ -1,0 +1,947 @@
+---
+type: Known
+product: PAN-OS
+version: 10.1.11
+---
+
+## BLANK-000000
+
+If you use Panorama to retrieve logs from Strata Logging Service, new log fields (including for Device-ID, Decryption, and GlobalProtect) are not visible on the Panorama web interface.
+
+**Workaround:** Enable [duplicate logging](https://docs.paloaltonetworks.com/cortex/cortex-data-lake/cortex-data-lake-getting-started/get-started-with-cortex-data-lake/start-sending-logs-to-cortex-data-lake/start-sending-logs-to-cortex-data-lake-panorama-managed) to send the logs to Strata Logging Service and Panorama. This workaround does not support Panorama virtual appliances in [Management Only mode](https://docs.paloaltonetworks.com/panorama/10-0/panorama-admin/panorama-overview/panorama-models.html).
+
+## BLANK-000000
+
+Upgrading a PA-220 firewall takes up to an hour or more.
+
+## BLANK-000000
+
+PA-220 firewalls are experiencing slower web interface and CLI performance times.
+
+## BLANK-000000
+
+Upgrading Panorama with a local Log Collector and Dedicated Log Collectors to PAN-OS 8.1 or a later PAN-OS release can take up to six hours to complete due to significant infrastructure changes. Ensure uninterrupted power to all appliances throughout the upgrade process.
+
+## BLANK-000000
+
+A critical System log is generated on the VM-Series firewall if the minimum memory requirement for the model is not available.
+
+- When the memory allocated is less than 4.5GB, you cannot upgrade the firewall. The following error message displays: `Failed to install 9.0.0 with the following error: VM-50 in 9.0.0 requires 5.5GB memory, VM-50 Lite requires 4.5GB memory.Please configure this VM with enough memory before upgrading.`
+- If the memory allocation is more than 4.5GB but less than the licensed capacity requirement for the model, it will default to the capacity associated with the VM-50.
+  The System log message `System capacity adjusted to VM-50 capacity due to insufficient memory for VM-<xxx> license`, indicates that you must allocate the additional memory required for licensed capacity for the firewall model.
+
+## APPORTAL-3313
+
+Changes to an IoT Security subscription license take up to 24 hours to have effect on the IoT Security app.
+
+## APPORTAL-3309
+
+An IoT Security production license cannot be installed on a firewall that still has a valid IoT Security eval or trial license.
+
+**Workaround:** Wait until the 30-day eval or trial license expires and then install the production license.
+
+## APL-15000
+
+When you move a firewall from one Strata Logging Service instance to another, it can take up to an hour for the firewall to begin sending logs to the new instance.
+
+## APL-8269
+
+For data retrieved from Strata Logging Service, the Threat Name column in **Panorama** > **ACC** > **threat-activity** appears blank.
+
+## PLUG-12041
+
+On an OpenShift cluster, MP pod may crash when the number of underlying threads exceeds beyond the per pod maximum limit of 1024.
+
+**Workaround:** Increase the process ID (PID) limit to 2048 in worker nodes.
+
+## PLUG-380
+
+When you rename a device group, template, or template stack in Panorama that is part of a VMware NSX service definition, the new name is not reflected in NSX Manager. Therefore, any ESXi hosts that you add to a vSphere cluster are not added to the correct device group, template, or template stack and your Security policy is not pushed to VM-Series firewalls that you deploy after you rename those objects. There is no impact to existing VM-Series firewalls.
+
+## WF500-5559
+
+An intermittent error while analyzing signed PE samples on the WildFire appliance might cause analysis failures.
+
+## WF500-5471
+
+After using the firewall CLI to add a WildFire appliance with an IPv6 address, the initial connection may fail.
+
+**Workaround:** Retry connecting after you restart the web server with the following command: `debug software restart process web-server`.
+
+## PAN-281370
+
+The Advanced WildFire Inline ML models **OOXML** and **Mach-O** erroneously display as being available from the CLI; however, they are only available on PAN-OS 11.1.3 and later releases.
+
+## PAN-260851
+
+From the NGFW or Panorama CLI, you can override the existing application tag even if Disable Override is enabled for the application (**Objects** > **Applications**) tag.
+
+## PAN-242784
+
+```caveat
+This issue affects PAN-OS 10.1.11-h4 only.
+```
+
+DNS resolution may fail if DNS server IP is obtained through DHCP.
+
+**Workaround:** Configure the DNS server with a static IP or renew the DHCP IP when you see the issue.
+
+## PAN-237106
+
+LSVPN satellite certificates may be generated with serial numbers exceeding 40 hexadecimal characters. This causes certificate revocation and deletion operations to fail with the following error messages:
+
+- `db-serialno can be at most 40 characters`
+- `db-serialno is invalid`
+
+**Workaround:**
+
+To resolve this issue, use the following CLI commands with the LSVPN satellite serial number to manually delete or revoke the affected certificates:
+
+**Delete certificate information**:`delete sslmgr-store certificate-info portal name <name> serialno <satellite_serial>`
+
+**Revoke satellite certificates**:`delete sslmgr-store satellite-info-revoke-certificate portal <name> serialno <list_of_satellite_serials>`
+
+## PAN-235741
+
+```caveat
+This issue affects PAN-OS 10.1.11-h4 only.
+```
+
+DNS resolution fails for firewall and Panorama plugins if the DNS Server IP address is obtained through DHCP.
+
+## PAN-231658
+
+```caveat
+This issue affects PAN-OS 10.1.11-h5 only.
+```
+
+DNS resolution fails when interfaces are configured as DHCP and a DNS server is provided via DHCP while also statically configured with DNS servers.
+
+## PAN-230106
+
+```caveat
+This issue affects PAN-OS 10.1.11-h5 only.
+```
+
+The firewall is unable to retrieve the most current external dynamic list information from the server due to hostname resolution failure.
+
+## PAN-227435
+
+```caveat
+PA-410 firewalls only
+```
+
+Upgrading a firewall to PAN-OS 10.1.11-h1 or PAN-OS 10.1.11-h4 causes the logrcvr process to hang or crash. This causes the auto-commit process to fail or remain at `0%`.
+
+## PAN-227344
+
+On the Panorama management server, PDF Summary Reports (**Monitor** > **PDF Reports** > **Manage PDF Summary**) display no data and are blank when predefined reports are included in the summary report.
+
+## PAN-223365
+
+The Panorama management server is unable to query any logs if the ElasticSearch health status for any Log Collector (**Panorama** > **Managed Collector** is degraded.
+
+**Workaround:** [Log in to the Log Collector CLI](https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-cli) and restart ElasticSearch.
+
+`admin``debug elasticsearch es-restart all`
+
+## PAN-223488
+
+```caveat
+This issue is now resolved. See PAN-OS 10.1.12 Addressed Issues.
+```
+
+Closed ElasticSearch shards are not deleted from a Panorama M-Series or virtual appliance. This causes the ElasticSearch shard purging to not work as expected, resulting in high disk usage.
+
+## PAN-221015
+
+```caveat
+This issue is now resolved. See PAN-OS 10.1.12 Addressed Issues.
+```
+
+On M-600 appliances in Panorama or Log Collector mode, the `es-1` and `es-2` ElasticSearch processes fail to restart when the M-600 appliance is rebooted. The results in the Managed Collector `ES` health status (**Panorama** > **Managed Collectors** > **Health Status**) to be degraded.
+
+**Workaround:** [Log in to the Panorama or Log Collector CLI](https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-cli) experiencing degraded ElasticSearch health and restart all ElasticSearch processes.
+
+`admin>``debug elasticsearch es-restart optional all`
+
+Code copied to clipboard
+
+Unable to copy due to lack of browser support.
+
+Copy
+
+## PAN-219644
+
+```caveat
+This issue is now resolved. See PAN-OS 10.1.12 Addressed Issues.
+```
+
+Firewalls forwarding logs to a syslog server over TLS (**Objects** > **Log Forwarding**) use the default Palo Alto Networks certificate instead of the custom certificate configured on the firewall.
+
+## PAN-219824
+
+File system checks on the logging drive may take more time depending on the usage and file system content, resulting in autocommits taking longer to complete than expected.
+
+## PAN-218521
+
+The ElasticSearch process on the M-600 appliance in Log Collector mode may enter a continuous reboot cycle. This results in the M-600 appliance becoming unresponsive, consuming logging disk space, and preventing new log ingestion.
+
+## PAN-217307
+
+```caveat
+This issue is now resolved. See PAN-OS 10.1.14 Addressed Issues.
+```
+
+The following Security policy rule (**Policies** > **Security**) filters return no results:
+
+`log-start eq no`
+
+`log-end eq no`
+
+`log-end eq yes`
+
+## PAN-213746
+
+On the Panorama management server, the **Hostkey** displayed as `undefined undefined` if you override an SSH Service Profile (**Device** > **Certificate Management** > **SSH Service Profile**) Hostkey configured in a Template from the Template Stack.
+
+## PAN-212978
+
+The Palo Alto Networks firewall stops responding when executing an SD-WAN debug operational CLI command.
+
+## PAN-211728
+
+For VM-Series firewalls leveraging SD-WAN and deployed on VMware ESXi running VMX-13, Auto-Commits fail after upgrade to PAN-OS 10.1.9 and display the error:
+
+`total SD-WAN interfaces 3 exceed the platform maximum 0`
+
+**Workaround:** Attach a serial console to the VM-Series firewall before upgrade to PAN-OS 10.1.9.
+
+## PAN-204689
+
+Upon upgrade to PAN-OS 10.1.9, the following GlobalProtect settings do not work:
+
+- **Allow user to disconnect GlobalProtect App** > **Allow with Passcode**
+- **Allow user to Disable GlobalProtect App** > **Allow with Passcode**
+- **Allow User to Uninstall GlobalProtect App** > **Allow with Password**
+
+## PAN-200081
+
+When FIPS mode is enabled on VM-Series firewalls in Microsoft Azure environments, HA failover does not trigger the secondary IP address movement.
+
+## PAN-197341
+
+On the Panorama management server, if you create multiple device group **Objects** with the same name in the Shared device group and any additional device groups (**Panorama** > **Device Groups**) under the same device group hierarchy that are used in one or more **Policies**, renaming the object with a shared name in any device group causes the object name to change in the policies where it is used. This issue applies only to device group objects that can be referenced in a Security policy rule.
+
+For example:
+
+1. You create a parent device group `DG-A` and a child device group `DG-B`.
+2. You create address objects called `AddressObjA` in the `Shared`, `DG-A` and `DG-B` device groups and add `AddressObjA` to a Security policy rule under `DG-A` and `DG-B`.
+3. Later, you change the `AddressObjA` name in the `Shared` device group to `AddressObjB`.
+
+Changing the name of the address object in the `Shared` device group causes the references in the Policy rule to use the renamed `Shared` object instead of the device group object.
+
+## PAN-196758
+
+On the Panorama management server, pushing a configuration change to firewalls leveraging SD-WAN erroneously show the auto-provisioned BGP configurations for SD-WAN as being edited or deleted despite no edits or deletions being made when you **Preview Changes** (**Commit** > **Push to Devices** > **Edit Selections** or **Commit** > **Commit and Push** > **Edit Selections**).
+
+## PAN-194515
+
+```caveat
+PA-5450 firewall only
+```
+
+The Panorama web interface does not display any predefined template stack variables in the dropdown menu under **Device** > **Setup** > **Log Interface** > **IP Address**.
+
+**Workaround:** Configure the log interface IP address on the individual firewall web interface instead of on Panorama.
+
+## PAN-194424
+
+```caveat
+PA-5450 firewall only
+```
+
+Upgrading to PAN-OS 10.1.6-h2 while having a log interface configured can cause both the log interface and the management interface to remain connected to the log collector.
+
+**Workaround:** Restart the log receiver service by running the following CLI command:
+
+`debug software restart process log-receiver`
+
+## PAN-194202
+
+```caveat
+PA-5450 firewall only
+```
+
+If the management interface and Log Collector are configured on the same subnetwork, the firewall conducts log forwarding using the management interface instead of the logging interface.
+
+## PAN-193518
+
+All logs (**Monitor** > **Logs**) generated by a firewall running a PAN-OS 10.0 release are not accessible if you downgrade from PAN-OS 10.1 to PAN-OS 10.0, and then upgrade back to PAN-OS 10.1.
+
+**Workaround:** If you need to downgrade from PAN-OS 10.1 to PAN-OS 10.0 and then back to PAN-OS 10.1, downgrade to PAN-OS 10.0.11 to ensure that all logs ingested while running a PAN-OS 10.0 release remain accessible after upgrade back to PAN-OS 10.1.
+
+## PAN-193004
+
+```caveat
+This issue is now resolved. See PAN-OS 10.1.12 Addressed Issues.
+```
+
+The Panorama management server fails to delete old IP Tag data. This causes the `/opt/pancfg` partition to reach maximum capacity which impacts Panorama performance.
+
+## PAN-188052
+
+Devices in FIPS-CC mode are unable to connect to servers utilizing ECDSA-based host keys that impacts exporting logs (**Device** > **Scheduled Log Export**), exporting configurations (**Device** > **Scheduled Config Export**), or the `scp export` command in the CLI.
+
+**Workaround:** Use RSA-based host keys on the destination server.
+
+## PAN-187685
+
+On the Panorama management server, the Template Status displays no synchronization status (**Panorama** > **Managed Devices** > **Summary**) after a bootstrapped firewall is successfully added to Panorama.
+
+**Workaround:** After the bootstrapped firewall is successfully added to Panorama, [log in to the Panorama web interface](https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface.html) and select **Commit** > **Push to Devices**.
+
+## PAN-179888
+
+On the Panorama management server, the number of managed firewall (**Panorama** > **Managed Devices** > **Health**) `Power Supplies` displays an incorrect count of power supplies.
+
+## PAN-174982
+
+In HA active/active configurations where, when interfaces that were associated with a virtual router were deleted, the configuration change did not sync.
+
+## PAN-172274
+
+When you activate the advanced URL filtering license, your license entitlements for PAN-DB and advanced URL filtering might not display correctly on the firewall — this is a display anomaly, not a licensing issue, and does not affect access to the services.
+
+**Workaround:** Issue the following command to retrieve and update the licenses: `license request fetch`.
+
+## PAN-172113
+
+If you request a User Activity Report on Panorama and the vsys key value in the XML is an unsupported value, the resulting job becomes unresponsive at 10% and does not complete until you manually stop the job in the web interface.
+
+**Workaround:**Change the vsys key to a valid device group, commit your changes, and run the User Activity Report again.
+
+## PAN-172067
+
+When you configure an HTTP server profile (**Device** > **Server Profiles** > **HTTP** or **Panorama** > **Server Profiles** > **HTTP**), the **Username** and **Password** fields are always required regardless of whether **Tag Registration** is enabled.
+
+**Workaround:** When you configure an HTTP server profile, always enter a username and password to successfully create the HTTP server profile.
+
+You must enter a username and password even if the HTTP server does not require it. The HTTP server ignores the username and password if they are not required for the firewall to connect.
+
+## PAN-172061
+
+A process (`all_pktproc`) can cause intermittent crashes on the Passive PA-5450 firewall in an Active/Passive HA pair. This issue may be seen during an upgrade or reload of the firewall with traffic and when clearing sessions.
+
+## PAN-171938
+
+No results are displayed when you **Show Application Filter** for a Security policy rule (**Policies** > **Security** > **Application** > **Value** > **Show Application Filter**).
+
+## PAN-171723
+
+If you use Panorama to push a configuration that uses App-ID Cloud Engine (ACE) App-IDs and then you downgrade the firewall from PAN-OS 10.1 to PAN-OS 10.0, the installation succeeds but after you reboot, the auto-commit fails.
+
+**Workaround:** Remove all ACE application configurations before downgrading.
+
+## PAN-171706
+
+If you are using Panorama to manage firewalls with multiple virtual systems and the virtual system that is the User-ID hub uses an alias, the local commit on Panorama is successful but the commit to the firewall fails.
+
+## PAN-171673
+
+On the Panorama management server, the **ACC** returns inaccurate results when you filter for **New App-ID** in the **Application** usage widget.
+
+## PAN-171635
+
+If you have an on-premise Active Directory and there is an existing group mapping configuration on the firewall, if you migrate the group mapping to the Cloud Identity Engine, the firewall does not remove the existing group mapping even if the configuration is disabled and the firewall is rebooted, which may conflict with new mappings from the Cloud Identity Engine.
+
+**Workaround**: Use the debug user-id clear domain-map command to remove the existing group mappings from the firewall.
+
+## PAN-171224
+
+On the Panorama management server, a custom report (**Monitor** > **Managed Custom Reports**) with a high volume of unique data objects is not generated when you click **Run Now**.
+
+## PAN-171145
+
+If you edit or remove the value for the `mail` attribute in your on-premise Active Directory, the changes may not be immediately reflected on the firewall after it syncs with the Cloud Identity Engine.
+
+## PAN-170923
+
+In **Policies** > **Security** > **Policy Optimizer** > **New App Viewer**, when you select a Security policy rule in the bottom portion of the screen, the application data in the application browser (top portion of screen) does not match the Apps Seen on the selected rule. In addition, filtering in the application browser based on Apps Seen does not work.
+
+## PAN-170270
+
+Using the CLI to power on a PA-5450 Networking Card (NC) in an Active HA firewall can cause its Passive peer to temporarily go down.
+
+## PAN-169906
+
+The CN-Series Firewall as a Kubernetes Service does not support AF_XDP when deployed in CentOS.
+
+## PAN-168636
+
+Connecting to the App-ID Cloud Engine (ACE) cloud using a management port with explicit proxy configured on it is not supported. Instead, use a data plane interface for the service route ([Prepare to Deploy App-ID Cloud Engine](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/app-id/cloud-based-app-id-service/prepare-to-deploy-app-id-cloud-engine.html) describes how to do this.)
+
+## PAN-168113
+
+On the Panorama management server, you are unable to configure a master key (**Device** > **Master Key and Diagnostics**) for a managed firewall if an interface (**Network** > **Interfaces** > **Ethernet**) references a zone pushed from Panorama.
+
+**Workaround:** Remove the referenced zone from the interface configuration to successfully configure a master key.
+
+## PAN-167847
+
+If you issue the command `opof stats`, then clear the results {opof stats -c}, the Active Sessions value is sometimes invalid. For example, you might see a negative number or an excessively large number.
+
+**Workaround:** Re-run the `opof stats` command after the offload completes.
+
+## PAN-167401
+
+When a firewall or Panorama appliance configured with a proxy is upgraded to PAN-OS 10.0.3 or a later release, it fails to connect to edge service.
+
+## PAN-165669
+
+If you configure a group that the firewall retrieves from the Cloud Identity Engine as the `user in` value in a filter query, Panorama is unable to retrieve the group membership and as a result, is unable to display this data in logs and custom reports.
+
+## PAN-164922
+
+On the Panorama management server, a context switch to a managed firewall running a PAN-OS 8.1.0 to 8.1.19 release fails.
+
+## PAN-164885
+
+```caveat
+This issue is now resolved. See PAN-OS 10.1.14-h6 Addressed Issues
+```
+
+On the Panorama management server, pushes to managed firewalls (**Commit** > **Push to Devices** or **Commit and Push**) may fail when an EDL (**Objects** > **External Dynamic Lists**) is configured to **Check for updates** every 5 minutes due to the commit and EDL fetch processes overlapping. This is more likely to occur when multiple EDLs are configured to check for updates every 5 minutes.
+
+## PAN-164841
+
+A successful deployment of a Panorama virtual appliance on Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) is inaccessible when deploying using the PAN-OS 10.1.0-b6 release.
+
+## PAN-164647
+
+On the Panorama management server, activating a license (**Panorama** > **Device Deployment** > **Licenses**) on managed firewalls in a high availability (HA) configuration causes the Safari web browser to become unresponsive.
+
+**Workaround:** [Log in to the Panorama web interface](https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface.html) from a web browser other than Safari to successfully activate a license on managed firewalls in an HA configuration.
+
+## PAN-164618
+
+The VM-Series firewall CLI and system logs display the license name `VM-SERIES-X`, while the user interface displays `VM-FLEX-X` (in both cases `X` is the number of vCPUs). In future releases the user interface will use the `VM-SERIES-X` format.
+
+## PAN-164586
+
+If you use a value other than `mail` for the user or group email attribute in the Cloud Identity Engine, it displays in `user@domain` format in the CLI output.
+
+## PAN-163966
+
+On the Panorama management server, the **ACC** and on demand reports (**Monitor** > **Manage Custom Reports**) are unable to fetch Directory Sync group membership when the Source User Group filter query is applied, resulting in no data being displayed for the filter when Directory Sync is configured as the Source User for a policy rule.
+
+## PAN-162836
+
+On the VM-Series firewall, if you select **Device** > **Licenses** > **Deactivate VM** a popup window opens and you can choose **Subscriptions** or **Support** and press **Continue** to remove licenses and register the changes with the license server. When the license removal is complete the **Deactivate VM** window does not update its text to exclude deactivated licenses or close the window.
+
+**Workaround**: Wait until the license deactivation is complete, and click **Cancel** to close the window.
+
+## PAN-161666
+
+The firewall includes any users configured in the Cloud Identity Engine in the count of groups. As a result, some CLI command output does not accurately display the number of groups the firewall has retrieved from the Cloud Identity Engine and counts users as groups in the `No. of Groups` in the command output. If the attempt to retrieve the user or group fails, the information for the user or group still displays in the CLI command output.
+
+## PAN-161451
+
+If you issue the command `opof stats`, there are occasional zero packet and byte counts coming from the DPDK counters. This occurs when a session is in the tcp-reuse state, and has no impact on the existing session.
+
+## PAN-160238
+
+If you migrate traffic from a firewall running a PAN-OS version earlier than 9.0 to a firewall running PAN-OS 9.0 or later, you experience intermittent VXLAN packet drops if TCI policy is not configured for inspecting VXLAN traffic flows.
+
+**Workaround:**On the new firewall, create an app override for VXLAN outer headers as described in [What is an Application Override?](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClVLCA0) and the video tutorial [How to Configure an Application Override Policy on the Palo Alto Networks Firewall](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000PPDrCAO).
+
+PAN-OS version 9.0 can inspect both inner and outer VXLAN flows. If you want to inspect inner flows, you must define a tunnel content inspection (TCI) policy.
+
+## PAN-157444
+
+As a result of a telemetry handling update, the Source Zone field in the DNS analytics logs (viewable in the DNS Analytics tab within AutoFocus) might not display correct results.
+
+## PAN-157327
+
+On downgrade to PAN-OS 9.1, Enterprise Data Loss Prevention (DLP) filtering settings (**Device** > **Setup** > **DLP**) are not removed and cause commit errors for the downgraded firewall if you do not uninstall the Enterprise DLP plugin before downgrade.
+
+**Workaround:** After you successfully downgrade a managed firewall to PAN-OS 9.1, commit and push from Panorama to remove the Enterprise DLP filtering settings and complete the downgrade.
+
+1. Downgrade your managed firewall to PAN-OS 9.1
+2. Log in to the firewall web interface and view the **Tasks** to verify all auto commits related to the downgrade have completed successfully.
+3. Log in to the Panorama web interface and **Commit** > **Commit and Push** to your managed firewall downgraded to PAN-OS 9.1.
+
+## PAN-157103
+
+Multi-channel functionality may not be properly utilized on an VM-Series firewall deployed in VMware NSX-V after the service is first deployed.
+
+**Workaround**: Execute the command `debug dataplane pow status` to view the number of channels being utilized by the dataplane.
+
+Per pan-task Netx statisticsCounter Name 1 2 3 4 5 6 Total---------------------------------------------ready_dvf 2 0 0 0 0 0 2
+
+If multi-channel functionality is not working, disable your NSX-V security policy and reapply it. Then reboot the VM-Series firewall. When the firewall is back up, verify that multi-channel functionality is working by executing the command `debug dataplane pow status`. It should now show multiple channels being utilized.
+
+Per pan-task Netx statisticsCounter Name 1 2 3 4 5 6 Total---------------------------------------------ready_dvf 1 1 0 0 0 0 2
+
+## PAN-156598
+
+```caveat
+Panorama only
+```
+
+If you configure a standard custom vulnerability signature in a custom Vulnerability Protection profile in a shared device group, the shared profile custom signatures do not populate in the other device groups when you configure a combination custom vulnerability signature.
+
+**Workaround:** Use the CLI to update the combination signature.
+
+## PAN-154292
+
+On the Panorama management server, downgrading from a PAN-OS 10.0 release to a PAN-OS 9.1 release causes Panorama commit (**Commit** > **Commit to Panorama**) failures if a custom report (**Monitor** > **Manage Custom Reports**) is configured to Group By **Session ID**.
+
+**Workaround:** After successful downgrade, reconfigure the Group By setting in the custom report.
+
+## PAN-154034
+
+On the Panorama management server, the Type column in the System logs (**Monitor** > **Logs** > **System**) for managed firewalls running a PAN-OS 9.1 release erroneously display `iot` as the type.
+
+## PAN-154032
+
+On the Panorama management server, downgrading to PAN-OS 9.1 with the Panorama plugin for Cisco TrustSec version 1.0.2 installed does not automatically transform the plugin to be compatible with PAN-OS 9.1
+
+**Workaround:** After successful downgrade to PAN-OS 9.1, **Remove Config** (**Panorama** > **Plugins**) of the Panorama plugin for Cisco TrustSec and then reconfigure the plugin.
+
+## PAN-153803
+
+On the Panorama management server, scheduled email PDF reports (**Monitor** > **PDF Reports**) fail if a GIF image is used in the header or footer.
+
+## PAN-153557
+
+On the Panorama management server CLI, the overall report status for a report query is marked as `Done` despite reports generated from logs in the Strata Logging Service from the PODamericas Collector Group jobs are still in a `Running` state.
+
+## PAN-153068
+
+The Bonjour Reflector option is supported on up to 16 interfaces. If you enable it on more than 16 interfaces, the commit succeeds and the Bonjour Reflector option is enabled only for the first 16 interfaces and ignored for any additional interfaces.
+
+## PAN-151238
+
+There is a known issue where M-100 appliances are able to download and install a PAN-OS 10.0 release image even though the M-100 appliance is no longer supported after PAN-OS 9.1. (Refer to the [hardware end-of-life dates](https://www.paloaltonetworks.com/services/support/end-of-life-announcements/hardware-end-of-life-dates.html).)
+
+## PAN-151085
+
+On a PA-7000 Series firewall chassis having multiple slots, when HA clustering is enabled on an active/active HA pair, the session table count for one of the peers can show a higher count than the actual number of active sessions on that peer. This behavior can be seen when the session is being set up on a non-cache slot (for example, when a session distribution policy is set to round-robin or session-load); it is caused by the additional cache lookup that happens when HA cluster participation is enabled.
+
+## PAN-150801
+
+Automatic quarantine of a device based on forwarding profile or log setting does not work on the PA-7000 Series firewalls.
+
+## PAN-150515
+
+After you install the device certificate on a new Panorama management server, Panorama is not able to connect to the IoT Security edge service.
+
+**Workaround:** Restart Panorama to connect to the IoT Security edge service.
+
+## PAN-150345
+
+During updates to the Device Dictionary, the IoT Security service does not push new Device-ID attributes (such as new device profiles) to the firewall until a manual commit occurs.
+
+**Workaround:** Perform a force commit to push the attributes in the content update to the firewall.
+
+## PAN-150361
+
+In an Active-Passive high availability (HA) configuration, an error displays if you create a device object on the passive device.
+
+**Workaround:** Load the running configuration and perform a force commit to sync the devices.
+
+## PAN-148971
+
+If you enter a search term for Events that are related to IoT in the System logs and apply the filter, the page displays an `Invalid term` error.
+
+**Workaround:** Specify `iot` as the **Type Attribute** to filter the logs and use the search term as the **Description Attribute**. For example: `( subtype eq iot ) and ( description contains 'gRPC connection' )`.
+
+## PAN-148924
+
+In an active-passive HA configuration, tags for dynamic user groups are not persistent after rebooting the firewall because the active firewall does not sync the tags to the passive firewall during failover.
+
+## PAN-146995
+
+After downgrading a Panorama management server from PAN-OS 10.0 to PAN-OS 9.1, the `VLD` and `logd` processes may crash when Panorama reboots.
+
+**Workaround:** Panorama automatically restarts the `VLD` and `logd` processes.
+
+## PAN-146807
+
+Changing the device group configured in a monitoring definition from a child DG to a parent DG, or vice versa, might cause firewalls configured in the child DG to lose IP tag mapping information received from the monitoring definition. Only firewalls assigned to the parent DG receive IP tag mapping updates.
+
+**Workaround**: Perform a manual config sync on the device group that lost the IP tag mapping information.
+
+## PAN-146485
+
+On the Panorama management server, adding, deleting, or modifying the upstream NAT configuration (**Panorama** > **SD-WAN** > **Devices**) does not display the branch template stack as `out of sync`.
+
+Additionally, adding, deleting, or modifying the BGP configuration (**Panorama** > **SD-WAN** > **Devices**) does not display the hub and branch template stacks as `out of sync`. For example, modifying the BGP configuration on the branch firewall does not cause the hub template stack to display as `out of sync`, nor does modifying the BGP configuration on the hub firewall cause the branch template stack as `out of sync`.
+
+**Workaround:** After performing a configuration change, **Commit and Push** the configuration changes to all hub and branch firewalls in the VPN cluster containing the firewall with the modified configuration.
+
+## PAN-145460
+
+CN-MGMT pods fail to connect to the Panorama management server when using the Kubernetes plugin.
+
+**Workaround:** **Commit** the Panorama configuration after the CN-MGMT pod successfully registers with Panorama.
+
+## PAN-144889
+
+On the Panorama management server, adding, deleting, or modifying the original subnet IP, or adding a new subnet after you successfully configure a tunnel IP subnet, for the SD-WAN 1.0.2 plugin does not display the managed firewall templates (**Panorama** > **Managed Devices** > **Summary**) as `Out of Sync`.
+
+**Workaround**: When modifying the original subnet IP, or adding a new subnet, push the template configuration changes to your managed firewalls and **Force Template Values** (**Commit** > **Push to Devices** > **Edit Selections**).
+
+## PAN-143132
+
+Fetching the device certificate from the Palo Alto Networks Customer Support Portal (CSP) may fail and displays the following error in the CLI:
+
+`ERROR Failed to process S1C msg: Error`
+
+**Workaround:** Retrying fetching the device certificate from the Palo Alto Networks CSP.
+
+## PAN-141630
+
+Current performance limitation: single data plane use only. The PA-5200 Series and PA-7000 Series firewalls that support 5G network slice security, 5G equipment ID security, and 5G subscriber ID security use a single data plane only, which currently limits the firewall performance.
+
+## PAN-140959
+
+The Panorama management server allows you to downgrade Zero Touch Provisioning (ZTP) firewalls to PAN-OS 9.1.2 and earlier releases where ZTP functionality is not supported.
+
+## PAN-140008
+
+ElasticSearch is forced to restart when the `masterd` process misses too many heartbeat messages on the Panorama management server resulting in a delay in a log query and ingestion.
+
+## PAN-136763
+
+On the Panorama management server, managed firewalls display as `disconnected` when installing a PAN-OS software update (**Panorama** > **Device Deployment** > **Software**) but display as `connected` when you view your managed firewalls Summary (**Panorama** > **Managed Devices** > **Summary**) and from the CLI.
+
+**Workaround:** Log out and log back in to the Panorama web interface.
+
+## PAN-135742
+
+There is an issue in HTTP2 session decryption where the App-ID in the decryption log is the App-ID of the parent session (which is web-browsing).
+
+## PAN-134053
+
+ACC does not filter WildFire logs from Dynamic User Groups.
+
+## PAN-132598
+
+The Panorama management server does not check for duplicate addresses in address groups (**Objects** > **Address Groups**) and duplicate services in service groups (**Objects** > **Service Groups**) when created from the CLI.
+
+## PAN-130550
+
+```caveat
+PA-3200 Series, PA-5220, PA-5250, PA-5260, and PA-7000 Series firewalls
+```
+
+For traffic between virtual systems (inter-vsys traffic), the firewall cannot perform source NAT using dynamic IP (DIP) address translation.
+
+**Workaround:** Use source NAT with Dynamic IP and Port (DIPP) translation on inter-vsys traffic.
+
+## PAN-127813
+
+In the current release, SD-WAN auto-provisioning configures hubs and branches in a hub and spoke model, where branches don’t communicate with each other. Expected branch routes are for generic prefixes, which can be configured in the hub and advertised to all branches. Branches with unique prefixes are not published up to the hub.
+
+**Workaround:** Add any specific prefixes for branches to the hub advertise-list configuration.
+
+## PAN-127206
+
+If you use the CLI to enable the cleartext option for the Include Username in HTTP Header Insertion Entries feature, the authentication request to the firewall may become unresponsive or time out.
+
+## PAN-123277
+
+Dynamic tags from other sources are accessible using the CLI but do not display on the Panorama web interface.
+
+## PAN-123040
+
+When you try to view network QoS statistics on an SD-WAN branch or hub, the QoS statistics and the hit count for the QoS rules don’t display. A workaround exists for this issue. Please contact Support for information about the workaround.
+
+## PAN-120440
+
+There is an issue on M-500 Panorama management servers where any ethernet interface with an IPv6 address having Private PAN-DB-URL connectivity only supports the following format: `2001:DB9:85A3:0:0:8A2E:370:2`.
+
+## PAN-120423
+
+PAN-OS 10.0.0 does not support the XML API for GlobalProtect logs.
+
+## PAN-120303
+
+There is an issue where the firewall remains connected to the PAN-DB-URL server through the old management IP address on the M-500 Panorama management server, even when you configured the Eth1/1 interface.
+
+**Workaround:** Update the PAN-DB-URL IP address on the firewall using one of the methods below.
+
+- Modify the PAN-DB Server IP address on the managed firewall.
+  1. On the web interface, delete the **PAN-DB Server** IP address (**Device** > **Setup** > **Content ID** > **URL Filtering** settings).
+  2. **Commit** your changes.
+  3. Add the new M-500 Eth1/1 IP PAN-DB IP address.
+  4. **Commit** your changes.
+- Restart the firewall (devsrvr) process.
+  1. Log in to the firewall CLI.
+  2. Restart the devsrvr process: `debug software restart process device-server`
+
+## PAN-116017
+
+```caveat
+Google Cloud Platform (GCP) only
+```
+
+The firewall does not accept the DNS value from the initial configuration (init-cfg) file when you bootstrap the firewall.
+
+**Workaround:** Add DNS value as part of the bootstrap.xml in the bootstrap folder and complete the bootstrap process.
+
+## PAN-115816
+
+```caveat
+Microsoft Azure only
+```
+
+There is an intermittent issue where an Ethernet (eth1) interface does not come up when you first boot up the firewall.
+
+**Workaround:** Reboot the firewall.
+
+## PAN-114495
+
+Alibaba Cloud runs on a KVM hypervisor and supports two Virtio modes: DPDK (default) and MMAP. If you deploy a VM-Series firewall running PAN-OS 9.0 in DPDK packet mode and you then switch to MMAP packet mode, the VM-Series firewall duplicates packets that originate from or terminate on the firewall. As an example, if a load balancer or a server behind the firewall pings the VM-Series firewall after you switch from DPDK packet mode to MMAP packet mode, the firewall duplicates the ping packets.
+
+Throughput traffic is not duplicated if you deploy the VM-Series firewall using MMAP packet mode.
+
+## PAN-112694
+
+```caveat
+Firewalls with multiple virtual systems only
+```
+
+If you configure dynamic DNS (DDNS) on a new interface (associated with vsys1 or another virtual system) and you then create a **New** Certificate Profile from the drop-down, you must set the location for the Certificate Profile to Shared. If you configure DDNS on an existing interface and then create a new Certificate Profile, we also recommend that you choose the Shared location instead of a specific virtual system. Alternatively, you can select a preexisting certificate profile instead of creating a new one.
+
+## PAN-112456
+
+You can temporarily submit a change request for a URL Category with three suggested categories; however, only two categories are supported. Do not add more than two suggested categories to a change request until we address this issue. If you submit more than two suggested categories, only the first two categories in the change request are evaluated.
+
+## PAN-112135
+
+You cannot unregister tags for a subnet or range in a dynamic address group from the web interface.
+
+**Workaround:** Use an XML API request to unregister the tags for the subnet or range.
+
+## PAN-111928
+
+Invalid configuration errors are not displayed as expected when you revert a Panorama management server configuration.
+
+**Workaround:** After you revert the Panorama configuration, **Commit** (**Commit** > **Commit to Panorama**) the reverted configuration to display the invalid configuration errors.
+
+## PAN-111866
+
+The push scope selection on the Panorama web interface displays incorrectly even though the commit scope displays as expected. This issue occurs when one administrator makes configuration changes to separate device groups or templates that affect multiple firewalls and a different administrator attempts to push those changes.
+
+**Workaround:** Perform one of the following tasks.
+
+- Initiate a **Commit to Panorama** operation followed by a **Push to Devices** operation for the modified device group and template configurations.
+- Manually select the devices that belong to the modified device group and template configurations.
+
+## PAN-111729
+
+If you disable DPDK mode and enable it again, you must immediately reboot the firewall.
+
+## PAN-111670
+
+Tagged VLAN traffic fails when sent through an SR-IOV adapter.
+
+## PAN-110794
+
+DGA-based threats shown in the firewall threat log display the same name for all such instances.
+
+## PAN-109526
+
+The system log does not correctly display the URL for CRL files; instead, the URLs are displayed with encoded characters.
+
+## PAN-104780
+
+If you configure a HIP object to match only when a connecting endpoint is managed (**Objects** > **GlobalProtect** > **HIP Objects** > **<hip-object>** > **General** > **Managed**), iOS and Android endpoints that are managed by AirWatch are unable to successfully match the HIP object and the HIP report incorrectly indicates that these endpoints are not managed. This issue occurs because GlobalProtect gateways cannot correctly identify the managed status of these endpoints.
+
+Additionally, iOS endpoints that are managed by AirWatch are unable to match HIP objects based on the endpoint serial number because GlobalProtect gateways cannot identify the serial numbers of these endpoints; these serial numbers do not appear in the HIP report.
+
+## PAN-103276
+
+Adding a disk to a virtual appliance running Panorama 8.1 or a later release on VMware ESXi 6.5 update1 causes the Panorama virtual appliance and host web client to become unresponsive.
+
+**Workaround:** Upgrade the ESXi host to ESXi 6.5 update2 and add the disk again.
+
+## PAN-101688
+
+```caveat
+Panorama plugins
+```
+
+The IP address-to-tag mapping information registered on a firewall or virtual system is not deleted when you remove the firewall or virtual system from a Device Group.
+
+**Workaround:** Log in to the CLI on the firewall and enter the following command to unregister the IP address-to-tag mappings: `debug object registered-ip clear all`.
+
+## PAN-101537
+
+After you configure and push address and address group objects in Shared and vsys-specific device groups from the Panorama management server to managed firewalls, executing the `show log <log-type> direction equal <direction> <dst> | <src> in <object-name>` command on a managed firewall only returns address and address group objects pushed form the Shared device group.
+
+**Workaround:** Specify the vsys in the query string:
+
+`admin>` `set system target-vsys <vsys-name>`
+
+`admin>` `show log <log-type> direction equal <direction> query equal ‘vsys eq <vsys-name>’ <dst> | <src> in <object-name>`
+
+## PAN-98520
+
+When booting or rebooting a PA-7000 Series Firewall with the SMC-B installed, the BIOS console output displays attempts to connect to the card's controller in the System Memory Speed section. The messages can be ignored.
+
+## PAN-97757
+
+GlobalProtect authentication fails with an `Invalid username/password` error (because the user is not found in **Allow List**) after you enable GlobalProtect authentication cookies and add a RADIUS group to the **Allow List** of the authentication profile used to authenticate to GlobalProtect.
+
+**Workaround:** Disable GlobalProtect authentication cookies. Alternatively, disable (clear) **Retrieve user group from RADIUS** in the authentication profile and configure group mapping from Active Directory (AD) through LDAP.
+
+## PAN-97524
+
+```caveat
+Panorama management server only
+```
+
+The Security Zone and Virtual System columns (**Network** tab) display `None` after a Device Group and Template administrator with read-only privileges performs a context switch.
+
+## PAN-96446
+
+A firewall that is not included in a Collector Group fails to generate a system log if logs are dropped when forwarded to a Panorama management server that is running in Management Only mode.
+
+## PAN-95773
+
+On VM-Series firewalls that have Data Plane Development Kit (DPDK) enabled and that use the i40e network interface card (NIC), the `show session info` CLI command displays an inaccurate throughput and packet rate.
+
+**Workaround:** Disable DPDK by running the `set system setting dpdk-pkt-io off` CLI command.
+
+## PAN-95028
+
+For administrator accounts that you created in PAN-OS 8.0.8 and earlier releases, the firewall does not apply password profile settings (**Device** > **Password Profiles**) until after you upgrade to PAN-OS 8.0.9 or a later release and then only after you modify the account passwords. (Administrator accounts that you create in PAN-OS 8.0.9 or a later release do not require you to change the passwords to apply password profile settings.)
+
+## PAN-94846
+
+When DPDK is enabled on the VM-Series firewall with i40e virtual function (VF) driver, the VF does not detect the link status of the physical link. The VF link status remains up, regardless of changes to the physical link state.
+
+## PAN-94093
+
+HTTP Header Insertion does not work when jumbo frames are received out of order.
+
+## PAN-93968
+
+The firewall and Panorama web interfaces display vulnerability threat IDs that are not available in PAN-OS 9.0 releases (**Objects** > **Security Profiles** > **Vulnerability Protection** > **<profile>** > **Exceptions**). To confirm whether a particular threat ID is available in your release, monitor the release notes for each new Applications and Threats content update or check the Palo Alto Networks [Threat Vault](https://threatvault.paloaltonetworks.com) to see the minimum PAN-OS release version for a threat signature.
+
+## PAN-93607
+
+When you configure a VM-500 firewall with an SCTP Protection profile (**Objects** > **Security Profiles** > **SCTP Protection**) and you try to add the profile to an existing Security Profile Group (**Objects** > **Security Profile Groups**), the Security Profile Group doesn’t list the SCTP Protection profile in its drop-down list of available profiles.
+
+**Workaround:** Create a new Security Profile Group and select the SCTP Protection profile from there.
+
+## PAN-93532
+
+When you configure a firewall running PAN-OS 9.0 as an nCipher HSM client, the web interface on the firewall displays the nCipher server status as Not Authenticated, even though the HSM state is up (**Device** > **Setup** > **HSM**).
+
+## PAN-93193
+
+The memory-optimized VM-50 Lite intermittently performs slowly and stops processing traffic when memory utilization is critically high. To prevent this issue, make sure that you do not:
+
+- Switch to the firewall **Context** on the Panorama management server.
+- Commit changes when a dynamic update is being installed.
+- Generate a custom report when a dynamic update is being installed.
+- Generate custom reports during a commit.
+
+**Workaround:** When the firewall performs slowly, or you see a critical System log for memory utilization, wait for 5 minutes and then manually reboot the firewall.
+
+Use the Task Manager to verify that you are not performing memory intensive tasks such as installing dynamic updates, committing changes or generating reports, at the same time, on the firewall.
+
+## PAN-91802
+
+On a VM-Series firewall, the **clear session all** CLI command does not clear GTP sessions.
+
+## PAN-83610
+
+In rare cases, a PA-5200 Series firewall (with an FE100 network processor) that has session offload enabled (default) incorrectly resets the UDP checksum of outgoing UDP packets.
+
+**Workaround:** In PAN-OS 8.0.6 and later releases, you can persistently disable session offload for only UDP traffic using the `set session udp-off load no` CLI command.
+
+## PAN-83236
+
+The VM-Series firewall on Google Cloud Platform does not publish firewall metrics to Google Stack Monitoring when you manually configure a DNS server IP address (**Device** > **Setup** > **Services**).
+
+**Workaround:** The VM-Series firewall on Google Cloud Platform must use the DNS server that Google provides.
+
+## PAN-83215
+
+SSL decryption based on ECDSA certificates does not work when you import the ECDSA private keys onto an nCipher nShield hardware security module (HSM).
+
+## PAN-81521
+
+Endpoints failed to authenticate to GlobalProtect through Kerberos when you specify an FQDN instead of an IP address in the Kerberos server profile (**Device** > **Server Profiles** > **Kerberos**).
+
+**Workaround:** Replace the FQDN with the IP address in the Kerberos server profile.
+
+## PAN-77125
+
+PA-7000 Series, PA-5450, PA-5200 Series, and PA-3200 Series firewalls configured in tap mode don’t close offloaded sessions after processing the associated traffic; the sessions remain open until they time out.
+
+**Workaround:** Configure the firewalls in virtual wire mode instead of tap mode, or disable session offloading by running the `set session off load no` CLI command.
+
+## PAN-75457
+
+In WildFire appliance clusters that have three or more nodes, the Panorama management server does not support changing node roles. In a three-node cluster for example, you cannot use Panorama to configure the worker node as a controller node by adding the HA and cluster controller configurations, configure an existing controller node as a worker node by removing the HA configuration, and then commit and push the configuration. Attempts to change cluster node roles from Panorama results in a validation error—the commit fails and the cluster becomes unresponsive.
+
+## PAN-73530
+
+The firewall does not generate a packet capture (pcap) when a Data Filtering profile blocks files.
+
+## PAN-73401
+
+When you import a two-node WildFire appliance cluster into the Panorama management server, the controller nodes report their state as out-of-sync if either of the following conditions exist:
+
+- You did not configure a worker list to add at least one worker node to the cluster. (In a two-node cluster, both nodes are controller nodes configured as an HA pair. Adding a worker node would make the cluster a three-node cluster.)
+- You did not configure a service advertisement (either by enabling or not enabling advertising DNS service on the controller nodes).
+
+**Workaround:** There are three possible workarounds to sync the controller nodes:
+
+- After you import the two-node cluster into Panorama, push the configuration from Panorama to the cluster. After the push succeeds, Panorama reports that the controller nodes are in sync.
+- Configure a worker list on the cluster controller:
+  admin@wf500(active-controller)# `set deviceconfig cluster mode controller worker-list <worker-ip-address>`
+  (`<worker-ip-address>` is the IP address of the worker node you are adding to the cluster.) This creates a three-node cluster. After you import the cluster into Panorama, Panorama reports that the controller nodes are in sync. When you want the cluster to have only two nodes, use a different workaround.
+- Configure service advertisement on the local CLI of the cluster controller and then import the configuration into Panorama. The service advertisement can advertise that DNS is or is not enabled.
+  admin@wf500(active-controller)# `set deviceconfig cluster mode controller service-advertisement dns-service enabled yes`
+  or
+  admin@wf500(active-controller)# `set deviceconfig cluster mode controller service-advertisement dns-service enabled no`
+  Both commands result in Panorama reporting that the controller nodes are in sync.
+
+## PAN-70906
+
+If the PAN-OS web interface and the GlobalProtect portal are enabled on the same IP address, then when a user logs out of the GlobalProtect portal, the administrative user is also logged out from the PAN-OS web interface.
+
+**Workaround:** Use the IP address to access the PAN-OS web interface and an FQDN to access the GlobalProtect portal.
+
+## PAN-69505
+
+When viewing an external dynamic list that requires client authentication and you **Test Source URL**, the firewall fails to indicate whether it can reach the external dynamic list server and returns a URL access error (**Objects** > **External Dynamic Lists**).
+
+## PAN-40079
+
+The VM-Series firewall on KVM, for all supported Linux distributions, does not support the Broadcom network adapters for PCI pass-through functionality.
+
+## PAN-39636
+
+Regardless of the **Time Frame** you specify for a scheduled custom report on a Panorama M-Series appliance, the earliest possible start date for the report data is effectively the date when you configured the report (**Monitor** > **Manage Custom Reports**). For example, if you configure the report on the 15th of the month and set the **Time Frame** to **Last 30 Days**, the report that Panorama generates on the 16th will include only data from the 15th onward. This issue applies only to scheduled reports; on-demand reports include all data within the specified **Time Frame**.
+
+**Workaround:** To generate an on-demand report, click **Run Now** when you configure the custom report.
+
+## PAN-38255
+
+When you perform a factory reset on a Panorama virtual appliance and configure the serial number, logging does not work until you reboot Panorama or execute the `debug software restart process management-server` CLI command.
+
+## PAN-31832
+
+The following issues apply when configuring a firewall to use a hardware security module (HSM):
+
+- **nCipher nShield Connect**—The firewall requires at least four minutes to detect that an HSM was disconnected, causing SSL functionality to be unavailable during the delay.
+- **SafeNet Network**—When losing connectivity to either or both HSMs in an HA configuration, the display of information from the `show high-availability state` and `show hsm info` commands are blocked for 20 seconds.

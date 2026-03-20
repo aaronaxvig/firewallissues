@@ -1,0 +1,2401 @@
+<table class="table colsep rowsep  table-striped">
+   <!--cq:include script="../../common/tablestack.jsp" /-->
+   <colgroup>
+      <col style="width: 34.0%">
+      <col style="width: 66.0%">
+   </colgroup>
+   <thead class="thead" data-sticky-top="62" style="top: 62px;">
+      <tr class="row rowsep">
+         <th class="entry">
+            <div class="p"><b class="ph b">Issue ID</b></div>
+         </th>
+         <th class="entry">
+            <div class="p"><b class="ph b">Description</b></div>
+         </th>
+      </tr>
+   </thead>
+   <tbody class="tbody">
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p">—</div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you use Panorama to retrieve logs from <span class="ph">Strata Logging Service</span>, new log fields
+               (including for Device-ID, Decryption, and GlobalProtect) are not
+               visible on the Panorama web interface.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Enable <a class="xref" href="https://docs.paloaltonetworks.com/cortex/cortex-data-lake/cortex-data-lake-getting-started/get-started-with-cortex-data-lake/start-sending-logs-to-cortex-data-lake/start-sending-logs-to-cortex-data-lake-panorama-managed" title="" data-scope="external" data-format="html" data-type="" target="_blank">duplicate logging</a> to send
+               the logs to <span class="ph">Strata Logging Service</span> and Panorama. This workaround does not support Panorama
+               virtual appliances in <a class="xref" href="https://docs.paloaltonetworks.com/panorama/10-0/panorama-admin/panorama-overview/panorama-models.html" title="" data-scope="external" data-format="html" data-type="" target="_blank">Management Only mode</a>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p">—</div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Upgrading a PA-220 firewall takes up to
+               an hour or more.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p">—</div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">PA-220 firewalls are experiencing slower
+               web interface and CLI performance times.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">—</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Upgrading Panorama with a local Log Collector
+               and Dedicated Log Collectors to PAN-OS 8.1 or a later PAN-OS release
+               can take up to six hours to complete due to significant infrastructure
+               changes. Ensure uninterrupted power to all appliances throughout
+               the upgrade process.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">—</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">A critical System log is generated on the
+               VM-Series firewall if the minimum memory requirement for the model
+               is not available.
+            </div>
+            <ul class="ul">
+               <li class="li">
+                  <div class="p">When the memory allocated is less
+                     than 4.5GB, you cannot upgrade the firewall. The following error message
+                     displays: <span class="ph systemoutput">Failed to install 9.0.0 with the following error: VM-50 in 9.0.0 requires 5.5GB memory, VM-50 Lite requires 4.5GB memory.Please configure this VM with enough memory before upgrading.</span>
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">If the memory allocation is more than 4.5GB but less than
+                     the licensed capacity requirement for the model, it will default
+                     to the capacity associated with the VM-50.
+                  </div>
+                  <div class="p">The System log
+                     message <span class="ph systemoutput">System capacity adjusted to VM-50 capacity due to insufficient memory for VM-<var class="keyword varname">&lt;xxx&gt;</var> license</span>,
+                     indicates that you must allocate the additional memory required
+                     for licensed capacity for the firewall model.
+                  </div>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">APPORTAL-3313</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Changes to an IoT Security subscription
+               license take up to 24 hours to have effect on the IoT Security app.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">APPORTAL-3309</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">An IoT Security production license cannot
+               be installed on a firewall that still has a valid IoT Security eval
+               or trial license.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Wait until the 30-day
+               eval or trial license expires and then install the production license.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">APL-15000</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you move a firewall from one <span class="ph">Strata Logging Service</span> instance to another, it can take
+               up to an hour for the firewall to begin sending logs to the new
+               instance.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">APL-8269</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">For data retrieved from <span class="ph">Strata Logging Service</span>, the Threat Name column in <span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">ACC</span><span class="ph uicontrol">threat-activity</span></span> appears blank.</div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PLUG-12041</b></div>
+         </td>
+         <td class="entry relcol">
+            <div dir="ltr" class="p">On an OpenShift cluster, MP pod may crash when the number
+               of underlying threads exceeds beyond the per pod maximum limit of
+               1024. 
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Increase the process ID (PID) limit to 2048 in
+               worker nodes.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PLUG-380</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you rename a device group, template,
+               or template stack in Panorama that is part of a VMware NSX service definition,
+               the new name is not reflected in NSX Manager. Therefore, any ESXi
+               hosts that you add to a vSphere cluster are not added to the correct
+               device group, template, or template stack and your Security policy
+               is not pushed to VM-Series firewalls that you deploy after you rename
+               those objects. There is no impact to existing VM-Series firewalls.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">WF500-5559</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">An intermittent error while analyzing signed
+               PE samples on the WildFire appliance might cause analysis failures.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">WF500-5471</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">After using the firewall CLI to add a WildFire
+               appliance with an IPv6 address, the initial connection may fail.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Retry
+               connecting after you restart the web server with the following command: <span class="ph userinput">debug software restart process web-server</span>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-281370</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The Advanced WildFire Inline ML models <span class="ph uicontrol">OOXML</span>
+               and <span class="ph uicontrol">Mach-O</span> erroneously display as being
+               available from the CLI; however, they are only available on PAN-OS
+               11.1.3 and later releases.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-260851</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">From the NGFW or Panorama CLI, you can override the existing
+               application tag even if Disable Override is enabled for the
+               application (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">Applications</span></span>) tag.
+            </div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-242784</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-11-known-and-addressed-issues/pan-os-10-1-11-h5-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.11-h5 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">DNS resolution may fail if DNS server IP is obtained through
+               DHCP.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Configure the DNS server with a static IP or renew
+               the DHCP IP when you see the issue.
+            </div>
+            <div class="p"><tt class="ph tt">This issue affects PAN-OS 10.1.11-h4 only.</tt></div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-237106</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">LSVPN satellite certificates may be generated with
+               serial numbers exceeding 40 hexadecimal characters. This causes
+               certificate revocation and deletion operations to fail with the
+               following error messages: 
+            </div>
+            <ul id="panos-known-issues-10.1.11_ul-t2x_dxs_wgc" class="ul">
+               <li class="li"><span class="ph systemoutput">db-serialno can be at most 40
+                  characters</span>
+               </li>
+               <li class="li"><span class="ph systemoutput">db-serialno is invalid</span></li>
+            </ul>
+            <b class="ph b">Workaround:</b>
+            <div class="p">To resolve this issue, use the following CLI
+               commands with the LSVPN satellite serial number to manually delete
+               or revoke the affected certificates:
+            </div>
+            <div class="p"><b class="ph b">Delete certificate
+               information</b>:<span class="ph userinput">delete sslmgr-store certificate-info
+               portal name <var class="keyword varname">&lt;name&gt;</var> serialno
+               <var class="keyword varname">&lt;satellite_serial&gt;</var></span>
+            </div>
+            <div class="p"><b class="ph b">Revoke
+               satellite certificates</b>:<span class="ph userinput">delete sslmgr-store
+               satellite-info-revoke-certificate  portal
+               <var class="keyword varname">&lt;name&gt;</var> serialno
+               <var class="keyword varname">&lt;list_of_satellite_serials&gt;</var></span>
+            </div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-235741</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-11-known-and-addressed-issues/pan-os-10-1-11-h5-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.11-h5 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">DNS resolution fails for firewall and Panorama plugins if the DNS
+               Server IP address is obtained through DHCP.
+            </div>
+            <div class="p"><tt class="ph tt">This issue affects PAN-OS 10.1.11-h4 only.</tt></div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-231658</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">DNS resolution fails when interfaces are configured as DHCP and a DNS
+               server is provided via DHCP while also statically configured with
+               DNS servers.
+            </div>
+            <div class="p"><tt class="ph tt">This issue affects PAN-OS 10.1.11-h5 only.</tt></div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-230106</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The firewall is unable to retrieve the most current external dynamic
+               list information from the server due to hostname resolution
+               failure.
+            </div>
+            <div class="p"><tt class="ph tt">This issue affects PAN-OS 10.1.11-h5 only.</tt></div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-227435</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-12-known-and-addressed-issues/pan-os-10-1-12-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.12 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">PA-410 firewalls only</tt>) Upgrading a firewall to PAN-OS
+               10.1.11-h1 or PAN-OS 10.1.11-h4 causes the logrcvr process to hang
+               or crash. This causes the auto-commit process to fail or remain at
+               <span class="ph systemoutput">0%</span>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-227344</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, PDF Summary Reports (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">PDF Reports</span><span class="ph uicontrol">Manage PDF Summary</span></span>) display no data and are blank when predefined
+               reports are included in the summary report. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-223365</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The Panorama management server is unable to query any logs if the
+               ElasticSearch health status for any Log Collector (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Managed Collector</span></span> is degraded.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b>
+               <a class="xref" href="https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-cli" title="" data-scope="external" data-format="html" data-type="" target="_blank">Log in to the Log Collector
+               CLI</a> and restart ElasticSearch.
+            </div>
+            <!-- FM Dita Overlay for Code -->
+            <div class="code-wrap">
+               <pre class="pre codeblock " data-label="PRE CODEBLOCK"><div style="display: inline;"><span class="ph systemoutput hljs">admin</span><span class="ph userinput hljs apache"><span class="hljs-attribute">debug</span> elasticsearch es-restart <span class="hljs-literal">all</span></span></div></pre>
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-223488</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-12-known-and-addressed-issues/pan-os-10-1-12-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.12 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">Closed ElasticSearch shards are not deleted from a
+            Panorama M-Series or virtual appliance. This causes the ElasticSearch
+            shard purging to not work as expected, resulting in high disk
+            usage.
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-221015</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-12-known-and-addressed-issues/pan-os-10-1-12-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.12 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On M-600 appliances in Panorama or Log Collector mode, the
+               <span class="ph systemoutput">es-1</span> and
+               <span class="ph systemoutput">es-2</span> ElasticSearch processes fail
+               to restart when the M-600 appliance is rebooted. The results in the
+               Managed Collector <span class="ph systemoutput">ES</span> health status (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Managed Collectors</span><span class="ph uicontrol">Health Status</span></span>) to be degraded.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b>
+               <a class="xref" href="https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-cli" title="" data-scope="external" data-format="html" data-type="" target="_blank">Log in to the Panorama or Log
+               Collector CLI</a> experiencing degraded ElasticSearch health
+               and restart all ElasticSearch processes.
+            </div>
+            <!-- FM Dita Overlay for Code -->
+            <div class="code-wrap">
+               <pre class="pre codeblock " data-label="PRE CODEBLOCK"><div style="display: inline;"><span class="ph systemoutput hljs">admin&gt;</span><span data-outputclass="request" class="ph userinput hljs apache yay"><span class="hljs-attribute">debug</span> elasticsearch es-restart optional <span class="hljs-literal">all</span></span><div class="code-btn-container"><div class="alert alert-success copy-alert">Code copied to clipboard</div> <div class="alert alert-danger copy-fail-alert">Unable to copy due to lack of browser support.</div><button class="btn code-btn code-btn-bottom">Copy</button></div></div></pre>
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-219644</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-12-known-and-addressed-issues/pan-os-10-1-12-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.12 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Firewalls forwarding logs to a syslog server over TLS (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">Log Forwarding</span></span>) use the default Palo Alto Networks certificate
+               instead of the custom certificate configured on the firewall.
+            </div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-219824</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">File system checks on the logging drive may take more time depending
+               on the usage and file system content, resulting in autocommits
+               taking longer to complete than expected.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-218521</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The ElasticSearch process on the M-600 appliance in Log Collector
+               mode may enter a continuous reboot cycle. This results in the M-600
+               appliance becoming unresponsive, consuming logging disk space, and
+               preventing new log ingestion. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-217307</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-14-known-and-addressed-issues/pan-os-10-1-14-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.14 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The following Security policy rule (<span class="ph menucascade"><span class="ph uicontrol">Policies</span><span class="ph uicontrol">Security</span></span>) filters return no results:</div>
+            <div class="p"><span class="ph systemoutput">log-start eq no</span></div>
+            <div class="p"><span class="ph systemoutput">log-end eq no</span></div>
+            <div class="p"><span class="ph systemoutput">log-end eq yes</span></div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-213746</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, the <span class="ph uicontrol">Hostkey</span>
+               displayed as <span class="ph systemoutput">undefined undefined</span> if you
+               override an SSH Service Profile (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Certificate Management</span><span class="ph uicontrol">SSH Service Profile</span></span>) Hostkey configured in a Template from the Template
+               Stack.
+            </div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-212978</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The Palo Alto Networks firewall stops responding when executing an
+               SD-WAN debug operational CLI command.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-211728</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">For VM-Series firewalls leveraging SD-WAN and deployed on VMware ESXi running VMX-13,
+               Auto-Commits fail after upgrade to PAN-OS 10.1.9 and display the
+               error:
+            </div>
+            <div class="p"><span class="ph systemoutput">total SD-WAN interfaces 3 exceed the platform maximum                                    0</span></div>
+            <div class="p"><b class="ph b">Workaround:</b> Attach
+               a serial console to the VM-Series firewall before upgrade to PAN-OS
+               10.1.9.
+            </div>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-204689</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Upon upgrade to PAN-OS 10.1.9, the following GlobalProtect settings
+               do not work:
+            </div>
+            <ul id="panos-known-issues-10.1.11_ul_l1b_zqp_xwb" class="ul">
+               <li class="li"><span class="ph menucascade"><span class="ph uicontrol">Allow user to disconnect GlobalProtect
+                  App</span><span class="ph uicontrol">Allow with Passcode</span></span>
+               </li>
+               <li class="li"><span class="ph menucascade"><span class="ph uicontrol">Allow user to Disable GlobalProtect
+                  App</span><span class="ph uicontrol">Allow with Passcode</span></span>
+               </li>
+               <li class="li"><span class="ph menucascade"><span class="ph uicontrol">Allow User to Uninstall GlobalProtect
+                  App</span><span class="ph uicontrol">Allow with Password</span></span>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-200081</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When FIPS mode is enabled on VM-Series firewalls in Microsoft Azure
+               environments, HA failover does not trigger the secondary IP address
+               movement.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-197341</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, if you
+               create multiple device group <span class="ph uicontrol">Objects</span> with the
+               same name in the Shared device group and any additional device groups (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Device Groups</span></span>) under
+               the same device group hierarchy that are used in one or more <span class="ph uicontrol">Policies</span>,
+               renaming the object with a shared name in any device group causes
+               the object name to change in the policies where it is used. This
+               issue applies only to device group objects that can be referenced
+               in a Security policy rule.
+            </div>
+            <div class="p">For example:</div>
+            <ol class="ol">
+               <li class="li">
+                  <div class="p">You
+                     create a parent device group <span class="ph systemoutput">DG-A</span> and
+                     a child device group <span class="ph systemoutput">DG-B</span>.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">You create address objects called <span class="ph systemoutput">AddressObjA</span> in
+                     the <span class="ph systemoutput">Shared</span>, <span class="ph systemoutput">DG-A</span> and <span class="ph systemoutput">DG-B</span> device
+                     groups and add <span class="ph systemoutput">AddressObjA</span> to a Security policy
+                     rule under <span class="ph systemoutput">DG-A</span> and <span class="ph systemoutput">DG-B</span>.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">Later, you change the <span class="ph systemoutput">AddressObjA</span> name
+                     in the <span class="ph systemoutput">Shared</span> device group to <span class="ph systemoutput">AddressObjB</span>.
+                  </div>
+               </li>
+            </ol>
+            <div class="p">Changing
+               the name of the address object in the <span class="ph systemoutput">Shared</span> device
+               group causes the references in the Policy rule to use the renamed <span class="ph systemoutput">Shared</span> object
+               instead of the device group object.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-196758</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, pushing
+               a configuration change to firewalls leveraging SD-WAN erroneously
+               show the auto-provisioned BGP configurations for SD-WAN as being
+               edited or deleted despite no edits or deletions being made when
+               you <span class="ph uicontrol">Preview Changes</span> (<span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Push to Devices</span><span class="ph uicontrol">Edit Selections</span></span> or <span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Commit and Push</span><span class="ph uicontrol">Edit Selections</span></span>).
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-194515</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">PA-5450 firewall only</tt>) The Panorama
+               web interface does not display any predefined template stack variables
+               in the dropdown menu under <span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Setup</span><span class="ph uicontrol">Log Interface</span><span class="ph uicontrol">IP Address</span></span>.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Configure
+               the log interface IP address on the individual firewall web interface
+               instead of on Panorama.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-194424</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">PA-5450 firewall only</tt>) Upgrading
+               to PAN-OS 10.1.6-h2 while having a log interface configured can
+               cause both the log interface and the management interface to remain connected
+               to the log collector.
+            </div>
+            <div class="p">
+               <b class="ph b">Workaround:</b> Restart the log receiver service
+               by running the following CLI command: <!-- FM Dita Overlay for Code -->
+               <div class="code-wrap">
+                  <pre class="pre codeblock " data-label="PRE CODEBLOCK"><div style="display: inline;"><span class="ph userinput hljs bash">debug software restart process <span class="hljs-built_in">log</span>-receiver</span></div></pre>
+               </div>
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-194202</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">PA-5450 firewall only</tt>) If the
+               management interface and Log Collector are configured on the same subnetwork,
+               the firewall conducts log forwarding using the management interface
+               instead of the logging interface.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-193518</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">All logs (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">Logs</span></span>) generated by a firewall running a PAN-OS 10.0
+               release are not accessible if you downgrade from PAN-OS 10.1 to
+               PAN-OS 10.0, and then upgrade back to PAN-OS 10.1.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> If you need to downgrade from PAN-OS 10.1 to
+               PAN-OS 10.0 and then back to PAN-OS 10.1, downgrade to PAN-OS
+               10.0.11 to ensure that all logs ingested while running a PAN-OS 10.0
+               release remain accessible after upgrade back to PAN-OS 10.1. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-193004</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-12-known-and-addressed-issues/pan-os-10-1-12-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.12 Addressed Issues</a><tt class="ph tt">.</tt></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The Panorama management server fails to delete old IP Tag data. This
+               causes the <span class="ph systemoutput">/opt/pancfg</span> partition to
+               reach maximum capacity which impacts Panorama performance.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-188052</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Devices in FIPS-CC mode are unable to connect
+               to servers utilizing ECDSA-based host keys that impacts exporting logs (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Scheduled Log Export</span></span>), exporting
+               configurations (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Scheduled
+               Config Export</span></span>), or the <span class="ph userinput">scp export</span> command
+               in the CLI.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Use RSA-based host keys on the
+               destination server.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-187685</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, the Template Status
+               displays no synchronization status (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Managed Devices</span><span class="ph uicontrol">Summary</span></span>)
+               after a bootstrapped firewall is successfully added to Panorama.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> After
+               the bootstrapped firewall is successfully added to Panorama, <a class="xref" href="https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface.html" title="" data-scope="external" data-format="html" data-type="" target="_blank">log in to the Panorama web interface</a> and
+               select <span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Push
+               to Devices</span></span>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-179888</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, the number
+               of managed firewall (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Managed Devices</span><span class="ph uicontrol">Health</span></span>) <span class="ph systemoutput">Power Supplies</span> displays
+               an incorrect count of power supplies.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-174982</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">In HA active/active configurations where,
+               when interfaces that were associated with a virtual router were
+               deleted, the configuration change did not sync.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-172274</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you activate the advanced URL filtering
+               license, your license entitlements for PAN-DB and advanced URL filtering
+               might not display correctly on the firewall — this is a display
+               anomaly, not a licensing issue, and does not affect access to the
+               services.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Issue the following command to
+               retrieve and update the licenses: <span class="ph userinput">license request fetch</span>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-172113</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you request a User Activity Report on
+               Panorama and the vsys key value in the XML is an unsupported value,
+               the resulting job becomes unresponsive at 10% and does not complete
+               until you manually stop the job in the web interface.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b>Change
+               the vsys key to a valid device group, commit your changes, and run
+               the User Activity Report again.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-172067</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you configure an HTTP server profile (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Server Profiles</span><span class="ph uicontrol">HTTP</span></span> or <span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Server Profiles</span><span class="ph uicontrol">HTTP</span></span>),
+               the <span class="ph uicontrol">Username</span> and <span class="ph uicontrol">Password</span> fields
+               are always required regardless of whether <span class="ph uicontrol">Tag Registration</span> is
+               enabled.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> When you configure an HTTP server
+               profile, always enter a username and password to successfully create
+               the HTTP server profile.
+            </div>
+            <div class="p">You must enter a username and password
+               even if the HTTP server does not require it. The HTTP server ignores
+               the username and password if they are not required for the firewall to
+               connect.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-172061</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">A process (<span class="ph systemoutput">all_pktproc</span>)
+               can cause intermittent crashes on the Passive PA-5450 firewall in
+               an Active/Passive HA pair. This issue may be seen during an upgrade
+               or reload of the firewall with traffic and when clearing sessions.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-171938</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">No results are displayed when you <span class="ph uicontrol">Show Application
+               Filter</span> for a Security policy rule (<span class="ph menucascade"><span class="ph uicontrol">Policies</span><span class="ph uicontrol">Security</span><span class="ph uicontrol">Application</span><span class="ph uicontrol">Value</span><span class="ph uicontrol">Show Application Filter</span></span>).
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-171723</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you use Panorama to push a configuration
+               that uses App-ID Cloud Engine (ACE) App-IDs and then you downgrade the
+               firewall from PAN-OS 10.1 to PAN-OS 10.0, the installation succeeds
+               but after you reboot, the auto-commit fails.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Remove
+               all ACE application configurations before downgrading.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-171706</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you are using Panorama to manage firewalls
+               with multiple virtual systems and the virtual system that is the User-ID
+               hub uses an alias, the local commit on Panorama is successful but
+               the commit to the firewall fails.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-171673</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, the <span class="ph uicontrol">ACC</span> returns
+               inaccurate results when you filter for <span class="ph uicontrol">New App-ID</span> in
+               the <span class="ph uicontrol">Application</span> usage widget.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-171635</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you have an on-premise Active Directory
+               and there is an existing group mapping configuration on the firewall,
+               if you migrate the group mapping to the Cloud Identity Engine, the firewall
+               does not remove the existing group mapping even if the configuration
+               is disabled and the firewall is rebooted, which may conflict with
+               new mappings from the Cloud Identity Engine.
+            </div>
+            <div class="p"><b class="ph b">Workaround</b>:
+               Use the <span class="keyword cmdname">debug user-id clear domain-map</span> command
+               to remove the existing group mappings from the firewall.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-171224</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, a custom
+               report (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">Managed
+               Custom Reports</span></span>) with a high volume of unique
+               data objects is not generated when you click <span class="ph uicontrol">Run Now</span>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-171145</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you edit or remove the value for the <span class="ph userinput">mail</span> attribute
+               in your on-premise Active Directory, the changes may not be immediately
+               reflected on the firewall after it syncs with the Cloud Identity Engine.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-170923</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">In <span class="ph menucascade"><span class="ph uicontrol">Policies</span><span class="ph uicontrol">Security</span><span class="ph uicontrol">Policy Optimizer</span><span class="ph uicontrol">New App Viewer</span></span>, when you select
+               a Security policy rule in the bottom portion of the screen, the application
+               data in the application browser (top portion of screen) does not
+               match the Apps Seen on the selected rule. In addition, filtering
+               in the application browser based on Apps Seen does not work.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-170270</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Using the CLI to power on a PA-5450 Networking
+               Card (NC) in an Active HA firewall can cause its Passive peer to temporarily
+               go down.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-169906</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The CN-Series Firewall as a Kubernetes Service
+               does not support AF_XDP when deployed in CentOS.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-168636</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Connecting to the App-ID Cloud Engine (ACE)
+               cloud using a management port with explicit proxy configured on
+               it is not supported. Instead, use a data plane interface for the
+               service route (<a class="xref" href="https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/app-id/cloud-based-app-id-service/prepare-to-deploy-app-id-cloud-engine.html" title="" data-scope="external" data-format="html" data-type="" target="_blank">Prepare to Deploy App-ID Cloud
+               Engine</a> describes how to do this.)
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-168113</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, you are
+               unable to configure a master key (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Master Key and Diagnostics</span></span>) for
+               a managed firewall if an interface (<span class="ph menucascade"><span class="ph uicontrol">Network</span><span class="ph uicontrol">Interfaces</span><span class="ph uicontrol">Ethernet</span></span>)
+               references a zone pushed from Panorama.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Remove
+               the referenced zone from the interface configuration to successfully
+               configure a master key.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-167847</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you issue the command <span class="ph systemoutput">opof stats</span>,
+               then clear the results {opof stats -c}, the Active Sessions value
+               is sometimes invalid. For example, you might see a negative number
+               or an excessively large number.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Re-run
+               the <span class="ph systemoutput">opof stats</span> command after the offload
+               completes.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-167401</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When a firewall or Panorama appliance configured
+               with a proxy is upgraded to PAN-OS 10.0.3 or a later release, it
+               fails to connect to edge service.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-165669</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you configure a group that the firewall
+               retrieves from the Cloud Identity Engine as the <span class="ph userinput">user in</span> value
+               in a filter query, Panorama is unable to retrieve the group membership
+               and as a result, is unable to display this data in logs and custom
+               reports.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-164922</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, a context
+               switch to a managed firewall running a PAN-OS 8.1.0 to 8.1.19 release fails.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-164885</b></div>
+            <div class="p"><tt class="ph tt">This issue is now resolved. See </tt><a class="xref" href="/content/techdocs/en_US/pan-os/10-1/pan-os-release-notes/pan-os-10-1-14-known-and-addressed-issues/pan-os-10-1-14-h6-addressed-issues.html" title="" data-scope="local" data-format="dita" data-type="" target="_self">PAN-OS 10.1.14-h6 Addressed Issues</a></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, pushes
+               to managed firewalls (<span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Push to Devices</span></span> or <span class="ph uicontrol">Commit
+               and Push</span>) may fail when an EDL (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">External Dynamic Lists</span></span>) is
+               configured to <span class="ph uicontrol">Check for updates</span> every 5 minutes due
+               to the commit and EDL fetch processes overlapping. This is more
+               likely to occur when multiple EDLs are configured to check for updates
+               every 5 minutes.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-164841</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">A successful deployment of a Panorama virtual
+               appliance on Amazon Web Services (AWS), Microsoft Azure, or Google Cloud
+               Platform (GCP) is inaccessible when deploying using the PAN-OS 10.1.0-b6
+               release.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-164647</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, activating
+               a license (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Device
+               Deployment</span><span class="ph uicontrol">Licenses</span></span>)
+               on managed firewalls in a high availability (HA) configuration causes
+               the Safari web browser to become unresponsive.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> <a class="xref" href="https://docs.paloaltonetworks.com/panorama/10-1/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface.html" title="" data-scope="external" data-format="html" data-type="" target="_blank">Log in to the Panorama web interface</a> from
+               a web browser other than Safari to successfully activate a license
+               on managed firewalls in an HA configuration.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry"><b class="ph b">PAN-164618</b></td>
+         <td class="entry relcol">The VM-Series firewall CLI and system logs
+            display the license name <span class="ph systemoutput">VM-SERIES-X</span>,
+            while the user interface displays <span class="ph systemoutput">VM-FLEX-X</span> (in
+            both cases <span class="ph systemoutput">X</span> is the number of vCPUs).
+            In future releases the user interface will use the <span class="ph systemoutput">VM-SERIES-X</span> format.
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-164586</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you use a value other than <span class="ph userinput">mail</span> for
+               the user or group email attribute in the Cloud Identity Engine,
+               it displays in <span class="ph systemoutput">user@domain</span> format in
+               the CLI output.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-163966</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, the <span class="ph uicontrol">ACC</span> and
+               on demand reports (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">Manage Custom Reports</span></span>) are
+               unable to fetch Directory Sync group membership when the Source
+               User Group filter query is applied, resulting in no data being displayed
+               for the filter when Directory Sync is configured as the Source User for
+               a policy rule.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry"><b class="ph b">PAN-162836</b></td>
+         <td class="entry relcol">
+            <div class="p">On the VM-Series firewall, if you select <span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Licenses </span><span class="ph uicontrol">Deactivate VM</span></span> a popup window
+               opens and you can choose <span class="ph uicontrol">Subscriptions</span> or <span class="ph uicontrol">Support</span> and
+               press <span class="ph uicontrol">Continue</span> to remove licenses and register
+               the changes with the license server. When the license removal is
+               complete the <span class="ph uicontrol">Deactivate VM</span> window does not
+               update its text to exclude deactivated licenses or close the window.
+            </div>
+            <div class="p"><b class="ph b">Workaround</b>:
+               Wait until the license deactivation is complete, and click <span class="ph uicontrol">Cancel</span> to
+               close the window.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-161666</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The firewall includes any users configured
+               in the Cloud Identity Engine in the count of groups. As a result,
+               some CLI command output does not accurately display the number of groups
+               the firewall has retrieved from the Cloud Identity Engine and counts
+               users as groups in the <span class="ph systemoutput">No. of Groups</span> in
+               the command output. If the attempt to retrieve the user or group
+               fails, the information for the user or group still displays in the
+               CLI command output.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry"><b class="ph b">PAN-161451</b></td>
+         <td class="entry relcol">If you issue the command <span class="ph systemoutput">opof stats</span>,
+            there are occasional zero packet and byte counts coming from the
+            DPDK counters. This occurs when a session is in the tcp-reuse state,
+            and has no impact on the existing session.
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-160238</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you migrate traffic from a firewall running
+               a PAN-OS version earlier than 9.0 to a firewall running PAN-OS 9.0
+               or later, you experience intermittent VXLAN packet drops if TCI policy
+               is not configured for inspecting VXLAN traffic flows.
+            </div>
+            <div class="p"><b class="ph b">Workaround: </b>On
+               the new firewall, create an app override for VXLAN outer headers
+               as described in <a class="xref" href="https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClVLCA0" title="" data-scope="external" data-format="html" data-type="" target="_blank">What is an Application Override?</a> and
+               the video tutorial <a class="xref" href="https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000PPDrCAO" title="" data-scope="external" data-format="html" data-type="" target="_blank">How to Configure an Application
+               Override Policy on the Palo Alto Networks Firewall</a>.
+            </div>
+            <div class="note " data-label="NOTE">
+               <!-- FM Dita Overlay for Notes Component-->
+               <div>
+                  <div style="display: inline;">PAN-OS
+                     version 9.0 can inspect both inner and outer VXLAN flows. If you
+                     want to inspect inner flows, you must define a tunnel content inspection
+                     (TCI) policy.
+                  </div>
+               </div>
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-157444</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">As a result of a telemetry handling update,
+               the Source Zone field in the DNS analytics logs (viewable in the
+               DNS Analytics tab within AutoFocus) might not display correct results.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-157327</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On downgrade to PAN-OS 9.1, Enterprise Data
+               Loss Prevention (DLP) filtering settings (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Setup</span><span class="ph uicontrol">DLP</span></span>)
+               are not removed and cause commit errors for the downgraded firewall
+               if you do not uninstall the Enterprise DLP plugin before downgrade.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> After
+               you successfully downgrade a managed firewall to PAN-OS 9.1, commit
+               and push from Panorama to remove the Enterprise DLP filtering settings
+               and complete the downgrade.
+            </div>
+            <ol class="ol">
+               <li class="li">
+                  <div class="p">Downgrade your managed
+                     firewall to PAN-OS 9.1
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">Log in to the firewall web interface and view the <span class="ph uicontrol">Tasks</span> to
+                     verify all auto commits related to the downgrade have completed
+                     successfully.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">Log in to the Panorama web interface and <span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Commit and Push</span></span> to
+                     your managed firewall downgraded to PAN-OS 9.1.
+                  </div>
+               </li>
+            </ol>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-157103</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Multi-channel functionality may not be properly
+               utilized on an VM-Series firewall deployed in VMware NSX-V after
+               the service is first deployed.
+            </div>
+            <div class="p"><b class="ph b">Workaround</b>: Execute
+               the command <span class="ph userinput">debug dataplane pow status</span> to view
+               the number of channels being utilized by the dataplane.
+            </div>
+            <pre class="pre screen">Per pan-task Netx statisticsCounter Name    1   2   3   4   5   6   Total---------------------------------------------ready_dvf       2   0   0   0   0   0     2</pre>
+            <div class="p">If
+               multi-channel functionality is not working, disable your NSX-V security
+               policy and reapply it. Then reboot the VM-Series firewall. When
+               the firewall is back up, verify that multi-channel functionality
+               is working by executing the command <span class="ph userinput">debug dataplane pow status</span>.
+               It should now show multiple channels being utilized.
+            </div>
+            <pre class="pre screen">Per pan-task Netx statisticsCounter Name    1   2   3   4   5   6   Total---------------------------------------------ready_dvf       1   1   0   0   0   0     2</pre>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-156598</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">Panorama only</tt>) If you configure
+               a standard custom vulnerability signature in a custom Vulnerability Protection
+               profile in a shared device group, the shared profile custom signatures
+               do not populate in the other device groups when you configure a
+               combination custom vulnerability signature.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Use
+               the CLI to update the combination signature.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-154292</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, downgrading
+               from a PAN-OS 10.0 release to a PAN-OS 9.1 release causes Panorama
+               commit (<span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Commit
+               to Panorama</span></span>) failures if a custom report (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">Manage Custom Reports</span></span>)
+               is configured to Group By <span class="ph uicontrol">Session ID</span>.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> After
+               successful downgrade, reconfigure the Group By setting in the custom
+               report.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-154034</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, the Type
+               column in the System logs (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">Logs</span><span class="ph uicontrol">System</span></span>)
+               for managed firewalls running a PAN-OS 9.1 release erroneously display <span class="ph systemoutput">iot</span> as
+               the type.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-154032</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, downgrading
+               to PAN-OS 9.1 with the Panorama plugin for Cisco TrustSec version
+               1.0.2 installed does not automatically transform the plugin to be
+               compatible with PAN-OS 9.1
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> After successful
+               downgrade to PAN-OS 9.1, <span class="ph uicontrol">Remove Config</span> (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Plugins</span></span>)
+               of the Panorama plugin for Cisco TrustSec and then reconfigure the plugin.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-153803</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, scheduled
+               email PDF reports (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">PDF Reports</span></span>) fail if a GIF
+               image is used in the header or footer.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-153557</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server CLI, the overall report status for a report query is marked as
+               <span class="ph systemoutput">Done</span> despite reports generated from
+               logs in the <span class="ph">Strata Logging Service</span> from the PODamericas
+               Collector Group jobs are still in a
+               <span class="ph systemoutput">Running</span> state.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-153068</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The Bonjour Reflector option is supported
+               on up to 16 interfaces. If you enable it on more than 16 interfaces,
+               the commit succeeds and the Bonjour Reflector option is enabled only
+               for the first 16 interfaces and ignored for any additional interfaces.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-151238</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">There is a known issue where M-100 appliances
+               are able to download and install a PAN-OS 10.0 release image even though
+               the M-100 appliance is no longer supported after PAN-OS 9.1. (Refer
+               to the <a class="xref" href="https://www.paloaltonetworks.com/services/support/end-of-life-announcements/hardware-end-of-life-dates.html" title="" data-scope="external" data-format="html" data-type="" target="_blank">hardware end-of-life dates</a>.)
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-151085</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On a PA-7000 Series firewall chassis having
+               multiple slots, when HA clustering is enabled on an active/active
+               HA pair, the session table count for one of the peers can show a
+               higher count than the actual number of active sessions on that peer. This
+               behavior can be seen when the session is being set up on a non-cache
+               slot (for example, when a session distribution policy is set to
+               round-robin or session-load); it is caused by the additional cache
+               lookup that happens when HA cluster participation is enabled.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-150801</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Automatic quarantine of a device based on
+               forwarding profile or log setting does not work on the PA-7000 Series firewalls.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-150515</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">After you install the device certificate
+               on a new Panorama management server, Panorama is not able to connect
+               to the IoT Security edge service. 
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Restart
+               Panorama to connect to the IoT Security edge service. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-150345</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">During updates to the Device Dictionary,
+               the IoT Security service does not push new Device-ID attributes
+               (such as new device profiles) to the firewall until a manual commit
+               occurs. 
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Perform a force commit to push
+               the attributes in the content update to the firewall. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-150361</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">In an Active-Passive high availability (HA)
+               configuration, an error displays if you create a device object on
+               the passive device. 
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Load the running configuration
+               and perform a force commit to sync the devices. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-148971</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you enter a search term for Events that
+               are related to IoT in the System logs and apply the filter, the
+               page displays an <span class="ph systemoutput">Invalid term</span> error. 
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Specify <span class="ph userinput">iot</span> as
+               the <span class="ph uicontrol">Type Attribute</span> to filter the logs and
+               use the search term as the <span class="ph uicontrol">Description Attribute</span>.
+               For example: <span class="ph userinput">( subtype eq iot )  and ( description contains 'gRPC connection' )</span>. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-148924</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">In an active-passive HA configuration, tags
+               for dynamic user groups are not persistent after rebooting the firewall because
+               the active firewall does not sync the tags to the passive firewall
+               during failover. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-146995</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">After downgrading a Panorama management
+               server from PAN-OS 10.0 to PAN-OS 9.1, the <span class="ph systemoutput">VLD</span> and <span class="ph systemoutput">logd</span> processes
+               may crash when Panorama reboots.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Panorama
+               automatically restarts the <span class="ph systemoutput">VLD</span> and <span class="ph systemoutput">logd</span> processes. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-146807</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Changing the device group configured in
+               a monitoring definition from a child DG to a parent DG, or vice
+               versa, might cause firewalls configured in the child DG to lose
+               IP tag mapping information received from the monitoring definition. Only
+               firewalls assigned to the parent DG receive IP tag mapping updates.
+            </div>
+            <div class="p"><b class="ph b">Workaround</b>:
+               Perform a manual config sync on the device group that lost the IP
+               tag mapping information. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-146485</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, adding,
+               deleting, or modifying the upstream NAT configuration (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">SD-WAN</span><span class="ph uicontrol">Devices</span></span>)
+               does not display the branch template stack as <span class="ph systemoutput">out of sync</span>.
+            </div>
+            <div class="p">Additionally,
+               adding, deleting, or modifying the BGP configuration (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">SD-WAN</span><span class="ph uicontrol">Devices</span></span>)
+               does not display the hub and branch template stacks as <span class="ph systemoutput">out of sync</span>.
+               For example, modifying the BGP configuration on the branch firewall
+               does not cause the hub template stack to display as <span class="ph systemoutput">out of sync</span>,
+               nor does modifying the BGP configuration on the hub firewall cause
+               the branch template stack as <span class="ph systemoutput">out of sync</span>.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> After
+               performing a configuration change, <span class="ph uicontrol">Commit and Push</span> the
+               configuration changes to all hub and branch firewalls in the VPN
+               cluster containing the firewall with the modified configuration.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-145460</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">CN-MGMT pods fail to connect to the Panorama management
+               server when using the Kubernetes plugin.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> <span class="ph uicontrol">Commit</span> the
+               Panorama configuration after the CN-MGMT pod successfully registers
+               with Panorama.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-144889</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, adding,
+               deleting, or modifying the original subnet IP, or adding a new subnet after
+               you successfully configure a tunnel IP subnet, for the SD-WAN 1.0.2
+               plugin does not display the managed firewall templates (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Managed Devices</span><span class="ph uicontrol">Summary</span></span>) as <span class="ph systemoutput">Out of Sync</span>.
+            </div>
+            <div class="p"><b class="ph b">Workaround</b>:
+               When modifying the original subnet IP, or adding a new subnet, push
+               the template configuration changes to your managed firewalls and <span class="ph uicontrol">Force
+               Template Values</span> (<span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Push to Devices</span><span class="ph uicontrol">Edit Selections</span></span>).
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-143132</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Fetching the device certificate from the
+               Palo Alto Networks Customer Support Portal (CSP) may fail and displays the
+               following error in the CLI:
+            </div>
+            <span class="ph systemoutput">ERROR Failed to process S1C msg: Error</span>
+            <div class="p"><b class="ph b">Workaround:</b> Retrying
+               fetching the device certificate from the Palo Alto Networks CSP.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-141630</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Current performance limitation: single data
+               plane use only. The PA-5200 Series and PA-7000 Series firewalls
+               that support 5G network slice security, 5G equipment ID security, and
+               5G subscriber ID security use a single data plane only, which currently
+               limits the firewall performance.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-140959</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The Panorama management server allows you
+               to downgrade Zero Touch Provisioning (ZTP) firewalls to PAN-OS 9.1.2
+               and earlier releases where ZTP functionality is not supported.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-140008</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">ElasticSearch is forced to restart when
+               the <span class="ph systemoutput">masterd</span> process misses too many
+               heartbeat messages on the Panorama management server resulting in
+               a delay in a log query and ingestion. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-136763</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On the Panorama management server, managed
+               firewalls display as <span class="ph systemoutput">disconnected</span> when
+               installing a PAN-OS software update (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Device Deployment</span><span class="ph uicontrol">Software</span></span>)
+               but display as <span class="ph systemoutput">connected</span> when you view your
+               managed firewalls Summary (<span class="ph menucascade"><span class="ph uicontrol">Panorama</span><span class="ph uicontrol">Managed Devices</span><span class="ph uicontrol">Summary</span></span>)
+               and from the CLI.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Log out and log back
+               in to the Panorama web interface.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-135742</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">There is an issue in HTTP2 session decryption
+               where the App-ID in the decryption log is the App-ID of the parent
+               session (which is web-browsing).
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-134053</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">ACC does not filter WildFire logs from Dynamic
+               User Groups.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-132598</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The Panorama management server does not
+               check for duplicate addresses in address groups (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">Address Groups</span></span>) and
+               duplicate services in service groups (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">Service Groups</span></span>) when created
+               from the CLI.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-130550</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">PA-3200 Series, PA-5220, PA-5250, PA-5260,
+               and PA-7000 Series firewalls</tt>) For traffic between virtual systems
+               (inter-vsys traffic), the firewall cannot perform source NAT using
+               dynamic IP (DIP) address translation.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Use
+               source NAT with Dynamic IP and Port (DIPP) translation on inter-vsys
+               traffic.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-127813</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">In the current release, SD-WAN auto-provisioning configures
+               hubs and branches in a hub and spoke model, where branches don’t
+               communicate with each other. Expected branch routes are for generic
+               prefixes, which can be configured in the hub and advertised to all
+               branches. Branches with unique prefixes are not published up to
+               the hub.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Add any specific prefixes for branches
+               to the hub advertise-list configuration.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-127206</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you use the CLI to enable the cleartext
+               option for the Include Username in HTTP Header Insertion Entries
+               feature, the authentication request to the firewall may become unresponsive
+               or time out. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-123277</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Dynamic tags from other sources are accessible
+               using the CLI but do not display on the Panorama web interface. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-123040</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you try to view network QoS statistics
+               on an SD-WAN branch or hub, the QoS statistics and the hit count
+               for the QoS rules don’t display. A workaround exists for this issue. Please
+               contact Support for information about the workaround.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-120440</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">There is an issue on M-500 Panorama management servers
+               where any ethernet interface with an IPv6 address having Private
+               PAN-DB-URL connectivity only supports the following format: <span class="ph userinput">2001:DB9:85A3:0:0:8A2E:370:2</span>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-120423</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">PAN-OS 10.0.0 does not support the XML API
+               for GlobalProtect logs.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-120303</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">There is an issue where the firewall remains
+               connected to the PAN-DB-URL server through the old management IP address
+               on the M-500 Panorama management server, even when you configured
+               the Eth1/1 interface.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Update the PAN-DB-URL
+               IP address on the firewall using one of the methods below.
+            </div>
+            <ul class="ul">
+               <li class="li">
+                  <div class="p">Modify
+                     the PAN-DB Server IP address on the managed firewall.
+                  </div>
+                  <ol class="ol">
+                     <li class="li">
+                        <div class="p">On
+                           the web interface, delete the <span class="ph uicontrol">PAN-DB Server</span> IP
+                           address (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Setup</span><span class="ph uicontrol">Content ID</span><span class="ph uicontrol">URL Filtering</span></span> settings).
+                        </div>
+                     </li>
+                     <li class="li">
+                        <div class="p"><span class="ph uicontrol">Commit</span> your changes.</div>
+                     </li>
+                     <li class="li">
+                        <div class="p">Add the new M-500 Eth1/1 IP PAN-DB IP address.</div>
+                     </li>
+                     <li class="li">
+                        <div class="p"><span class="ph uicontrol">Commit</span> your changes.</div>
+                     </li>
+                  </ol>
+               </li>
+               <li class="li">
+                  <div class="p">Restart the firewall (<a class="term" href="#" title="" data-scope="" data-format="dita" data-type="" target="_self">devsrvr</a>) process.</div>
+                  <ol class="ol">
+                     <li class="li">
+                        <div class="p">Log
+                           in to the firewall CLI.
+                        </div>
+                     </li>
+                     <li class="li">
+                        <div class="p">Restart the devsrvr process: <span class="ph userinput">debug software restart process device-server</span></div>
+                     </li>
+                  </ol>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-116017</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">Google Cloud Platform (GCP) only</tt>)
+               The firewall does not accept the DNS value from the initial configuration
+               (init-cfg) file when you bootstrap the firewall.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Add
+               DNS value as part of the bootstrap.xml in the bootstrap folder and
+               complete the bootstrap process.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-115816</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">Microsoft Azure only</tt>) There is
+               an intermittent issue where an Ethernet (eth1) interface does not
+               come up when you first boot up the firewall.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Reboot
+               the firewall.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-114495</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Alibaba Cloud runs on a KVM hypervisor and
+               supports two Virtio modes: DPDK (default) and MMAP. If you deploy
+               a VM-Series firewall running PAN-OS 9.0 in DPDK packet mode and
+               you then switch to MMAP packet mode, the VM-Series firewall duplicates
+               packets that originate from or terminate on the firewall. As an
+               example, if a load balancer or a server behind the firewall pings
+               the VM-Series firewall after you switch from DPDK packet mode to
+               MMAP packet mode, the firewall duplicates the ping packets.
+            </div>
+            <div class="p">Throughput
+               traffic is not duplicated if you deploy the VM-Series firewall using
+               MMAP packet mode.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-112694</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">Firewalls with multiple virtual systems
+               only</tt>) If you configure dynamic DNS (DDNS) on a new interface (associated
+               with vsys1 or another virtual system) and you then create a <span class="ph uicontrol">New</span> Certificate
+               Profile from the drop-down, you must set the location for the Certificate Profile
+               to Shared. If you configure DDNS on an existing interface and then
+               create a new Certificate Profile, we also recommend that you choose
+               the Shared location instead of a specific virtual system. Alternatively,
+               you can select a preexisting certificate profile instead of creating
+               a new one.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-112456</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">You can temporarily submit a change request
+               for a URL Category with three suggested categories; however, only
+               two categories are supported. Do not add more than two suggested categories
+               to a change request until we address this issue. If you submit more
+               than two suggested categories, only the first two categories in
+               the change request are evaluated.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-112135</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">You cannot unregister tags for a subnet
+               or range in a dynamic address group from the web interface. 
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Use
+               an XML API request to unregister the tags for the subnet or range. 
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-111928</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Invalid configuration errors are not displayed
+               as expected when you revert a Panorama management server configuration.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> After
+               you revert the Panorama configuration, <span class="ph uicontrol">Commit</span> (<span class="ph menucascade"><span class="ph uicontrol">Commit</span><span class="ph uicontrol">Commit to Panorama</span></span>)
+               the reverted configuration to display the invalid configuration
+               errors.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-111866</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The push scope selection on the Panorama
+               web interface displays incorrectly even though the commit scope
+               displays as expected. This issue occurs when one administrator makes configuration
+               changes to separate device groups or templates that affect multiple
+               firewalls and a different administrator attempts to push those changes.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Perform
+               one of the following tasks.
+            </div>
+            <ul class="ul">
+               <li class="li">
+                  <div class="p">Initiate a <span class="ph uicontrol">Commit
+                     to Panorama</span> operation followed by a <span class="ph uicontrol">Push
+                     to Devices</span> operation for the modified device group and
+                     template configurations.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">Manually select the devices that belong to the modified device
+                     group and template configurations.
+                  </div>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-111729</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you disable DPDK mode and enable it again,
+               you must immediately reboot the firewall.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-111670</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Tagged VLAN traffic fails when sent through
+               an SR-IOV adapter.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-110794</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">DGA-based threats shown in the firewall
+               threat log display the same name for all such instances.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-109526</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The system log does not correctly display
+               the URL for CRL files; instead, the URLs are displayed with encoded characters.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-104780</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If you configure a HIP object to match only
+               when a connecting endpoint is managed (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">GlobalProtect</span><span class="ph uicontrol">HIP Objects</span><span class="ph uicontrol"><var class="keyword varname">&lt;hip-object&gt;</var></span><span class="ph uicontrol">General</span><span class="ph uicontrol">Managed</span></span>), iOS and Android endpoints
+               that are managed by AirWatch are unable to successfully match the
+               HIP object and the HIP report incorrectly indicates that these endpoints
+               are not managed. This issue occurs because GlobalProtect gateways
+               cannot correctly identify the managed status of these endpoints.
+            </div>
+            <div class="p">Additionally,
+               iOS endpoints that are managed by AirWatch are unable to match HIP
+               objects based on the endpoint serial number because GlobalProtect
+               gateways cannot identify the serial numbers of these endpoints;
+               these serial numbers do not appear in the HIP report.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-103276</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Adding a disk to a virtual appliance running
+               Panorama 8.1 or a later release on VMware ESXi 6.5 update1 causes
+               the Panorama virtual appliance and host web client to become unresponsive.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Upgrade
+               the ESXi host to ESXi 6.5 update2 and add the disk again.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-101688</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">Panorama plugins</tt>) The IP address-to-tag mapping
+               information registered on a firewall or virtual system is not deleted
+               when you remove the firewall or virtual system from a Device Group.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Log
+               in to the CLI on the firewall and enter the following command to
+               unregister the IP address-to-tag mappings: <span class="ph userinput">debug object registered-ip clear all</span>.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-101537</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">After you configure and push address and
+               address group objects in Shared and vsys-specific device groups
+               from the Panorama management server to managed firewalls, executing the <span class="ph userinput">show log <var class="keyword varname">&lt;log-type&gt;</var> direction equal <var class="keyword varname">&lt;direction&gt;</var> <var class="keyword varname">&lt;dst&gt;</var> | <var class="keyword varname">&lt;src&gt;</var> in <var class="keyword varname">&lt;object-name&gt;</var></span> command
+               on a managed firewall only returns address and address group objects
+               pushed form the Shared device group.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Specify
+               the vsys in the query string:
+            </div>
+            <div class="p"><span class="ph systemoutput">admin&gt;</span> <span class="ph userinput">set system target-vsys <var class="keyword varname">&lt;vsys-name&gt;</var></span></div>
+            <div class="p"><span class="ph systemoutput">admin&gt;</span> <span class="ph userinput">show log <var class="keyword varname">&lt;log-type&gt;</var> direction equal <var class="keyword varname">&lt;direction&gt;</var> query equal ‘vsys eq <var class="keyword varname">&lt;vsys-name&gt;</var>’ <var class="keyword varname">&lt;dst&gt;</var> | <var class="keyword varname">&lt;src&gt;</var> in <var class="keyword varname">&lt;object-name&gt;</var></span></div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-98520</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When booting or rebooting a PA-7000 Series
+               Firewall with the SMC-B installed, the BIOS console output displays
+               attempts to connect to the card's controller in the System Memory
+               Speed section. The messages can be ignored.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-97757</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">GlobalProtect authentication fails with
+               an <span class="ph systemoutput">Invalid username/password</span> error
+               (because the user is not found in <span class="ph uicontrol">Allow List</span>)
+               after you enable GlobalProtect authentication cookies and add a
+               RADIUS group to the <span class="ph uicontrol">Allow List</span> of the authentication
+               profile used to authenticate to GlobalProtect.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Disable
+               GlobalProtect authentication cookies. Alternatively, disable (clear) <span class="ph uicontrol">Retrieve
+               user group from RADIUS</span> in the authentication profile
+               and configure group mapping from Active Directory (AD) through LDAP.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-97524</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">(<tt class="ph tt">Panorama management server only</tt>)
+               The Security Zone and Virtual System columns (<span class="ph uicontrol">Network</span> tab)
+               display <span class="ph systemoutput">None</span> after a Device Group and Template
+               administrator with read-only privileges performs a context switch.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-96446</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">A firewall that is not included in a Collector
+               Group fails to generate a system log if logs are dropped when forwarded
+               to a Panorama management server that is running in Management Only
+               mode.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-95773</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On VM-Series firewalls that have Data Plane Development
+               Kit (DPDK) enabled and that use the i40e network interface card
+               (NIC), the <span class="ph userinput">show session info</span> CLI command
+               displays an inaccurate throughput and packet rate.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Disable
+               DPDK by running the <span class="ph userinput">set system setting dpdk-pkt-io off</span> CLI
+               command.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-95028</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">For administrator accounts that you created
+               in PAN-OS 8.0.8 and earlier releases, the firewall does not apply
+               password profile settings (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Password Profiles</span></span>) until after you
+               upgrade to PAN-OS 8.0.9 or a later release and then only after you
+               modify the account passwords. (Administrator accounts that you create
+               in PAN-OS 8.0.9 or a later release do not require you to change
+               the passwords to apply password profile settings.)
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-94846</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When DPDK is enabled on the VM-Series firewall
+               with i40e virtual function (VF) driver, the VF does not detect the
+               link status of the physical link. The VF link status remains up, regardless
+               of changes to the physical link state.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-94093</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">HTTP Header Insertion does not work when
+               jumbo frames are received out of order.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-93968</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The firewall and Panorama web interfaces
+               display vulnerability threat IDs that are not available in PAN-OS
+               9.0 releases (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">Security
+               Profiles</span><span class="ph uicontrol">Vulnerability Protection</span><span class="ph uicontrol"><var class="keyword varname">&lt;profile&gt;</var></span><span class="ph uicontrol">Exceptions</span></span>).
+               To confirm whether a particular threat ID is available in your release,
+               monitor the release notes for each new Applications and Threats
+               content update or check the Palo Alto Networks <a class="xref" href="https://threatvault.paloaltonetworks.com" title="" data-scope="external" data-format="html" data-type="" target="_blank">Threat Vault</a> to see the
+               minimum PAN-OS release version for a threat signature.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-93607</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you configure a VM-500
+               firewall with an SCTP Protection profile (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">Security Profiles</span><span class="ph uicontrol">SCTP Protection</span></span>)
+               and you try to add the profile to an existing Security Profile Group (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">Security Profile Groups</span></span>),
+               the Security Profile Group doesn’t list the SCTP Protection profile
+               in its drop-down list of available profiles.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Create
+               a new Security Profile Group and select the SCTP Protection profile
+               from there.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-93532</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you configure a firewall
+               running PAN-OS 9.0 as an nCipher HSM client, the web interface on
+               the firewall displays the nCipher server status as Not Authenticated,
+               even though the HSM state is up (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Setup</span><span class="ph uicontrol">HSM</span></span>).
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-93193</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The memory-optimized VM-50
+               Lite intermittently performs slowly and stops processing traffic
+               when memory utilization is critically high. To prevent this issue,
+               make sure that you do not:
+            </div>
+            <ul class="ul">
+               <li class="li">
+                  <div class="p">Switch to the firewall <span class="ph uicontrol">Context</span> on
+                     the Panorama management server.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">Commit changes when a dynamic update is being installed.</div>
+               </li>
+               <li class="li">
+                  <div class="p">Generate a custom report when a dynamic update is being installed.</div>
+               </li>
+               <li class="li">
+                  <div class="p">Generate custom reports during a commit.</div>
+               </li>
+            </ul>
+            <div class="p"><b class="ph b">Workaround:</b> When
+               the firewall performs slowly, or you see a critical System log for
+               memory utilization, wait for 5 minutes and then manually reboot
+               the firewall.
+            </div>
+            <div class="p">Use the Task Manager to verify that you are
+               not performing memory intensive tasks such as installing dynamic updates,
+               committing changes or generating reports, at the same time, on the
+               firewall.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-91802</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">On a VM-Series firewall, the <span class="ph uicontrol">clear
+               session all</span> CLI command does not clear GTP sessions.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-83610</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">In rare cases, a PA-5200 Series firewall
+               (with an FE100 network processor) that has session offload enabled
+               (default) incorrectly resets the UDP checksum of outgoing UDP packets.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> In
+               PAN-OS 8.0.6 and later releases, you can persistently disable session
+               offload for only UDP traffic using the <span class="ph userinput">set session udp-off load no</span> CLI
+               command.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-83236</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The VM-Series firewall on Google
+               Cloud Platform does not publish firewall metrics to Google Stack
+               Monitoring when you manually configure a DNS server IP address (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Setup</span><span class="ph uicontrol">Services</span></span>).
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> The
+               VM-Series firewall on Google Cloud Platform must use the DNS server
+               that Google provides.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-83215</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">SSL decryption based on ECDSA
+               certificates does not work when you import the ECDSA private keys
+               onto an nCipher nShield hardware security module (HSM).
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-81521</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Endpoints failed to authenticate to GlobalProtect
+               through Kerberos when you specify an FQDN instead of an IP address
+               in the Kerberos server profile (<span class="ph menucascade"><span class="ph uicontrol">Device</span><span class="ph uicontrol">Server Profiles</span><span class="ph uicontrol">Kerberos</span></span>).
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Replace
+               the FQDN with the IP address in the Kerberos server profile.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-77125</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">PA-7000 Series, PA-5450, PA-5200
+               Series, and PA-3200 Series firewalls configured in tap mode don’t
+               close offloaded sessions after processing the associated traffic;
+               the sessions remain open until they time out.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Configure
+               the firewalls in virtual wire mode instead of tap mode, or disable
+               session offloading by running the <span class="ph userinput">set session off load no</span> CLI
+               command.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-75457</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">In WildFire appliance clusters that have
+               three or more nodes, the Panorama management server does not support changing
+               node roles. In a three-node cluster for example, you cannot use
+               Panorama to configure the worker node as a controller node by adding
+               the HA and cluster controller configurations, configure an existing
+               controller node as a worker node by removing the HA configuration,
+               and then commit and push the configuration. Attempts to change cluster node
+               roles from Panorama results in a validation error—the commit fails
+               and the cluster becomes unresponsive.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-73530</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The firewall does not generate a packet
+               capture (pcap) when a Data Filtering profile blocks files.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-73401</b> </div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When you import a two-node WildFire appliance
+               cluster into the Panorama management server, the controller nodes report
+               their state as out-of-sync if either of the following conditions
+               exist:
+            </div>
+            <ul class="ul">
+               <li class="li">
+                  <div class="p">You did not configure a worker list to add at
+                     least one worker node to the cluster. (In a two-node cluster, both
+                     nodes are controller nodes configured as an HA pair. Adding a worker
+                     node would make the cluster a three-node cluster.)
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">You did not configure a service advertisement (either by
+                     enabling or not enabling advertising DNS service on the controller
+                     nodes).
+                  </div>
+               </li>
+            </ul>
+            <div class="p"><b class="ph b">Workaround:</b> There are three possible workarounds
+               to sync the controller nodes:
+            </div>
+            <ul class="ul">
+               <li class="li">
+                  <div class="p">After you import the
+                     two-node cluster into Panorama, push the configuration from Panorama
+                     to the cluster. After the push succeeds, Panorama reports that the controller
+                     nodes are in sync.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">Configure a worker list on the cluster controller:</div>
+                  <pre data-outputclass="output" class="pre screen">admin@wf500(active-controller)# <span class="ph userinput">set
+deviceconfig cluster mode controller worker-list <var class="keyword varname">&lt;worker-ip-address&gt;</var></span></pre>
+                  <div class="p">(<span class="ph userinput"><var class="keyword varname">&lt;worker-ip-address&gt;</var></span> is
+                     the IP address of the worker node you are adding to the cluster.)
+                     This creates a three-node cluster. After you import the cluster
+                     into Panorama, Panorama reports that the controller nodes are in sync.
+                     When you want the cluster to have only two nodes, use a different
+                     workaround.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p">Configure service advertisement on the local CLI of the cluster
+                     controller and then import the configuration into Panorama. The
+                     service advertisement can advertise that DNS is or is not enabled.
+                  </div>
+                  <pre data-outputclass="output" class="pre screen">admin@wf500(active-controller)# <span class="ph userinput">set
+deviceconfig cluster mode controller service-advertisement dns-service
+enabled
+yes</span></pre>
+                  <div class="p">or</div>
+                  <pre data-outputclass="output" class="pre screen">admin@wf500(active-controller)# <span class="ph userinput">set
+deviceconfig cluster mode controller service-advertisement dns-service
+enabled
+no</span></pre>
+                  <div class="p">Both commands result in Panorama reporting
+                     that the controller nodes are in sync.
+                  </div>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-70906</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">If the PAN-OS web interface and the GlobalProtect
+               portal are enabled on the same IP address, then when a user logs
+               out of the GlobalProtect portal, the administrative user is also logged
+               out from the PAN-OS web interface.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> Use
+               the IP address to access the PAN-OS web interface and an FQDN to
+               access the GlobalProtect portal.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-69505</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">When viewing an external dynamic list that
+               requires client authentication and you <span class="ph uicontrol">Test Source URL</span>,
+               the firewall fails to indicate whether it can reach the external
+               dynamic list server and returns a URL access error (<span class="ph menucascade"><span class="ph uicontrol">Objects</span><span class="ph uicontrol">External Dynamic Lists</span></span>).
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-40079</b></div>
+         </td>
+         <td class="entry relcol">The VM-Series firewall on KVM, for all supported
+            Linux distributions, does not support the Broadcom network adapters for
+            PCI pass-through functionality.
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-39636</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">Regardless of the <span class="ph uicontrol">Time Frame</span> you
+               specify for a scheduled custom report on a Panorama M-Series appliance,
+               the earliest possible start date for the report data is effectively
+               the date when you configured the report (<span class="ph menucascade"><span class="ph uicontrol">Monitor</span><span class="ph uicontrol">Manage Custom Reports</span></span>). For
+               example, if you configure the report on the 15th of the month and
+               set the <span class="ph uicontrol">Time Frame</span> to <span class="ph uicontrol">Last 30 Days</span>,
+               the report that Panorama generates on the 16th will include only
+               data from the 15th onward. This issue applies only to scheduled
+               reports; on-demand reports include all data within the specified <span class="ph uicontrol">Time Frame</span>.
+            </div>
+            <div class="p"><b class="ph b">Workaround:</b> To
+               generate an on-demand report, click <span class="ph uicontrol">Run Now</span> when
+               you configure the custom report.
+            </div>
+         </td>
+      </tr>
+      <tr class="row rowsep">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-38255</b></div>
+         </td>
+         <td class="entry relcol">When you perform a factory reset on a Panorama
+            virtual appliance and configure the serial number, logging does
+            not work until you reboot Panorama or execute the <span class="ph userinput">debug software restart process management-server</span> CLI
+            command.
+         </td>
+      </tr>
+      <tr class="row">
+         <td class="entry">
+            <div class="p"><b class="ph b">PAN-31832</b></div>
+         </td>
+         <td class="entry relcol">
+            <div class="p">The following issues apply when configuring
+               a firewall to use a hardware security module (HSM):
+            </div>
+            <ul class="ul">
+               <li class="li">
+                  <div class="p"><b class="ph b">nCipher
+                     nShield Connect</b>—The firewall requires at least four minutes
+                     to detect that an HSM was disconnected, causing SSL functionality
+                     to be unavailable during the delay.
+                  </div>
+               </li>
+               <li class="li">
+                  <div class="p"><b class="ph b">SafeNet Network</b>—When losing connectivity to either
+                     or both HSMs in an HA configuration, the display of information
+                     from the <span class="ph userinput">show high-availability state</span> and <span class="ph userinput">show hsm info</span> commands
+                     are blocked for 20 seconds.
+                  </div>
+               </li>
+            </ul>
+         </td>
+      </tr>
+   </tbody>
+</table>
