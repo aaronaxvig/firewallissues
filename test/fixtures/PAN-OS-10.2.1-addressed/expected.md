@@ -4,6 +4,10 @@ product: PAN-OS
 version: 10.2.1
 ---
 
+## WIF-495
+
+Fixed an issue on Panorama where edits made to an existing data filtering profile resulted in matching traffic not being detected by Enterprise DLP.
+
 ## PAN-231823
 
 A fix was made to address [CVE-2024-5916](https://security.paloaltonetworks.com/CVE-2024-5916).

@@ -1,5 +1,12 @@
 [
   {
+    "id": "WIF-495",
+    "summary": "Fixed an issue on Panorama where edits made to an existing data filtering profile resulted in matching traffic not being detected by Enterprise DLP.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue on Panorama where edits made to an existing data filtering profile resulted in matching traffic not being detected by Enterprise DLP.</p>\n"
+  },
+  {
     "id": "PAN-231823",
     "summary": "A fix was made to address [CVE-2024-5916](https://security.paloaltonetworks.com/CVE-2024-5916).",
     "resolved": "",
