@@ -20,7 +20,7 @@ globalThis.fetch = () => Promise.resolve({
 const { parseMarkdownIssues, markdownSummaryToHtml } = await import('../web/js/issues.js');
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-const fixturesDir = join(__dirname, 'fixtures');
+const fixturesDir = join(__dirname, '../test/fixtures');
 
 const fixtures = readdirSync(fixturesDir).filter(name => {
     const contents = readdirSync(join(fixturesDir, name)).map(d => d);

@@ -109,7 +109,7 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
     const issues = [];
 
     const parsedType = normalizeWhitespace(String(options.type || '')).toLowerCase();
-    const includeDescriptionCaveats = parsedType !== 'addressed';
+    const includeDescriptionCaveats = true;
     const includeInlineCodeFormatting = parsedType !== 'addressed';
 
     rows.forEach(row => {

@@ -3,8 +3,8 @@
     "id": "PAN-316911",
     "summary": "Fixed an issue where a newly bootstrapped firewall required a management server restart, relicensing, or license push from Panorama to invoke the device certificate.",
     "resolved": "",
-    "caveat": "",
-    "renderedHtml": "<p>Fixed an issue where a newly bootstrapped firewall required a management server restart, relicensing, or license push from Panorama to invoke the device certificate.</p>\n"
+    "caveat": "VM-Series firewalls on Amazon Web Services (AWS) environments only",
+    "renderedHtml": "<div><em>Caveat: VM-Series firewalls on Amazon Web Services (AWS) environments only</em></div><p>Fixed an issue where a newly bootstrapped firewall required a management server restart, relicensing, or license push from Panorama to invoke the device certificate.</p>\n"
   },
   {
     "id": "PAN-315176",
@@ -24,8 +24,8 @@
     "id": "PAN-313850",
     "summary": "Fixed an issue where a split-brain condition occurred and HA1/HA2 links went down while upgrading when the HA configuration used dataplane interfaces for HA1 and a combination of HSCI and Ethernet interfaces for HA2.",
     "resolved": "",
-    "caveat": "",
-    "renderedHtml": "<p>Fixed an issue where a split-brain condition occurred and HA1/HA2 links went down while upgrading when the HA configuration used dataplane interfaces for HA1 and a combination of HSCI and Ethernet interfaces for HA2.</p>\n"
+    "caveat": "PA-1400 Series firewalls in HA configurations only",
+    "renderedHtml": "<div><em>Caveat: PA-1400 Series firewalls in HA configurations only</em></div><p>Fixed an issue where a split-brain condition occurred and HA1/HA2 links went down while upgrading when the HA configuration used dataplane interfaces for HA1 and a combination of HSCI and Ethernet interfaces for HA2.</p>\n"
   },
   {
     "id": "PAN-313623",
@@ -38,15 +38,15 @@
     "id": "PAN-311285",
     "summary": "Fixed an issue where a memory leak occurred related to the ospfd process, which caused RAM usage to continuously increase on active devices in an HA cluster until the device stopped responding, even after an HA failover.",
     "resolved": "",
-    "caveat": "",
-    "renderedHtml": "<p>Fixed an issue where a memory leak occurred related to the ospfd process, which caused RAM usage to continuously increase on active devices in an HA cluster until the device stopped responding, even after an HA failover.</p>\n"
+    "caveat": "Firewalls in HA conditions only",
+    "renderedHtml": "<div><em>Caveat: Firewalls in HA conditions only</em></div><p>Fixed an issue where a memory leak occurred related to the ospfd process, which caused RAM usage to continuously increase on active devices in an HA cluster until the device stopped responding, even after an HA failover.</p>\n"
   },
   {
     "id": "PAN-308507",
     "summary": "Fixed an issue where the firewall intermittently failed to maintain active log forwarding streams to Cortex Data Lake even when duplicate logging and enhanced application logging were enabled.",
     "resolved": "",
-    "caveat": "",
-    "renderedHtml": "<p>Fixed an issue where the firewall intermittently failed to maintain active log forwarding streams to Cortex Data Lake even when duplicate logging and enhanced application logging were enabled.</p>\n"
+    "caveat": "Panorama managed firewalls only",
+    "renderedHtml": "<div><em>Caveat: Panorama managed firewalls only</em></div><p>Fixed an issue where the firewall intermittently failed to maintain active log forwarding streams to Cortex Data Lake even when duplicate logging and enhanced application logging were enabled.</p>\n"
   },
   {
     "id": "PAN-309300",
@@ -59,8 +59,8 @@
     "id": "PAN-302654",
     "summary": "Fixed an issue where, when the HA configuration had multiple logical routers, static or connected routes redistributed into OSPF aged out in the LSDB, which caused the routes to be removed on peer OSPF neighbors.",
     "resolved": "",
-    "caveat": "",
-    "renderedHtml": "<p>Fixed an issue where, when the HA configuration had multiple logical routers, static or connected routes redistributed into OSPF aged out in the LSDB, which caused the routes to be removed on peer OSPF neighbors.</p>\n"
+    "caveat": "Firewalls in active/passive HA configurations only",
+    "renderedHtml": "<div><em>Caveat: Firewalls in active/passive HA configurations only</em></div><p>Fixed an issue where, when the HA configuration had multiple logical routers, static or connected routes redistributed into OSPF aged out in the LSDB, which caused the routes to be removed on peer OSPF neighbors.</p>\n"
   },
   {
     "id": "PAN-300423",
@@ -80,14 +80,14 @@
     "id": "PAN-296202",
     "summary": "Added a log enhancement to capture an issue where, when a commit operation was in progress, newly deployed IP address tags that used the XML API were not immediately reflected in address group resolution, which delayed IP address mapping to address groups and caused traffic to be incorrectly allowed or denied.",
     "resolved": "",
-    "caveat": "",
-    "renderedHtml": "<p>Added a log enhancement to capture an issue where, when a commit operation was in progress, newly deployed IP address tags that used the XML API were not immediately reflected in address group resolution, which delayed IP address mapping to address groups and caused traffic to be incorrectly allowed or denied.</p>\n"
+    "caveat": "Firewalls in active/active HA configurations only",
+    "renderedHtml": "<div><em>Caveat: Firewalls in active/active HA configurations only</em></div><p>Added a log enhancement to capture an issue where, when a commit operation was in progress, newly deployed IP address tags that used the XML API were not immediately reflected in address group resolution, which delayed IP address mapping to address groups and caused traffic to be incorrectly allowed or denied.</p>\n"
   },
   {
     "id": "PAN-273158",
     "summary": "Fixed an issue where an incorrect ASIC configuration caused silent packet drops or application slowness when receiving a mix of jumbo and non-jumbo packets.",
     "resolved": "",
-    "caveat": "",
-    "renderedHtml": "<p>Fixed an issue where an incorrect ASIC configuration caused silent packet drops or application slowness when receiving a mix of jumbo and non-jumbo packets.</p>\n"
+    "caveat": "PA-7000 Series firewalls only",
+    "renderedHtml": "<div><em>Caveat: PA-7000 Series firewalls only</em></div><p>Fixed an issue where an incorrect ASIC configuration caused silent packet drops or application slowness when receiving a mix of jumbo and non-jumbo packets.</p>\n"
   }
 ]

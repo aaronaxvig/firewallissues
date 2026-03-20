@@ -6,6 +6,10 @@ version: 11.1.13-h3
 
 ## PAN-316911
 
+```caveat
+VM-Series firewalls on Amazon Web Services (AWS) environments only
+```
+
 Fixed an issue where a newly bootstrapped firewall required a management server restart, relicensing, or license push from Panorama to invoke the device certificate.
 
 ## PAN-315176
@@ -18,6 +22,10 @@ Fixed an issue where traffic was disrupted during IPSec rekey operations due to 
 
 ## PAN-313850
 
+```caveat
+PA-1400 Series firewalls in HA configurations only
+```
+
 Fixed an issue where a split-brain condition occurred and HA1/HA2 links went down while upgrading when the HA configuration used dataplane interfaces for HA1 and a combination of HSCI and Ethernet interfaces for HA2.
 
 ## PAN-313623
@@ -26,9 +34,17 @@ Fixed an issue where the /opt/pancfg/mgmt/ssl/private/ directory on Palo Alto Ne
 
 ## PAN-311285
 
+```caveat
+Firewalls in HA conditions only
+```
+
 Fixed an issue where a memory leak occurred related to the ospfd process, which caused RAM usage to continuously increase on active devices in an HA cluster until the device stopped responding, even after an HA failover.
 
 ## PAN-308507
+
+```caveat
+Panorama managed firewalls only
+```
 
 Fixed an issue where the firewall intermittently failed to maintain active log forwarding streams to Cortex Data Lake even when duplicate logging and enhanced application logging were enabled.
 
@@ -37,6 +53,10 @@ Fixed an issue where the firewall intermittently failed to maintain active log f
 Fixed an issue where management plane system resources configuration size exceeded 28 MB for over 4 hours, and the following error message was displayed: Configuration size reaching device capacity limit.
 
 ## PAN-302654
+
+```caveat
+Firewalls in active/passive HA configurations only
+```
 
 Fixed an issue where, when the HA configuration had multiple logical routers, static or connected routes redistributed into OSPF aged out in the LSDB, which caused the routes to be removed on peer OSPF neighbors.
 
@@ -50,8 +70,16 @@ Optimized the commit workflow to reduce the size of the effective configuration,
 
 ## PAN-296202
 
+```caveat
+Firewalls in active/active HA configurations only
+```
+
 Added a log enhancement to capture an issue where, when a commit operation was in progress, newly deployed IP address tags that used the XML API were not immediately reflected in address group resolution, which delayed IP address mapping to address groups and caused traffic to be incorrectly allowed or denied.
 
 ## PAN-273158
+
+```caveat
+PA-7000 Series firewalls only
+```
 
 Fixed an issue where an incorrect ASIC configuration caused silent packet drops or application slowness when receiving a mix of jumbo and non-jumbo packets.
