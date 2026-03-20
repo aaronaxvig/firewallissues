@@ -1,0 +1,51 @@
+[
+  {
+    "id": "PANG-11346",
+    "summary": "When Prisma Access Agent is connected on a Linux host system, Docker containers running on that host are unable to perform network communication using `curl` commands. Attempts to send `curl` traffic from inside a container result in a \"Network is unreachable\" error, even though the host system itself retains full network connectivity.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>When Prisma Access Agent is connected on a Linux host system, Docker containers running on that host are unable to perform network communication using <code>curl</code> commands. Attempts to send <code>curl</code> traffic from inside a container result in a \"Network is unreachable\" error, even though the host system itself retains full network connectivity.</p>\n"
+  },
+  {
+    "id": "PANG-11254",
+    "summary": "When the Dynamic Privilege Access-enabled Prisma Access Agent is in the notify-before-re-authentication period displaying a countdown timer banner and **Aggressive Authentication** is not enabled, switching projects in the Prisma Access Agent app triggers re-authentication and updates the User Refresh Token expiry time. However, the countdown timer banner continues to display the previous timer value until it expires, despite the successful re-authentication. Once the original timer completes, the banner disappears.",
+    "resolved": "Fixed in Prisma Access Agent 26.1.2 (PANG-11311)",
+    "caveat": "",
+    "renderedHtml": "<div><strong>Resolved:</strong> Fixed in Prisma Access Agent 26.1.2 (PANG-11311)</div><p>When the Dynamic Privilege Access-enabled Prisma Access Agent is in the notify-before-re-authentication period displaying a countdown timer banner and <strong>Aggressive Authentication</strong> is not enabled, switching projects in the Prisma Access Agent app triggers re-authentication and updates the User Refresh Token expiry time. However, the countdown timer banner continues to display the previous timer value until it expires, despite the successful re-authentication. Once the original timer completes, the banner disappears.</p>\n"
+  },
+  {
+    "id": "PANG-11199",
+    "summary": "For Panorama Managed NGFW deployments, Prisma Access Agent ignores the IPv6 address field in external gateway configurations received from Endpoint Manager get-config responses. When an IPv6 address is configured for an external gateway in the Edit External Gateway window in Strata Cloud Manager, Prisma Access Agent fails to process it. For dual-stack gateways configured with both IPv4 and IPv6 addresses, only the IPv4 address is recognized and the IPv6 address is completely ignored. For IPv6-only gateways, Prisma Access Agent throws an invalid configuration error and the gateway cannot be established.**Workaround**: Configure the gateway using a Fully Qualified Domain Name (FQDN) instead of an IPv6 address.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>For Panorama Managed NGFW deployments, Prisma Access Agent ignores the IPv6 address field in external gateway configurations received from Endpoint Manager get-config responses. When an IPv6 address is configured for an external gateway in the Edit External Gateway window in Strata Cloud Manager, Prisma Access Agent fails to process it. For dual-stack gateways configured with both IPv4 and IPv6 addresses, only the IPv4 address is recognized and the IPv6 address is completely ignored. For IPv6-only gateways, Prisma Access Agent throws an invalid configuration error and the gateway cannot be established.<strong>Workaround</strong>: Configure the gateway using a Fully Qualified Domain Name (FQDN) instead of an IPv6 address.</p>\n"
+  },
+  {
+    "id": "PANG-11178",
+    "summary": "When Prisma Access Agent is configured with portal authentication and the **Save User Credentials** option disabled, and the user clicks on the re-authentication banner in the agent app when the session is about to expire, an \"Authentication Failed\" error notification is displayed instead of prompting the user to enter their credentials. The user is not given the opportunity to re-authenticate as expected.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>When Prisma Access Agent is configured with portal authentication and the <strong>Save User Credentials</strong> option disabled, and the user clicks on the re-authentication banner in the agent app when the session is about to expire, an \"Authentication Failed\" error notification is displayed instead of prompting the user to enter their credentials. The user is not given the opportunity to re-authenticate as expected.</p>\n"
+  },
+  {
+    "id": "PANG-11141",
+    "summary": "When Prisma Access Agent is configured with client certificate authentication or portal authentication, the User Refresh Token does not automatically refresh at the end of its expiry period. The agent fails to attempt token renewal, which can result in authentication expiration and loss of user access once the User Refresh Token expires.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>When Prisma Access Agent is configured with client certificate authentication or portal authentication, the User Refresh Token does not automatically refresh at the end of its expiry period. The agent fails to attempt token renewal, which can result in authentication expiration and loss of user access once the User Refresh Token expires.</p>\n"
+  },
+  {
+    "id": "PANG-11103",
+    "summary": "When Prisma Access agent is actively connected to a gateway and the IPv6 pool is disabled on the tenant, the agent retains a stale IPv6 tunnel IP address. This stale IP persists on the specific gateway that was connected during the configuration change, even after the agent signs out and signs back in. The gateway address and IPv4 tunnel IP correctly update to reflect the new configuration, but the IPv6 tunnel field incorrectly displays the old IPv6 pool IP instead of \"N/A\". Gateways that were not actively connected during the configuration change correctly show no IPv6 tunnel IP.Users may incorrectly believe they still have IPv6 connectivity when they do not. This stale data complicates troubleshooting and causes automated tests to receive incorrect state information.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>When Prisma Access agent is actively connected to a gateway and the IPv6 pool is disabled on the tenant, the agent retains a stale IPv6 tunnel IP address. This stale IP persists on the specific gateway that was connected during the configuration change, even after the agent signs out and signs back in. The gateway address and IPv4 tunnel IP correctly update to reflect the new configuration, but the IPv6 tunnel field incorrectly displays the old IPv6 pool IP instead of \"N/A\". Gateways that were not actively connected during the configuration change correctly show no IPv6 tunnel IP.Users may incorrectly believe they still have IPv6 connectivity when they do not. This stale data complicates troubleshooting and causes automated tests to receive incorrect state information.</p>\n"
+  },
+  {
+    "id": "PANG-10925",
+    "summary": "When a device with Prisma Access Agent configured for Dynamic Privilege Access wakes up from sleep mode, the agent reconnects without enforcing re-authentication, even when **Aggressive Authentication** is enabled. The agent establishes connectivity without requiring the user to provide credentials again, bypassing the expected authentication enforcement.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>When a device with Prisma Access Agent configured for Dynamic Privilege Access wakes up from sleep mode, the agent reconnects without enforcing re-authentication, even when <strong>Aggressive Authentication</strong> is enabled. The agent establishes connectivity without requiring the user to provide credentials again, bypassing the expected authentication enforcement.</p>\n"
+  }
+]

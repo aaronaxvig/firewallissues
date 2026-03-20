@@ -144,7 +144,7 @@ function fetchIssueFile(productKey, fileName, issueType) {
     return request;
 }
 
-function parseMarkdownIssues(markdownText) {
+export function parseMarkdownIssues(markdownText) {
     const input = String(stripMarkdownFrontmatter(markdownText) || '');
     if (!input.trim()) {
         return [];
@@ -523,7 +523,7 @@ function normalizeSocialRefs(data) {
     return map;
 }
 
-function markdownSummaryToHtml(summaryText, resolvedText, caveatText) {
+export function markdownSummaryToHtml(summaryText, resolvedText, caveatText) {
     const input = String(summaryText || '').trim();
     const resolved = String(resolvedText || '').trim();
     const caveat = String(caveatText || '').trim();

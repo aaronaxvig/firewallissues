@@ -1,0 +1,93 @@
+[
+  {
+    "id": "PAN-316911",
+    "summary": "Fixed an issue where a newly bootstrapped firewall required a management server restart, relicensing, or license push from Panorama to invoke the device certificate.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where a newly bootstrapped firewall required a management server restart, relicensing, or license push from Panorama to invoke the device certificate.</p>\n"
+  },
+  {
+    "id": "PAN-315176",
+    "summary": "Added an enable and disable CLI command to address an issue where the firewall experienced increased packet drops and slower performance after an upgrade due to high burst traffic.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Added an enable and disable CLI command to address an issue where the firewall experienced increased packet drops and slower performance after an upgrade due to high burst traffic.</p>\n"
+  },
+  {
+    "id": "PAN-314061",
+    "summary": "Fixed an issue where traffic was disrupted during IPSec rekey operations due to a 2 second delay in sending the DELETE message for the previous Security Association (SA) to the peer gateway after a new SA was negotiated.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where traffic was disrupted during IPSec rekey operations due to a 2 second delay in sending the DELETE message for the previous Security Association (SA) to the peer gateway after a new SA was negotiated.</p>\n"
+  },
+  {
+    "id": "PAN-313850",
+    "summary": "Fixed an issue where a split-brain condition occurred and HA1/HA2 links went down while upgrading when the HA configuration used dataplane interfaces for HA1 and a combination of HSCI and Ethernet interfaces for HA2.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where a split-brain condition occurred and HA1/HA2 links went down while upgrading when the HA configuration used dataplane interfaces for HA1 and a combination of HSCI and Ethernet interfaces for HA2.</p>\n"
+  },
+  {
+    "id": "PAN-313623",
+    "summary": "Fixed an issue where the /opt/pancfg/mgmt/ssl/private/ directory on Palo Alto Networks devices with TPM support became 100% utilized due to an accumulation of undeleted .pub_pem files. This occurred because executing the show device-certificate status CLI command initiated a process that generated these files but failed to remove them, which prevented the fetching of new device certificates.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where the /opt/pancfg/mgmt/ssl/private/ directory on Palo Alto Networks devices with TPM support became 100% utilized due to an accumulation of undeleted .pub_pem files. This occurred because executing the show device-certificate status CLI command initiated a process that generated these files but failed to remove them, which prevented the fetching of new device certificates.</p>\n"
+  },
+  {
+    "id": "PAN-311285",
+    "summary": "Fixed an issue where a memory leak occurred related to the ospfd process, which caused RAM usage to continuously increase on active devices in an HA cluster until the device stopped responding, even after an HA failover.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where a memory leak occurred related to the ospfd process, which caused RAM usage to continuously increase on active devices in an HA cluster until the device stopped responding, even after an HA failover.</p>\n"
+  },
+  {
+    "id": "PAN-308507",
+    "summary": "Fixed an issue where the firewall intermittently failed to maintain active log forwarding streams to Cortex Data Lake even when duplicate logging and enhanced application logging were enabled.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where the firewall intermittently failed to maintain active log forwarding streams to Cortex Data Lake even when duplicate logging and enhanced application logging were enabled.</p>\n"
+  },
+  {
+    "id": "PAN-309300",
+    "summary": "Fixed an issue where management plane system resources configuration size exceeded 28 MB for over 4 hours, and the following error message was displayed: Configuration size reaching device capacity limit.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where management plane system resources configuration size exceeded 28 MB for over 4 hours, and the following error message was displayed: Configuration size reaching device capacity limit.</p>\n"
+  },
+  {
+    "id": "PAN-302654",
+    "summary": "Fixed an issue where, when the HA configuration had multiple logical routers, static or connected routes redistributed into OSPF aged out in the LSDB, which caused the routes to be removed on peer OSPF neighbors.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where, when the HA configuration had multiple logical routers, static or connected routes redistributed into OSPF aged out in the LSDB, which caused the routes to be removed on peer OSPF neighbors.</p>\n"
+  },
+  {
+    "id": "PAN-300423",
+    "summary": "Fixed an issue where Data Processing Cards (DPCs) installed in slots 5 and 6 remained stuck in a starting state with the error **Signal detected for port xeS5-DP0 but Link Down** alerts, which resulted in device instability.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where Data Processing Cards (DPCs) installed in slots 5 and 6 remained stuck in a starting state with the error <strong>Signal detected for port xeS5-DP0 but Link Down</strong> alerts, which resulted in device instability.</p>\n"
+  },
+  {
+    "id": "PAN-298617",
+    "summary": "Optimized the commit workflow to reduce the size of the effective configuration, resulting in lower memory consumption.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Optimized the commit workflow to reduce the size of the effective configuration, resulting in lower memory consumption.</p>\n"
+  },
+  {
+    "id": "PAN-296202",
+    "summary": "Added a log enhancement to capture an issue where, when a commit operation was in progress, newly deployed IP address tags that used the XML API were not immediately reflected in address group resolution, which delayed IP address mapping to address groups and caused traffic to be incorrectly allowed or denied.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Added a log enhancement to capture an issue where, when a commit operation was in progress, newly deployed IP address tags that used the XML API were not immediately reflected in address group resolution, which delayed IP address mapping to address groups and caused traffic to be incorrectly allowed or denied.</p>\n"
+  },
+  {
+    "id": "PAN-273158",
+    "summary": "Fixed an issue where an incorrect ASIC configuration caused silent packet drops or application slowness when receiving a mix of jumbo and non-jumbo packets.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where an incorrect ASIC configuration caused silent packet drops or application slowness when receiving a mix of jumbo and non-jumbo packets.</p>\n"
+  }
+]
