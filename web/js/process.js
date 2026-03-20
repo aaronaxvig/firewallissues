@@ -1,4 +1,8 @@
 import { buildIssueMarkdownDocument } from './markdown.js';
+import {
+    normalizeWhitespace,
+    parseIssueIdCell
+} from './issue-id.js';
 
 if (typeof document !== 'undefined') {
     document.addEventListener('DOMContentLoaded', () => {
@@ -14,8 +18,6 @@ if (typeof document !== 'undefined') {
 
 let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
-const ISSUE_ID_PATTERN = /([A-Z][A-Z0-9]{1,15}-\d{3,8})/i;
-const ISSUE_ID_LIST_PREFIX_PATTERN = /^\s*((?:[A-Z][A-Z0-9]{1,15}-\d{3,8})(?:\s*(?:,|and|&)\s*(?:[A-Z][A-Z0-9]{1,15}-\d{3,8}))*)/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
 const TEXT_NODE = 3;
 const ELEMENT_NODE = 1;
@@ -135,26 +137,18 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
             return;
         }
 
-        const issueIdListMatch = leftCellText.match(ISSUE_ID_LIST_PREFIX_PATTERN);
-        const isBlankId = !issueIdListMatch && /^[\u2014\u2013\-]+$/.test(leftCellText.trim());
-
-        if (!issueIdListMatch && !isBlankId) {
+        const issueIdData = parseIssueIdCell(leftCellText);
+        if (!issueIdData) {
             return;
         }
 
-        const issueIds = isBlankId
-            ? ['BLANK-000000']
-            : Array.from(String(issueIdListMatch[1] || '').matchAll(new RegExp(ISSUE_ID_PATTERN.source, 'ig')))
-                .map(match => String(match[1] || '').toUpperCase())
-                .filter(Boolean);
+        const issueIds = issueIdData.issueIds;
 
         if (issueIds.length === 0) {
             return;
         }
 
-        const metadataText = isBlankId
-            ? ''
-            : normalizeWhitespace(leftCellText.slice(issueIdListMatch[0].length)).replace(/^[-:;,.\s]+/, '');
+        const metadataText = issueIdData.metadataText;
         const resolved = isResolvedMetadataText(metadataText) ? metadataText : '';
         const description = rightCellText;
 
@@ -507,10 +501,6 @@ function convertHtmlTableToMarkdown(table) {
 
 function sanitizeTableCellText(text) {
     return normalizeWhitespace(text).replace(/\|/g, '\\|');
-}
-
-function normalizeWhitespace(value) {
-    return value.replace(/\s+/g, ' ').trim();
 }
 
 function setParseStatus(message, isError = false) {

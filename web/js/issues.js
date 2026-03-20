@@ -1,4 +1,10 @@
 import { stripMarkdownFrontmatter } from './markdown.js';
+import {
+    BLANK_ISSUE_ID,
+    normalizeIssueId,
+    normalizeWhitespace,
+    parseIssueLine as parseIssueLineValue
+} from './issue-id.js';
 import { marked, Renderer } from '../vendor/marked.esm.js';
 
 const summaryMarkdownRenderer = new Renderer();
@@ -12,7 +18,6 @@ export function clearIssues() {
 }
 
 let socialRefsByIssueId = new Map();
-const ISSUE_ID_LINE_PATTERN = /^([A-Z][A-Z0-9]{1,15}-\d{3,8})\s*[:\-]?\s*(.*)$/i;
 const socialRefsReady = loadSocialRefs();
 const issueFileDataCache = new Map();
 const issueFilePromiseCache = new Map();
@@ -436,36 +441,20 @@ function dedupeIssues(issues, versionKey) {
 }
 
 function getIssueDedupeKey(id, summary, resolved, caveat) {
-    const normalizedId = String(id || '').trim().toUpperCase();
+    const normalizedId = normalizeIssueId(id);
 
-    if (normalizedId !== 'BLANK-000000') {
+    if (normalizedId !== BLANK_ISSUE_ID) {
         return normalizedId;
     }
 
-    const normalizedSummary = normalizeWhitespace(String(summary || ''));
-    const normalizedResolved = normalizeWhitespace(String(resolved || ''));
-    const normalizedCaveat = normalizeWhitespace(String(caveat || ''));
+    const normalizedSummary = normalizeWhitespace(summary);
+    const normalizedResolved = normalizeWhitespace(resolved);
+    const normalizedCaveat = normalizeWhitespace(caveat);
     return `${normalizedId}|${normalizedSummary}|${normalizedResolved}|${normalizedCaveat}`;
 }
 
-function normalizeWhitespace(text) {
-    return String(text || '').replace(/\s+/g, ' ').trim();
-}
-
 function parseIssueLine(text) {
-    const value = String(text || '').trim();
-    const match = value.match(ISSUE_ID_LINE_PATTERN);
-    if (match) {
-        return {
-            id: match[1].toUpperCase(),
-            summary: (match[2] || '').trim()
-        };
-    }
-
-    return {
-        id: '',
-        summary: value
-    };
+    return parseIssueLineValue(text);
 }
 
 function getSourceVersionFromFileName(fileName) {
@@ -506,7 +495,7 @@ function renderSummaryCell(cell, issue) {
 }
 
 function getSocialRefsForIssue(issueId) {
-    const normalizedIssueId = String(issueId || '').trim().toUpperCase();
+    const normalizedIssueId = normalizeIssueId(issueId);
     if (!normalizedIssueId) {
         return [];
     }
