@@ -16,7 +16,6 @@ let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
 const ISSUE_ID_PATTERN = /((?:[A-Z]{2,6}|WF500)-\d{4,8})/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
-const RESOLVED_LINE_PATTERN = /^(?:resolved|fixed)\s+in\b/i;
 const TEXT_NODE = 3;
 const ELEMENT_NODE = 1;
 
@@ -131,7 +130,7 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
         const rightCellText = issueDetails.description;
         const rightCellCaveat = issueDetails.caveat;
 
-        if (/^issue\s*id$/i.test(leftCellText) || /^description$/i.test(rightCellText)) {
+        if (isIssueHeaderText(leftCellText) || isDescriptionHeaderText(rightCellText)) {
             return;
         }
 
@@ -143,7 +142,7 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
         const id = issueIdMatch[1].toUpperCase();
         const leftCellTrailingText = normalizeWhitespace(leftCellText.replace(issueIdMatch[0], ''));
         const metadataText = leftCellTrailingText.replace(/^[-:;,.\s]+/, '');
-        const resolved = RESOLVED_LINE_PATTERN.test(metadataText) ? metadataText : '';
+        const resolved = isResolvedMetadataText(metadataText) ? metadataText : '';
         const description = rightCellText;
 
         if (!description) {
@@ -187,6 +186,19 @@ function extractIssueDetails(cell, options = {}) {
 
 function extractCellPlainText(cell) {
     return normalizeWhitespace(cell.textContent || '');
+}
+
+function isIssueHeaderText(value) {
+    return normalizeWhitespace(String(value || '')).toLowerCase() === 'issue id';
+}
+
+function isDescriptionHeaderText(value) {
+    return normalizeWhitespace(String(value || '')).toLowerCase() === 'description';
+}
+
+function isResolvedMetadataText(value) {
+    const normalized = normalizeWhitespace(String(value || '')).toLowerCase();
+    return normalized.startsWith('resolved in ') || normalized.startsWith('fixed in ');
 }
 
 function extractCellText(cell, options = {}) {
@@ -257,21 +269,19 @@ function convertInlineNodeToMarkdown(node, options = {}) {
         return '';
     }
 
-    const className = String(node.getAttribute('class') || '');
-
-    if (/\bmenucascade\b/i.test(className)) {
+    if (node.classList.contains('menucascade')) {
         const parts = extractMenuCascadeParts(node);
         if (parts.length > 0) {
             return parts.map(part => `**${part}**`).join(' > ');
         }
     }
 
-    if (/\buicontrol\b/i.test(className)) {
+    if (node.classList.contains('uicontrol')) {
         const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         return content ? `**${content}**` : '';
     }
 
-    if (/\buserinput\b/i.test(className)) {
+    if (node.classList.contains('userinput')) {
         const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         if (!content) {
             return '';
@@ -280,7 +290,7 @@ function convertInlineNodeToMarkdown(node, options = {}) {
         return options.includeInlineCode === false ? content : `\`${content}\``;
     }
 
-    if (/\bsystemoutput\b/i.test(className)) {
+    if (node.classList.contains('systemoutput')) {
         const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         if (!content) {
             return '';
@@ -291,7 +301,7 @@ function convertInlineNodeToMarkdown(node, options = {}) {
 
     const tagName = (node.tagName || '').toUpperCase();
 
-    if (tagName === 'A' && /\bxref\b/i.test(className)) {
+    if (tagName === 'A' && node.classList.contains('xref')) {
         const href = node.getAttribute('href') || '';
         const content = normalizeInlineMarkdown(renderInlineChildren(node, options));
         return content && href ? `[${content}](${href})` : content;
@@ -419,11 +429,37 @@ function appendInlineText(existing, fragment) {
         return next;
     }
 
-    if (/[A-Za-z0-9)\]]$/.test(current) && /^[A-Za-z0-9([\]]/.test(next)) {
+    if (needsInlineWordSpacing(current, next)) {
         return `${current} ${next}`;
     }
 
     return `${current}${next}`;
+}
+
+// Preserve natural word separation when adjacent inline fragments are merged.
+function needsInlineWordSpacing(current, next) {
+    return isInlineWordBoundaryEnd(current.slice(-1)) && isInlineWordBoundaryStart(next.charAt(0));
+}
+
+function isInlineWordBoundaryEnd(char) {
+    return isAsciiLetterOrDigit(char) || char === ')' || char === ']';
+}
+
+function isInlineWordBoundaryStart(char) {
+    return isAsciiLetterOrDigit(char) || char === '(' || char === '[';
+}
+
+function isAsciiLetterOrDigit(char) {
+    const code = String(char || '').charCodeAt(0);
+    if (Number.isNaN(code)) {
+        return false;
+    }
+
+    return (
+        (code >= 48 && code <= 57) ||
+        (code >= 65 && code <= 90) ||
+        (code >= 97 && code <= 122)
+    );
 }
 
 function convertHtmlTableToMarkdown(table) {
