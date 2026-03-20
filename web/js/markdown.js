@@ -4,6 +4,14 @@ export function buildIssueMarkdownDocument(payload) {
     lines.push(`type: ${payload.type}`);
     lines.push(`product: ${payload.product}`);
     lines.push(`version: ${payload.version}`);
+    if (payload.metadata && typeof payload.metadata === 'object') {
+        Object.entries(payload.metadata).forEach(([key, value]) => {
+            if (value === undefined || value === null || value === '') {
+                return;
+            }
+            lines.push(`${key}: ${String(value)}`);
+        });
+    }
     lines.push('---');
     lines.push('');
 
