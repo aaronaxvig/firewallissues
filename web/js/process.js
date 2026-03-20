@@ -14,8 +14,8 @@ if (typeof document !== 'undefined') {
 
 let activeDownloadUrl = null;
 const PROCESS_FORM_STATE_KEY = 'bugmedley.process.formState.v1';
-const ISSUE_ID_PATTERN = /((?:[A-Z]{2,6}|WF500)-\d{4,8})/i;
-const ISSUE_ID_LIST_PREFIX_PATTERN = /^\s*((?:(?:[A-Z]{2,6}|WF500)-\d{4,8})(?:\s*(?:,|and|&)\s*(?:(?:[A-Z]{2,6}|WF500)-\d{4,8}))*)/i;
+const ISSUE_ID_PATTERN = /((?:[A-Z]{2,6}|WF500)-\d{3,8})/i;
+const ISSUE_ID_LIST_PREFIX_PATTERN = /^\s*((?:(?:[A-Z]{2,6}|WF500)-\d{3,8})(?:\s*(?:,|and|&)\s*(?:(?:[A-Z]{2,6}|WF500)-\d{3,8}))*)/i;
 const BLOCK_CONTAINER_TAGS = new Set(['ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DIV', 'P', 'PRE', 'SECTION']);
 const TEXT_NODE = 3;
 const ELEMENT_NODE = 1;
