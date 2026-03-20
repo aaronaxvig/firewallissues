@@ -37,6 +37,15 @@ ISSUE_TYPE_SLUGS = {
 }
 
 
+def get_issue_type_from_url(url: str) -> str | None:
+    """Return issue type from the final path slug, not parent path segments."""
+    slug = urlparse(url).path.rstrip("/").rsplit("/", 1)[-1]
+    for issue_type, suffix in ISSUE_TYPE_SLUGS.items():
+        if slug.endswith(suffix):
+            return issue_type
+    return None
+
+
 def load_entry_points():
     with open(ENTRY_POINTS_FILE) as f:
         return json.load(f)
@@ -282,6 +291,11 @@ def download_version_page(
         logging.warning("Could not extract version from URL %s — skipping", url)
         return False
 
+    out_file = out_dir / f"{version}-{issue_type}.html"
+    if out_file.exists():
+        logging.info("Already downloaded  %s", out_file.relative_to(DATA_DIR.parent))
+        return False
+
     try:
         warc_bytes = fetch_warc_record(
             record["filename"],
@@ -302,7 +316,6 @@ def download_version_page(
         return False
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_file = out_dir / f"{version}-{issue_type}.html"
     out_file.write_text(table_html, encoding="utf-8")
     logging.info("Saved  %s", out_file.relative_to(DATA_DIR.parent))
     return True
@@ -343,10 +356,9 @@ def process_branch(
     # Filter for issue pages.
     issue_urls: dict[str, str] = {}
     for url in latest_by_url:
-        for issue_type, slug in ISSUE_TYPE_SLUGS.items():
-            if slug in url:
-                issue_urls[url] = issue_type
-                break
+        issue_type = get_issue_type_from_url(url)
+        if issue_type:
+            issue_urls[url] = issue_type
 
     if not issue_urls:
         logging.warning("No issue page URLs found under %s", notes_dir)
@@ -378,11 +390,7 @@ def process_single_url(crawl: str, product: str, product_cfg: dict, url: str) ->
     slug_prefix = product_cfg.get("slug_prefix", "")
     out_dir = DATA_DIR / crawl / product
 
-    issue_type = None
-    for candidate_type, slug in ISSUE_TYPE_SLUGS.items():
-        if slug in url:
-            issue_type = candidate_type
-            break
+    issue_type = get_issue_type_from_url(url)
 
     if not issue_type:
         logging.error(
