@@ -1,0 +1,47 @@
+{
+  "PAN-OS": {
+    "slug_prefix": "pan-os-",
+    "branches": [
+      {
+        "branch": "8.1",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-release-notes/pan-os-8-1-release-information"
+      },
+      {
+        "branch": "9.0",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-release-notes/pan-os-9-0-release-information"
+      },
+      {
+        "branch": "9.1",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-release-notes/pan-os-9-1-release-information"
+      },
+      {
+        "branch": "10.0",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/10-0/pan-os-release-notes/pan-os-10-0-release-information"
+      },
+      {
+        "branch": "10.1",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-release-notes/features-introduced-in-pan-os"
+      },
+      {
+        "branch": "10.2",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-release-notes/features-introduced-in-pan-os"
+      },
+      {
+        "branch": "11.0",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/11-0/pan-os-release-notes/features-introduced-in-pan-os"
+      },
+      {
+        "branch": "11.1",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/features-introduced-in-pan-os"
+      },
+      {
+        "branch": "11.2",
+        "main_page": "https://docs.paloaltonetworks.com/pan-os/11-2/pan-os-release-notes/features-introduced-in-pan-os"
+      },
+      {
+        "branch": "12.1",
+        "main_page": "https://docs.paloaltonetworks.com/ngfw/release-notes/12-1/features-introduced-in-pan-os"
+      }
+    ]
+  }
+}

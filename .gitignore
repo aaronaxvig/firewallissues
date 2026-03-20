@@ -1,1 +1,4 @@
 node_modules/
+crawler/data/
+__pycache__/
+**/__pycache__/
