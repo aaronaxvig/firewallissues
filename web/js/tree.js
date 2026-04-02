@@ -121,7 +121,7 @@ function createTreeNode(name, value, path) {
             childrenContainer.appendChild(childNode);
         });
 
-        if (shouldStartCollapsed(name, value)) {
+        if (shouldStartCollapsed(value)) {
             childrenContainer.classList.add('collapsed');
             toggle.textContent = '▶';
         }
@@ -150,22 +150,13 @@ function createTreeNode(name, value, path) {
     return container;
 }
 
-function shouldStartCollapsed(name, value) {
+function shouldStartCollapsed(value) {
     if (!value || typeof value !== 'object') {
         return false;
     }
 
     const childKeys = Object.keys(value).filter(key => key !== 'addressed' && key !== 'known');
-    if (childKeys.length === 0) {
-        return false;
-    }
-
-    const hotfixChildren = childKeys.filter(key => {
-        const match = key.match(/^(.*)-h\d+$/i);
-        return match && match[1] === name;
-    });
-
-    return hotfixChildren.length > 0;
+    return childKeys.length > 0;
 }
 
 function dedupeFileRefs(fileRefs) {
