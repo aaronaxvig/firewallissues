@@ -310,7 +310,7 @@ function renderAddressedTable(issues, container) {
     }
 
     const table = document.createElement('table');
-    table.className = 'issues-table';
+    table.className = 'issues-table issue-list-table';
 
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
@@ -350,6 +350,7 @@ function renderAddressedTable(issues, container) {
         tbody.appendChild(row);
     });
     table.appendChild(tbody);
+    addTableCellLabels(table);
     container.appendChild(table);
 }
 
@@ -361,7 +362,7 @@ function renderKnownList(issues, container) {
     }
 
     const table = document.createElement('table');
-    table.className = 'issues-table';
+    table.className = 'issues-table issue-list-table';
 
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
@@ -397,7 +398,26 @@ function renderKnownList(issues, container) {
         tbody.appendChild(row);
     });
     table.appendChild(tbody);
+    addTableCellLabels(table);
     container.appendChild(table);
+}
+
+function addTableCellLabels(table) {
+    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+    if (headers.length === 0) {
+        return;
+    }
+
+    table.querySelectorAll('tbody tr').forEach(row => {
+        Array.from(row.children).forEach((cell, idx) => {
+            if (!(cell instanceof HTMLElement)) {
+                return;
+            }
+
+            const label = headers[idx] || `Column ${idx + 1}`;
+            cell.setAttribute('data-label', label);
+        });
+    });
 }
 
 function dedupeAddressedIssues(issues) {
@@ -572,6 +592,7 @@ function addIssueTableClasses(html) {
     const doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
     doc.querySelectorAll('table').forEach(table => {
         table.classList.add('issues-table');
+        addTableCellLabels(table);
     });
     return doc.body.innerHTML;
 }

@@ -71,10 +71,23 @@
             gap: 8px;
         }
         .checkbox-label {
+        main {
+            padding: 12px;
+        }
             display: flex;
             align-items: center;
             font-weight: normal;
             margin: 0;
+            .form-section,
+            .preview-section {
+                padding: 14px;
+            }
+            .button-group {
+                flex-direction: column;
+            }
+            button {
+                width: 100%;
+            }
         }
         .checkbox-label input[type="checkbox"] {
             width: auto;
