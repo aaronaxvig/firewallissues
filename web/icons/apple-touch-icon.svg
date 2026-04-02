@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Firewall Issues Tool Apple Touch Icon Source</title>
+  <desc id="desc">Square app icon source with shield and F mark for export to Apple touch icon PNG sizes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#243b53" />
+      <stop offset="100%" stop-color="#102a43" />
+    </linearGradient>
+    <linearGradient id="shield" x1="30%" y1="16%" x2="70%" y2="86%">
+      <stop offset="0%" stop-color="#ffb347" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="104" fill="url(#bg)" />
+  <path
+    d="M256 74L404 138L372 342L256 440L140 342L108 138L256 74Z"
+    fill="url(#shield)"
+    stroke="#c2410c"
+    stroke-width="14"
+    stroke-linejoin="round"
+  />
+
+  <text
+    x="256"
+    y="258"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="Segoe UI, Arial, sans-serif"
+    font-size="152"
+    letter-spacing="-12"
+    font-weight="700"
+    fill="#ffffff"
+  >FI</text>
+</svg>
