@@ -15,6 +15,21 @@
     "display": "Reddit"
   },
   {
+    "id": "PAN-283789",
+    "url": "https://www.reddit.com/r/paloaltonetworks/comments/1knp38f/firewalls_running_on_vm_mac_rcv_error/",
+    "display": "Reddit"
+  },
+  {
+    "id": "PAN-269139",
+    "url": "https://www.reddit.com/r/paloaltonetworks/comments/1knp38f/firewalls_running_on_vm_mac_rcv_error/",
+    "display": "Reddit"
+  },
+  {
+    "id": "PAN-265745",
+    "url": "https://live.paloaltonetworks.com/t5/next-generation-firewall/interface-errors-after-upgrade-vm-series/td-p/1223867",
+    "display": "PA LIVEcommunity"
+  },
+  {
     "id": "PAN-240612",
     "url": "https://www.reddit.com/r/paloaltonetworks/comments/1bzj83y/comment/kyqjs1g/",
     "display": "Reddit"
@@ -37,6 +52,11 @@
   {
     "id": "PAN-210513",
     "url": "https://www.reddit.com/r/paloaltonetworks/comments/13oz9jg/comment/jlacu9t/",
+    "display": "Reddit"
+  },
+  {
+    "id": "PAN-208737",
+    "url": "https://www.reddit.com/r/paloaltonetworks/comments/13cyely/comment/jji8eg3/",
     "display": "Reddit"
   },
   {
