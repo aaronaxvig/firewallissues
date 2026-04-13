@@ -3,7 +3,7 @@
  * Convert downloaded issue table HTML files into web/data/issues/ markdown files.
  *
  * Usage:
- *   node process_issues.mjs [--crawl CC-MAIN-2026-12] [--product PAN-OS] [--date YYYY-MM-DD]
+ *   node reference/process_issues.mjs
  *
  * After this script, run:
  *   python scripts/update_products_from_issues.py
@@ -11,125 +11,109 @@
 
 import { JSDOM } from 'jsdom';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseArgs } from 'node:util';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-
-const { values: args } = parseArgs({
-    options: {
-        crawl:   { type: 'string', default: 'CC-MAIN-2026-12' },
-        product: { type: 'string', default: 'PAN-OS' },
-        date:    { type: 'string' },
-    },
-    strict: false,
-});
-
-function isoWeekStartDate(year, week) {
-    const jan4 = new Date(Date.UTC(year, 0, 4));
-    const jan4Day = jan4.getUTCDay() || 7;
-    const week1Monday = new Date(jan4);
-    week1Monday.setUTCDate(jan4.getUTCDate() - (jan4Day - 1));
-
-    const target = new Date(week1Monday);
-    target.setUTCDate(week1Monday.getUTCDate() + (week - 1) * 7);
-    return target.toISOString().slice(0, 10);
-}
-
-function dateFromCrawlId(crawlId) {
-    const match = /^CC-MAIN-(\d{4})-(\d{2})$/i.exec(String(crawlId || '').trim());
-    if (!match) {
-        return null;
-    }
-    const year = Number(match[1]);
-    const week = Number(match[2]);
-    if (!Number.isInteger(year) || !Number.isInteger(week) || week < 1 || week > 53) {
-        return null;
-    }
-    return isoWeekStartDate(year, week);
-}
-
-const inferredDate = dateFromCrawlId(args.crawl);
-const outputDate = args.date || inferredDate || new Date().toISOString().slice(0, 10);
+const REPO_ROOT = join(__dirname, '..');
 
 // Set up DOMParser global before importing modules that rely on it.
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 globalThis.DOMParser = window.DOMParser;
 
 const { parseIssuesFromHtmlTable } = await import(
-    new URL('../../web/js/process.js', import.meta.url).href
+    new URL('../web/js/process.js', import.meta.url).href
 );
 const { buildIssueMarkdownDocument } = await import(
-    new URL('../../web/js/markdown.js', import.meta.url).href
+    new URL('../web/js/markdown.js', import.meta.url).href
 );
 
-const REPO_ROOT = join(__dirname, '..', '..');
-const dataDir = join(__dirname, '..', 'data', args.crawl, args.product);
+const OUTPUT_ROOT = join(REPO_ROOT, 'web', 'data', 'issues');
 
-let files;
-try {
-    files = readdirSync(dataDir).filter(f => f.endsWith('.html'));
-} catch {
-    console.error(`No data directory found: ${dataDir}`);
-    console.error('Run crawl_cc.py first to download issue tables.');
-    process.exit(1);
+function readHtmlFiles(dirPath) {
+    try {
+        return readdirSync(dirPath).filter(name => name.endsWith('.html')).sort();
+    } catch {
+        return [];
+    }
 }
 
-if (files.length === 0) {
-    console.log(`No HTML files found in ${dataDir}`);
-    process.exit(0);
+function getProductNames() {
+    return readdirSync(__dirname, { withFileTypes: true })
+        .filter(entry => entry.isDirectory())
+        .map(entry => entry.name)
+        .filter(name => name !== '.' && name !== '..')
+        .sort();
+}
+
+function getInputEntries(productName) {
+    const productRoot = join(__dirname, productName);
+    const entries = [];
+    for (const issueType of ['addressed', 'known']) {
+        const issueTypeDir = join(productRoot, issueType);
+        const files = readHtmlFiles(issueTypeDir);
+        for (const file of files) {
+            const version = basename(file, '.html');
+            entries.push({
+                filePath: join(issueTypeDir, file),
+                version,
+                issueType,
+            });
+        }
+    }
+    return entries.sort((a, b) => a.filePath.localeCompare(b.filePath));
 }
 
 let writtenCount = 0;
+let skippedNoIssues = 0;
+let processedProducts = 0;
 
-for (const file of files.sort()) {
-    // Filename format: {version}-{type}.html
-    // where type is 'addressed' or 'known'.
-    // Version may itself contain hyphens (e.g. '10.2.1-h3'), so split on
-    // the *last* hyphen-prefixed token that is a known issue type.
-    const baseName = file.replace(/\.html$/, '');
-    const lastDash = baseName.lastIndexOf('-');
-    if (lastDash === -1) {
-        console.warn(`Skipping unexpected filename: ${file}`);
-        continue;
-    }
-    const version   = baseName.slice(0, lastDash);
-    const issueType = baseName.slice(lastDash + 1);
-
-    if (issueType !== 'addressed' && issueType !== 'known') {
-        console.warn(`Skipping unexpected issue type in filename: ${file}`);
+for (const product of getProductNames()) {
+    const entries = getInputEntries(product);
+    if (entries.length === 0) {
         continue;
     }
 
-    const capitalizedType = issueType.charAt(0).toUpperCase() + issueType.slice(1);
-    const html = readFileSync(join(dataDir, file), 'utf-8');
+    processedProducts++;
 
-    const parsedIssues = parseIssuesFromHtmlTable(html, { type: capitalizedType });
-    if (parsedIssues.length === 0) {
-        console.warn(`No issues parsed from ${file} — skipping`);
-        continue;
+    for (const entry of entries) {
+        const { filePath, issueType, version } = entry;
+
+        const capitalizedType = issueType.charAt(0).toUpperCase() + issueType.slice(1);
+        const html = readFileSync(filePath, 'utf-8');
+
+        const parsedIssues = parseIssuesFromHtmlTable(html, { type: capitalizedType });
+        if (parsedIssues.length === 0) {
+            console.warn(`No issues parsed from ${basename(filePath)} — skipping`);
+            skippedNoIssues++;
+            continue;
+        }
+
+        const markdown = buildIssueMarkdownDocument({
+            type: capitalizedType,
+            product,
+            version,
+            issues: parsedIssues,
+        });
+
+        const outDir = join(OUTPUT_ROOT, product, issueType);
+        mkdirSync(outDir, { recursive: true });
+
+        const outFile = join(outDir, `${version}.md`);
+        writeFileSync(outFile, markdown, 'utf-8');
+        writtenCount++;
     }
-
-    const markdown = buildIssueMarkdownDocument({
-        type: capitalizedType,
-        product: args.product,
-        version,
-        issues: parsedIssues,
-        metadata: {
-            source: 'common-crawl',
-            crawl: args.crawl,
-        },
-    });
-
-    const outDir = join(REPO_ROOT, 'web', 'data', 'issues', args.product, issueType);
-    mkdirSync(outDir, { recursive: true });
-    const outFile = join(outDir, `${version}_${outputDate}.md`);
-    writeFileSync(outFile, markdown, 'utf-8');
-    writtenCount++;
 }
 
-console.log(`Wrote ${writtenCount} markdown file(s) to web/data/issues/${args.product}/`);
+if (processedProducts === 0) {
+    console.error(`No HTML files found under ${__dirname}.`);
+    process.exit(0);
+}
+
+console.log(`Wrote ${writtenCount} markdown file(s) across ${processedProducts} product(s).`);
+if (skippedNoIssues > 0) {
+    console.log(`Skipped ${skippedNoIssues} file(s) with no parsed issues.`);
+}
 if (writtenCount > 0) {
     console.log('Next step: python scripts/update_products_from_issues.py');
 }

@@ -6,40 +6,20 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from dataclasses import dataclass
-from datetime import date
 from pathlib import Path
 from typing import Any
 
 
 ISSUE_TYPES = {"addressed", "known"}
-FILENAME_RE = re.compile(r"^(?P<version>[^_]+)_(?P<date>\d{4}-\d{2}-\d{2})\.[^.]+$")
+VERSION_FILENAME_RE = re.compile(r"^(?P<version>[^.]+(?:\.[^.]+)*)\.md$")
 HOTFIX_RE = re.compile(r"^(?P<base>\d+(?:\.\d+)*)(?:-h(?P<hotfix>\d+))?$")
-
-
-@dataclass(frozen=True)
-class FileIdentity:
-    """Unique identity for a product/version issue bucket."""
-
-    product: str
-    issue_type: str
-    version: str
-
-
-@dataclass(frozen=True)
-class FileRecord:
-    """Parsed issue file metadata used for de-duplication and sorting."""
-
-    identity: FileIdentity
-    filename: str
-    release_date: date
 
 
 def parse_args() -> argparse.Namespace:
     """Parse command line arguments for input and output paths."""
 
     parser = argparse.ArgumentParser(
-        description="Update products.json from issue files, keeping latest date per version."
+        description="Update products.json from issue files."
     )
     parser.add_argument(
         "--issues-dir",
@@ -54,10 +34,10 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def collect_latest_issue_files(issues_dir: Path) -> dict[FileIdentity, FileRecord]:
-    """Collect the newest file per product, issue type, and version."""
+def collect_issue_files(issues_dir: Path) -> list[tuple[str, str, str, str]]:
+    """Collect all issue files with '<version>.md' naming."""
 
-    latest: dict[FileIdentity, FileRecord] = {}
+    records: list[tuple[str, str, str, str]] = []
 
     for file_path in sorted(p for p in issues_dir.rglob("*") if p.is_file()):
         relative = file_path.relative_to(issues_dir)
@@ -68,38 +48,23 @@ def collect_latest_issue_files(issues_dir: Path) -> dict[FileIdentity, FileRecor
         if issue_type not in ISSUE_TYPES:
             continue
 
-        parsed = parse_issue_filename(filename)
-        if parsed is None:
+        version = parse_issue_filename(filename)
+        if version is None:
             continue
 
-        version, release_date = parsed
-        identity = FileIdentity(product=product, issue_type=issue_type, version=version)
-        record = FileRecord(identity=identity, filename=filename, release_date=release_date)
+        records.append((product, issue_type, version, filename))
 
-        current = latest.get(identity)
-        if current is None or (record.release_date, record.filename) > (
-            current.release_date,
-            current.filename,
-        ):
-            latest[identity] = record
-
-    return latest
+    return records
 
 
-def parse_issue_filename(filename: str) -> tuple[str, date] | None:
-    """Parse '<version>_<YYYY-MM-DD>.<ext>' issue filenames."""
+def parse_issue_filename(filename: str) -> str | None:
+    """Parse '<version>.md' issue filenames and return version."""
 
-    match = FILENAME_RE.match(filename)
+    match = VERSION_FILENAME_RE.match(filename)
     if not match:
         return None
 
-    version = match.group("version")
-    try:
-        release_date = date.fromisoformat(match.group("date"))
-    except ValueError:
-        return None
-
-    return version, release_date
+    return match.group("version")
 
 
 def clear_leaf_issue_arrays(node: Any) -> None:
@@ -172,7 +137,7 @@ def parse_release_prefix(prefix: str) -> tuple[tuple[int, ...], int]:
 def filename_sort_key(filename: str) -> tuple[tuple[int, ...], int, int, str]:
     """Build a sort key that orders base versions before hotfixes."""
 
-    prefix = filename.split("_", 1)[0]
+    prefix = filename.rsplit(".", 1)[0]
     base_parts, hotfix = parse_release_prefix(prefix)
     is_hotfix = 1 if hotfix >= 0 else 0
     return base_parts, is_hotfix, hotfix, filename
@@ -212,17 +177,22 @@ def update_products(issues_dir: Path, products_path: Path) -> None:
     if not isinstance(products, dict):
         raise ValueError("products.json must contain a top-level object")
 
+    records = collect_issue_files(issues_dir)
+    if not records:
+        raise ValueError(
+            "No '<version>.md' issue files found; refusing to rewrite products.json"
+        )
+
     clear_leaf_issue_arrays(products)
 
-    latest_files = collect_latest_issue_files(issues_dir)
-    for record in sorted(
-        latest_files.values(),
-        key=lambda r: (r.identity.product, r.identity.issue_type, r.identity.version),
+    for product, issue_type, version, filename in sorted(
+        records,
+        key=lambda r: (r[0], r[1], r[2]),
     ):
-        path = pick_target_leaf_path(products, record.identity.product, record.identity.version)
+        path = pick_target_leaf_path(products, product, version)
         if path is None:
             continue
-        add_file_to_leaf(products, path, record.identity.issue_type, record.filename)
+        add_file_to_leaf(products, path, issue_type, filename)
 
     with products_path.open("w", encoding="utf-8") as f:
         json.dump(products, f, indent=2)
