@@ -1,0 +1,140 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242777</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users previously reported limitations due to
+          session count caps when utilizing
+          <b class="ph b">Web Proxy</b> features on PA-5400 Series Firewalls. To
+          address these performance complaints and support higher traffic
+          volumes, we have increased the maximum session capacity on specific
+          <b class="ph b">PA-5400F</b> series platforms, leveraging available
+          system memory. This update ensures greater capacity and stability for
+          high-volume environments.
+        </div>
+        <div class="p">
+          The supported session limits are:
+
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <div style="display: inline"></div>
+          <table class="table colsep rowsep table-striped">
+            <!--cq:include script="../../common/tablestack.jsp" /-->
+
+            <colgroup>
+              <col style="width: 50%" />
+              <col style="width: 50%" />
+            </colgroup>
+            <thead class="thead">
+              <tr class="row">
+                <th class="entry">Platform</th>
+                <th class="entry">Max Sessions</th>
+              </tr>
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry">PA-5410</td>
+                <td class="entry relcol">95K</td>
+              </tr>
+
+              <tr class="row">
+                <td class="entry">PA-5420</td>
+                <td class="entry relcol">95K</td>
+              </tr>
+
+              <tr class="row">
+                <td class="entry">PA-5430</td>
+                <td class="entry relcol">95K</td>
+              </tr>
+
+              <tr class="row">
+                <td class="entry">PA-5440</td>
+                <td class="entry relcol">225K</td>
+              </tr>
+
+              <tr class="row">
+                <td class="entry">PA-5445</td>
+                <td class="entry relcol">250K</td>
+              </tr>
+
+              <tr class="row">
+                <td class="entry">PA-5450</td>
+                <td class="entry relcol">1.28M</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291499</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls on Amazon Web Services (AWS) environments
+            only</tt
+          >) Fixed an issue where newly deployed firewalls were unable to
+          connect to the Strata Logging Service (SLS) until after a reboot,
+          license fetch, or management server restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-288726</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="keyword cmdname">useridd</span> process stopped
+          responding due to a Security policy rule ID being set to 0, which
+          caused the last configuration retrieval to fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287133</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the Panorama web interface where assigning a policy
+          rule to a group at the top or bottom of the list changed the order of
+          other policy rules.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

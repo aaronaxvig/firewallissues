@@ -1,0 +1,77 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-311938</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where autocommits failed after an upgrade due to
+          configuration memory allocation issues and 100% policy rule cache
+          usage when both DNS Rewrite and URL Custom Category Match were
+          configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-306451</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls on AWS environments only</tt>)
+          Fixed an issue where, after upgrading the firewall to an affected
+          release, GlobalProtect clients did not connect with IPSec and instead
+          connected using SSL due to traffic flow being disabled when checking
+          for health check packets.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304496</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after unregistering an IP tag and registering a
+          different IP tag for the same IP address via XML API, the dynamic
+          address group membership was not updated on the dataplane, which
+          resulted in Security policy rules being enforced incorrectly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304195</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where performing a private data reset
+          caused device telemetry to stop working. This issue also occurred
+          after performing a factory reset and then running the CLI command
+          <span class="ph systemoutput">set system ztp disable</span>.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

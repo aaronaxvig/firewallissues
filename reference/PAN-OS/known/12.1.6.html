@@ -1,0 +1,797 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 34%" />
+    <col style="width: 66%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313779</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7500 series only</tt>) PA-7500 series firewalls
+          running PAN-OS 12.1.5 release do not support encryption on HA1 and
+          HA1-backup interfaces. As a result, attempting to execute the
+          <span class="ph codeph"
+            >request high-availability session-reestablish</span
+          >
+          command will fail with the following error.
+        </div>
+        <div class="p">
+          <pre
+            id="panos-known-issues-12.1.6_screen-ilq_djv_h3c"
+            class="pre screen"
+          >
+ERROR: Encryption is not enabled for HA</pre
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313669</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-5500 Series firewalls in cluster configurations only</tt
+          >) When a firewall node is removed from a PA-5500 Series cluster,
+          after the cluster commit and reboot, the node starts in standalone
+          mode with a default virtual wire (vwire) configuration loaded. This
+          default configuration is missing zone assignments for ports eth1/1 and
+          eth1/2, which causes commit operations to fail. Even if zones are
+          manually assigned to these ports, subsequent commit attempts will fail
+          with a
+          <span data-outputclass="response" class="ph systemoutput"
+            >no UUId for rule1</span
+          >
+          error.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> To resolve this, either:
+        </div>
+        <div class="p">
+          <ul id="panos-known-issues-12.1.6_ul-ybs_j3g_k3c" class="ul">
+            <li class="li">
+              Manually assign zone configurations to ports eth1/1 (for example,
+              untrust) and eth1/2 (for example, trust), then open and close
+              security policy rule1 without making changes, and
+              <span class="ph uicontrol">Commit</span>.
+            </li>
+            <li class="li">
+              Delete the default rule and the default virtual wire Ethernet
+              interfaces, then commit.
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313623</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On firewalls with TPM (Trusted Platform Module) support, device
+          certificate renewals may fail due to a disk partition being full. This
+          latter occurs because temporary files aren't being deleted during
+          device certificate status checks.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-312247</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          In generated PDF upgrade check reports, long remediation URLs might be
+          truncated due to UI framework export limitations, leaving only the
+          first line hyperlinked. However, these links remain fully functional
+          within the Panorama web interface. The PDF link directs to the correct
+          destination if the complete URL is copied from the PDF and pasted in
+          the browser.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-309604</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5500 series only</tt>) In some rare cases, the
+          front panel PSU status LED might show amber, even when the LEDs on the
+          PSU show green.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-309602</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5500 series only</tt>) When the firewall is
+          initially powered on, the FAN-0 LED does not turn on. The fan
+          functions correctly, but the LED doesn't reflect the status.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Remove and reinsert the fan to turn on
+          the LED.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-308564</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Packets are dropped on SD-WAN interfaces if they require fragmentation
+          for an interface but have the
+          <span class="ph uicontrol">Don't Fragment (DF)</span> bit set. This
+          results in unexpected packet drops. This affects client to server
+          sessions when using SD-WAN for NGFW.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Allow fragmenting packets with DF bit
+          set (<span class="ph userinput"
+            >debug dataplane set ip4-ignore-df yes</span
+          >).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300850</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Manual scheduling of cloud verdicts is required if a new host in an
+          Host Compliance Service-enabled environment has a refresh event entry
+          without a corresponding update event entry.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300809</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Host Compliance Service connectivity will not work if it is connected
+          with management IP which is configured with DHCP mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300677</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Panorama cannot display Threat log entries (<b class="ph b"
+            >Monitor &gt; Logs &gt; Threat</b
+          >) when the managed log collector is running a lower PAN-OS release
+          than Panorama.
+        </div>
+        <div class="p">
+          Workaround: Upgrade the log collectors to the same version as
+          Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300627</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          AutoCommit fails when the Traffic Object is used on AI Runtime
+          Security, which consequently impacts the workloads that utilize
+          overlapping subnets.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300483</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7500 firewall only</tt>) Enabling FIPS-CC mode
+          causes the firewall to go into maintenance mode.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: After the firewall goes into
+          maintenance mode, perform an additional reboot. The firewall will
+          successfully start up in FIPS-CC mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300467</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          WildFire WF-500 appliances running PAN-OS 10.x or PAN-OS 11.x cannot
+          be managed by Panorama running PAN-OS 12.1.2 due to connectivity
+          issues.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Upgrade your WildFire appliances to
+          PAN-OS 12.1.2 or later.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300407</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The Release Note URL column in the Panorama &gt; Plugins page is
+          empty.
+        </div>
+        <div class="p">
+          Release Notes for the plugins are available in the
+          <a
+            class="xref"
+            href="https://docs.paloaltonetworks.com/plugins/vm-series-and-panorama-plugins-release-notes"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >plugins release notes</a
+          >
+          or in their individual product release notes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300230</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">NGFW Cluster</tt>) In an NGFW cluster, your pings
+          to the HSCI-B link might fail, even when the link indicates it is up.
+          In the event that the HSCI-A link is brought down or unplugged, the
+          cluster node will transition to failed state, avoiding split brain as
+          both HSCI links are down in this case.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Reboot the cluster node to resolve the
+          HSCI-B ping issue.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300192</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          If the Host Compliance Service is configured with a service route
+          pointing to an unreachable IP address, the
+          <span class="ph systemoutput">gp_broker</span> process may stop
+          working when you enable-disable the Host Compliance Service.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300114</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          VM entered maintenance mode during a downgrade from version 12.1.2 to
+          11.2.7, when executed through the CLI.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Download and install the required
+          version of PAN-OS through the UI instead of the CLI.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300069</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-410 firewall only</tt>) Loading a saved config
+          file can take up to 5 minutes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300053</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When you use the CLI command
+          <span class="ph userinput">request system fqdn refresh</span> to
+          trigger another IP address resolution of configured FQDN entries, the
+          firewall might get into an error state where the DNS Proxy cache
+          received and stored a new IP address for a particular FQDN entry via
+          this command. However, the Device-Server (and the Security rule) still
+          have the old IP address for that FQDN entry.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Avoid using the CLI command:
+          <span class="ph userinput">request system fqdn refresh</span>. Use the
+          following command instead (for a particular domain-name or an entire
+          list):
+          <span class="ph userinput"
+            >clear dns-proxy cache all domain-name &lt;domain_name&gt;</span
+          >. To correct the error state where the DNS Proxy cache and
+          Device-Server and Security rule are already storing different IP
+          addresses, use the following CLI command:
+          <span class="ph userinput"
+            >debug device-server dump fqdn type resync vsys &lt;vsys_name&gt;
+            fqdn-name &lt;domain_name&gt;</span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300025</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          If Azure hotplug events occur, the firewall may experience a
+          <span class="ph userinput">brdagent</span> crash and data interfaces
+          may transition to an unknown state, leading to traffic disruption.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Reboot the VM if the
+          <span class="ph userinput">brdagent</span> crash does not trigger a
+          device reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-299562</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          SSL proxy sessions fail when clients send a Client Hello with TLSv1.2
+          and TLSv1.3, and exclusively prefer the secp192 elliptic curve.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: To address this, configure a
+          decryption profile to use TLSv1.2 as the maximum supported TLS
+          version. Then, apply this profile to the decryption policy rules for
+          the affected clients and servers. This enables the client to modify
+          its preferred curves, facilitating successful session establishment.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-299387</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">NGFW Cluster</tt>) When an NGFW cluster has only
+          one firewall node present and powered up, that node is stuck in
+          UNKNOWN state after you reboot it and it comes back up. The issue
+          occurs in two scenarios:
+        </div>
+        <ul id="panos-known-issues-12.1.6_ul-pfz_hyt_tgc" class="ul">
+          <li class="li">
+            When there is only one node configured in the cluster (no peer is
+            available or configured).
+          </li>
+          <li class="li">
+            When the peer device in the cluster is completely powered down or
+            unable to autonegotiate its connected HSCI ports. That is, two nodes
+            are in the cluster, but only one node is booting up while the other
+            remains down completely.
+          </li>
+        </ul>
+        <div class="p">
+          The expected behavior is that if no peer device is available (at a
+          port autonegotiation or link level for HSCI-A or HSCI-B), then a
+          cluster device should go to INITIAL state, followed by ONLINE state
+          (and not remain in UNKNOWN state).
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: To avoid this issue, connect the
+          HSCI-A to HSCI-B in loopback to create a link partner.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-299229</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          On PA-5400 Series and PA-7500 Series firewalls, if you run certain
+          types of CLI commands during or shortly after a commit, the commands
+          will time out. The types of CLI commands impacted by this issue are
+          IoT, Cloud-User-ID, and App-ID Cloud Engine CLI commands.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Don't execute IoT, Cloud-User-ID, or
+          App-ID Cloud Engine CLI commands during or shortly after a commit on a
+          PA-5400 Series or PA-7500 Series firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-299170</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          The remediation link included in the generated PDF of an upgrade check
+          report might be pruned due to a text length limitation of the export
+          function. The link remains fully functional and works correctly on the
+          Panorama web interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-299114</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          After you enable the
+          <span class="ph uicontrol"
+            >Enable Duplicate Logging (Cloud and On-Premise) </span
+          >setting on a firewall, clicking
+          <span class="ph uicontrol">Status for Cloud Logging</span>, does not
+          display the logging service connection status.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-298540</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5500 Series firewalls only</tt>) The
+          <span class="ph uicontrol">Monitor</span> tab in the Web Interface
+          does not display a pop-up to indicate that high-speed log forwarding
+          is enabled and that logs are only viewable from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-298083</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          After you change the system mode on an M-700 appliance from Panorama
+          mode to PAN-DB private cloud mode, the
+          <span class="ph codeph">snmpd</span> process fails to work.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-298047</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          In an AI Runtime Security environment, the Azure Container outbound
+          traffic does not seem to be functional and the egress traffic is being
+          misdirected to an incorrect cluster node port.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-297772</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          When an Intel e810 NIC is configured in SR-IOV mode, sharing Virtual
+          Functions (VFs) among multiple HSF cluster nodes and subsequently
+          rebooting a cluster node while traffic is active may result in traffic
+          disruption on other HSF cluster nodes utilizing the same NIC. It is
+          recommended to refrain from sharing Intel e810 VFs across cluster
+          nodes and to allocate one VF per Intel e810 PF.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297114</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          After successfully generating a health check report for managed
+          firewalls from Panorama, the progress bar does not appear and the
+          latest health check reports are not displayed (<span
+            class="ph uicontrol"
+            >Panorama &gt; Device Deployment &gt; Upgrade Check</span
+          >).
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Manually refresh the page to see the
+          latest reports.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-294687</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">NGFW Clusters</tt>) In an NGFW cluster, the leader
+          can't retrieve the HIP Report from Panorama, nor synchronize it to the
+          non-leader nodes. Unlike HA Active/Passive mode, both leader and
+          non-leader nodes receive traffic in cluster mode. If the relevant HIP
+          Report is missing, policies involving HIP may not work properly. The
+          expected behavior is that when a non-leader node receives related
+          traffic, it should request the corresponding HIP Report from the
+          leader.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-293754</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">NGFW Clusters</tt>) Firewalls in an NGFW cluster
+          indicate they are in ONLINE state even though their configurations are
+          different (they aren't synchronized).
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Push the configuration from Panorama
+          to all cluster members at the same time; don't push to an individual
+          firewall. If a cluster member isn't connected to Panorama during the
+          push, the push will fail to the disconnected firewall, but will
+          succeed to all connected firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-293718</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When high speed logging is enabled on a PA-5560 device, the expected
+          warning message is not displayed on the web interface. This prevents
+          administrators from being notified that logs can only be viewed from
+          Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292601</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          PAN-OS 12.1.2 and later 12.1 releases support a Load Balanced DNS
+          configuration for an address object. If there are two address objects
+          with same FQDN, but one object has Load Balanced DNS enabled and other
+          object has Load Balanced DNS disabled, then the policy match for the
+          removed IP addresses doesn't work as expected.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Enable (or disable) Load Balanced DNS
+          consistently for an FQDN that is used with multiple address objects.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290692</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          In Host Compliance Service, when you create a 'Shared' type Host
+          Compliance Object for the 'Disk-Encryption' category, the State
+          drop-down is automatically selected and cannot be edited. However, you
+          can change the state later by editing the object, if required.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289524</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          In PAN-OS 12.1.2 and later 12.1 releases, PAN-OS can obtain resolved
+          IP addresses from a Load balanced DNS server and use them in a policy
+          match. However, this functionality does not work as intended when the
+          DNS cache reuse flag is enabled. When the DNS cache reuse flag is
+          enabled, the DNS resolution works as if the Load balanced DNS flag
+          (for an Address object) is disabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286496</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">NGFW Clusters</tt>) URL-continue and override
+          continue selections will function like a general URL-block action.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-283429</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When you use custom certificates for the connection between Panorama
+          and a log collector, the automated renewal for the predefined
+          ElasticSearch certificates gets disrupted.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Remove the custom certificates before
+          the ElasticSearch certificates expire. This allows the system to
+          correctly identify and renew the predefined ElasticSearch
+          certificates. After the renewal is complete, re-install the custom
+          certificates.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237106</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          LSVPN satellite certificates may be generated with serial numbers
+          exceeding 40 hexadecimal characters. This causes certificate
+          revocation and deletion operations to fail with the following error
+          messages:
+        </div>
+        <ul id="panos-known-issues-12.1.6_ul-t2x_dxs_wgc" class="ul">
+          <li class="li">
+            <span class="ph systemoutput"
+              >db-serialno can be at most 40 characters</span
+            >
+          </li>
+          <li class="li">
+            <span class="ph systemoutput">db-serialno is invalid</span>
+          </li>
+        </ul>
+        <b class="ph b">Workaround:</b>
+        <div class="p">
+          To resolve this issue, use the following CLI commands with the LSVPN
+          satellite serial number to manually delete or revoke the affected
+          certificates:
+        </div>
+        <div class="p">
+          <b class="ph b">Delete certificate information</b>:<span
+            class="ph userinput"
+            >delete sslmgr-store certificate-info portal name
+            <var class="keyword varname">&lt;name&gt;</var> serialno
+            <var class="keyword varname">&lt;satellite_serial&gt;</var></span
+          >
+        </div>
+        <div class="p">
+          <b class="ph b">Revoke satellite certificates</b>:<span
+            class="ph userinput"
+            >delete sslmgr-store satellite-info-revoke-certificate portal
+            <var class="keyword varname">&lt;name&gt;</var> serialno
+            <var class="keyword varname"
+              >&lt;list_of_satellite_serials&gt;</var
+            ></span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PLUG-21065</b></div>
+      </td>
+      <td class="entry relcol">
+        <div dir="ltr" class="p">
+          In a PA-VM or AI Runtime Security environment, it is observed that the
+          Software Firewall Orchestration plugin deployed with a VM-Flex license
+          and configured with 8-14 GB of memory may encounter traffic
+          disruptions when jumbo frames are enabled. It is recommended to
+          disable jumbo frames on these lower-end VMs in version 12.1.2 by
+          executing the command: set system setting jumbo-frame off.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PLUG-19238</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Enabling Advanced Routing through bootstrap on VM-Series and Prisma
+          AIRS is not supported.
+        </div>
+        <b class="ph b">Workaround</b>: After the firewall boots up, enable
+        advanced routing using the CLI command set device-management
+        general-settings advance-routing yes or enable
+        <a
+          class="xref"
+          href="https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-networking-admin/advanced-routing/enable-advanced-routing"
+          title=""
+          data-scope="external"
+          data-format="html"
+          data-type=""
+          target="_blank"
+          >advanced routing</a
+        >
+        through the UI.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">DRS-6556</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          For Host Compliance Service, while configuring Mappings &amp; Tags in
+          CIE and when you click on the
+          <span class="ph uicontrol">HIP Report</span> tab, the following error
+          message is displayed even when the response is successful:
+        </div>
+        <div class="p">
+          <span class="ph uicontrol">getaddrinfo ENOTFOUND null</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
