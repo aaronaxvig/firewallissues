@@ -108,7 +108,7 @@ export function parseIssuesFromHtmlTable(htmlText, options = {}) {
         return [];
     }
 
-    const rows = Array.from(table.querySelectorAll('tr'));
+    const rows = Array.from(table.rows);
     const issues = [];
 
     const parsedType = normalizeWhitespace(String(options.type || '')).toLowerCase();
@@ -472,7 +472,7 @@ function isAsciiLetterOrDigit(char) {
 }
 
 function convertHtmlTableToMarkdown(table) {
-    const rows = Array.from(table.querySelectorAll('tr'))
+    const rows = Array.from(table.rows)
         .map(row => Array.from(row.querySelectorAll('th, td')))
         .filter(cells => cells.length > 0);
 
@@ -483,17 +483,25 @@ function convertHtmlTableToMarkdown(table) {
     const headerCells = rows[0].map(cell => sanitizeTableCellText(cell.textContent || ''));
     const columnCount = headerCells.length;
 
-    const lines = [];
-    lines.push(`| ${headerCells.join(' | ')} |`);
-    lines.push(`| ${Array(columnCount).fill('---').join(' | ')} |`);
-
-    rows.slice(1).forEach(cells => {
+    const dataRows = rows.slice(1).map(cells => {
         const values = cells.map(cell => sanitizeTableCellText(cell.textContent || ''));
         while (values.length < columnCount) {
             values.push('');
         }
+        return values.slice(0, columnCount);
+    });
 
-        lines.push(`| ${values.slice(0, columnCount).join(' | ')} |`);
+    const colWidths = headerCells.map((h, i) => {
+        const maxData = dataRows.reduce((max, row) => Math.max(max, row[i].length), 0);
+        return Math.max(h.length, maxData, 3);
+    });
+
+    const lines = [];
+    lines.push(`| ${headerCells.map((h, i) => h.padEnd(colWidths[i])).join(' | ')} |`);
+    lines.push(`| ${colWidths.map(w => '-'.repeat(w)).join(' | ')} |`);
+
+    dataRows.forEach(values => {
+        lines.push(`| ${values.map((v, i) => v.padEnd(colWidths[i])).join(' | ')} |`);
     });
 
     return lines.join('\n');
