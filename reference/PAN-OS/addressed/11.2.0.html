@@ -1,0 +1,389 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PLUG-16383</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          the <span class="ph systemoutput">PAN_NET_FILE_TMP</span> was not
+          found after an upgrade, which caused the firewall to enter maintenance
+          mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240174</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when LSVPN serial numbers and IP address
+          authentication were enabled, IPv6 address ranges and complete IPv6
+          addresses that were manually added to the IP address allow or exclude
+          list were not usable after a restart of the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >gp_broker</a
+          >
+          process or the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-230362</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall truncated the payload of a TCP Out
+          of Order segment with a FIN flag.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-228386</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with session caching where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >reportd</a
+          >
+          process stopped responding due to null values.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227344</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where
+          <span class="ph uicontrol">PDF Summary Reports</span> (<span
+            class="ph uicontrol"
+            >Monitor &gt; PDF Reports &gt; Manage PDF Summary</span
+          >) displayed no data and were blank when predefined widgets were
+          included in the summary report.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227305</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SCEP certificate generation failed when a service
+          route was used to reach the SCEP server.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227224</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-1400 Series firewalls</tt>) Fixed an issue where
+          the firewall was unable to handle GRE packets for Point-to-Point
+          Tunneling Protocol (PPTP) connections.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-226626</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall generated numerous
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          error messages related to netflow.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225394</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where SNMP incorrectly reported high
+          packet descriptor usage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225240</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the OSPF neighbor state remained in
+          <span class="ph systemoutput">exstart</span> when the OSPF network had
+          more than 40 routes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225183</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SSH tunnels were unstable due to ciphers used as
+          part of the high availability SSH configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224772</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a high memory usage issue with the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >mongodb</a
+          >
+          process that caused an OOM condition.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224365</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where excessive network path monitoring messages were
+          generated in the system logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224067</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where cookie authentication did not work for
+          GlobalProtect when an authentication override domain was configured in
+          the SAML authentication profile.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-223501</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where diagnostic information for the dataplane in the
+          dp-monitor.log file was not complete.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-223365</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama was unbale to query any logs if the
+          Elasticsearch health status for any log collector was degraded.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-220881</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the CLI command
+          <span class="ph systemoutput">show logging-status</span> did not
+          correctly display the last log created and forwarded timestamps.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-220640</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-220 firewalls only</tt>) Fixed an issue where
+          the firewall CPU percentage was miscalculated, and the values that
+          were displayed were incorrect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-219768</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where you were unable to filter Data Filtering logs
+          with <span class="ph uicontrol">Threat ID/NAME</span> for custom data
+          patterns created over Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-219585</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where enabling
+          <span class="ph systemoutput">syslog-ng</span> debugs from the root
+          caused 100% disk utilization.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-217510</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where inbound DHCP packets received by a DHCP client
+          interface that were not addressed to itself were silently dropped
+          instead of forwarded.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-208567</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with email formatting where, when a scheduled email
+          contained two or more attachments, only one attachment was visible.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-207003</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process netflow buffer was not reset which resulted in duplicate
+          netflow records.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-202095</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where the language setting is not
+          retained.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PLUG-16385</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the file
+          <span class="ph codeph">PAN_NET_FILE_TMP</span> was missing after the
+          upgrade causing the VM-Series firewall to go into maintenance mode.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

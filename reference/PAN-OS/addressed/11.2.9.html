@@ -1,0 +1,280 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297972</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a dataplane crash occurred when traffic matched
+          Inline Cloud Analysis prefiltering signatures, even when Inline Cloud
+          Analysis features were not enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297458</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task_1</a
+          >
+          process crashed on the firewall when the wif service wasn't available
+          because the wif detection ID was not in the current service table.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297261</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy-protocol debug level was set to
+          <span class="ph systemoutput">verbose</span> on Prisma Access
+          instances, even when it was not explicitly configured, which caused
+          excessive logging by the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-296519</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a stream receiving a reconnect signal with an
+          associated error in
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >Wifclient</a
+          >
+          caused the entire pool to close, which resulted in a complete
+          disconnection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-296478</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading to PAN-OS 10.2.13-h10,
+          GlobalProtect Clientless VPN on PA-3250 firewalls failed to execute
+          JavaScript links, resulting in an authorization error. This occurred
+          because the firewall was incorrectly injecting text into URLs when
+          JavaScript buttons or dropdown menus were clicked within the
+          Clientless VPN portal.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-296283</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, on hardware platforms with the SaaS inline
+          license, Additional Header Logging (AHL) hash table creation proceeded
+          even when the feature was disabled through the CLI, potentially
+          leading to crashes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295944</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where static routes remained active in the FIB and RIB
+          even when the associated physical port interface was down, which
+          resulted in traffic being incorrectly routed through a non-operational
+          interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295812</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the throughput data on the Switch Card Module
+          (SCM) was not accurately reported. This issue affected Standard SC
+          USABN and USABN-2 when using Direct-IO deployment.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295342</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_comm</a
+          >
+          process stopped responding due to insufficient time allocated to read
+          file descriptors when processing long messages.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292539</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">CN-Series firewalls only</tt>) Fixed an issue where
+          the firewall generated incomplete or corrupted tech support files
+          (TSF) due to high disk usage on the management plane.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291940</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall established multiple TCP connections
+          to a syslog server, which caused logs to be dropped. This occurred
+          because the firewall established a new TCP session for each transfer
+          and the sessions were not closed, which resulted in a continuous
+          increase in connections over time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289249</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak occurred on the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >reportd</a
+          >
+          process when a WildFire update was initiated while device telemetry
+          data collection was in progress. This resulted in an OOM condition.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-281721</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall generated high-severity system
+          alerts indicating that the configuration size exceeded the maximum
+          recommended size, even when the configuration size was within the
+          expected limits.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-277178</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where you were unable to delete a shared
+          object due to the rulebase incorrectly referencing the shared object
+          instead of the device group-specific object when the name was used.
+        </div>
+        <div class="p">
+          To use this fix, delete the original shared object after cloning it to
+          a device group with the same name.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272245</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the dnsproxy process crashed due to memory
+          corruption caused by a race condition when allow list downloading was
+          impacted by config change.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

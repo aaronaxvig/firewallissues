@@ -1,0 +1,160 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-307901</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a leak in decryption counters caused resource
+          exhaustion, which led to a GlobalProtect service outage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-307702</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in HA configurations only</tt>) Fixed an
+          issue where traffic passing through AE layer 2 interfaces was
+          interrupted during HA failovers.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-306451</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls on AWS environments only</tt>)
+          Fixed an issue where, after upgrading the firewall to an affected
+          release, GlobalProtect clients did not connect with IPSec and instead
+          connected using SSL due to traffic flow being disabled when checking
+          for health check packets.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-306103</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3400 and PA-5400 Series firewalls only</tt>)
+          Fixed an issue where the firewall dataplane frequently restarted when
+          lockless QoS was enabled
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-303959</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic was incorrectly identified as
+          unknown-tcp/unknown-udp due to App-ID resource leak and eventually
+          dropped.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-301409</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama failed to perform a selective push to a
+          managed device when device tags were added or modified on the policy
+          rules. The selective push failed with the error message
+          <span class="ph systemoutput"
+            >Failed to generate selective push configuration. Schema validation
+            failed. Please try a full push</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-301222</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where DNS Security logs incorrectly displayed a
+          sinkhole action for benign DNS categories due to the firewall saving
+          the drop or sinkhole action in session flags without discarding the
+          session.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300638</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          the firewall stopped responding due to an out-of-bounds read when
+          parsing TLS 1.3 clientHello messages with large TLS clientHello
+          extensions where the
+          <span class="ph systemoutput">supported_versions</span> extension fell
+          outside the first TCP segment.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295803</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Addressed a memory leak issue under sc3 and automatic commit recovery
+          (ACR) code path.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289723</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall web interface continuously loaded
+          and not display any output when viewing the Route Table or FIB table
+          (<span class="ph uicontrol">More Runtime Stats</span>). This issue
+          occurred when L3 configurations were added to ethernet and AE
+          interfaces.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

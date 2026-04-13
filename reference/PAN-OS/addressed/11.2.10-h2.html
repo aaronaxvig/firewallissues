@@ -1,0 +1,339 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-306306</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama appliances in FIPS-CC mode only</tt>)
+          Fixed interdevice TLS communication failures that occurred with RSA
+          and RSA-PSS signature algorithms across multiple layer 7 application
+          services.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-303051</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where a memory leak occurred related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >reportd</a
+          >
+          process due to retaining memory that was temporarily used for report
+          generation instead of releasing the memory for reuse, which resulted
+          in continuous accumulation and memory exhaustion.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-302927</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading Panorama, the
+          <span class="ph uicontrol">Push to Devices</span> option did not
+          display selected devices, and the
+          <span class="ph uicontrol">OK</span> and
+          <span class="ph uicontrol">Cancel</span>
+          buttons did not function as expected. Selecting
+          <span class="ph uicontrol">OK</span> did not close the window, and
+          selecting <span class="ph uicontrol">Cancel</span> returned to the
+          main push screen with the push selected devices displaying as empty.
+          Despite this, selecting <span class="ph uicontrol">Push</span> or
+          <span class="ph uicontrol">Validate Device Group Push</span> still
+          pushed to the previously canceled, non-displayed devices.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-301801</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Log Collectors where the Elasticsearch process
+          fluctuated intermittently between green and red states, which led to
+          interruptions in log collection. This issue occurred when the number
+          of shards exceeded the cluster's maximum supported threshold of
+          greater than 1000 shards per Elasticsearch instance.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-301691</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where BGP stopped responding with the error message
+          <span class="ph systemoutput">Too many open files</span> when pushing
+          1000 eBGP (External BGP) neighbor configurations. With this fix, the
+          number of file descriptors for the BGP process is increased from 1024
+          to 8192.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-301456</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where the
+          <span class="ph systemoutput">debug system reset-ztp</span> CLI
+          command was unavailable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300216</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when SD-WAN Direct Internet Access was
+          configured and traffic traversed the cellular interface without a NAT
+          policy rule, intermittent cellular modem connectivity issues occurred,
+          which caused the firewall to disconnect and reconnect to the cellular
+          network.
+        </div>
+        <div class="p">
+          To use this fix, run the CLI command
+          <span class="ph systemoutput"
+            >set session teardown-upon-fwd-zonechange yes</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300138</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where DNS queries stalled or repeatedly time out due to
+          multiple DNS responses with different CNAME values causing evasion
+          false positive alerts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-299815</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on multi-vsys firewalls where a host was not removed
+          from the quarantine list after receiving a redistribution message from
+          Panorama. This occurred when Panorama was configured to redistribute
+          quarantine messages to a firewall cluster, and the GlobalProtect
+          configuration and redistribution were built out in a vsys other than
+          vsys1.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-298387</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where the source and destination NAT IP
+          addresses did not display in traffic and threat logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b"> PAN-297610</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall became unresponsive after an upgrade
+          due to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >fsck</a
+          >
+          command scanning drive partitions in parallel with the root partition,
+          which caused the process to take an extended amount of time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297005</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where exporting custom reports resulted in empty CSV
+          files.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-296977</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the web interface became unresponsive when
+          attempting to view
+          <span class="ph uicontrol">Ethernet</span> interface details after
+          applying a filter in
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Network</span
+            ><span class="ph uicontrol">Interfaces</span></span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-296694</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted due to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process repeatedly restarting during an IP-port data type writes to
+          the redis from multiple sources such as TSA or XML in a scale
+          environment.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-296535</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where BGP peers disconnected when more
+          than 500 BGP neighbors were configured in a single Logical Router
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295899</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where DNS resolution failed on Linux machines running
+          GlobalProtect client version 6.2.6 when connected with DNS Security
+          enabled. This occurred because the firewall incorrectly discarded DNS
+          packets when processing multiple DNS requests or responses over the
+          same session, even when no malicious verdict was received.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-276525</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Resolved multiple issues affecting IPSec tunnels using NAT Traversal
+          (NAT-T) when a Dynamic NAT policy was configured (including Dynamic
+          NAT or DIPP). During rekey events, tunnels could go down or flap due
+          to incorrect session handling. This issue impacted both cluster and
+          standalone deployments.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-209516</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when creating an interface, an error occurred
+          when you clicked <span class="ph uicontrol">OK</span> without
+          providing a value in the <span class="ph uicontrol">Tag</span> field
+          even though the field was not displayed as mandatory.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-185731</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall was unable to parse the URL path and
+          host when the host header was located in a different packet, which
+          resulted in the firewall not logging the URL path in the first packet.
+        </div>
+        <div class="p">
+          The fix is disabled by default. The following CLI commands can be used
+          to enable/disable the feature: set system setting ctd
+          url-crosspkt-host-path-caching enable set system setting ctd
+          url-crosspkt-host-path-caching disable set system setting ctd
+          url-crosspkt-host-path-caching default
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

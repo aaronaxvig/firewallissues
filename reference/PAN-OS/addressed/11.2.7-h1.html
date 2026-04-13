@@ -1,0 +1,349 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-294436</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where polling failed for ethernet interfaces due to the
+        physical port counters read from the MAC being 0.
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-293842</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the hybrid-SWG service proxy stopped working
+          after upgrading to PAN-OS 11.1.6-h13 due to the firewall failing to
+          establish the listening interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-293673</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stopped all tasks due to an OOM
+          condition caused by a scheduled log export using FTP to an external
+          FTP server.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292503</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where the source and destination NAT IP
+          addresses did not display in traffic and threat logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291060</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commits failed due to the configured connected
+          gateway IPv6 address in the NAT64 policy exceeding the 31 character
+          limit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290996</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SNMP walks returned a value of 0 for the CPS
+          (Connections Per Second) per vsys on firewalls after upgrading to
+          PAN-OS 11.1.6-h3, even when active connections were present.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290088</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak occurred related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process when pushing configurations from Panorama to a firewall. This
+          occurred when the configurations contained shared policy rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289714</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Prisma Access only</tt>) Fixed an issue where
+          persistent commit failures occurred due to a missing transformation
+          script when downgrading from PAN-OS 10.2.0 to PAN-OS 10.1.0.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289268</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where internet access through Secure Web Gateway (SWG)
+        proxy nodes did not work when the default internet access policy rule
+        source user was not <span class="ph uicontrol">known-user</span>.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-288939</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding due to an invalid SSL context being used
+          for socket communication, which caused commits to fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-284878</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/passive HA configurations only</tt
+          >) Fixed an issue where commits failed due the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process restarting.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-284003</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where clients did not receive a valid response when
+          when searching a website due to a compression error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-280409</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the popup window did not appear as expected for
+          Clientless VPN users.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279901</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          An issue was fixed where the firewall dropped fragmented TLS
+          ClientHello packets, which blocked access to certain websites. This
+          occurred because the packets arrived truncated, in varying sizes and
+          orders, and the firewall's heuristics failed to handle them correctly.
+        </div>
+        <div class="p">
+          To enable this fix, run:
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt accumulate-client-hello disjoined
+            yes</span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279690</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_pktproc</a
+          >
+          process stopped responding, which caused the firewall to unexpectedly
+          restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279415</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where service routes configured to use a data plane
+          interface incorrectly used the management plane interface for traffic
+          transmission. This issue affected syslog and CRL status traffic when a
+          custom service route was not configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-276616</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where half-duplex settings on Ethernet
+          were not visible.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271810</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where auto-negotiation advertised and negotiated 10/100
+          half and full duplex.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268787</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were unable to log in to Panorama and the
+          following error message was displayed:
+          <span class="ph systemoutput"
+            >Timed out while getting config lock. Please try again</span
+          >. This occurred when pushing configurations to a large number of
+          devices.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255860</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5200 firewalls only</tt>) Fixed an issue where
+          the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_pktproc
+          </a>
+          process stopped responding when the firewall was under a heavy traffic
+          load.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-252706</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the URL filtering response page for
+          <span class="ph uicontrol">Continue</span> and
+          <span class="ph uicontrol">Override</span> did not work with IPv6
+          Router Advertisement (RA) or Multicast Listener Query (MLQ) for
+          IPv6-to-IPv6 and IPv6-to-IPv4 traffic.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
