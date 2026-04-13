@@ -13,8 +13,6 @@ Known and addressed issues for newly released versions are easily added using th
 - Fix up the products.json file manually or run `update_products_from_issues.py`.
 - Submit a pull request.
 
-The date on the end of the Markdown file names is to have some idea of when the data was grabbed.  I would imagine that sometimes there are updates.  (I plan to remove the dates in the future.  The git history should be sufficient.)
-
 There is intentionally no automated scaping of Palo Alto's website, to avoid abuse of server resources.  Also releases are not that frequent.  A crawler to grab some data from the Common Crawl dataset was started but never really finished.
 
 Some data was collected early on when the HTMLTable -> Markdown code was kind of bad, so the formatting of the issue write-up tends to be bad on those.  Mostly PAN-OS 10 and 11 stuff.

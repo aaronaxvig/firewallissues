@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Update products.json entries from discovered issue data files."""
 
 from __future__ import annotations
 
@@ -18,6 +19,8 @@ HOTFIX_RE = re.compile(r"^(?P<base>\d+(?:\.\d+)*)(?:-h(?P<hotfix>\d+))?$")
 
 @dataclass(frozen=True)
 class FileIdentity:
+    """Unique identity for a product/version issue bucket."""
+
     product: str
     issue_type: str
     version: str
@@ -25,12 +28,16 @@ class FileIdentity:
 
 @dataclass(frozen=True)
 class FileRecord:
+    """Parsed issue file metadata used for de-duplication and sorting."""
+
     identity: FileIdentity
     filename: str
     release_date: date
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse command line arguments for input and output paths."""
+
     parser = argparse.ArgumentParser(
         description="Update products.json from issue files, keeping latest date per version."
     )
@@ -48,6 +55,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def collect_latest_issue_files(issues_dir: Path) -> dict[FileIdentity, FileRecord]:
+    """Collect the newest file per product, issue type, and version."""
+
     latest: dict[FileIdentity, FileRecord] = {}
 
     for file_path in sorted(p for p in issues_dir.rglob("*") if p.is_file()):
@@ -78,6 +87,8 @@ def collect_latest_issue_files(issues_dir: Path) -> dict[FileIdentity, FileRecor
 
 
 def parse_issue_filename(filename: str) -> tuple[str, date] | None:
+    """Parse '<version>_<YYYY-MM-DD>.<ext>' issue filenames."""
+
     match = FILENAME_RE.match(filename)
     if not match:
         return None
@@ -92,6 +103,8 @@ def parse_issue_filename(filename: str) -> tuple[str, date] | None:
 
 
 def clear_leaf_issue_arrays(node: Any) -> None:
+    """Reset addressed/known arrays on every issue leaf in products.json."""
+
     if isinstance(node, dict):
         if "addressed" in node or "known" in node:
             node["addressed"] = []
@@ -103,10 +116,14 @@ def clear_leaf_issue_arrays(node: Any) -> None:
 
 
 def is_issue_leaf(node: Any) -> bool:
+    """Return whether a node is a leaf containing issue arrays."""
+
     return isinstance(node, dict) and ("addressed" in node or "known" in node)
 
 
 def pick_target_leaf_path(products: dict[str, Any], product: str, version: str) -> list[str] | None:
+    """Choose the best matching product tree path for a version."""
+
     parts = version.split(".")
     if not parts:
         return None
@@ -129,6 +146,8 @@ def pick_target_leaf_path(products: dict[str, Any], product: str, version: str) 
 
 
 def get_path(data: Any, path: list[str]) -> Any:
+    """Traverse nested dict keys and return the value at path, if present."""
+
     current = data
     for key in path:
         if not isinstance(current, dict) or key not in current:
@@ -138,6 +157,8 @@ def get_path(data: Any, path: list[str]) -> Any:
 
 
 def parse_release_prefix(prefix: str) -> tuple[tuple[int, ...], int]:
+    """Extract numeric base version parts and optional hotfix number."""
+
     match = HOTFIX_RE.match(prefix)
     if not match:
         return tuple(), -1
@@ -149,13 +170,22 @@ def parse_release_prefix(prefix: str) -> tuple[tuple[int, ...], int]:
 
 
 def filename_sort_key(filename: str) -> tuple[tuple[int, ...], int, int, str]:
+    """Build a sort key that orders base versions before hotfixes."""
+
     prefix = filename.split("_", 1)[0]
     base_parts, hotfix = parse_release_prefix(prefix)
     is_hotfix = 1 if hotfix >= 0 else 0
     return base_parts, is_hotfix, hotfix, filename
 
 
-def add_file_to_leaf(products: dict[str, Any], path: list[str], issue_type: str, filename: str) -> None:
+def add_file_to_leaf(
+    products: dict[str, Any],
+    path: list[str],
+    issue_type: str,
+    filename: str,
+) -> None:
+    """Insert an issue filename into the target leaf with stable sorting."""
+
     leaf = get_path(products, path)
     if not isinstance(leaf, dict):
         return
@@ -169,6 +199,8 @@ def add_file_to_leaf(products: dict[str, Any], path: list[str], issue_type: str,
 
 
 def update_products(issues_dir: Path, products_path: Path) -> None:
+    """Rebuild product issue file lists from crawled issue files."""
+
     if not issues_dir.is_dir():
         raise FileNotFoundError(f"Issues directory not found: {issues_dir}")
     if not products_path.is_file():
@@ -183,7 +215,10 @@ def update_products(issues_dir: Path, products_path: Path) -> None:
     clear_leaf_issue_arrays(products)
 
     latest_files = collect_latest_issue_files(issues_dir)
-    for record in sorted(latest_files.values(), key=lambda r: (r.identity.product, r.identity.issue_type, r.identity.version)):
+    for record in sorted(
+        latest_files.values(),
+        key=lambda r: (r.identity.product, r.identity.issue_type, r.identity.version),
+    ):
         path = pick_target_leaf_path(products, record.identity.product, record.identity.version)
         if path is None:
             continue
@@ -195,6 +230,8 @@ def update_products(issues_dir: Path, products_path: Path) -> None:
 
 
 def main() -> int:
+    """Entrypoint for command-line usage."""
+
     args = parse_args()
     script_dir = Path(__file__).resolve().parent
     repo_root = script_dir.parent
