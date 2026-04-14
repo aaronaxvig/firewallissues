@@ -1,0 +1,1436 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 34%" />
+    <col style="width: 66%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-308564</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Packets are dropped on SD-WAN interfaces if they require fragmentation
+          for an interface but have the
+          <span class="ph uicontrol">Don't Fragment (DF)</span> bit set. This
+          results in unexpected packet drops. This affects client to server
+          sessions when using SD-WAN for NGFW.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Allow fragmenting packets with DF bit
+          set (<span class="ph userinput"
+            >debug dataplane set ip4-ignore-df yes</span
+          >).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304756</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt>
+          <a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-13-known-and-addressed-issues/pan-os-11-1-13-h1-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.13-h1 Addressed Issues</a
+          >.
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          After you disable the shared optimization feature in Panorama, ensure
+          that you perform a full configuration push to all managed multi-vsys
+          devices to re-establish a baseline. Failure to include every device
+          group associated with the multi-vsys device during this push might
+          result in incomplete or inconsistent configurations across virtual
+          systems.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304576</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Traffic interruption may occur when inspection of HTTP/2 traffic is
+          enabled.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Disable HTTP/2 server push using the
+          <span class="ph userinput"
+            >set deviceconfig setting http2 server-push no</span
+          >
+          CLI command.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-303051</b></div>
+        <tt class="ph tt">This issue is now resolved. See </tt>
+        <a
+          class="xref"
+          href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-13-known-and-addressed-issues/pan-os-11-1-13-addressed-issues.html"
+          title=""
+          data-scope="local"
+          data-format="dita"
+          data-type=""
+          target="_self"
+          >PAN-OS 11.1.13 Addressed Issues</a
+        >
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The <span class="ph codeph">reportd</span> process experiences a
+          memory leak because it retains memory that was temporarily used for
+          report generation. Once a task is complete, the process fails to
+          release this memory for reuse, leading to continuous accumulation and
+          eventual memory exhaustion on the Panorama device.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-298505 </b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt>
+          <a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-h7-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10-h7 Addressed Issues</a
+          >
+          and
+          <a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-12-known-and-addressed-issues/pan-os-11-1-12-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.12 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          After upgrading multi-vsys firewalls, the sequence of the virtual
+          system IDs (vsys ID) changes causing auto-commit failures with
+          validation errors. This occurs when the multi-vsys firewall has
+          virtual systems managed by Panorama, and the vsys ID sequence breaks
+          when unused virtual systems are deleted and the changes are pushed to
+          the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-294179</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-h4-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10-h4 Addressed Issues</a
+          >.
+        </div>
+      </td>
+      <td class="entry relcol">
+        On the<span class="ph uicontrol"> Panorama Config Audit</span> page,
+        some commit versions might display incorrect or missing data. Fields
+        such as, <span class="ph uicontrol">COMMITTED BY</span>,
+        <span class="ph uicontrol">COMMIT DATE</span>, and<span
+          class="ph uicontrol"
+        >
+          OBJECT CHANGES</span
+        >
+        might not be visible for some commit versions. Sometimes, commit
+        versions can disappear after a refresh and the commit description field
+        might display corrupted characters.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-293673</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-11-known-and-addressed-issues/pan-os-11-1-11-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.11 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        When the firewall generates a high volume of logs and attempts to export
+        these logs to an FTP server, it may consume excessive memory leading to
+        all PAN-OS processes crashing.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292202</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The system logs repeatedly displayed the alert `Clearing snmpd.log due
+          to log overflow` due to the SNMP counters rolling over. This is a
+          benign message and does not impact device functionality.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289432 </b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Generating a certificate with the
+          <span class="ph codeph">block-private-key yes</span> command on
+          Panorama fails with the error:
+        </div>
+        <div class="p">
+          <span class="ph codeph"
+            >Could not get parameters for double encryption.</span
+          >
+          This occurred when the certificate was signed by an external
+          Certificate Authority (CA).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290235</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-11-known-and-addressed-issues/pan-os-11-1-11-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.11 Addressed Issues</a
+          >.
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >dscd</a
+          >
+          process crashes continuously on MIPS platforms (for example, PA-850
+          firewalls) due to a runtime error related to an invalid memory address
+          or nil pointer dereference. This occurs when the golang library
+          upgrade in CIE is not compatible with the MIPS platform.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290088</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-11-known-and-addressed-issues/pan-os-11-1-11-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.11 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When pushing configurations from Panorama to a firewall, a memory leak
+          might occur in the firewall's
+          <span class="ph codeph">configd</span> process, particularly when the
+          configurations contain shared policies. Each configuration push causes
+          the <span class="ph codeph">configd</span> process to consume
+          additional memory that is not released after the commit completes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289383</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-800 series firewalls only</tt>) Upgrading
+          firewalls to PAN-OS 11.0 or later causes SFP ports to go
+          non-operational when the firewall uses forced port mode and the
+          connected peer device operates without auto-negotiation.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Enable auto-negotiation on the
+          connected peer firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-288097</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See</tt>
+          <a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-11-known-and-addressed-issues/pan-os-11-1-11-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.11 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Routed process may stop responding after changing MTU or any link
+          parameters when OSPF and PIM are enabled on the same interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287056</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-h1-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10-h1 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A BGP export policy rule that matches on a next hop fails to block the
+          advertisement of static routes, and the firewall incorrectly matches
+          the egress interface IP address instead of the original next-hop IP
+          address of the static route, which causes the deny rule to fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286897</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10 Addressed Issues</a
+          ><tt class="ph tt">.</tt>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          process might fail when the firewall attempts to forward files to the
+          WildFire public cloud, which can cause the dataplane to experience
+          heartbeat failures.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Disable the firewall WildFire Analysis
+          profile.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286848</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          ECMP incorrectly balances sessions across links based on the
+          configured metric, which leads to an imbalance in traffic distribution
+          and results in traffic assignment shifting disproportionately to
+          routes with lower metrics.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286496</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">NGFW Clusters</tt>) URL-continue and override
+          continue selections will function like a general URL-block action.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286306</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-h1-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10-h1 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When getting transceiver information from ESCC for SFP 25G modules,
+          the transceiver code incorrectly displays
+          <span class="ph systemoutput">Unknown</span> instead of
+          <span class="ph systemoutput">25GBase-SR</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286231</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-11-known-and-addressed-issues/pan-os-11-1-11-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.11 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When performing a partial <b class="ph b">Commit and Push</b> on
+          Panorama, there is a risk that unintended configuration changes might
+          be pushed to a firewall.
+        </div>
+        <div class="p">
+          This issue is more likely to occur in the following scenarios:
+          <ul id="panos-known-issues-11.1.9_ul-br5_bl2_3gc" class="ul">
+            <li class="li">
+              <div class="p">
+                When you run <b class="ph b">Commit and Push</b> operations as a
+                single action.
+              </div>
+            </li>
+            <li class="li">
+              <div class="p">
+                When you trigger multiple parallel commit-all jobs at the same
+                time.
+              </div>
+            </li>
+            <li class="li">
+              <div class="p">
+                Device groups and templates have different configuration
+                synchronization versions.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Perform one of the following steps:
+        </div>
+        <ul id="panos-known-issues-11.1.9_ul-cqn_gl2_3gc" class="ul">
+          <li class="li">
+            Perform commit and push as two separate, sequential steps.
+          </li>
+          <li class="li">Perform a full push instead of selective push.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-285894</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          If the Preserve Pre-NAT feature is enabled, dataplane crashes may
+          occur, which could result in firewall reboots.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Disable the Preserve Pre-NAT feature
+          using the
+          <span class="ph userinput"
+            >set deviceconfig setting preserve-prenat-feature no</span
+          >
+          CLI command.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-283467</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10 Addressed Issues</a
+          ><tt class="ph tt">.</tt>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3400 Series firewalls only</tt>) The firewall
+          might unexpectedly reboot and enter maintenance mode due to a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >ctd-agent</a
+          >
+          out-of-memory (OOM) condition when undergoing advanced services load
+          testing with a high volume of IoT EAL log forwarding.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Limit the number of EAL logs generated
+          by the firewall using the following CLI command:
+          <span class="ph userinput"
+            >debug iot eal key-value EAL_PENDING_BYTES=1000</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-283429</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When you use custom certificates for the connection between Panorama
+          and a log collector, the automated renewal for the predefined
+          ElasticSearch certificates gets disrupted.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Remove the custom certificates before
+          the ElasticSearch certificates expire. This allows the system to
+          correctly identify and renew the predefined ElasticSearch
+          certificates. After the renewal is complete, re-install the custom
+          certificates.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-282854</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-11-known-and-addressed-issues/pan-os-11-1-11-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.11 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The Elasticsearch cluster fails to start after deploying dedicated log
+          collectors in a multi-collector environment.
+        </div>
+        <b class="ph b">Workaround:</b> Restart all the involved log collectors.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-280532</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10 Addressed Issues</a
+          ><tt class="ph tt">.</tt>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When you use a single syslog server over TCP for log forwarding, and
+          the connectivity to the syslog server breaks, syslog forwarding does
+          not resume even after the connectivity to the server restores.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Performing one of the following tasks:
+        </div>
+        <ul id="panos-known-issues-11.1.9_ul-kmj_cv2_3fc" class="ul">
+          <li dir="ltr" class="li">Reboot the firewall.</li>
+          <li dir="ltr" class="li">
+            Temporarily, configure syslog to use UDP, commit the configuration,
+            revert to TCP, and then commit.
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279901</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When decryption is enabled, segmented Client Hello packets can cause
+          website access issues and memory leaks under the following conditions:
+        </div>
+        <ul id="panos-known-issues-11.1.9_ul-zwk_p4l_jgc" class="ul">
+          <li class="li">
+            <div class="p">
+              The segmented Client Hello packets arrive out-of-order
+            </div>
+          </li>
+          <li class="li">
+            <div class="p">
+              The segmented Client Hello packets arrive out-of-order and can be
+              reassembled into a complete Client Hello when the first contiguous
+              segment is formed by NGFW
+            </div>
+          </li>
+          <li class="li">
+            <div class="p">
+              The first segment of the Client Hello packets is less than 5 bytes
+            </div>
+          </li>
+          <li class="li">
+            <div class="p">
+              A decryption policy rule excludes this traffic from decryption and
+              a Security policy rule (URL filtering) denies this session
+            </div>
+          </li>
+        </ul>
+        <div class="p">
+          To enable this fix, run the CLI command
+          <span class="ph systemoutput"
+            >bug dataplane set ssl-decrypt accumulate-client-hello disjoined
+            yes</span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279415</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-11-known-and-addressed-issues/pan-os-11-1-11-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.11 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Service routes configured for a data plane interface might incorrectly
+          route traffic through the management plane interface instead. This
+          issue impacts Syslog and CRL status traffic when the service route
+          lacks a specific destination custom service route.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-277034 </b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-h5-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10-h5 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        WildFire reports might not fully display or be downloadable because some
+        static resources fail to load.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-276920</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          URL filtering response pages may load slowly or fail to display when
+          users request websites that are blocked in the URL Filtering profile
+          (site access for the corresponding URL category is
+          <span class="ph uicontrol">block</span>,
+          <span class="ph uicontrol">continue</span>, or
+          <span class="ph uicontrol">override</span>) attached to the matching
+          Security policy rule. This occurs on an intermittent basis.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-275601</b></div>
+        <div class="p">
+          <tt class="ph tt">This issue is now resolved. See </tt
+          ><a
+            class="xref"
+            href="/content/techdocs/en_US/pan-os/11-1/pan-os-release-notes/pan-os-11-1-10-known-and-addressed-issues/pan-os-11-1-10-addressed-issues.html"
+            title=""
+            data-scope="local"
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >PAN-OS 11.1.10 Addressed Issues</a
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When Panorama is not internet-connected and you try to upload images
+          to the managed firewalls by using the
+          <span class="ph uicontrol">Validate</span> option, the upload fails
+          with the following error:
+          <span class="ph systemoutput"
+            >Failed to create multi-upload job. No valid software deploy targets
+            found.</span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-275047</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) After an upgrade,
+          the firewall is unable to send logs to the Strata Logging Service
+          (SLS) when using a specific proxy server, and the SSL connection
+          status displays as failed when attempting to forward logs through the
+          web proxy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262556</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The ElasticSearch cluster health status might continue to remain
+          yellow for an extended period after upgrading to PAN-OS 11.1
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-260851</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          From the NGFW or Panorama CLI, you can override the existing
+          application tag even if Disable Override is enabled for the
+          application (<span class="ph menucascade"
+            ><span class="ph uicontrol">Objects</span
+            ><span class="ph uicontrol">Applications</span></span
+          >) tag.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254240</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          In the event of an HSCI flap on an NGFW cluster node, traffic
+          reconvergence takes three to four seconds.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-253963</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The auto commit job may take longer than expected to complete when the
+          Panorama management server is in Panorama or Log Collector mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251551</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When an NGFW cluster agent crashes and doesn't recover, leader
+          election will take approximately 45 seconds to begin and traffic
+          failover will occur during that time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250903</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          In a congestion scenario on an HSCI port of an NGFW cluster node, the
+          QoS priorities of cross node traffic streams might be reversed if
+          you're using the default QoS profile with class1 to class8 set as high
+          to low.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-247974</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          LACP flap is expected during a device failover in an NGFW cluster due
+          to an L2 ctrld restart on the new leader node.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-234015</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The X-Forwarded-For (XFF) value is not displayed in traffic logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224502</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The autocommit time of the VM-Series firewall running PAN-OS 11.1.0
+          might take longer than expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-220180</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Configured botnet reports (<span class="ph menucascade"
+            ><span class="ph uicontrol">Monitor</span
+            ><span class="ph uicontrol">Botnet</span></span
+          >) are not generated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-207733</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When a DHCPv6 client is configured on HA Active/Passive firewalls, if
+          the DHCPv6 server goes down, after the lease time expires, the DHCPv6
+          client should enter SOLICIT state on both the Active and Passive
+          firewalls. Instead, the client is stuck in BOUND state with an IPv6
+          address having lease time 0 on the Passive firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-207611</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When a DHCPv6 client is configured on HA Active/Passive firewalls, the
+          Passive firewall sometimes crashes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-207442</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          For M-700 appliances in an active/passive high availability (<span
+            class="ph menucascade"
+            ><span class="ph uicontrol">Panorama</span
+            ><span class="ph uicontrol">High Availability</span></span
+          >) configuration, the
+          <span class="ph systemoutput">active-primary</span> HA peer
+          configuration sync to the
+          <span class="ph systemoutput">secondary-passive</span> HA peer may
+          fail. When the config sync fails, the job Results is
+          <span class="ph systemoutput">Successful</span>
+          (<span class="ph uicontrol">Tasks</span>), however the sync status on
+          the <span class="ph uicontrol">Dashboard</span> displays as
+          <span class="ph systemoutput">Out of Sync</span> for both HA peers.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Perform a local commit on the
+          <span class="ph systemoutput">active-primary</span> HA peer and then
+          synchronize the HA configuration.
+        </div>
+        <ol id="panos-known-issues-11.1.9_ol_aqy_kbp_qxb" class="ol">
+          <li class="li">
+            <div class="p">
+              <a
+                class="xref"
+                href="https://docs.paloaltonetworks.com/panorama/11-0/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >Log in to the Panorama web interface</a
+              >
+              of the <span class="ph systemoutput">active-primary</span> HA
+              peer.
+            </div>
+          </li>
+          <li class="li">
+            <div class="p">
+              Select <span class="ph uicontrol">Commit</span> and
+              <span class="ph uicontrol">Commit to Panorama</span>.
+            </div>
+          </li>
+          <li class="li">
+            <div class="p">
+              In the <span class="ph systemoutput">active-primary</span> HA peer
+              <span class="ph uicontrol">Dashboard</span>, click
+              <span class="ph uicontrol">Sync to Peer</span> in the High
+              Availability widget.
+            </div>
+          </li>
+        </ol>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-207040</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          If you disable Advanced Routing, remove logical routers, and downgrade
+          from PAN-OS 11.0.0 to a PAN-OS 10.2.x or 10.1.x release, subsequent
+          commits fail and SD-WAN devices on Panorama have no Virtual Router
+          name.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-206913</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When a DHCPv6 client is configured on HA Active/Passive firewalls,
+          releasing the IPv6 address from the client (using Release in the UI or
+          using the
+          <span class="ph systemoutput"
+            >request dhcp client ipv6 release all</span
+          >
+          CLI command) releases the IPv6 address from the Active firewall, but
+          not the Passive firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-206909</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The Dedicated Log Collector is unable to reconnect to the Panorama
+          management server if the <span class="ph systemoutput">configd</span>
+          process crashes. This results in the Dedicated Log Collector losing
+          connectivity to Panorama despite the managed collector connection
+          <span class="ph systemoutput">Status</span> (<span
+            class="ph menucascade"
+            ><span class="ph uicontrol">Panorama</span
+            ><span class="ph uicontrol">Managed Collector</span></span
+          >) displaying <span class="ph systemoutput">connected</span> and the
+          managed colletor <span class="ph systemoutput">Health</span> status
+          displaying as healthy.
+        </div>
+        <div class="p">
+          This results in the local Panorama config and system logs not being
+          forwarded to the Dedicated Log Collector. Firewall log forwarding to
+          the disconnected Dedicated Log Collector is not impacted.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Restart the
+          <span class="ph systemoutput">mgmtsrvr</span> process on the Dedicated
+          Log Collector.
+        </div>
+        <ol id="panos-known-issues-11.1.9_ol_pdy_4bm_lvb" class="ol">
+          <li class="li">
+            <div class="p">
+              <a
+                class="xref"
+                href="https://docs.paloaltonetworks.com/panorama/11-0/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-cli"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >Log in to the Dedicated Log Collector CLI</a
+              >.
+            </div>
+          </li>
+          <li class="li">
+            <div class="p">
+              Confirm the Dedicated Log Collector is disconnected from Panorama.
+            </div>
+            <!-- FM Dita Overlay for Code -->
+            <div class="code-wrap">
+              <pre
+                class="pre codeblock"
+                data-label="PRE CODEBLOCK"
+              ><div style="display: inline;"><span class="ph systemoutput hljs">admin&gt;</span><span class="ph userinput hljs sql"> <span class="hljs-keyword">show</span> panorama-<span class="hljs-keyword">status</span></span></div></pre>
+              <div class="p">
+                Verify the <span class="ph systemoutput">Connected</span> status
+                is <span class="ph systemoutput">no</span>.
+              </div>
+            </div>
+          </li>
+          <li class="li">
+            <div class="p">
+              Restart the <span class="ph systemoutput">mgmtsrvr</span> process.
+            </div>
+            <!-- FM Dita Overlay for Code -->
+            <div class="code-wrap">
+              <pre
+                class="pre codeblock"
+                data-label="PRE CODEBLOCK"
+              ><div style="display: inline;"><span class="ph systemoutput hljs">admin&gt;</span><span class="ph userinput hljs nginx"> <span class="hljs-attribute">debug</span> software restart process management-server</span></div></pre>
+            </div>
+          </li>
+        </ol>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-197588</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The PAN-OS ACC (Application Command Center) does not display a widget
+          detailing statistics and data associated with vulnerability exploits
+          that have been detected using inline cloud analysis.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-197419</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-1400 Series firewalls only</tt>) In
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Network</span
+            ><span class="ph uicontrol">Interface</span
+            ><span class="ph uicontrol">Ethernet</span></span
+          >, the power over Ethernet (PoE) ports do not display a
+          <span class="ph uicontrol">Tag</span> value.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-196758</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On the Panorama management server, pushing a configuration change to
+          firewalls leveraging SD-WAN erroneously show the auto-provisioned BGP
+          configurations for SD-WAN as being edited or deleted despite no edits
+          or deletions being made when you
+          <span class="ph uicontrol">Preview Changes</span> (<span
+            class="ph menucascade"
+            ><span class="ph uicontrol">Commit</span
+            ><span class="ph uicontrol">Push to Devices</span
+            ><span class="ph uicontrol">Edit Selections</span></span
+          >
+          or
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Commit</span
+            ><span class="ph uicontrol">Commit and Push</span
+            ><span class="ph uicontrol">Edit Selections</span></span
+          >).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-195968</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-1400 Series firewalls only</tt>) When using the
+          CLI to configure power over Ethernet (PoE) on a non-PoE port, the CLI
+          prints an error depending on whether an interface type was selected on
+          the non-PoE port or not. If an interface type, such as tap, Layer 2,
+          or virtual wire, was selected before PoE was configured, the error
+          message will not include the interface name (eg. ethernet1/4). If an
+          interface type was not selected before PoE was configured, the error
+          message will include the interface name.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-194978</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-1400 Series firewalls only</tt>) In
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Network</span
+            ><span class="ph uicontrol">Interface</span
+            ><span class="ph uicontrol">Ethernet</span></span
+          >, hovering the mouse over a power over Ethernet (PoE)
+          <span class="ph uicontrol">Link State</span> icon does not display
+          link speed and link duplex details.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-187685</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On the Panorama management server, the Template Status displays no
+          synchronization status (<span class="ph menucascade"
+            ><span class="ph uicontrol">Panorama</span
+            ><span class="ph uicontrol">Managed Devices</span
+            ><span class="ph uicontrol">Summary</span></span
+          >) after a bootstrapped firewall is successfully added to Panorama.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> After the bootstrapped firewall is
+          successfully added to Panorama,
+          <a
+            class="xref"
+            href="https://docs.paloaltonetworks.com/panorama/10-2/panorama-admin/set-up-panorama/access-and-navigate-panorama-management-interfaces/log-in-to-the-panorama-web-interface.html"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >log in to the Panorama web interface</a
+          >
+          and select
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Commit</span
+            ><span class="ph uicontrol">Push to Devices</span></span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-187407</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          The configured Advanced Threat Prevention inline cloud analysis action
+          for a given model might not be honored under the following condition:
+          If the firewall is set to
+          <span class="ph uicontrol"
+            >Hold client request for category lookup </span
+          >and the action set to
+          <span class="ph uicontrol">Reset-Both</span> and the URL cache has
+          been cleared, the first request for inline cloud analysis will be
+          bypassed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-186283</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Templates appear out-of-sync on Panorama after successfully deploying
+          the CFT stack using the Panorama plugin for AWS.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Use
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Commit</span
+            ><span class="ph uicontrol">Push to Devices</span></span
+          >
+          to synchronize the templates.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-184708</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Scheduled report emails (<span class="ph menucascade"
+            ><span class="ph uicontrol">Monitor</span
+            ><span class="ph uicontrol">PDF Reports</span
+            ><span class="ph uicontrol">Email Scheduler</span></span
+          >) are not emailed if:
+        </div>
+        <ul id="panos-known-issues-11.1.9_ul_bqh_5qx_rsb" class="ul">
+          <li class="li">
+            A scheduled report email contains a Report Group (<span
+              class="ph menucascade"
+              ><span class="ph uicontrol">Monitor</span
+              ><span class="ph uicontrol">PDF Reports</span
+              ><span class="ph uicontrol">Report Group</span></span
+            >) which includes a SaaS Application Usage report.
+          </li>
+          <li class="li">
+            A scheduled report contains only a SaaS Application Usage Report.
+          </li>
+        </ul>
+        <div class="p">
+          <b class="ph b">Workaround:</b> To receive a scheduled report email
+          for all other PDF report types:
+        </div>
+        <ol id="panos-known-issues-11.1.9_ol_jgs_zqx_rsb" class="ol">
+          <li class="li">
+            Select
+            <span class="ph menucascade"
+              ><span class="ph uicontrol">Monitor</span
+              ><span class="ph uicontrol">PDF Reports</span
+              ><span class="ph uicontrol">Report Groups</span></span
+            >
+            and remove all SaaS Application Usage reports from all Report
+            Groups.
+          </li>
+          <li class="li">
+            Select
+            <span class="ph menucascade"
+              ><span class="ph uicontrol">Monitor</span
+              ><span class="ph uicontrol">PDF Reports</span
+              ><span class="ph uicontrol">Email Scheduler</span></span
+            >
+            and edit the scheduled report email that contains only a SaaS
+            Application Usage report. For the Recurrence, select
+            <span class="ph uicontrol">Disable</span> and click
+            <span class="ph uicontrol">OK</span>.
+            <div class="p">
+              Repeat this step for all scheduled report emails that contain only
+              a SaaS Application Usage report.
+            </div>
+          </li>
+          <li class="li">
+            <span class="ph uicontrol">Commit</span>.
+            <div class="p">
+              (<tt class="ph tt">Panorama managed firewalls</tt>) Select
+              <span class="ph menucascade"
+                ><span class="ph uicontrol">Commit</span
+                ><span class="ph uicontrol">Commit and Push</span></span
+              >
+            </div>
+          </li>
+        </ol>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-184406</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Using the CLI to add a RAID disk pair to an M-700 appliance causes the
+          dmdb process to crash.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Contact customer support to stop the
+          dmdb process before adding a RAID disk pair to a M-700 appliance.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-183404</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Static IP addresses are not recognized when "and" operators are used
+          with IP CIDR range.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-181933</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          If you use multiple log forwarding cards (LFCs) on the PA-7000 series,
+          all of the cards may not receive all of the updates and the mappings
+          for the clients may become out of sync, which causes the firewall to
+          not correctly populate the Source User column in the session logs.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
