@@ -1,0 +1,280 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233557</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after using Panorama to configure per policy
+          persistent DIPP, downgrading the firewall using Panorama and then
+          upgrading the firewall back to a later PAN-OS release, the global DIPP
+          configuration was not successfully converted b ack to the per policy
+          persistent DIPP rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-230359</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SAML authentication failed with the error message
+          <span class="ph systemoutput"
+            >Failed to verify signature against certificate</span
+          >
+          when <span class="ph systemoutput">ds:KeyName</span> was in the IdP
+          metadata.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227639</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph uicontrol">ACC</span> displayed an incorrect DNS-base
+          application traffic byte count.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227376</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory overrun caused the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task</a
+          >
+          process to stop responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227368</b></div>
+      </td>
+      <td class="entry relcol">
+        <div dir="ltr" class="p">
+          Fixed an issue where GlobalProtect users could not connect the app to
+          a portal or gateway and GlobalProtect Clientless VPN users were unable
+          to access applications when authentication took longer than 20
+          seconds.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-226418</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A CLI command was added to address an issue where long-lived sessions
+          aged out even when there was ongoing traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-226198</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process repeatedly restarted when attempting to make configuration
+          changes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225920</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where duplicate predict sessions didn't release NAT
+          resources.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225886</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where if you enabled explicit proxy mode for the web
+          proxy, intermittent errors and unexpected TCP reconnections may have
+          occurred.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225169</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added a CLI command to view
+          <span class="ph">Strata Logging Service</span> queue usage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224772</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a high memory usage issue with the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >mongodb</a
+          >
+          process that caused an OOM condition.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224145</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue in multi-vsys environments where, when Panorama was on
+          a PAN-OS 10.2 release and the firewall was on a PAN-OS 10.1 release,
+          commits failed on the firewall when inbound inspection mode was
+          configured in the decryption policy rule.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-223457</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, if the number of group queries exceeded the Okta
+          rate limit threshold, the firewall cleared the cache for the groups.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-221126</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where email server profiles (<span class="ph uicontrol"
+            >Device &gt; Server Profiles &gt; Email and Panorama &gt; Server
+            Profiles &gt; Email</span
+          >) to forward logs as email notifications were not forwarded in a
+          readable format.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-218555</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not receive dynamic address
+          updates pushed from Panorama during initial registration to Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-213931</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process cache was not in sync with the mapping on the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-206913</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where, when DHCPv6 client was configured on firewalls in
+        active/passive HA configurations, releasing the IPv6 address from the
+        client released the IPv6 address from only the active firewall.
+      </td>
+    </tr>
+  </tbody>
+</table>

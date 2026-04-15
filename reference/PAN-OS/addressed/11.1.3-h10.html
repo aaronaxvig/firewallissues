@@ -1,0 +1,281 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265336</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-800 Series, PA-3200 Series, PA-5200 Series, and PA-5450
+            firewalls only</tt
+          >) Fixed an issue where the copper ports flapped when generating a
+          technical support file or executing telemetry.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265287</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall experienced a packet buffer leak in
+          the dataplane of the network processing card (NPC) when processing
+          certain net messages.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265287</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall experienced a packet buffer leak in
+          the dataplane of the NPC when processing certain net messages.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-263973</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where log collectors had a low incoming log rate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262287</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where dereferencing a NULL pointer that occurred caused
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          processes to stop responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-261485</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall dropped the Real Time Transport
+          Protocol (RTP) session for the second SIP call on Persistent-DIPP
+          connections when the source port of the client device was reset.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259733</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a custom report was not deleted on Panorama when
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259151</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where unused objects were pushed to the firewall, which
+          caused configuration pushes to fail with the error
+          <span class="ph systemoutput"
+            >Number of address groups exceed platform capacity</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257912</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stopped responding when it received
+          RADIUS traffic and user equipment (UE) traffic at the same time on an
+          NPC.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257615</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where logs did not display or displayed
+          intermittently on the web interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257601</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5450 firewalls only</tt>) Fixed an issue where
+          Networking Cards (NC) experienced an internal link fault which caused
+          path monitoring failure on the Dataplane Processing Card (DPC).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257327</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5440 firewalls only</tt>) Fixed an issue where a
+          failover event occurred unexpectedly on the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-256725</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the Panorama interface where
+          <span class="ph uicontrol">Traffic</span> and
+          <span class="ph uicontrol">Unified</span> event details loaded more
+          slowly than expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254794</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Panorama management server stopped
+          responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-253626</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where unused objects were pushed to the
+          firewall, which caused the push operations to intermittently fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250394</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a large amount of group data caused serialization
+          errors and prevented synchronization.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-246708</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stopped responding when the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_pktproc</a
+          >
+          repeatedly restarted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-243098</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with corrupted images when SSL decryption and Security
+          profiles were configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-222542</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7000 Series firewalls only</tt>) Fixed an issue
+          where Log Forward Cards (LFC) were incorrectly identified as
+          distribution policies, which caused packet loss due to traffic, BFD,
+          and other control packets being forwarded to the LFC.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

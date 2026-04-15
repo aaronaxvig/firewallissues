@@ -1,0 +1,157 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry"><b class="ph b">PAN-262287</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where dereferencing a NULL pointer that occurred caused
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          processes to stop responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-261673</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls on Microsoft Azure environments only</tt
+          >) Fixed an issue where, when Accelerated Networking was enabled,
+          traffic was dropped because of the<span class="ph systemoutput">
+            flow_parse_ip_hdr</span
+          >
+          counter related to an Nvidia driver issue.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259151</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where unused objects were pushed to the firewall, which
+          caused configuration pushes to fail with the error
+          <span class="ph systemoutput"
+            >Number of address groups exceed platform capacity</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259002</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where frequent external dynamic list updates caused the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process to restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257601</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5450 firewalls only</tt>) Fixed an issue where
+          Networking Cards (NC) experienced an internal link fault which caused
+          path monitoring failure on the Dataplane Processing Card (DPC).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257327</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a failover event occurred unexpectedly on the
+          firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-253626</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where unused objects were pushed to the
+          firewall, which caused the push operations to intermittently fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-236191</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the web interface performance was slower than
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-222542</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7000 Series firewalls only</tt>) Fixed an issue
+          where Log Forward Cards (LFC) were incorrectly identified as
+          distribution policies, which caused packet loss due to traffic, BFD,
+          and other control packets being forwarded to the LFC.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,288 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-258225</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the Panorama web interface where Security policy
+          rules loaded more slowly than expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257615</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where logs did not display or displayed
+          intermittently on the web interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-256725</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the Panorama interface where
+          <span class="ph uicontrol">Traffic</span> and
+          <span class="ph uicontrol">Unified</span> event details loaded more
+          slowly than expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255868</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3400 Series firewalls only</tt>) Fixed an issue
+          where the firewall entered maintenance mode after enabling kernel data
+          collection during the silent reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255266</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where you were unable to clone a template stack with
+          the Pre-Shared Key variable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254411</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding, which caused
+          <span class="ph uicontrol">RR_CONNECTION_REFUSED</span> error messages
+          to be displayed in admin sessions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-253546</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a TLS client hello was split into multiple
+          packets and arrived out of order, so the packets were dropped and the
+          session terminated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251563</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added CPLD enhancement to capture external power issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-247099</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall decrypted traffic unexpectedly when
+          the client hello was spread across multiple packets.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-246772</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where the dataplane went down due to a
+          path monitor failure caused by an OOM condition related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-246059</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where forwarded logs were not visible on Panorama due
+          to the Elasticsearch service not starting when it encountered old and
+          unsupported indices.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-245428</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where FIB entries aged out and were incorrectly removed
+          after an HA failover event.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244548</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where ECMP sessions changed destination MAC addresses
+          mid-session, which caused connections to be reset.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-243098</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with corrupted images when SSL decryption and Security
+          profiles were configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240739</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the ECMP FIB update on the dataplane didn't clear
+          the pending change flag, which caused the next non-ECMP FIB update to
+          miss the latest generation ID and age out after 5 minutes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240612</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">Fixed a kernel panic caused by a third-party issue.</div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240596</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task</a
+          >
+          process stopped responding due to an invalid memory address.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-236133</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SSL traffic was impacted when
+          <span class="ph uicontrol">SSL Command and Control detector</span> for
+          Incline Cloud Analysis was set to<span class="ph uicontrol">
+            reset-both</span
+          >, <span class="ph uicontrol">reset-client</span>,
+          <span class="ph uicontrol">reset-server</span>, or
+          <span class="ph uicontrol">drop</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-234560</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the daily summary report displayed IPv6 addresses
+          instead of IPv4 addresses.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

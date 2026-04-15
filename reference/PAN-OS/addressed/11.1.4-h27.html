@@ -1,0 +1,165 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-301801</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Log Collectors where the Elasticsearch process
+          fluctuated intermittently between green and red states, which led to
+          interruptions in log collection. This issue occurred when the number
+          of shards exceeded the cluster's maximum supported threshold of
+          greater than 1000 shards per Elasticsearch instance.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292159 and PAN-271216</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-4615"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-4615</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291661</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama appliances and Log Collectors where, after
+          an upgrade, Elasticsearch intermittently entered into a Red state
+          before automatically recovering.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286164</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-4614"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-4614</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-282093</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Enhanced the CLI command
+          <span class="ph systemoutput">request legacy reset</span> to delete
+          the legacy certificate files that were being used to connect with the
+          secondary Panorama appliance.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-278296</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the system MAC address of the aggregate interface
+          was the same on the active firewall and the passive firewall after an
+          upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272539</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Panorama appliances on Microsoft Azure environments only</tt
+          >) Fixed an issue where user to IP address mapping was missing for
+          some users connected to specific Prisma Access gateways, which caused
+          the collection layer Azure firewall to not form the mapping.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271221</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-4615"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-4615</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251715</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall closed the SSL connection to the
+          user ID agent.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

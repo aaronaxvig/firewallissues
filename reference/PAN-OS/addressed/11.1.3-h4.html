@@ -1,0 +1,166 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259480</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >varrcvr</a
+          >
+          process stopped responding after running out of memory due to how the
+          process queued and dequeued files for WildFire file forwarding when a
+          WildFire Analysis Security profile was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257925</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">CN-Series firewalls only</tt>) Fixed an issue where
+          the CLI command
+          <span class="ph systemoutput">show system setting ctd state</span> did
+          not work as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257615</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where logs did not display or displayed
+          intermittently on the web interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257462</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >varrcvr</a
+          >
+          process where the management plane CPU was higher than expected during
+          WildFire updates.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-256385</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">CN-Series firewalls only</tt>) Fixed an issue where
+          communication was broken between the management plane and the
+          dataplane when anti-spyware profiles were configured in a Security
+          policy rule.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254373</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not handle error code 500
+          responses from the WildFire cloud correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251639</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where an out-of-memory condition occurred due to a
+          memory leak related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >varrvcr</a
+          >
+          process when a WildFire Analysis security profile was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-248148</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">Jumbo frame feature support is enabled.</div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225213</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where
+          <span class="ph uicontrol">Push All Changes</span> displayed changes
+          that were already committed in the push scope for another device group
+          after performing a selective commit and selective push to the first
+          device group.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

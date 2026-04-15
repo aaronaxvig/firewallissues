@@ -1,0 +1,1005 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279604</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where scheduled SaaS application usage reports were
+          generated incorrectly, and the login page was displayed instead of the
+          report content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-278088</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">show system resources follow</span> CLI
+          command was not available.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-274791</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted when Shared Pool Type 32
+          was depleted and traffic matched advanced features.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-274592</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in HA configurations only</tt>) Fixed an
+          issue where the firewall did not fail over when the active firewall
+          experienced data plane issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273994</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-0111"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-0111</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273971</b></div>
+      </td>
+      <td class="entry relcol">
+        A fix was made to address
+        <a
+          class="xref"
+          href="https://security.paloaltonetworks.com/CVE-2025-0108"
+          title=""
+          data-scope="external"
+          data-format="html"
+          data-type=""
+          target="_blank"
+          >CVE-2025-0108</a
+        >.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273278</b></div>
+      </td>
+      <td class="entry relcol">
+        A fix was made to address
+        <a
+          class="xref"
+          href="https://security.paloaltonetworks.com/CVE-2025-0109"
+          title=""
+          data-scope="external"
+          data-format="html"
+          data-type=""
+          target="_blank"
+          >CVE-2025-0109</a
+        >.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273129</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where the
+          <span class="ph uicontrol">negate</span> option was visible when you
+          clicked on the rule name, but not when you viewed the target options
+          from the <span class="ph uicontrol">rulebase</span> attribute.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273085</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where you were unable to edit or
+          create policy rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273026</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic logs did not display correctly when
+          filters were applied.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273019</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where SSL decryption failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272959</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall generated BGP update packets larger
+          than 1500 bytes when the interface MTU was 1500 bytes and jumbo frames
+          were enabled globally.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272006</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not trigger a kernel core dump
+          as a large core when the CPLD (Complex Programmable Logic Device) sent
+          a Non-Maskable Interrupt (NMI) to the CPU.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271937</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5450 firewalls only</tt>) Fixed an issue where
+          the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding when processing logs from a large number of
+          sources.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271926</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where TLS 1.3 decryption failed with a bad record MAC
+          error when the firewall was configured to decrypt and inspect TLS
+          traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-270549</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where some TLS connections were not handled correctly,
+          which led to instability in the dataplane.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-270471</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in active/active configurations only</tt
+          >) Fixed an issue where the firewall did not detect configuration
+          changes when only the interface of an IKE gateway was changed, which
+          caused IPSec tunnels to not come up after migrating the IKE gateway IP
+          address from a subinterface to a physical interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-270077</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls in Amazon Web Services (AWS) environments
+            only</tt
+          >) Fixed an issue template values were missing in newly spun firewalls
+          in auto scale deployments without an explicit push with forced
+          template values from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-269731</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not display logs from firewalls
+          after upgrading to PAN-OS 10.2.11 on devices due to Elasticsearch (ES)
+          getting restarted continuously.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-269539</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where whitespace was added before the timestamp in
+          syslog logs forwarded from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-269499</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stopped responding when receiving a
+          high number of logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-269106</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed issue where the
+          <span class="ph systemoutput">wifclient</span> restarted and multiple
+          processes stopped responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268909</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IP address tags were removed from firewalls after
+          a management server or
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process restart. This occurred when a Panorama serial-number based
+          configuration was used for User-ID redistribution.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268815</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall entered a non-functional state due
+          to duplicate entries in the shared memory.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268727</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic was dropped when the accumulation proxy
+          was enabled and header insertion modified packets.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267781</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not display the Source Dynamic
+          Address Group.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267762</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Panorama virtual appliances in Management-Only mode</tt
+          >) Fixed a issue where the maximum configuration size was lower than
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267671</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where the firewall rebooted unexpectedly due to the
+        <a
+          class="term"
+          href="#"
+          title=""
+          data-scope=""
+          data-format="dita"
+          data-type=""
+          target="_self"
+          >all_task</a
+        >
+        process restarting with an OOM condition due to a memory leak on the
+        <a
+          class="term"
+          href="#"
+          title=""
+          data-scope=""
+          data-format="dita"
+          data-type=""
+          target="_self"
+          >reportd</a
+        >
+        process.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267430</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama was unable to return logs for queries
+          that were longer than 64,000 characters.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267097</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the replay database size increased significantly
+          due to local and special configurations not being purged after
+          commits.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266581</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a failed SSL connection to a syslog server
+          resulted in a
+          <span class="ph systemoutput">/tmp/srvr.crt.xxxxxx</span> file not
+          being removed, which caused index node (inode) exhaustion.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266559</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where partial commits failed when objects that were
+          referenced in a high number of Security policy rules were renamed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266354</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Hybrid-SWG explicit proxy connections failed when
+          the number of destination domains exceeded 1024.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265745</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall displayed incorrect MAC receive
+          error counters for VMWare devices hosted in ESXi.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265179</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a kernel race condition caused the firewall to
+          reboot with a kernel panic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265160</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall created multiple connections to a
+          syslog server and remained in the FINWAIT1 state, which caused logs to
+          drop while being forwarded to the syslog server.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-264369</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph uicontrol">7 Day Threat Report</span> was empty in the
+          scheduled reports sent via email.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-263291</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Microsoft Outlook did not work as expected when
+          the GlobalProtect clientless VPN was configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262627</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted into maintenance mode due
+          to a service failure in the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262383</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall was unable to decompress the HTTP2
+          header, which caused the session to be classified as unknown-tcp
+          instead of web-browsing.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262254</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall experienced an OOM condition and the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process stopped responding, which caused the firewall to drop
+          interfaces from their respective aggregate groups.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-261998</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall configuration process restarted
+          during an External Dynamic List refresh or a commit and push
+          operation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-260290</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue for fixed model licenses to support new content size
+          requirements by reducing the total sessions supported to be equivalent
+          to their flex memory counterpart
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-260149</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the management plane DNS cache size was lower
+          than expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259055</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stopped responding when receiving
+          SNMPv3 traps.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-258996</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall displayed the SFP ports as
+          <span class="ph systemoutput">PowerDown</span> when the SFP
+          transceiver was removed and reinserted or the port was shut down and
+          brought back up on the peer device.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257390</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5250 firewalls only</tt>) Fixed an issue where
+          the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding due to a segmentation fault.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-256669</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the memory usage reported by SNMP did not match
+          the memory usage reported by the top command.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255773</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where errors related to applications in
+          <span class="ph uicontrol">Content-preview</span> caused commit
+          failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255747</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where CLI commands returned
+          <span class="ph systemoutput"
+            >Server error: op command for client dagger timed out as client is
+            not available</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255653</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an HA failover issue where, when Management Processing Card
+          (MPC) or Base Card (BC) failures occurred, the HA link went down,
+          which caused fpp-down events on one firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-253485</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/passive HA configurations only</tt
+          >) Fixed an issue where dataplane packet capture filter configuration
+          failed on the active firewall with the error
+          <span class="ph systemoutput"
+            >op command for client dagger timed out as client is not
+            available</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-252669</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >ikemgr</a
+          >
+          process stopped responding with a SIGSEGV error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-252036</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect portal was not
+          configured, accessing the GlobalProtect gateway still loaded a portal
+          malformed page.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-252224</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not forward logs to a syslog server
+          over an SSL connection using CRL as a revocation verification method.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250585</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall CPU use increased after upgrading
+          from PAN-OS 10.2.4-h4 to PAN-OS 10.2.8 due to a change in system
+          resource reporting by the REST API.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-246209</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IPSec VPN tunnels went down after receiving a
+          DHCP server message that the DHCP client cleared the IP address on the
+          interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242739</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where the dataplane repeatedly
+          restarted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240225</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where authentication failed on web-based GlobalProtect
+          portal.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-238594</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted when a QSFP28 cable was
+          removed from the port while the port was passing traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-232833</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the following error message displayed for IoT
+          trial licenses:
+          <span class="ph systemoutput"
+            >IoT Security license is required for the feature to function</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-232550</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SNMPv3 authentication failed when using SHA-512
+          Auth protocol.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225228</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where filtering threat logs using any value under
+          <span class="ph uicontrol">THREAT ID/NAME</span> displayed the error
+          <span class="ph uicontrol">Invalid term</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-218873</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a HIP mask was reused when an existing IP address
+          user mapping was updated by a new IP address user mapping that had a
+          different username but the same IP address.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-216054</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue that caused the firewall's fan speed to increase while
+          it was idle.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-214430</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where some commands did not have executable
+          permissions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-212197</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where you were able to create local administrator
+          usernames that contained only numbers.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-207972</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where the BGP routing table did
+          not display advertised routes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-193285</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the policy optimizer feature did not add entries
+          back to the <span class="ph systemoutput">mongodb</span> database
+          after removing them during an upgrade or downgrade.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

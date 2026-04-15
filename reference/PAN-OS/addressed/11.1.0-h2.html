@@ -1,0 +1,103 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-238792</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed the following device certificate issues:
+          <ul id="concept-ezx_1vl_11c_ul-vdr_dlv_5zb" class="ul">
+            <li class="li">
+              The firewall was unable to automatically renew the device
+              certificate-Fetching device certificates failed incorrectly with
+              the error message
+              <span class="ph systemoutput">OTP is not valid</span>.
+            </li>
+            <li class="li">
+              Firewalls disconnected from
+              <span class="ph">Strata Logging Service</span> after renewing the
+              device certificate.
+            </li>
+            <li class="li">
+              The device certificate was not correctly generated on the log
+              forwarding card (LFC).
+            </li>
+            <li class="li">
+              WildFire cloud logs did not log thermite certificate usage status.
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237876</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Extended the firewall Panorama root CA certificate which was
+          previously set to expire on April 7th, 2024.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-231771</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall issued /box/getserv/ requests with
+          PAN-OS 7.1.0 and did not take device certificates.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227568</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When a device certificate is installed, renewed, or removed, the
+          firewall will reconnect to the WildFire cloud to use the newest
+          certificate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-215576</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">userID-Agent</span> and
+          <span class="ph systemoutput">TS-Agent</span> certificates were set to
+          expire on November 18, 2024. With this fix, the expiration date has
+          been extended to January 2032.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

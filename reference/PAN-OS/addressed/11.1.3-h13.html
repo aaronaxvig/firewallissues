@@ -1,0 +1,237 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272809</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2024-0012"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2024-0012</a
+          >
+          (<a
+            class="xref"
+            href="https://security.paloaltonetworks.com/PAN-SA-2024-0015"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >PAN-SA-2024-0015</a
+          >) and
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2024-9474"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2024-9474</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-269000</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stopped responding due to a NULL
+          pointer dereference when path monitoring failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265785</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted due to a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >sysd</a
+          >
+          variable being modified before it was created.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-263208</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5440 and PA-5445 firewalls only</tt>) Fixed an
+          issue where interrupts were generated at a certain packet rate, and
+          dataplane processes missed heartbeats, which caused the dataplane to
+          go down.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-260604</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall displayed inaccurate throughput
+          utilization stats in NetFlow analyzer tools.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259881</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where traffic log details were not
+          displayed under <span class="ph uicontrol">detailed log view</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259351</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2024-3393"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2024-3393</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-258799</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when updating a Security Policy
+          <span class="ph uicontrol">Policy Optimizer</span>, the web interface
+          stopped responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-256223</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where device telemetry log collection filled the root
+          partition.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255915</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak in the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >sslmgr</a
+          >
+          process caused the firewall to restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254826</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stopped responding when processing
+          traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254794</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Panorama management server stopped
+          responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254577</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a core file was created on the Log Forwarding
+          Card (LFC) due to a third-party software issue.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

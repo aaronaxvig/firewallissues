@@ -1,0 +1,261 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292261</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall repeatedly reported an unreachable
+          syslog server as <span class="ph systemoutput">back online</span> when
+          the server remained unavailable. This resulted in misleading
+          alternating connection status messages in the system logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287423</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where content loading issues occurred on IPv6 websites
+          due to the firewall incorrectly setting the IPv6 header flow label to
+          0.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286255</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the firewall received an unexpected
+          termination request for SSL sessions, the dataplane experienced a slow
+          buffer resource leak.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-282069</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where Security policy rules were removed
+          from device groups when you cloned or edited Security policy rules
+          that used more than 63 characters.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-280942</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-280698</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall removed the TCP timestamp from
+          client hello messages that did not fit in a single packet, which
+          resulted in connection issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279901</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          An issue was fixed where the firewall dropped fragmented TLS
+          ClientHello packets, which blocked access to certain websites. This
+          occurred because the packets arrived truncated, in varying sizes and
+          orders, and the firewall's heuristics failed to handle them correctly.
+        </div>
+        <div class="p">
+          To enable this fix, run:
+          <span class="ph userinput"
+            >debug dataplane set ssl-decrypt accumulate-client-hello disjoined
+            yes</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273949</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall generated the following error
+          message in the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >snmpd</a
+          >
+          logs:
+          <span class="ph systemoutput"
+            >pan_get_keystr_from_cryptod(pan_snmpinterface.c:181): Key
+            X2F1dGhfa2V5 import from cryptod failed</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271273</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where dynamic update downloads failed when
+          <span class="ph uicontrol">IPv6 firewalling</span> was enabled on the
+          firewall and both IPv4 and IPv6 were configured on the management
+          interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-270193</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Panorama management server changed its
+          certificate authority (CA) unexpectedly, which caused managed
+          firewalls to disconnect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268614</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where, when all rules were
+          highlighted when a read-only admin user clicked the
+          <span class="ph uicontrol">Highlight Unused Rules</span> checkbox.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-265621</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph uicontrol">restart</span> option for IPSec tunnels was
+          greyed out when you attempted to restart the tunnel from
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Network</span
+            ><span class="ph uicontrol">IPSec Tunnels</span
+            ><span class="ph uicontrol">IKE Info</span></span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-260300</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-5410, PA-5420, PA-5430, PA-5440 and PA-5445 firewalls only</tt
+          >) Fixed an issue related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_pktproc</a
+          >
+          process where DPC slot 3 stopped responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259535</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall failed to boot up after running
+          power cycle tests due to
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >ehmon</a
+          >
+          process heartbeat failures.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

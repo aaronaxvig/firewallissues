@@ -1,0 +1,430 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-252214</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2024-3400"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2024-3400</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251013</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where the
+          <span class="ph uicontrol">Virtual Router</span> and
+          <span class="ph uicontrol">Virtual System</span>
+          configurations for the template incorrectly showed as
+          <span class="ph uicontrol">none</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250686</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where selective push operations did not work when more
+          than one admin user simultaneously performed changes and partial
+          commits on Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-249931</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where configuration pushes from Panorama on PAN-OS
+          11.1.1 to a firewall on a PAN-OS 10.2 release failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-249808</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding when performing multi-device group pushes
+          via XML API.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-247403</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          the push scope CLI command took longer than expected, which caused the
+          web interface to be slow.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><b class="ph b">PAN-246960</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls failed to fetch content updates from
+          the Wildfire Private Cloud due to an
+          <span class="ph uicontrol">Unsupported protocol</span> error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244894</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where turning off
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >mprelay</a
+          >
+          logging caused *mprelay* heartbeat failure.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244622</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where FIB re-push did not work with Advanced Routing
+          enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244227</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where inconsistent FIB entries across the dataplane
+          were not detected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242309</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a higher byte count (s2c) was observed for
+          DNS-Base application.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242027</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all-task</a
+          >
+          process repeatedly restarted during memory allocation failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-241141</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where creating more than one address object in the same
+          XML API request resulted in a commit error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240477</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a temporary hardware issue that caused PAN-SFP-PLUS-CU-5M to not
+          be able to link up on PA-3400 and PA-1400 Series firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240308</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where ElasticSearch did not work as expected when
+          raid-mounts were not fully ready after a reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-239367</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where a memory leak associated with the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process occurred.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-239354</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where DNS resolution was delayed when an Antispyware
+          policy rule was applied to both client to firewall and firewall to
+          internal DNS server legs of a connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-238643</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where a memory leak caused multiple processes to stop
+        responding when VM Information Sources was configured
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237537</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when deleting CTD entries, the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_pktproc</a
+          >
+          process stopped responding which resulted in dataplane failure.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237208</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >reportd</a
+          >
+          process stopped and the firewall rebooted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233789</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with push and commit and push operations where the user
+          was not correctly bound to the scope, which caused all device groups
+          to be selected for a selective push.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233692</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped, which caused performance issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233684</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue on Panorama where
+        <span class="ph uicontrol">Push to Devices</span> or
+        <span class="ph uicontrol">Commit and Push</span> operations took longer
+        than expected on the web interface.
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-231148</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where no DHCP option list was defined when using
+          GlobalProtect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-230746</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where device groups with a large
+          number of managed firewalls displayed the
+          <span class="ph uicontrol">Policy</span> page more slowly than
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-205482</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process where Panorama displayed the error
+          <span class="ph uicontrol">Server not responding</span> when editing
+          policies.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,383 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-282022</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed the support limitation for the Panorama M-600 and M-700
+          appliances.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-281885</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when exporting and importing CSV files, the hash
+          values of pre-shared key variables set at template and template stack
+          levels changed inconsistently, which resulted in both variables
+          displaying the same hash value.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-280505</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the web interface did not display a message to
+          commit prior changes before attempting a partial configuration load.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-280243</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall lost the pre-shared key
+          configuration assigned from a PSK variable when an unrelated device
+          group configuration was loaded.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279336</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the CLI did not display a message to commit prior
+          changes before loading a partial configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279176</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the configuration audit displayed inaccurate
+          information after partially loading the configuration via the CLI,
+          which caused the audit to flag the configuration as deleted or
+          changed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-277762</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          unexpected failovers occurred on firewalls running PAN-OS 11.2.2-h2.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-275713</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >dscd</a
+          >
+          process stopped responding when
+          <span class="ph uicontrol">Endpoint Serial Number</span> was enabled,
+          which resulted in the
+          <span class="ph uicontrol">Active Directory</span> returning a list of
+          serial numbers for a specific firewall from the Cloud Identity Engine.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-275077</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where DNS Security intermittently logs malicious domain
+          URLs as Alert instead of taking a Sinkhole action, even when
+          configured to Sinkhole malicious DNS domains.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-274750</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the detailed log view in Panorama did not display
+          all packet details for traffic logs received from the cloud.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273694</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted due to an out-of-bounds
+          memory access that occurred as a result of the SIP content length
+          value being split across packets.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272538</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding during a commit-all validation when there
+          were uncommitted changes and
+          <span class="ph systemoutput">share-unused-objects-with-devices</span>
+          was set to off.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272171</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall dropped the AAAA DNS server response
+          and caused delays in traffic from Ubuntu or Linux clients when DNS
+          Security was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-270607</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/passive HA configurations only</tt
+          >) Fixed an issue where OSPF failed to establish after a failover from
+          the active firewall to the passive firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271351</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-0116"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-0116</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267091</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where Elasticsearch repeatedly restarted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-264678</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where
+          <span class="ph uicontrol">Preview Changes</span> did not display
+          configuration changes in
+          <span class="ph uicontrol">Commit and push &gt; Push Scope</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262511</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on firewalls in HA configurations where OSPF neighbors
+          were not established after an HA failover.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-261825</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic was dropped when Data Loss Prevention or
+          Advanced URL Filtering were enabled. This occurred when the payload
+          size was greater than 3.5 KB.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259706</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where the web interface was slower than
+          expected or unresponsive when monitoring definitions were added in the
+          Kubernetes plugin.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257183</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall dropped DNS traffic when using DNS
+          Security.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-254174</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-0115"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-0115</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-248762</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the Advanced Routing Engine was configured
+          with OSPF, the firewall stopped responding when attempting to connect
+          to the neighbor while exchanging route maps.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-239201</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where partial commit or partial validation operations
+          failed for non-super user administrators with the error
+          <span class="ph systemoutput"
+            >&lt;device-group-name&gt; is invalid. meta data not found for dg
+            &lt;device-group-name&gt;</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-235733</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the displayed NTP information was incorrect if
+          the DNS servers timed out.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

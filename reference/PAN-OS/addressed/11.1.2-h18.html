@@ -1,0 +1,95 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279604</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where scheduled SaaS application usage reports were
+          generated incorrectly, and the login page was displayed instead of the
+          report content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273085</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where you were unable to edit or
+          create policy rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-272006</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not trigger a kernel core dump
+          as a large core when the CPLD (Complex Programmable Logic Device) sent
+          a Non-Maskable Interrupt (NMI) to the CPU.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271926</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where TLS 1.3 decryption failed with a bad record MAC
+          error when the firewall was configured to decrypt and inspect TLS
+          traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-270549</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where some TLS connections were not handled correctly,
+          which led to instability in the dataplane.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268727</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic was dropped when the accumulation proxy
+          was enabled and header insertion modified packets.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
