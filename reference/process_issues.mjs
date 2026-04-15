@@ -68,41 +68,47 @@ let writtenCount = 0;
 let skippedNoIssues = 0;
 let processedProducts = 0;
 
-for (const product of getProductNames()) {
-    const entries = getInputEntries(product);
-    if (entries.length === 0) {
+const allEntries = getProductNames().flatMap(product =>
+    getInputEntries(product).map(entry => ({ ...entry, product }))
+);
+const totalEntries = allEntries.length;
+let processedEntries = 0;
+const seenProducts = new Set();
+
+for (const entry of allEntries) {
+    const product = entry.product;
+    if (!seenProducts.has(product)) {
+        seenProducts.add(product);
+        processedProducts++;
+    }
+
+    const { filePath, issueType, version } = entry;
+
+    const capitalizedType = issueType.charAt(0).toUpperCase() + issueType.slice(1);
+    const html = readFileSync(filePath, 'utf-8');
+
+    const parsedIssues = parseIssuesFromHtmlTable(html, { type: capitalizedType });
+    processedEntries++;
+    if (parsedIssues.length === 0) {
+        console.warn(`[${processedEntries}/${totalEntries}] No issues parsed from ${basename(filePath)} — skipping`);
+        skippedNoIssues++;
         continue;
     }
 
-    processedProducts++;
+    const markdown = buildIssueMarkdownDocument({
+        type: capitalizedType,
+        product,
+        version,
+        issues: parsedIssues,
+    });
 
-    for (const entry of entries) {
-        const { filePath, issueType, version } = entry;
+    const outDir = join(OUTPUT_ROOT, product, issueType);
+    mkdirSync(outDir, { recursive: true });
 
-        const capitalizedType = issueType.charAt(0).toUpperCase() + issueType.slice(1);
-        const html = readFileSync(filePath, 'utf-8');
-
-        const parsedIssues = parseIssuesFromHtmlTable(html, { type: capitalizedType });
-        if (parsedIssues.length === 0) {
-            console.warn(`No issues parsed from ${basename(filePath)} — skipping`);
-            skippedNoIssues++;
-            continue;
-        }
-
-        const markdown = buildIssueMarkdownDocument({
-            type: capitalizedType,
-            product,
-            version,
-            issues: parsedIssues,
-        });
-
-        const outDir = join(OUTPUT_ROOT, product, issueType);
-        mkdirSync(outDir, { recursive: true });
-
-        const outFile = join(outDir, `${version}.md`);
-        writeFileSync(outFile, markdown, 'utf-8');
-        writtenCount++;
-    }
+    const outFile = join(outDir, `${version}.md`);
+    writeFileSync(outFile, markdown, 'utf-8');
+    writtenCount++;
+    console.log(`[${processedEntries}/${totalEntries}] ${product} ${version} (${issueType})`);
 }
 
 if (processedProducts === 0) {
