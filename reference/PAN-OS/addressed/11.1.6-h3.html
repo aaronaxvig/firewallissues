@@ -1,0 +1,347 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279604</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where scheduled SaaS application usage reports were
+          generated incorrectly, and the login page was displayed instead of the
+          report content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-274791</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall might reboot when traffic matches
+          with certain Advanced features (such as Advanced Threat Prevention and
+          Advanced URL Filtering with properly configured URL
+          Filtering/Anti-Spyware/Vulnerability security profiles) and Shared
+          Pool Type 32 becomes depleted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-274592</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in HA configurations only</tt>) Fixed an
+          issue where the firewall did not fail over when the active firewall
+          experienced data plane issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273949</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall generated the following error
+          message in the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >snmpd</a
+          >
+          logs:
+          <span class="ph systemoutput"
+            >pan_get_keystr_from_cryptod(pan_snmpinterface.c:181): Key
+            X2F1dGhfa2V5 import from cryptod failed</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273019</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where SSL decryption failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271723</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in HA configurations only</tt>) Fixed an
+          issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task</a
+          >
+          process stopped responding, which caused the passive firewall to
+          repeatedly reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-270248</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall failed to forward logs to a SNMP
+          trap server if the SNMP manager IP address was unable to be resolved.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-269091</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >varrcvr</a
+          >
+          process stopped responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268909</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IP address tags were removed from firewalls after
+          a management server or
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process restart. This occurred when a Panorama serial-number based
+          configuration was used for User-ID redistribution.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-268800</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a large number of logs caused the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process to stop responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267995</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where after migrating to a new platform, DLP verdicts
+          were not displayed in the Cloud Manager or logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-267204</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama port 9300 did not adhere to restricted
+          TLS versions and ciphers.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266559</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where partial commits failed when objects that were
+          referenced in a high number of Security policy rules were renamed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266116</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where URLs did not work due to certificate revocation
+          list (CRL) requests failing.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-263291</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Microsoft Outlook did not work as expected when
+          the GlobalProtect clientless VPN was configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-261998</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall configuration process restarted
+          during an External Dynamic List refresh or a commit and push
+          operation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-260300</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-5410, PA-5420, PA-5430, PA-5440 and PA-5445 firewalls only</tt
+          >) Fixed an issue related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_pktproc</a
+          >
+          process where DPC slot 3 stopped responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259076</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall displayed an OCSP/CRL check failure
+          when accessing websites.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-258570</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall might reboot unexpectedly due to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >varrcvr</a
+          >
+          process progressively using more memory when WildFire file forwarding
+          is handling PE files.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255619</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where file downloads from websites failed
+          when decrypting HTTP/2 traffic.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

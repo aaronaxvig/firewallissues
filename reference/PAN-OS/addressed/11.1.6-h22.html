@@ -1,0 +1,36 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-306226</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the TLS handshake did not complete and the
+          session did not go through. This occurred if the HTTP header insertion
+          applied to an HTTP CONNECT request passing through the firewall, the
+          scan-handshake feature was enabled, the session matched a decryption
+          policy rule with the decrypt action, and if the TLS client hello was
+          in a single packet and TLS 1.2 or below.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,242 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-303737</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where XML API commands failed with a
+          <span class="ph systemoutput">Method not found (policy_xml)</span>
+          error in dagger.log. The issue was due to session-distribution
+          commands in dagger files handling.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-299772</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls in active/passive configurations only</tt
+          >) Fixed an issue where, after an HA failover event, the newly active
+          firewall DHCP client interfaces failed to obtain IP addresses
+          automatically. This occurred because the DHCP client processes did not
+          initiate the necessary DHCP discover or renew requests
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-298654</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall generate false positive threat logs
+          during updates to a large domain list (EDL) when a DNS lookup for a
+          domain being added or removed occurred during the update process. This
+          resulted in a threat log being generated for a different, unrelated
+          domain that remained on the list.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-298505</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading an HA pair of PA-7050 firewalls,
+          the vsys ID changed in sequence, causing autocommit failures with
+          validation errors. This occurred when the multi-vsys firewall had
+          virtual systems created and pushed from Panorama, and the vsys ID was
+          not in a correct sequence because the unused vsys was deleted from
+          Panorama and pushed to devices.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297797</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, during a refresh of a large External Dynamic
+          List (EDL), traffic that matched a domain on the list was incorrectly
+          identified as a different domain, which resulted in false positive
+          threat logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295221</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading Panorama and Log Collectors from
+          PAN-OS 10.2.9 to PAN-OS 11.1.6-h6, Traffic and Threat logs were not
+          forwarded to a Splunk server over UDP.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-293848</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama failed to push the default value of
+          <span class="ph systemoutput">None</span> for the secondary NTP server
+          address to managed firewalls, resulting in a commit validation error.
+          This occurred even when configuring the secondary NTP server address
+          as
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >None</a
+          >
+          in Panorama's web interface, and affected both newly deployed and
+          long-standing production firewalls after upgrading.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291716</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where PA-460 firewalls experienced out-of-memory (OOM)
+          conditions, leading to device crashes and reboots.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289859</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama virtual appliances only</tt>) Fixed an
+          issue where Panorama failed to mount logging disks larger than 2TB due
+          to a partitioning error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-288388</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after an EDL certificate update or repository
+          migration, authentication failures caused the firewall to not fall
+          back to the last successfully cached EDL entries, which led to policy
+          rules that referenced the EDL to not be enforced.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287693</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not use the configured proxy
+          settings to check WildFire private cloud content and instead connected
+          directly to the WildFire device using the management interface. This
+          occurred even when
+          <span class="ph uicontrol">Use Proxy Settings for Private Cloud</span>
+          was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-284872</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where ENA (Elastic Network Adapter) extended statistics
+          (conntrack allowance metric) were unavailable in DPDK 22.11.x. This
+          metric is now available through AWS Cloudwatch.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-277682</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where moving an address object from a device group to
+          <span class="ph uicontrol">shared</span> and renaming it did not
+          reflect in the address group, which caused commits to fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262444</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not refresh the external dynamic
+          list due to the first entry in the list being removed from the global
+          external list and breaking out of the loop.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-257515</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Possible Domain Fronting Detection for HTTP/2
+          generated false positives. With this change, domain fronting is
+          limited to HTTP/1.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

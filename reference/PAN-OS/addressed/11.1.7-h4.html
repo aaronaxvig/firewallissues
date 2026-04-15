@@ -1,0 +1,99 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300227</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall dropped packets due to the incoming
+          flow being hashed to a flow bucket that was full.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290453</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where PA-7500 firewalls experienced silent traffic
+          drops. During migration from PA-7050 to PA-7500 firewalls connected in
+          series, intermittent connection losses occurred for some applications.
+          Traffic leaving the PA-7050 was not received or processed by the
+          PA-7500, even with direct connections and replaced cables/SFPs. Global
+          counters did not indicate any drops on the PA-7500.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289304</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7500 firewalls only</tt>) Fixed an issue where
+          SNMP polling failed due to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >snmpd</a
+          >
+          process becoming unresponsive to incoming requests, which resulted in
+          high CPU usage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279604</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where scheduled SaaS application usage reports were
+          generated incorrectly, and the login page was displayed instead of the
+          report content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-253778</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-7500 Series firewalls in a cluster configuration only</tt
+          >) Fixed an issue where users were able to enable or disable certain
+          configurations.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
