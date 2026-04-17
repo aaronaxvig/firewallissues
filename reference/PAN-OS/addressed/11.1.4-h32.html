@@ -1,0 +1,143 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-308654</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Elasticsearch Close Indices process closed
+          more indices than expected and dropped the number of open shards below
+          the minimum of 800 per Elasticsearch instance. This occurred because
+          the process did not correctly account for the number of Elasticsearch
+          instances when calculating the maximum number of allowed open shards.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292306</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >authd</a
+          >
+          process stopped handling RADIUS authentication requests and required a
+          restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291716</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where during a commit, the firewall experienced an
+          out-of-memory (OOM) condition due to a memory leak and displayed an
+          error message. This issue caused the device to stop responding and
+          reboot unexpectedly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291288</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted unexpectedly due to a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          process restart related to page allocation failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290088</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak occurred related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process when pushing configurations from Panorama to a firewall. This
+          occurred when the configurations contained shared policy rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273158</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7000 Series firewalls only</tt>) Fixed an issue
+          where an incorrect ASIC configuration caused silent packet drops or
+          application slowness when receiving a mix of jumbo and non-jumbo
+          packets.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-245686</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where memory leaks occurred when checking for,
+          downloading, or installing dynamic updates.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

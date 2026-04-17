@@ -152,6 +152,10 @@
       "addressed": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/pan-os-11-1-4-known-and-addressed-issues/pan-os-11-1-4-h27-addressed-issues",
       "known": ""
     },
+    "11.1.4-h32": {
+      "addressed": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/pan-os-11-1-4-known-and-addressed-issues/pan-os-11-1-4-h32-addressed-issues",
+      "known": ""
+    },
     "11.1.5": {
       "addressed": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/pan-os-11-1-5-known-and-addressed-issues/pan-os-11-1-5-addressed-issues",
       "known": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/pan-os-11-1-5-known-and-addressed-issues/pan-os-11-1-5-known-issues"
@@ -311,6 +315,10 @@
     "11.1.13-h3": {
       "addressed": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/pan-os-11-1-13-known-and-addressed-issues/pan-os-11-1-13-h3-addressed-issues",
       "known": ""
+    },
+    "11.1.14": {
+      "addressed": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/pan-os-11-1-14-known-and-addressed-issues/pan-os-11-1-14-addressed-issues",
+      "known": "https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-release-notes/pan-os-11-1-14-known-and-addressed-issues/pan-os-11-1-14-known-issues"
     }
   }
 }
