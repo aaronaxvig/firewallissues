@@ -1,0 +1,35 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 38%" />
+    <col style="width: 62%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-306502</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where TLS connection failure occurred when traffic was
+          over TLS1.2 or below, header insertion was enabled on the firewall,
+          <span class="ph uicontrol">send TLS handshake to CTD</span> was
+          enabled, and traffic hit a decryption policy rule configured with the
+          <span class="ph uicontrol">no-decrypt</span> action.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

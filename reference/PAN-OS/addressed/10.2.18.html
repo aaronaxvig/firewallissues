@@ -1,0 +1,406 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-303559</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after manuallly creating a device telemetry
+          bundle, the
+          <span class="ph systemoutput">hour_cli_output.txt</span> file within
+          the bundle had a file size of 0 bytes. This occurred when checking the
+          bundle content after enabling device telemetry and setting the device
+          telemetry upload endpoint.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-301018</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where API queries for correlated category
+          logs incorrectly returned a count of 0.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-300055</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall experienced high disk utilization in
+          the /opt/pancfg/mgmt/content-preview directory due to older content
+          data not being automatically removed when an error occurred during the
+          process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297775</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading to an affected PAN-OS release,
+          the Visible Virtual System field referenced the vsys name instead of
+          the vsys ID, which caused inter-vsys routing to fail. This occurred
+          when a vsys display name matched one of the vsys IDs. If you're using
+          a multivsys environment, you must upgrade your firewalls to a fixed
+          PAN-OS version. The best practice is to upgrade both the firewalls and
+          Panorama to a fixed PAN-OS version.
+        </div>
+        <ul class="ul">
+          <li class="li">
+            If you don't upgrade Panorama to a fixed version, you'll encounter
+            PAN-245064, where a commit on a multivsys firewall fails with the
+            message
+            <span class="ph systemoutput"
+              >vsys name should end with a number vsys is invalid</span
+            >
+            after you
+            <span class="ph uicontrol"
+              >Export or push device config bundle</span
+            >
+            from 11.1.1 Panorama.
+          </li>
+          <li class="li">
+            After you upgrade Panorama to a fixed version, you'll encounter
+            PAN-214177, which causes an
+            <span class="ph uicontrol"
+              >Export or Push device config bundle</span
+            >
+            from Panorama to the firewall to fail. The workaround for PAN-214177
+            is to first push only the template configuration and then push the
+            device group configurations.
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297708</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a long-lived session with many Machine Learning
+          (ML) model triggers caused a memory leak of feature states associated
+          with the ML model runs. This resulted in Spyware_State failure
+          increases, allocation max outs, and impaired policy matching.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297609</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the the CLI command
+          <span class="ph systemoutput"
+            >debug user-id refresh user-id agent all</span
+          >
+          failed with the error message
+          <span class="ph systemoutput"
+            >Invalid agent name. Agent name should be 1 to 31 characters
+            long.</span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297261</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy-protocol debug level was set to
+          <span class="ph systemoutput">verbose</span> on Prisma Access
+          instances, even when it was not explicitly configured, which caused
+          excessive logging by the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295095</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when you used a syslog forwarding profile with
+          the CEF format, an additional string was appended to the end of the
+          log message when viewing the log entry from the Universal Forwarder
+          directory.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295049</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding due to memory allocation errors during
+          Redis communication.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-294893</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls with the
+          <span class="ph uicontrol"
+            >Send handshake messages to CTD for inspection</span
+          >
+          setting enabled caused incorrect security policy rules to be matched.
+          Specifically, traffic not identified as openai-base or openai-chatgpt
+          applications was incorrectly matched by the
+          ALLOW-OPEN-AI-FULL-ACCESS-URLS-ALERTS rule. Additionally, the expected
+          response page for blocked URLs was not displayed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292447</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not display data in the
+          <span class="ph uicontrol">Feature Adoption</span> tab in Strata Cloud
+          Manager due to the system creating and deleting a CLI user for each
+          interval instead of reusing a permanent CLI user for telemetry.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291172</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where administrators were unable to gather path
+          monitoring failure information when troubleshooting high dataplane CPU
+          utilization.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290665</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with firewalls enabled with Security profiles where
+          certain traffic conditions caused high dataplane CPU utilization and
+          packet buffer exhaustion, which caused LACP flapping conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289067</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading Panorama in a High Availability
+          (HA) pair, the configuration logs stopped synchronizing from the
+          primary Panorama to the secondary Panorama. This issue occurred
+          because the log forwarding flag was permanently disabled due to the
+          connection state not being active when the
+          <span class="ph systemoutput">log-fwd-ctrl</span> message was
+          received.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-288097</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where on the firewall where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >routed</a
+          >
+          process stopped responding after changing the MTU or any link state
+          parameters when OSPF and PIM were enabled on the same interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287387</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where API jobs failed with the error
+          message
+          <span class="ph systemoutput"
+            >Server error: Timed out while getting config lock</span
+          >. This occurred due to slow set request performance when setting a
+          large number of address objects in a single set call.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-285208</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not automatically recover after
+          a machine check exception (MCE) occurred.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-283237</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic logs incorrectly displayed the action as
+          <span class="ph uicontrol">allow</span> for traffic matching a
+          Security policy rule configured with the action set to
+          <span class="ph uicontrol">deny</span>. This issue occurred due to the
+          child session being used for policy rule lookup when a configuration
+          update triggered a rematch if the FTP-data application was not in the
+          rule.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-281588</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where packet buffer depletion occurred due to the a
+          high number of
+          <span class="ph systemoutput">tcp_pkt_queued</span> packets when Jumbo
+          was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266843</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on airgapped firewalls where cloud connection errors
+          flooded the system logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-262353</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when Panorama was upgraded to PAN-OS 10.2.10,
+          and log collectors were on PAN-OS 10.2.9-h1, logs from a log collector
+          group were not viewable on a Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237349</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where URLs with over 965 characters were unable to be
+          logged in the URL filtering log.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233542</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not display the source address
+          due to an uninitialized scalar variable.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
