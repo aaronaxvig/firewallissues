@@ -10,8 +10,8 @@
  */
 
 import { JSDOM } from 'jsdom';
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
-import { join, basename } from 'node:path';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
+import { join, basename, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -29,6 +29,7 @@ const { buildIssueMarkdownDocument } = await import(
 );
 
 const OUTPUT_ROOT = join(REPO_ROOT, 'web', 'data', 'issues');
+const MODIFIED_FILE_LABEL = 'Modified file:';
 
 function readHtmlFiles(dirPath) {
     try {
@@ -38,16 +39,8 @@ function readHtmlFiles(dirPath) {
     }
 }
 
-function getProductNames() {
-    return readdirSync(__dirname, { withFileTypes: true })
-        .filter(entry => entry.isDirectory())
-        .map(entry => entry.name)
-        .filter(name => name !== '.' && name !== '..')
-        .sort();
-}
-
-function getInputEntries(productName) {
-    const productRoot = join(__dirname, productName);
+function getInputEntries(referenceRoot, productName) {
+    const productRoot = join(referenceRoot, productName);
     const entries = [];
     for (const issueType of ['addressed', 'known']) {
         const issueTypeDir = join(productRoot, issueType);
@@ -64,62 +57,150 @@ function getInputEntries(productName) {
     return entries.sort((a, b) => a.filePath.localeCompare(b.filePath));
 }
 
-let writtenCount = 0;
-let skippedNoIssues = 0;
-let processedProducts = 0;
+function createNoChangeReporter(stdout) {
+    let noChangeCount = 0;
+    let isShowingCounter = false;
 
-const allEntries = getProductNames().flatMap(product =>
-    getInputEntries(product).map(entry => ({ ...entry, product }))
-);
-const totalEntries = allEntries.length;
-let processedEntries = 0;
-const seenProducts = new Set();
+    return {
+        increment() {
+            noChangeCount++;
+            const noun = noChangeCount === 1 ? 'file' : 'files';
+            stdout.write(`\rNo changes for: ${noChangeCount} ${noun}`);
+            isShowingCounter = true;
+        },
+        flush() {
+            if (!isShowingCounter) {
+                return;
+            }
+            stdout.write('\n');
+            isShowingCounter = false;
+        },
+        getCount() {
+            return noChangeCount;
+        }
+    };
+}
 
-for (const entry of allEntries) {
-    const product = entry.product;
-    if (!seenProducts.has(product)) {
-        seenProducts.add(product);
-        processedProducts++;
+export function formatFileStatusLine(status, fileLabel) {
+    if (status === 'modified') {
+        return `${MODIFIED_FILE_LABEL} ${fileLabel}`;
+    }
+    if (status === 'new') {
+        return `${'New file:'.padEnd(MODIFIED_FILE_LABEL.length)} ${fileLabel}`;
+    }
+    throw new Error(`Unsupported file status: ${status}`);
+}
+
+export function processIssues({
+    referenceRoot = __dirname,
+    outputRoot = OUTPUT_ROOT,
+    stdout = process.stdout,
+    logger = console,
+} = {}) {
+    let newCount = 0;
+    let modifiedCount = 0;
+    let skippedNoIssues = 0;
+    let processedProducts = 0;
+
+    const allEntries = getProductNames(referenceRoot).flatMap(product =>
+        getInputEntries(referenceRoot, product).map(entry => ({ ...entry, product }))
+    );
+    const totalEntries = allEntries.length;
+    let processedEntries = 0;
+    const seenProducts = new Set();
+    const noChangeReporter = createNoChangeReporter(stdout);
+
+    for (const entry of allEntries) {
+        const product = entry.product;
+        if (!seenProducts.has(product)) {
+            seenProducts.add(product);
+            processedProducts++;
+        }
+
+        const { filePath, issueType, version } = entry;
+
+        const capitalizedType = issueType.charAt(0).toUpperCase() + issueType.slice(1);
+        const html = readFileSync(filePath, 'utf-8');
+
+        const parsedIssues = parseIssuesFromHtmlTable(html, { type: capitalizedType });
+        processedEntries++;
+        if (parsedIssues.length === 0) {
+            noChangeReporter.flush();
+            logger.warn(`[${processedEntries}/${totalEntries}] No issues parsed from ${basename(filePath)} — skipping`);
+            skippedNoIssues++;
+            continue;
+        }
+
+        const markdown = buildIssueMarkdownDocument({
+            type: capitalizedType,
+            product,
+            version,
+            issues: parsedIssues,
+        });
+
+        const outDir = join(outputRoot, product, issueType);
+        mkdirSync(outDir, { recursive: true });
+
+        const outFile = join(outDir, `${version}.md`);
+        if (existsSync(outFile) && readFileSync(outFile, 'utf-8') === markdown) {
+            noChangeReporter.increment();
+            continue;
+        }
+
+        noChangeReporter.flush();
+        const fileLabel = `${product}-${version}`;
+        const isNewFile = !existsSync(outFile);
+        writeFileSync(outFile, markdown, 'utf-8');
+        if (isNewFile) {
+            newCount++;
+            logger.log(formatFileStatusLine('new', fileLabel));
+        } else {
+            modifiedCount++;
+            logger.log(formatFileStatusLine('modified', fileLabel));
+        }
     }
 
-    const { filePath, issueType, version } = entry;
-
-    const capitalizedType = issueType.charAt(0).toUpperCase() + issueType.slice(1);
-    const html = readFileSync(filePath, 'utf-8');
-
-    const parsedIssues = parseIssuesFromHtmlTable(html, { type: capitalizedType });
-    processedEntries++;
-    if (parsedIssues.length === 0) {
-        console.warn(`[${processedEntries}/${totalEntries}] No issues parsed from ${basename(filePath)} — skipping`);
-        skippedNoIssues++;
-        continue;
+    if (processedProducts === 0) {
+        noChangeReporter.flush();
+        logger.error(`No HTML files found under ${referenceRoot}.`);
+        return {
+            processedProducts,
+            newCount,
+            modifiedCount,
+            noChangeCount: noChangeReporter.getCount(),
+            skippedNoIssues,
+        };
     }
 
-    const markdown = buildIssueMarkdownDocument({
-        type: capitalizedType,
-        product,
-        version,
-        issues: parsedIssues,
-    });
+    const writtenCount = newCount + modifiedCount;
+    noChangeReporter.flush();
+    logger.log(`Wrote ${writtenCount} markdown file(s) across ${processedProducts} product(s).`);
+    if (skippedNoIssues > 0) {
+        logger.log(`Skipped ${skippedNoIssues} file(s) with no parsed issues.`);
+    }
+    if (writtenCount > 0) {
+        logger.log('Next step: python scripts/update_products_from_issues.py');
+    }
 
-    const outDir = join(OUTPUT_ROOT, product, issueType);
-    mkdirSync(outDir, { recursive: true });
-
-    const outFile = join(outDir, `${version}.md`);
-    writeFileSync(outFile, markdown, 'utf-8');
-    writtenCount++;
-    console.log(`[${processedEntries}/${totalEntries}] ${product} ${version} (${issueType})`);
+    return {
+        processedProducts,
+        newCount,
+        modifiedCount,
+        noChangeCount: noChangeReporter.getCount(),
+        skippedNoIssues,
+    };
 }
 
-if (processedProducts === 0) {
-    console.error(`No HTML files found under ${__dirname}.`);
-    process.exit(0);
+function getProductNames(referenceRoot) {
+    return readdirSync(referenceRoot, { withFileTypes: true })
+        .filter(entry => entry.isDirectory())
+        .map(entry => entry.name)
+        .filter(name => name !== '.' && name !== '..')
+        .sort();
 }
 
-console.log(`Wrote ${writtenCount} markdown file(s) across ${processedProducts} product(s).`);
-if (skippedNoIssues > 0) {
-    console.log(`Skipped ${skippedNoIssues} file(s) with no parsed issues.`);
-}
-if (writtenCount > 0) {
-    console.log('Next step: python scripts/update_products_from_issues.py');
+const isMainModule = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
+    processIssues();
 }
