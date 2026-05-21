@@ -1,0 +1,88 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-25889</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect clients, particularly when
+          connected to Prisma Access, were unable to extend their VPN session.
+          When the 'Extend Session' or 'Refresh connection' option was selected,
+          the client would disconnect and immediately reconnect, but the session
+          countdown timer would not reset. This was due to a race condition that
+          caused the `GetCurrentGateway()` function to return a null value
+          during the session extension thread, preventing the session from being
+          properly prolonged.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-25828</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where on macOS devices running GlobalProtect Agent
+          version 6.3.3-h6, the GlobalProtect Agent was unable to communicate
+          with the GlobalProtect Service, resulting in the error "Could not
+          connect to the GlobalProtect service." This occurred because when
+          prelogon was disabled, the PanGPS LaunchDaemon would exit prematurely
+          after boot, and the subsequent LaunchAgent failed to properly restart
+          PanGPS as a user-session agent, leaving no service listening on port
+          4767 for PanGPA to connect to.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-25702</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect service (PanGPS) failed to
+          start on macOS 26.3.1 after a system upgrade, preventing GlobalProtect
+          client version 6.2.8-814 from connecting. This was due to a regression
+          where `SetCurrentGateway` was set to `NULL` during `disconnectVPN`
+          operations.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24033</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect Client 6.3.3-676 on Windows
+          endpoints would hang or freeze. This occurred when the client
+          connected to a GlobalProtect portal or gateway that initiated a client
+          certificate request, even if the certificate was not strictly required
+          for authentication. The client's certificate selection dialog would
+          appear briefly and then disappear, causing the GlobalProtect client
+          application to become unresponsive.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

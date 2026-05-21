@@ -1,0 +1,123 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23277</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect macOS client intermittently
+          experienced connection timeouts while browsing the internet in proxy
+          mode (when disconnected from the VPN tunnel). Ping operations were
+          successful, but website access through a browser was slow or failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23237</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect macOS client restarted on
+          opening a zoom session in transparent proxy mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23215</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the traffic stopped passing through the
+          GlobalProtect app on macOS devices after upgrading to GP 6.2.8 and
+          when the computer screen was locked.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23161</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app stopped working after a
+          session change.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23139</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after a disconnection event, the GlobalProtect
+          agent could not connect to either the transparent proxy or the IPsec
+          tunnel until the client device was rebooted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23117</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where after installing GlobalProtect on macOS devices,
+          the host ID displayed the device's MAC address instead of the UID, and
+          the GlobalProtect agent icon flickered.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23077</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where HIP reports were not sent to the GlobalProtect
+          gateway when transparent proxy is enabled, resulting in rules not
+          being matched.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22777</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect entered proxy mode after the
+          computer woke from sleep but failed to apply the configured proxy
+          settings, resulting in a lost proxy connection.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

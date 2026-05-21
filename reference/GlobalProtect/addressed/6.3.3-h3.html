@@ -1,0 +1,241 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24113</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, on Mac OS endpoints, the agent proxy was
+          attempting to download PAC files directly, bypassing the configured
+          proxy settings. This resulted in download failures when the corporate
+          network was configured to block direct traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23947</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect agent-msg logs were not generated
+          on Panorama when a user disconnected from the GlobalProtect gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23839</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue that caused the GlobalProtect 6.3.3 HIP report to fail
+          with the error Method: WAAPI_MID_GET_AGENT_STATE
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23760</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          GlobalProtect app version 6.3.3 using SAML with the embedded browser
+          loses cursor focus in the password field, requiring users to click in
+          the password field before entering their password.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23753</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the DNS registration script configured on
+          pre-vpn-connect did not run on the first GlobalProtect connection on
+          version 6.3.3.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23752</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app failed to authenticate to
+          the portal and gateway after a machine certificate was renewed by
+          Intune MDM. A reboot was required to restore the connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23746</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check incorrectly detected
+          status for Symantec Endpoint Protection, which caused the device to
+          fail the
+        </div>
+        <div class="p">HIP check.</div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23616</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS, the following error
+        </div>
+        <div class="p">
+          "TransparentProxy: openWithLocalEndpoint failed" occurred in
+          PanNExt.log when using an IPv6 address.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23488</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the HIP report intermittently detected MacOS
+          XProtect "Real Time Protection" status as disabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23468</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check failed to detect the
+          correct version of Forticlient Antivirus, which caused the device to
+          fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23417</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SAML authentication with Azure AD, using Cisco
+          Duo EAM, failed after upgrading to GlobalProtect version 6.2.8
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23403</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP report failed to detect the
+          status of SentinelOne, causing the device to fail the HIP check
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23361</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP report did not detect the
+          Status for Zoho corporation - ManageEngine Patch Manager Plus Agent,
+          which caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23283</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect was unable to set [exclude/include]
+          0.0.0.0/netmask routes on Mac endpoint
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23095</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed and issue where the GlobalProtect HIP report failed to detect
+          the Symantec DLP software, which caused the device to fail the HIP
+          check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22156</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect application displayed
+          unexpected characters on the user interface after installing the
+          GlobalProtect client on Windows 11 machines. This issue was observed
+          with GlobalProtect client versions 6.3.1-c383 and 6.2.6-838, where the
+          Lato font appeared to be the cause.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-21745</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check failed to detect
+          Workspace ONE status, which caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
