@@ -1,0 +1,324 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead" data-sticky-top="61.2" style="top: 61.2px">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">Fixes were made to address the following CVEs:</div>
+        <ul id="pan_os_11_2_12_addressed_issues_ul-snk_4r1_gjc" class="ul">
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0265"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0265</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0264"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0264</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0263"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0263</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0262"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0262</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0261"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0261</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0258"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0258</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0257"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0257</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0256"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0256</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0259"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0259</a
+            >
+          </li>
+          <li class="li">
+            <a
+              class="xref"
+              href="https://security.paloaltonetworks.com/CVE-2026-0300"
+              title=""
+              data-scope="external"
+              data-format="html"
+              data-type=""
+              target="_blank"
+              >CVE-2026-0300</a
+            >
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-325120</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on PA-415, PA-415-5G, PA-445, PA-455, and PA-455-5G
+          platforms where certain PAN-OS versions caused intermittent
+          connectivity failures on the Eth1/1 data port and loss of power on PoE
+          ports.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-322815</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls on Microsoft Azure environments only</tt
+          >) Fixed an issue where the firewall entered maintenance mode after
+          enabling FIPS-CC mode and rebooted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-318275</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          the firewall became unresponsive and did not automatically reboot,
+          which led to prolonged outages. With this fix, the Linux kernel
+          configuration will trigger a system panic and reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-317583</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with intermittent ICMP ping drops and packet loss in
+          traffic flows between a hub and branch after upgrading to an affected
+          PAN-OS release due to incorrect SD-WAN path monitor state.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-315912</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Maximum Segment Size (MSS) rewrite
+          functionality for packets ingressing through SD-WAN interfaces on
+          firewalls was not optimized.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-315176</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added an enable and disable CLI command to address an issue where the
+          firewall experienced increased packet drops and slower performance
+          after an upgrade due to high burst traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-31431</b>9</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added a CLI command to enable and disable AHO software offload
+          optimization.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-314147</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SSL traffic was dropped on SD-WAN DIA interfaces
+          with member having different MTU.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-314018</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls in AWS environments only</tt>)
+          Fixed an issue where the decrypt mirror port did not function
+          expected, which prevented decrypted traffic from reaching the intended
+          destination collector.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313700</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where an unexpected reboot occurred when Inline Cloud
+          Analysis was enabled in an Anti-Spyware and Vulnerability profile.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313216</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls with Prisma Access incorrectly
+          displayed some traffic as unsanctioned in traffic logs for cloud
+          applications that were tagged as
+          <span class="ph systemoutput">sanctioned</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-312514</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where correlation logs were not forwarded via syslog or
+          email.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-312354</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Captive Portal authentication redirects failed
+          for HTTPS traffic when a user attempted to access internal HTTPS
+          websites via URL, which led to
+          <span class="ph uicontrol">ERR_CONNECTION_RESET</span> error messages
+          in the browser with SSL decryption and CTD handshake inspection
+          enabled.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
