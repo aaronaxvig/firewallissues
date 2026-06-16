@@ -1,0 +1,77 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24859</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect the
+          Kaspersky signature information which caused the device to fail the
+          HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24827</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, on GlobalProtect client version 6.2.8-h3, HIP
+          checks for CrowdStrike Falcon or Microsoft/Windows Defender
+          intermittently took longer than expected to complete, sometimes
+          exceeding the default 20-second limit. This resulted in partial HIP
+          reports being sent to the gateway, causing connectivity issues for
+          users accessing internal resources or the internet.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24683</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Host Information Profile (HIP) matching failed
+          for Anti-Malware criteria on macOS endpoints due to GlobalProtect
+          failing to detect the virus definition version for Kaspersky
+          Anti-Virus.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23090</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app experienced connectivity
+          issues after the host computer resumed from sleep mode due to a
+          missing self-pointed route. This issue resulted in a delay of 5 to 10
+          minutes for the GlobalProtect connection to get stabilized.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

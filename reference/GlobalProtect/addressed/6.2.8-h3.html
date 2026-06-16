@@ -1,0 +1,215 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 45.04504504504505%" />
+    <col style="width: 54.95495495495496%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23604</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect users were not automatically
+          prompted for authentication on public Wi-Fi networks with a captive
+          portal.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23520</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where new GlobalProtect users were unable to connect to
+          the GlobalProtect app. The app got stuck in
+          <span class="ph uicontrol">Connecting</span> stage and stopped working
+          when redirected to the embedded browser.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23496</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app's
+          <span class="ph uicontrol">Connect</span> button did not work as
+          expected preventing users from connecting or changing gateways.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23440</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Okta FastPass authentication did not work with
+          GlobalProtect 6.3.3 on macOS 15.5 Sequoia, where the Okta Verify app
+          did not open for the additional authentication prompt.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23466</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running Windows OS and macOS, the Captive Portal detection
+          message briefly appeared and disappeared when the Captive Portal
+          exception timeout was set to 0.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23432</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app version 6.3.3
+          intermittently got stuck on the
+          <span class="ph uicontrol">finding best gateway</span> status
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23365</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          Windows machines, the app intermittently disconnected and then
+          reconnected with the error message
+          <span class="ph uicontrol">Failed to create exclude route</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23301</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app 6.2.7 and later, was
+          installed on Windows 10 devices, the app deleted the predefined proxy
+          PAC file configuration whenever the app got disconnected regardless of
+          whether the disconnection was initiated manually or occurred
+          automatically due to a timeout.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23263</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where after upgrading to GlobalProtect app version
+          6.3.3, the app did not save the username in the embedded browser when
+          "<span class="ph uicontrol">Save Username</span> was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23218</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when using the GlobalProtect app with an
+          embedded browser, interrupting or canceling the SAML authentication
+          prompt terminated the pre-logon tunnel, potentially allowing full
+          internet access even when enforcer was enabled for the user-logon
+          profile. With default browser, the pre-logon tunnel remained active
+          when the SAML authentication prompt was interrupted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23125</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect did not remove older versions of
+          the WebView2 component from the
+          <span class="ph systemoutput"
+            >%LOCALAPPDATA%\Palo Alto Networks\GlobalProtect\GPAEdge</span
+          >
+          directory, which led to unnecessary disk space consumption over time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22989</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app intermittently stopped
+          sending HIP reports while connected to the gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22979</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading to GlobalProtect app version
+          6.2.6, the PanGPA application got stuck in
+          <span class="ph uicontrol">Connecting</span> 'state and then got
+          terminated unexpectedly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22541</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows 11 where the GlobalProtect app (PanGPA)
+          would stop working when the device was locked. The crash occurred when
+          an expired authentication triggered a persistent smartcard login
+          dialog during sleep, leading to excessive memory swapping and a
+          crypt32.dll failure.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,285 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21774</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect ARM64 installers for 6.2.5
+          version did not display
+          <span class="ph uicontrol">Digital Signatures</span> tab.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21721</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue, where the GlobalProtect app got stuck in Connecting
+          status when the device woke up from sleep mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21731</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app is stuck in the
+          <span class="ph systemoutput">Connecting</span> status when upgraded
+          to 6.2.5-788 version and the users had to reboot the system to resolve
+          the issue.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21665</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS and the app was used with Trellix Proxy Agent,
+          the web browser displayed the following error,
+          <span class="ph uicontrol">ERR_SOCKET_NOT_CONNECTED</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21636</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the users were unable to login Windows 11 using
+          the User Principal Name (UPN) when GPCP was selected with
+          GlobalProtect app version 6.2.4 and
+          <span class="ph uicontrol"
+            >Interactive logon: Don't display last signed-in</span
+          >
+          was enabled in their Entra ID - group policy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21604</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS and were connected to the internal gateway, the
+          app did not display the
+          <span class="ph uicontrol">Disconnect</span> option under
+          <span class="ph uicontrol">Settings</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21413</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect Credential Provider did not
+          reset focus on the password field when the user entered the wrong
+          password.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21375</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Windows SSO did not work when the SAML
+          authentication method was used to authenticate to the app. The
+          username retrieved from SAML was not matching configuration selection
+          criteria causing authentication issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21332</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check incorrectly detected
+          Real Time Protection status for Avast and XProtect, which caused the
+          device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21320</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect
+          Kaspersky Endpoint Security antimalware application which caused the
+          device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21281</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app got stuck in the
+          <span class="ph systemoutput">Connecting</span> status when the user
+          refreshed the connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21267</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the user installed the GlobalProtectARM
+          installer from the Customer Support Portal (CSP) and the user opened
+          GlobalProtect using the Start menu, the icon file (PanGPA.ico) was
+          opened instead of the executable (PanGPA.exe) file.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21247</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect HIP set the Filevault encryption
+          status to unencrypted on macOS running devices, which denied access to
+          the end-point machines.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21240</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS Sonoma 14.5, the app used the old FQDN names and
+          got stuck in the
+          <span class="ph systemoutput">Connecting</span> status instead of
+          prompting the user to enter the portal FQDN name.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21222</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check incorrectly detected
+          the Real Time Protection Status and Last Full Scan for Avast
+          application, which caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21811</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the PanGPS stopped working soon after the
+          GlobalProtect was installed on the endpoint and the GlobalProtect app
+          got stuck in the
+          <span class="ph systemoutput">Connecting</span> stage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21174</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect Real
+          time protection status for Acronis Cyber Protection Agent, which
+          caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21131</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the users were unable to access the Advanced
+          Logging Settings screen of the GlobalProtect app using the
+          <span class="ph uicontrol">ctrl + tab</span> key combination on the
+          keyboard. The screen reader did not announce the keyboard options
+          correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-21106</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect 'Real
+          Time Protection' status for Malwarebytes anti-malware application,
+          which caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-20783</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the password field was not automatically selected
+          for typing when using the embedded browser, requiring users to click
+          inside the field before entering their password
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-20779</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Windows regional settings are not respected by
+          Webview 2 on SAML embedded browser resulting in regional
+          language(French, German, Chinese, Spanish, and Japanese) not loading
+          properly in embedded browser.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-20674</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where all GlobalProtect portals except for the
+          currently connected portal were deleted during the upgrade from 6.2.2
+          to 6.2.3 or from 6.2.3 to 6.3.0.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-18647</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with GlobalProtect App Log Collection feature where the
+          user reported an issue using
+          <span class="ph uicontrol">Report an Issue</span> option on the
+          GlobalProtect app and the issue was not reported as expected.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

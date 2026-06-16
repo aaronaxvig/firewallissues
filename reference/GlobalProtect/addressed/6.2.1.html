@@ -1,0 +1,706 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18789</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app took a long time to connect
+          to the gateway when the include domain list was used, while the
+          enhanced split-tunnel feature was not used.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18788</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect McAfee
+          Total Protection as an anti-malware application, which caused the
+          device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18594</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app was unable to send HIP
+          reports when the app was connected using IPv6.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18566</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app incorrectly displayed the
+          gateway as internal when it was connected to an external gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18528</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check incorrectly detected
+          the version for KES 12 (Kaspersky Endpoint Security), which caused the
+          device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18509</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was configured with
+          the Internal Host Detection and Conditional Connect method, the app
+          did not connect to the internal network when the network was changed
+          from external to internal as it should have with the Conditional
+          Connect method enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18452</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          Windows devices the app did not start right away after a system
+          reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18426</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where when the GlobalProtect app was configured with
+          the <span class="ph uicontrol">Disable GlobalProtect</span> set to
+          <span class="ph uicontrol">Allow with Ticket</span>, the app did not
+          display the correct Disable Duration time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18336</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app got automatically connected
+          after a system reboot even though the connection method configured was
+          <span class="ph uicontrol">On-Demand</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18318</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was connected to the
+          internal gateway, the app displayed the message as
+          <span class="ph uicontrol">Connected - Inter....</span> instead of
+          <span class="ph uicontrol">Connected - Internal</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18281</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the MSI install logs showed mutiple messages for
+          Autonomous DEM installation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18251</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect McAfee
+          LiveSafe as an anti-malware application, which caused the device to
+          fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18230</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the user entered credentials during SAML
+          authentication after the set internal login timer, the app displayed
+          an authentication failed message without providing the reason. The
+          <span class="ph uicontrol">Retry</span> button on the app web
+          interface did not work properly when using an embedded browser for
+          authentication. The <span class="ph uicontrol">Retry</span> button was
+          not fully visible on the embedded browser.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18175</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were prompted to enter their credentials
+          even when the GlobalProtect app was configured for authenticating with
+          either Authentication Profile /Cookie or Client Certificate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18173</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the vertical scroll bar on the GlobalProtect app
+          web interface did not work properly when users tried to select the
+          certificate from the drop-down.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18171</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were unable to select the external gateway
+          manually when connected to the internal network. The GlobalProtect
+          stayed in <span class="ph systemoutput">Connecting</span> state and
+          users had to manually disconnect the connection and connect to the
+          internal network to exit the
+          <span class="ph systemoutput">Connecting</span> state.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18167</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app displayed the Prisma Access
+          gateways that are not set for manual selection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18146</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          Windows devices, the GlobalProtect HIP check did not detect the
+          correct details for Cortex XDR, which caused the device to fail the
+          HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18135</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS, the GlobalProtect HIP check detected the
+          WithSecure antivirus software as XProtect, which caused the device to
+          fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18107</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect McAfee
+          LiveSafe – Internet Security, which caused the device to fail the HIP
+          check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18092</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect connected to an internal gateway
+          got automatically disconnected after a certain period of time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18073</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app selected an unexpected
+          gateway due to a latency discrepancy seen between PanGPS and packet
+          capture.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18060</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect McAfee
+          Total Protection, which caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18036</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the
+          <span class="ph uicontrol">No direct access to local network</span>
+          option was enabled on the GlobalProtect app with access routes
+          excluded from the GlobalProtect VPN tunnel, the feature did not work
+          as expected when Endpoint Traffic Policy Enforcement was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17936</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Conditional Connect method did not work as
+          expected and users had to manually connect the app when they changed
+          their network.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17921</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the language was set to Japanese, the time
+          to connect was not displayed properly when
+          <span class="ph uicontrol">Disconnect Timeout</span> for the app was
+          configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17896</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were unable to connect to GlobalProtect
+          gateway when only one external gateway was added due to the following
+          error:
+          <span class="ph uicontrol"
+            >Cannot Verify Server Certificate of Gateway</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17816</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue ehere after entering CIE SAML authentication
+          credentials to refresh an expired explicit proxy token or cookie when
+          connected in
+          <a
+            class="xref"
+            href="https://docs.paloaltonetworks.com/prisma-access/administration/prisma-access-mobile-users/mobile-users-explicit-proxy/agent-based-proxy-globalprotect-tunnel-and-proxy-mode"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >Tunnel and Proxy mode</a
+          >
+          or
+          <a
+            class="xref"
+            href="https://docs.paloaltonetworks.com/prisma-access/administration/prisma-access-mobile-users/mobile-users-explicit-proxy/agent-based-proxy-globalprotect-proxy-mode"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >proxy mode</a
+          >, the GlobalProtect app got stuck while retrieving the portal
+          configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17795</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect the
+          Xcitium Enterprise, the Endpoint Protection Platform by COMODO, which
+          caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17776</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS and GlobalProtect enforcer was configured with
+          allowed FQDNs, users were still able to access the internet and other
+          public domains.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17762</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue when the GlobalProtect app was configured with the
+          option
+          <span class="ph uicontrol"
+            >Allow User to Disable GlobalProtect App</span
+          >
+          with comment, the option did not work as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17748</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect HIP check did not detect the
+          Real-Time Protection status correctly for the CrowdStrike Falcon
+          application, which caused the device to fail the HIP check.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17740</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was connected through
+          the Prisma Access gateway, the upload speed of the internet was
+          reduced to 2 Mbps.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17728</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were unable to connect to GlobalProtect
+          gateway when only one external gateway was added due to the following
+          error:
+          <span class="ph uicontrol"
+            >Cannot Verify Server Certificate of Gateway</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17460</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          Windows 10 or 11 devices, and when the user tried to authenticate
+          using SAML authentication, the app did not display the
+          <span class="ph uicontrol">Term of Use </span> pop-up on the
+          <span class="ph uicontrol">Welcome</span> page properly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17398</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Settings</span
+            ><span class="ph uicontrol">Connection</span></span
+          >
+          tab did not display the
+          <span class="ph uicontrol">Assigned IP Address(es)</span> and
+          <span class="ph uicontrol">Gateway IP Address</span> properly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17206</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when Internal Host Detection (IHD) was enabled
+          but failed to detect the internal network properly, the app failed to
+          switch to the external gateway when users switched from an internal
+          network to an external network.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17161</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS, the GlobalProtect app failed to reconnect and
+          continued to stay in the
+          <span class="ph uicontrol">Connecting</span> state after the device
+          woke up from Modern Standby mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17099</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When the GlobalProtect app for Windows is upgraded to version 6.0.5,
+          devices with Driver Verifier enabled and configured to monitor the PAN
+          virtual adapter driver (pangpd.sys) display the
+          DRIVER_VERIFIER_DETECTED_VIOLATION Blue Screen error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-17001</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running on macOS, the app did not display the
+          <span class="ph uicontrol">Connect</span> button and
+          <span class="ph uicontrol">Refresh Connection</span> button properly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-16978</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app took a long time to
+          establish a connection due to an erroneous packet capture process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-16851</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS, the app did not try to auto-connect to the
+          gateway after exceeding the
+          <span class="ph uicontrol">Disable Timeout Value</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-16397</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app was installed on devices
+          running macOS, a blank GlobalProtect app user interface was displayed
+          instead of the correct page.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-16126</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app did not display the
+          certificate name in the Client Certificate selection field properly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-16003</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on
+          devices running macOS, the app was not connected when the proxy was
+          configured for Safari or Chrome.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-15968</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app was stuck in
+          <span class="ph uicontrol">Connecting</span> state when users failed
+          to authenticate with SAML and using an embedded browser. Users were
+          unable to disconnect the app and had to reboot the device.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-15262</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where when single sign-on (SSO) for Smart Cards was
+          used for authentication, users were prompted to enter a PIN instead of
+          a password on the Windows login screen.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-15234</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the app would get stuck at Connecting state while
+          trying to connect to a gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-15080</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where when the split tunnel was configured based on the
+          destination domain, split tunneling did not work as expected when IPv6
+          traffic exclusion was configured.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,122 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-19116</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the user faced authentication issues while the
+          GlobalProtect app was attempting to refresh the explicit proxy token.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-19049</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was configured in
+          hybrid mode with internal host detection, the app failed to connect
+          and continued to stay in the
+          <span class="ph systemoutput">Connecting</span> state when users tried
+          to connect using SAML authentication.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-19007</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were unable to connect to the GlobalProtect
+          portal and gateway after upgrading the app version to 6.2.1.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-19002</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app did not display the
+          <span class="ph uicontrol">Connect</span> button when the user clicked
+          the <span class="ph uicontrol">Get Started</span> button after the app
+          installation through Jamf.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18991</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy auto-configuration (PAC) files were not
+          restored as expected after a system reboot or when the user
+          disconnected the GlobalProtect app.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18964</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect tunnel got disconnected after
+          10 minutes on the app versions 6.0.8 and 6.2.1, when the GlobalProtect
+          app was running on macOS devices and SAML authentication was used to
+          authenticate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18861</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect MSI download was getting stuck
+          at 27%.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-18471</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when multiple
+          <span class="ph systemoutput">wa_3rd_party_host_64.exe</span>
+          processes persisted even after the HIP check, the GlobalProtect app
+          stopped working.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

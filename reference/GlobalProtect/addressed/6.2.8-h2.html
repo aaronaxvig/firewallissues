@@ -1,0 +1,150 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-23294</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect app intermittently disconnected on
+          macOS endpoints even with a stable network connection. This was due to
+          a timeout that was too short for the route system command.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-23270</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect app version 6.3.3 using SAML with
+          the embedded browser would lose cursor focus in the password field,
+          requiring users to click in the password field before entering their
+          password.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-23191</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect took almost 2 minutes to reconnect
+          to an already connected gateway after a host reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-23115</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the hardware token authentication option was
+          intermittently unavailable while using the embedded GlobalProtect
+          browser on Windows machines.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-23044</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when a machine was in Modern standby, the
+          GlobalProtect app repeatedly attempted to connect to gateways, even
+          when authentication failed due to SAML timeout. This resulted in
+          GlobalProtect connecting to non-optimal gateway
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-22763</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect prompted for credentials instead of
+          using authoverride cookie when authenticating to the best available
+          gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-22522</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading from GlobalProtect app version
+          6.1.2 to 6.2.6, external users on Windows 11 computers with multiple
+          Azure Entra accounts were unable to authenticate to the portal using
+          SAML with Azure Entra as the Identity Provider (IdP). The new WebView2
+          embedded browser automatically used the user's default Windows
+          credential for Single Sign-On (SSO), preventing them from selecting
+          the correct account for authentication.To resolve this issue a new
+          registry key 'entra-sso' has been introduced. You can add the registry
+          key using two methods and set it to no to disable SSO.
+          <ul
+            id="globalprotect-app-6-2-8-h2-6-2-8-c243-windows-and-macos-addressed-issues_ul-tzk_b2y_rfc"
+            class="ul"
+          >
+            <li class="li">
+              For pre-deployment, use
+              <b class="ph b"
+                >msiexec.exe /i globalprotect64.msi ENTRASSO="no"</b
+              >
+            </li>
+            <li class="li">
+              Add key <b class="ph b">entra-sso</b> and set it to
+              <b class="ph b">no</b>under
+              <b class="ph b"
+                >HKEY_LOCAL_MACHINE\SOFTWARE\Palo Alto
+                Networks\GlobalProtect\Settings</b
+              >.
+            </li>
+          </ul>
+        </div>
+        <div class="p">
+          If the <b class="ph b">entra-sso</b> key does not exist under the
+          above path, the GlobalProtect app's default behavior is to
+          <b class="ph b">Allow</b> Entra SSO.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-22066</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the HIP check detected an incorrect real-time
+          protection status for Windows Defender ATP and CrowdStrike Falcon
+          anti-malware software, which could incorrectly mark non-compliant
+          devices as compliant.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><b class="ph b">GPC-22029</b></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Apple software downloads took longer to complete
+          when using GlobalProtect with split tunneling enabled.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

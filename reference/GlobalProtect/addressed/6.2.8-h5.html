@@ -1,0 +1,321 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 41.66666666666667%" />
+    <col style="width: 58.333333333333336%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24581</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect disable agent messages were not
+          reported to firewall when machine certificate authentication with full
+          chain certificate validation was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24332</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users on trusted networks were incorrectly
+          receiving a captive portal detection message and being redirected to a
+          separate browser tab. This occurred because the GlobalProtect app was
+          not properly handling captive portal detection response.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24330</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect app got stuck in a connecting state
+          when using GlobalProtect version 6.2.8-h4. The issue was seen when
+          saml-logout and enforcer was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24261</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect app running on macOS Sequoia 15.6.1
+          running GP 6.2.8 -c263 that receive both IPv4 and IPv6 addresses were
+          not receiving packets back from the Network Load Balancer (NLB)
+          instances.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24221</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app experienced a continuous
+          connect-disconnect loop when used on flights. This issue occurred
+          because rapid network wake-ups left network interfaces in an
+          inconsistent state, causing GlobalProtect to attempt tunnel
+          establishment on an unstable network foundation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24103</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app running on macOS allowed
+          users to modify or add a new portal address after each device reboot,
+          even when the
+          <span class="ph uicontrol">Allow users to change portal</span> setting
+          was configured as <span class="ph uicontrol">No</span> in the
+          GlobalProtect app.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24048</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect apps installed on on Dell Vostro 15
+          3515 laptops were unable to connect to the GlobalProtect service with
+          the following error:
+          <span class="ph uicontrol"
+            >Could not connect to the GlobalProtect service. If the issue
+            persists, contact your administrator</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24037</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect app prompted users to log in with
+          SAML through the embedded browser even when the GlobalProtect app was
+          already connected. This occurred when users logged off and then back
+          onto their Cloud PC (Windows Azure PC), and closing the prompt
+          disconnected and reconnected the VPN session.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24036</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the HIP check did not correctly detect the status
+          of the ESET firewall on Windows hosts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23990</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the captive portal opened in the embedded
+          browser, but when the user tried to connect to the internet, it
+          redirected to the default browser and was blocked.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23929</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when GlobalProtect app was configured with
+          Enforcer, users could bypass Enforcer restrictions by repeatedly
+          canceling authentication prompts after logging into Windows. This
+          occurred because the cached portal configuration, which contains
+          Enforcer settings, was not loaded when a pre-logon tunnel failed to
+          establish due to a quick user login. This fix ensures that the cached
+          portal configuration is loaded as soon as PanGPA starts and PanGPS
+          learns the username, preventing unrestricted access in scenarios where
+          Enforcer is intended to lockdown the endpoint.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23730</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IPv6 traffic on Windows 11 24H2 did not work as
+          expected with GlobalProtect app.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23689</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app running on macOS devices
+          would stuck in a connecting loop indefinitely if the user did not
+          complete authentication, requiring manual cancellation of the
+          connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23650</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect enforcer blocked network
+          traffic on Windows endpoints even after the tunnel was successfully
+          connected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23525</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where on macOS Ventura and Sequoia, GlobalProtect app
+          versions 6.2.6-838, 6.2.7-1047, 6.2.8, and 6.3.3, manually changing
+          the portal address using the GlobalProtect app UI would fail and
+          revert back to the last connected portal. This issue occurred even
+          when
+          <span class="ph uicontrol">Allow User to Change Portal Address</span>
+          was enabled in the agent configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23394</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect app version 6.2.8-183. running on
+          macOS 15.5 was unable to accurately report the disk encryption status
+          of FileVault, resulting in an
+          <span class="ph systemoutput">Unknown</span> status in HIP checks.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23336</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where agent disable logs were not being logged to
+          Gateway System Logs on the firewall. The GlobalProtect agent reset the
+          authentication code, which falsely indicated that the gateway was not
+          fully authenticated, and the agent did not send the message.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22683</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where tool tips were not available for the
+          <span class="ph uicontrol">Add</span>,
+          <span class="ph uicontrol">Edit</span>, and
+          <span class="ph uicontrol">Delete</span> buttons on the GlobalProtect
+          application's settings page on Windows devices.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22572</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the hamburger menu button was disabled in the
+          Refresh connection screen, which made it inaccessible when using a
+          keyboard.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22021</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when using conditional-connect on macOS Sequoia
+          with GlobalProtect app version 6.2.6, manually switching gateways
+          caused the app to display a
+          <span class="ph systemoutput">Not Connected</span> status for
+          approximately 10 seconds while establishing a connection to the second
+          gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-22010</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where loopback connection did not work when Endpoint
+          Traffic Policy Enforcement was enabled.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
