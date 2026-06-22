@@ -1,0 +1,166 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-320598</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where internal and external DNS names did not resolve
+          when connected to a GlobalProtect gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-317755</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where selective push operations failed when
+          plugin configurations included access-domain or log-collector
+          references.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-315337</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect throughput was reduced after an
+          upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-314319</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added a CLI command to enable and disable AHO software offload
+          optimization.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313606</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama pushed commits took longer than expected
+          to complete without displaying an error message when committing due to
+          slow cloud-app compilation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-310263</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          enabling TLS1.3 in a decryption profile prevented access to websites.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-310240</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where software packet buffers were completely utilized
+          when performing a Data Loss Prevention longevity test.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-307618</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added a debug CLI command to address where remote networks for Prisma
+          Access tenants randomly dropped monitoring packets from peer devices,
+          which caused tunnels to be marked as down. This occurred when a CPU
+          core suddenly experienced high utilization.
+        </div>
+        <div class="p">
+          To utilize this fix, run
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt use-new-peek-window yes</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-307470</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where an External Dynamic List (EDL) fetch with an
+          invalid certificate was skipped on newly provisioned GlobalProtect
+          gateway instances.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266905</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where sessions ended with the message
+          <span class="ph systemoutput">decrypt</span> error in the logs for
+          traffic that matched a
+          <span class="ph uicontrol">no-decrypt</span> policy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-234302</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commit operations took longer than expected to
+          complete due to EDL timeouts occurring on passive nodes when a service
+          route was enabled.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
