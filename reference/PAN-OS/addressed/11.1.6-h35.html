@@ -1,0 +1,223 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_1_6_h35_addressed_issues_ul-nwg_dxl_vjc" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0283"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0283</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0287"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0287</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0279"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0279</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0282"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0282</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0288"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0288</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0286"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0286</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0285"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0285</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0280"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0280</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0284"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0284</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0281"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0281</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-319504</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where telemetry data was not sent to the cloud due to
+          the firewall being unable to resolve the destination server's FQDN
+          even when a proxy server was configured. With this fix, the firewall
+          properly sends telemetry data through the configured proxy server
+          without requiring direct public DNS resolution for the telemetry
+          server's FQDN.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313218</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added the following CLI commands to address QoS packet drops due to
+          bursty traffic:
+        </div>
+        <ul class="ul">
+          <li class="li">
+            <span class="ph systemoutput"
+              >debug dataplane set qos-setting qos-param qlimit 300</span
+            >
+          </li>
+          <li class="li">
+            <span class="ph systemoutput"
+              >debug dataplane set qos-setting qos-param red low 50 high
+              90</span
+            >
+          </li>
+        </ul>
+        <div class="p">
+          To utilize this fix, change the parameters, disable QoS, commit
+          changes, enable QOS, and then re-commit changes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304360</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall did not redistribute its application
+          routes to BGP peers. This occurred in multi-mesh deployments with the
+          multi-cloud networking feature enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-285327</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak occurred when processing device and
+          vsys tags.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

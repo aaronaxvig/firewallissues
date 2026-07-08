@@ -1,0 +1,331 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="pan_os_11_2_10_h12_addressed_issues_ul-nwg_dxl_vjc"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0283"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0283</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0287"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0287</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0279"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0279</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0282"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0282</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0288"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0288</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0286"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0286</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0285"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0285</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0280"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0280</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0284"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0284</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0281"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0281</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-328145</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a firewall functioning as an Area Border Router
+          did not correctly translate NSSA Type-7 LSAs to Type-5 LSAs when OSPF
+          neighbors set the Nt bit in the NSSA Area, and routes were not
+          advertised to upstream OSPF neighbors in the backbone area, which
+          resulted in traffic being silently discarded.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-321699</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where device telemetry intermittently failed to send
+          files, which resulted in critical alerts in system files.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-319228</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where External Dynamic List (EDL) refresh and commit
+          operations remained in a pending state, which prevented any subsequent
+          operations from completing.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-317466</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SIP sessions stopped progressing after the
+          firewall received fragmented packets, fragmented at header field.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313700</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where an unexpected reboot occurred when Inline Cloud
+          Analysis was enabled in an Anti-Spyware and Vulnerability profile.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-311658</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >reportd</a
+          >
+          process stopped responding, which caused the firewall to reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-308775</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in active/passive configurations only</tt
+          >) Fixed an issue where NTP status intermittently showed as rejected
+          on the active firewall, which prevented the firewalls from
+          synchronizing time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-308606</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic was blocked due to a mismatch between the
+          URL category specified in the Security policy rule and the URL filter
+          profile when custom URL categories with the same FQDN were configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-305835</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls with Memory Integrity Checking
+          Architecture enabled rebooted unexpectedly due to accessing an invalid
+          memory address. This occurred because the forwarding data structure
+          index exceeded its designed limit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291804</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where deleting objects resulted in errors
+          indicating references in Security policy rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250445</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where DLP logs accumulated in the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          cache when using DLP in mirror mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-246699</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where
+          <span class="ph uicontrol">Rule Usage</span> and
+          <span class="ph uicontrol">Apps Seen</span> under Security policy
+          rules stopped incrementing.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
