@@ -21,9 +21,9 @@ function refreshIssuesForCurrentSelection() {
 function loadProductTree() {
     fetch('data/products.json')
         .then(response => response.json())
-        .then(data => {
+        .then(async data => {
             productsData = expandFilePrefixLevel(data);
-            renderProductTree(productsData);
+            await renderProductTree(productsData);
             restoreTreeState();
             refreshIssuesForCurrentSelection();
         })
