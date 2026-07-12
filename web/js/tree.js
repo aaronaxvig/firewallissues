@@ -1,4 +1,4 @@
-import { CheckboxTree } from '../lib/checkbox-tree/checkbox-tree.js';
+import { CheckboxTree } from '../vendor/checkbox-tree/checkbox-tree.js';
 import { getSortedKeys } from './sort.js';
 
 const STORAGE_KEY = 'tree-state-v2';

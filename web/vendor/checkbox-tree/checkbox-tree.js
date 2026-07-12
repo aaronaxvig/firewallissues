@@ -1,5 +1,6 @@
 const DEFAULT_OPTIONS = {
     initiallyCollapsed: true,
+    initiallySelected: false,
     storageKey: null,
     onSelectionChange: null
 };
@@ -31,6 +32,7 @@ export class CheckboxTree {
         this.rootNodes = nodes;
         this.indexNodes(nodes);
         this.render();
+        this.updateAllParentCheckboxes();
         this.restoreState();
     }
 
@@ -125,6 +127,7 @@ export class CheckboxTree {
             checkbox.dataset.nodeId = node.id;
             checkbox.dataset.selectable = 'true';
             checkbox.disabled = node.disabled === true;
+            checkbox.checked = this.options.initiallySelected && !checkbox.disabled;
             label.appendChild(checkbox);
         }
         label.appendChild(document.createTextNode(node.label));
@@ -198,7 +201,6 @@ export class CheckboxTree {
         toggle.setAttribute('aria-expanded', String(expanded));
         const label = this.nodesById.get(item.dataset.nodeId)?.label ?? 'branch';
         toggle.setAttribute('aria-label', `${expanded ? 'Collapse' : 'Expand'} ${label}`);
-        toggle.textContent = expanded ? '▼' : '▶';
     }
 
     directChildrenContainer(item) {

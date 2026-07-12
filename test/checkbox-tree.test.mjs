@@ -8,7 +8,7 @@ globalThis.document = dom.window.document;
 globalThis.Element = dom.window.Element;
 globalThis.localStorage = dom.window.localStorage;
 
-const { CheckboxTree } = await import('../web/lib/checkbox-tree/checkbox-tree.js');
+const { CheckboxTree } = await import('../web/vendor/checkbox-tree/checkbox-tree.js');
 
 function createTree(options = {}) {
     const container = document.createElement('div');
@@ -55,6 +55,11 @@ test('partial child selection makes the parent indeterminate', () => {
     assert.equal(parent.checked, false);
     assert.equal(parent.indeterminate, true);
     assert.deepEqual(tree.getSelectedIds(), ['first']);
+});
+
+test('can initially select every selectable node', () => {
+    const { tree } = createTree({ initiallySelected: true });
+    assert.deepEqual(tree.getSelectedIds(), ['parent', 'first', 'second']);
 });
 
 test('persists selection and collapsed branches per configured key', () => {
