@@ -10,7 +10,8 @@ Known and addressed issues for newly released versions are easily added using th
 - Copy the issue table's HTML from the webpage using devtools.
 - Fill out the process.html page's fields and paste in the table HTML.
 - Download the Markdown file and put it into the correct folder.
-- Fix up the products.json file manually or run `update_products_from_issues.py`.
+- Run `npm run update:generated` to update `products.json`, append new stable
+  product-tree manifest slots, and regenerate rendered test fixtures.
 - Submit a pull request.
 
 There is intentionally no automated scaping of Palo Alto's website, to avoid abuse of server resources.  Also releases are not that frequent.  A crawler to grab some data from the Common Crawl dataset was started but never really finished.

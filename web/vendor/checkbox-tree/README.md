@@ -43,8 +43,8 @@ tree.setData([
 ]);
 ```
 
-For applications without a bundler, serve or copy the two files in `src/` and
-use relative URLs:
+For applications without a bundler, serve or copy the `src/` directory and use
+relative URLs. The main module imports its state-codec modules alongside it:
 
 ```html
 <link rel="stylesheet" href="./checkbox-tree.css">
@@ -78,6 +78,9 @@ Options:
 - `onSelectionChange` receives `{ selectedIds, selectedNodes }`.
 - `manifest` optionally supplies a parsed manifest and automatically restores
   state from `window.location.hash` after `setData()`.
+- `stateEncoding` selects `"adaptive"` (the default), `"dense"`, or `"tiered"`.
+  The website's configured value is the URL-format contract and is not embedded
+  in the fragment.
 
 ## Shareable URL state
 
@@ -104,6 +107,15 @@ The helpers `encodeTreeState`, `decodeTreeState`, `applyTreeState`, and
 Use `validateManifestEvolution(previous, next)` in a build check to reject
 removed slots and tombstone reuse; path changes are reported for deliberate
 rename/move review.
+
+With `stateEncoding: "tiered"`, `c1` stores root checked state and each deeper
+`cN` field stores nodes whose checked state differs from their parent. Expansion
+does not inherit: every `xN` stores the actual expanded branches at that depth,
+with collapsed as the baseline. Each tier field uses the adaptive codec. The
+`n` field records manifest coverage so nodes appended later still default to
+false. A non-selectable parent supplies a false checked baseline. With
+`stateEncoding: "dense"`, `c` and `x` contain trimmed
+least-significant-bit-first bitsets.
 
 Styling is namespaced under `.checkbox-tree`. Override the custom properties
 `--checkbox-tree-indent`, `--checkbox-tree-toggle-size`, and

@@ -1,5 +1,5 @@
 import { CheckboxTree, loadManifest } from '../vendor/checkbox-tree/checkbox-tree.js';
-import { getSortedKeys } from './sort.js';
+import { toTreeNodes } from './product-tree-model.js';
 
 const STORAGE_KEY = 'tree-state-v2';
 let productTree = null;
@@ -14,6 +14,7 @@ export function initializeTree(containerId, onSelectionChange) {
     productTree = new CheckboxTree(container, {
         storageKey: STORAGE_KEY,
         initiallyCollapsed: true,
+        stateEncoding: 'tiered',
         onSelectionChange: event => {
             onSelectionChange(event);
             pushTreeState();
@@ -80,30 +81,6 @@ function pushTreeState() {
     if (url.href !== window.location.href) {
         history.pushState(null, '', url);
     }
-}
-
-function toTreeNodes(value, path = []) {
-    return getSortedKeys(value)
-        .filter(key => key !== 'addressed' && key !== 'known')
-        .map(key => {
-            const childValue = value[key];
-            const childPath = [...path, key];
-            const isObject = childValue && typeof childValue === 'object';
-            const hasFiles = isObject && ('addressed' in childValue || 'known' in childValue);
-            const children = isObject ? toTreeNodes(childValue, childPath) : [];
-
-            return {
-                id: JSON.stringify(childPath),
-                label: key,
-                selectable: hasFiles || children.length > 0,
-                metadata: {
-                    path: childPath,
-                    addressed: hasFiles && Array.isArray(childValue.addressed) ? childValue.addressed : [],
-                    known: hasFiles && Array.isArray(childValue.known) ? childValue.known : []
-                },
-                ...(children.length > 0 ? { children } : {})
-            };
-        });
 }
 
 function dedupeFileRefs(fileRefs) {
