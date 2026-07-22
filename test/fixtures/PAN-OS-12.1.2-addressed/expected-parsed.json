@@ -1,0 +1,30 @@
+[
+  {
+    "id": "PAN-242777",
+    "summary": "Fixed an issue where users previously reported limitations due to session count caps when utilizing **Web Proxy** features on PA-5400 Series Firewalls. To address these performance complaints and support higher traffic volumes, we have increased the maximum session capacity on specific **PA-5400F** series platforms, leveraging available system memory. This update ensures greater capacity and stability for high-volume environments.The supported session limits are:| Platform | Max Sessions |\n| -------- | ------------ |\n| PA-5410  | 95K          |\n| PA-5420  | 95K          |\n| PA-5430  | 95K          |\n| PA-5440  | 225K         |\n| PA-5445  | 250K         |\n| PA-5450  | 1.28M        |",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where users previously reported limitations due to session count caps when utilizing <strong>Web Proxy</strong> features on PA-5400 Series Firewalls. To address these performance complaints and support higher traffic volumes, we have increased the maximum session capacity on specific <strong>PA-5400F</strong> series platforms, leveraging available system memory. This update ensures greater capacity and stability for high-volume environments.The supported session limits are:| Platform | Max Sessions |\n| -------- | ------------ |\n| PA-5410  | 95K          |\n| PA-5420  | 95K          |\n| PA-5430  | 95K          |\n| PA-5440  | 225K         |\n| PA-5445  | 250K         |\n| PA-5450  | 1.28M        |</p>\n"
+  },
+  {
+    "id": "PAN-291499",
+    "summary": "Fixed an issue where newly deployed firewalls were unable to connect to the Strata Logging Service (SLS) until after a reboot, license fetch, or management server restart.",
+    "resolved": "",
+    "caveat": "VM-Series firewalls on Amazon Web Services (AWS) environments only",
+    "renderedHtml": "<div><em>Caveat: VM-Series firewalls on Amazon Web Services (AWS) environments only</em></div><p>Fixed an issue where newly deployed firewalls were unable to connect to the Strata Logging Service (SLS) until after a reboot, license fetch, or management server restart.</p>\n"
+  },
+  {
+    "id": "PAN-288726",
+    "summary": "Fixed an issue where the useridd process stopped responding due to a Security policy rule ID being set to 0, which caused the last configuration retrieval to fail.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue where the useridd process stopped responding due to a Security policy rule ID being set to 0, which caused the last configuration retrieval to fail.</p>\n"
+  },
+  {
+    "id": "PAN-287133",
+    "summary": "Fixed an issue on the Panorama web interface where assigning a policy rule to a group at the top or bottom of the list changed the order of other policy rules.",
+    "resolved": "",
+    "caveat": "",
+    "renderedHtml": "<p>Fixed an issue on the Panorama web interface where assigning a policy rule to a group at the top or bottom of the list changed the order of other policy rules.</p>\n"
+  }
+]

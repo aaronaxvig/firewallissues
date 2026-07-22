@@ -107,81 +107,6 @@ h2 {
     min-width: 0;
 }
 
-#product-tree {
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.tree-item {
-    margin: 1px 0;
-}
-
-.tree-item > label {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 0;
-}
-
-/* Keep label text aligned whether or not a node has a toggle icon. */
-.tree-item:not(.parent) > label {
-    margin-left: 18px;
-}
-
-.tree-item.parent > label {
-    font-weight: 500;
-}
-
-.tree-toggle {
-    cursor: pointer;
-    user-select: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 1.4em;
-    margin-right: 2px;
-    flex-shrink: 0;
-    vertical-align: middle;
-}
-
-.tree-children {
-    margin-left: 16px;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 1;
-}
-
-.tree-children .tree-children {
-    margin-left: 33px;
-}
-
-.tree-children.collapsed {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-}
-
-.tree-item input[type="checkbox"] {
-    cursor: pointer;
-    margin-right: 4px;
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-}
-
-.tree-item input[type="checkbox"]:indeterminate {
-    accent-color: #f39c12;
-}
-
-.tree-item label {
-    cursor: pointer;
-    user-select: none;
-}
-
-.tree-item label:hover {
-    color: #2c3e50;
-}
-
 #issues {
     display: flex;
     flex-direction: column;
@@ -298,8 +223,8 @@ li:hover {
         width: 100%;
     }
 
-    .tree-children {
-        margin-left: 12px;
+    .checkbox-tree {
+        --checkbox-tree-indent: 12px;
     }
 
     .issues-table {
