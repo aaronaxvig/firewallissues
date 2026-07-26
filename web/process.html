@@ -18,7 +18,8 @@
             gap: 20px;
         }
         .form-section, .preview-section {
-            border: 1px solid #ccc;
+            border: 1px solid var(--border);
+            background: var(--surface);
             padding: 20px;
             border-radius: 5px;
         }
@@ -32,12 +33,14 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #333;
+            color: var(--text);
         }
         input[type="text"], select, textarea {
             width: 100%;
             padding: 8px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
+            background: var(--input-bg);
+            color: var(--text);
             border-radius: 3px;
             font-size: 14px;
             box-sizing: border-box;
@@ -51,10 +54,10 @@
         }
         #markdownOutput {
             height: 350px;
-            background-color: #f5f5f5;
+            background-color: var(--surface-subtle);
         }
         button {
-            background-color: #4CAF50;
+            background-color: var(--button);
             color: white;
             padding: 10px 20px;
             border: none;
@@ -63,7 +66,7 @@
             font-size: 14px;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: var(--button-hover);
         }
         .button-group {
             display: flex;
@@ -141,7 +144,7 @@
                     <label for="issuesInput">Issues Table HTML (paste table node here):</label>
                     <textarea id="issuesInput" placeholder="Paste the full HTML table element that contains Issue ID and Description columns..."></textarea>
                 </div>
-                <div id="parseStatus" style="margin-top: 10px; font-size: 13px; color: #333;"></div>
+                <div id="parseStatus" style="margin-top: 10px; font-size: 13px; color: var(--text);"></div>
             </section>
 
             <section class="preview-section">
@@ -149,7 +152,7 @@
                 <label for="markdownOutput">Copy the Markdown below:</label>
                 <textarea id="markdownOutput" readonly></textarea>
                 <button id="copyMarkdownBtn" style="margin-top: 10px; width: 100%;">Copy Markdown</button>
-                <a id="downloadMarkdownLink" href="#" style="display: block; margin-top: 10px; text-align: center; color: #2c7be5; text-decoration: none; pointer-events: none; opacity: 0.6;">Download Markdown File</a>
+                <a id="downloadMarkdownLink" href="#" style="display: block; margin-top: 10px; text-align: center; color: var(--focus); text-decoration: none; pointer-events: none; opacity: 0.6;">Download Markdown File</a>
             </section>
         </div>
     </main>

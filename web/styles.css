@@ -1,18 +1,61 @@
+:root {
+    color-scheme: light dark;
+    --page-bg: #f7f9fb;
+    --surface: #ffffff;
+    --surface-subtle: #f1f4f7;
+    --surface-strong: #e3eaf0;
+    --text: #24313d;
+    --text-muted: #5b6b7a;
+    --border: #ccd5dd;
+    --header: #2c3e50;
+    --header-text: #ffffff;
+    --header-link: #dbe9f5;
+    --hover: #eaf2f8;
+    --focus: #2c7be5;
+    --input-bg: #ffffff;
+    --button: #388e3c;
+    --button-hover: #2e7d32;
+    --shadow: rgba(20, 35, 50, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page-bg: #111820;
+        --surface: #18232d;
+        --surface-subtle: #202d38;
+        --surface-strong: #293946;
+        --text: #e5edf4;
+        --text-muted: #a9bac8;
+        --border: #3b4c59;
+        --header: #1b2a36;
+        --header-text: #f5f8fa;
+        --header-link: #c7d9e8;
+        --hover: #243541;
+        --focus: #79b8ff;
+        --input-bg: #101820;
+        --button: #3f9145;
+        --button-hover: #4ca653;
+        --shadow: rgba(0, 0, 0, 0.35);
+    }
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
+    background: var(--page-bg);
+    color: var(--text);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #2c3e50;
-    color: white;
+    background-color: var(--header);
+    color: var(--header-text);
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
 .top-links {
@@ -23,19 +66,19 @@ header {
 }
 
 .top-links a {
-    color: #dbe9f5;
+    color: var(--header-link);
     text-decoration: none;
     font-size: 14px;
 }
 
 .top-links a:hover,
 .top-links a:focus {
-    color: #ffffff;
+    color: var(--header-text);
     text-decoration: underline;
 }
 
 .top-links a[aria-current="page"] {
-    color: #ffffff;
+    color: var(--header-text);
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -46,7 +89,7 @@ h1 {
 }
 
 h2 {
-    color: #333;
+    color: var(--text);
 }
 
 .container {
@@ -60,8 +103,8 @@ h2 {
 
 .sidebar {
     flex: 0 0 350px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
+    background-color: var(--surface-subtle);
+    border: 1px solid var(--border);
     border-radius: 4px;
     padding: 15px;
     height: auto;
@@ -73,19 +116,25 @@ h2 {
     font-size: 18px;
 }
 
+.checkbox-tree {
+    --checkbox-tree-hover-color: var(--text);
+}
+
 .issue-search {
     width: 100%;
     margin-bottom: 12px;
     padding: 6px 8px;
-    border: 1px solid #c8c8c8;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text);
     border-radius: 4px;
     font-size: 13px;
 }
 
 .issue-search:focus {
-    outline: 2px solid #9ec5fe;
+    outline: 2px solid var(--focus);
     outline-offset: 1px;
-    border-color: #6ea8fe;
+    border-color: var(--focus);
 }
 
 .issue-filters {
@@ -122,12 +171,12 @@ h2 {
 
 #issues h2 {
     margin: 0 0 10px 0;
-    border-bottom: 2px solid #2c3e50;
+    border-bottom: 2px solid var(--header);
     padding-bottom: 8px;
 }
 
 .issue-count {
-    color: #5b6b7a;
+    color: var(--text-muted);
     font-weight: 500;
     font-size: 0.9em;
 }
@@ -145,29 +194,29 @@ ul {
 .issues-table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #ddd;
-    background-color: #fff;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
     font-size: 14px;
 }
 
 .issues-table th,
 .issues-table td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     padding: 8px 10px;
     text-align: left;
     vertical-align: top;
 }
 
 .issues-table th {
-    background-color: #eef3f7;
-    color: #22313f;
+    background-color: var(--surface-strong);
+    color: var(--text);
     position: sticky;
     top: 0;
     z-index: 1;
 }
 
 .issues-table tbody tr:hover {
-    background-color: #f7fbff;
+    background-color: var(--hover);
 }
 
 .issues-table .issue-id-col {
@@ -208,14 +257,14 @@ ul {
 
 li {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     margin: 5px 0;
     border-radius: 4px;
-    background-color: #fafafa;
+    background-color: var(--surface);
 }
 
 li:hover {
-    background-color: #f0f0f0;
+    background-color: var(--hover);
 }
 
 .statistics-container {
@@ -226,7 +275,7 @@ li:hover {
 
 .statistics-intro {
     margin: 0 0 28px;
-    color: #4e5d6c;
+    color: var(--text-muted);
     line-height: 1.5;
 }
 
@@ -242,7 +291,7 @@ li:hover {
 }
 
 .stats-product-total {
-    color: #667788;
+    color: var(--text-muted);
     font-size: 0.65em;
     font-weight: 400;
 }
@@ -254,20 +303,20 @@ li:hover {
 .stats-table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #ccd4dc;
-    background: #ffffff;
+    border: 1px solid var(--border);
+    background: var(--surface);
 }
 
 .stats-table th,
 .stats-table td {
-    border-bottom: 1px solid #dce2e8;
+    border-bottom: 1px solid var(--border);
     padding: 9px 14px;
     text-align: left;
 }
 
 .stats-table thead th {
-    background: #2c3e50;
-    color: #ffffff;
+    background: var(--header);
+    color: var(--header-text);
     font-size: 0.8rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -275,7 +324,7 @@ li:hover {
 
 .stats-table td {
     width: 180px;
-    color: #526272;
+    color: var(--text-muted);
     white-space: nowrap;
 }
 
@@ -302,7 +351,7 @@ li:hover {
 
 .stats-toggle::before {
     width: 18px;
-    color: #617588;
+    color: var(--text-muted);
     content: "▶";
     font-size: 0.65rem;
     transform-origin: center;
@@ -320,20 +369,20 @@ li:hover {
 }
 
 .stats-toggle:focus-visible {
-    outline: 2px solid #2c7be5;
+    outline: 2px solid var(--focus);
     outline-offset: 3px;
 }
 
 .stats-major th,
 .stats-major td {
-    background: #e7edf2;
-    color: #22313f;
+    background: var(--surface-strong);
+    color: var(--text);
     font-weight: 700;
 }
 
 .stats-minor th,
 .stats-minor td {
-    background: #f5f7f9;
+    background: var(--surface-subtle);
     font-weight: 600;
 }
 
@@ -344,7 +393,7 @@ li:hover {
 
 .stats-patch th::before {
     position: absolute;
-    color: #91a0ad;
+    color: var(--text-muted);
     content: "└";
 }
 
@@ -461,14 +510,14 @@ li:hover {
         grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
         column-gap: 6px;
         row-gap: 4px;
-        border: 1px solid #ddd;
+        border: 1px solid var(--border);
         border-radius: 8px;
-        background-color: #fff;
+        background-color: var(--surface);
         padding: 8px 10px;
     }
 
     .issue-list-table tbody tr:hover {
-        background-color: #fff;
+        background-color: var(--surface);
     }
 
     .issue-list-table tbody td {
@@ -504,7 +553,7 @@ li:hover {
 
     .issue-list-table .issue-version-col::before {
         content: attr(data-label) " ";
-        color: #445566;
+        color: var(--text-muted);
         font-weight: 600;
     }
 
