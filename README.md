@@ -10,8 +10,9 @@ Known and addressed issues for newly released versions are easily added using th
 - Copy the issue table's HTML from the webpage using devtools.
 - Fill out the process.html page's fields and paste in the table HTML.
 - Download the Markdown file and put it into the correct folder.
-- Run `npm run update:generated` to update `products.json`, append new stable
-  product-tree manifest slots, and regenerate rendered test fixtures.
+- Optionally run `npm run update:generated` locally to preview the generated
+  `products.json`, product-tree manifest slots, and rendered test fixtures.
+  Gitea Actions runs this command again before testing and deploying.
 - Submit a pull request.
 
 There is intentionally no automated scaping of Palo Alto's website, to avoid abuse of server resources.  Also releases are not that frequent.  A crawler to grab some data from the Common Crawl dataset was started but never really finished.
