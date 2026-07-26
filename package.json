@@ -5,6 +5,7 @@
   "scripts": {
     "test": "node --test",
     "update:products": "node scripts/update-products-from-issues.mjs",
+    "update:statistics": "node scripts/generate-release-statistics.mjs",
     "update:fixtures": "node scripts/generate-rendered-fixtures.mjs",
     "update:generated": "node scripts/refresh-generated-data.mjs",
     "vendor:marked": "mkdir -p web/vendor && cp node_modules/marked/lib/marked.esm.js web/vendor/marked.esm.js"
