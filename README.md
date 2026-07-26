@@ -15,6 +15,14 @@ Known and addressed issues for newly released versions are easily added using th
   Gitea Actions runs this command again before testing and deploying.
 - Submit a pull request.
 
+Generated files are intentionally committed so a clone of the repository
+contains a ready-to-serve snapshot of the website without requiring Node.js or
+a build step. They may lag behind the issue source files when contributors do
+not regenerate them before committing. The issue source files are canonical;
+the Gitea deployment workflow regenerates the derived files before testing and
+publishing the site, so the hosted version does not depend on the committed
+snapshot being current.
+
 There is intentionally no automated scaping of Palo Alto's website, to avoid abuse of server resources.  Also releases are not that frequent.  A crawler to grab some data from the Common Crawl dataset was started but never really finished.
 
 Some data was collected early on when the HTMLTable -> Markdown code was kind of bad, so the formatting of the issue write-up tends to be bad on those.  Mostly PAN-OS 10 and 11 stuff.
