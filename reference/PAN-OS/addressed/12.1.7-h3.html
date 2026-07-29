@@ -1,0 +1,99 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PAN-329834</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak associated with some display CLI
+          commands caused instability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327460</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a
+          <span class="ph uicontrol">Commit and Push</span> operation on
+          Panorama did not successfully push configuration changes to Prisma
+          Access endpoints. This occurred when the system reported that not all
+          commit jobs were triggered. With this fix,
+          <span class="ph uicontrol">Commit and Push</span> operations now
+          correctly apply configurations to Prisma Access.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326677</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a selective push from Panorama to the firewall
+          was successful even when applying rename operation failed in selective
+          push, which resulted in configurations on the firewall being deleted.
+          With this fix, the selective push will fail when applying rename
+          operation fails.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325890</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where licenses were not installed after bootstrapping a
+          VM-Series firewall in an air-gapped environment.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323485</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multicast radio RTP based traffic was dropped
+          after an upgrade when the firewall performed Cloud Inline inspection,
+          which led to an exceeded session queue for Cloud Threat Detection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-307618</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Added a debug CLI command to address where remote networks for Prisma
+          Access tenants randomly dropped monitoring packets from peer devices,
+          which caused tunnels to be marked as down. This occurred when a CPU
+          core suddenly experienced high utilization.
+        </div>
+        <div class="p">
+          To utilize this fix, run
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt use-new-peek-window yes</span
+          >.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

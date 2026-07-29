@@ -1,0 +1,453 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25.062656641604008%" />
+    <col style="width: 74.93734335839599%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240197</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where configuration changes made in Panorama and pushed
+          to the firewall were not reflected on the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-239144</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the web interface was slower than expected when
+          logging in, committing, and pushing changes after upgrading to PAN-OS
+          10.2.7.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-238792</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed the following device certificate issues:
+          <ul id="concept-tdr_dlv_5zb_ul-vdr_dlv_5zb" class="ul">
+            <li class="li">
+              The firewall was unable to automatically renew the device
+              certificate-Fetching device certificates failed incorrectly with
+              the error message
+              <span class="ph systemoutput">OTP is not valid</span>.
+            </li>
+            <li class="li">
+              Firewalls disconnected from
+              <span class="ph">Strata Logging Service</span> after renewing the
+              device certificate.
+            </li>
+            <li class="li">
+              The device certificate was not correctly generated on the log
+              forwarding card (LFC).
+            </li>
+            <li class="li">
+              WildFire cloud logs did not log thermite certificate usage status.
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237935</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Extended the offline PAN-DB, Panorama, and WildFire certificates which
+          were previously set to expire on September 2, 2024.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237876</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Extended the firewall Panorama root CA certificate which was
+          previously set to expire on April 7th, 2024.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-234929</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where tabs in the
+          <span class="ph uicontrol">ACC</span> such as
+          <span class="ph uicontrol">Network Activity</span>
+          <span class="ph uicontrol">Threat Activity</span> and
+          <span class="ph uicontrol">Blocked Activity</span> did not display
+          data when you applied a <span class="ph uicontrol">Time</span> filter
+          of <span class="ph uicontrol">Last 15 Minutes</span>,
+          <span class="ph uicontrol">Last Hour</span>,
+          <span class="ph uicontrol">Last 6 Hours</span>, or
+          <span class="ph uicontrol">Last 12 Hours</span>, and the data that was
+          displayed with the
+          <span class="ph uicontrol">Last 24 Hours</span> filter was not
+          accurate. Reports that were run against summary logs also did not
+          display accurate results.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-234279</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >ikemgr</a
+          >
+          process crashed due to an IKEv1 timing issue, which caused commits to
+          fail with the following error message:
+          <span class="ph systemoutput"
+            >Client ikemgr requesting last config in the middle of a
+            commit/validate, aborting current commit</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-232377</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">AddrObjRefresh</span> job failed when
+          the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process restarted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-231771</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall issued /box/getserv/ requests with
+          PAN-OS 7.1.0 and did not take device certificates.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-231169</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-220 firewalls only</tt>) Fixed an issue where an
+          unused plugin incorrectly used memory.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-228273</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama appliances in FIPS-CC mode only</tt>)
+          Fixed an issue where the Elasticsearch cluster did not come up, and
+          the
+          <span class="ph systemoutput"
+            >show log-collector-es-cluster health</span
+          >
+          CLI command displayed the status as red. This caused log ingestion
+          issues for Panorama appliances in Panorama mode or Log Collector mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227568</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          When a device certificate is installed, renewed, or removed, the
+          firewall will reconnect to the WildFire cloud to use the newest
+          certificate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224954</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading and rebooting a Panorama
+          appliance in Panorama or Log Collector mode, managed firewalls
+          continuously disconnected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224067</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where cookie authentication did not work for
+          GlobalProtect when an authentication override domain was configured in
+          the SAML authentication profile.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224060</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-220 Series firewalls only</tt>) Fixed an issue
+          where multiple dataplane processes stopped responding after an
+          upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-223652</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where data was not thread safe and led to concurrent
+          read/write issues that caused GPSVC to stop working unexpectedly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-223270</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with Virtual Wire links on firewalls in active/active
+          HA configurations where the forwarding path was not preserved in
+          HTTP/2 cleartext traffic with asymmetric routing.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-222002</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where content updates failed with the error message
+          <span class="ph systemoutput"
+            >Unable to get key pancontent-8.0.pass from cryptod. Error -9</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-218988</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue in FIPS mode where, when importing a certificate with a
+          new private key, and the certificate used the name of an existing
+          certificate on the Panorama, the following error message was
+          displayed:
+          <span class="ph systemoutput">Mismatched public and private keys</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-218057</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7000 Series firewalls only</tt>) Fixed an issue
+          where internal path monitoring failed due to a heartbeat miss.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-217289</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where HTTP/2 traffic caused buffer
+          depletion.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-216214</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Panorama managed firewalls in active/active HA configurations
+            only</tt
+          >) Fixed an issue where the HA (high availability) status displayed as
+          <span class="ph uicontrol">Out of Sync</span> (<span
+            class="ph uicontrol"
+            >Panorama &gt; Managed Devices &gt; Health</span
+          >) if local firewall configurations were made on one of the HA peers.
+          This caused the next HA configuration sync to overwrite the local
+          firewall configuration made on the HA peer.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-215576</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">userID-Agent</span> and
+          <span class="ph systemoutput">TS-Agent</span> certificates were set to
+          expire on November 18, 2024. With this fix, the expiration date has
+          been extended to January 2032.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-208395</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where user authentication failed in multi-vsys
+          environments with the error message
+          <span class="ph systemoutput">User is not in allowlist</span> when an
+          authentication profile was created in a shared configuration space.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-202361</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where packets queued to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          process were still transmitted when the process was not responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-189769</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue on Amazon Web Services (AWS) Gateway Load Balancer (GWLB)
+        deployments with overlay routing enabled where, when a single firewall
+        was the backend of multiple GWLBs, packets were re-encapsulated with an
+        incorrect source IP address.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-181706</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding after upgrading to PAN-OS 10.1.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

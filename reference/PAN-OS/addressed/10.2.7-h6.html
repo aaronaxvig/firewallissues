@@ -1,0 +1,319 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25.316455696202528%" />
+    <col style="width: 74.68354430379746%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-246431</b></div>
+        <div class="p">
+          <tt class="ph tt"
+            >This issue is resolved in this hotfix but not in PAN-OS 10.2.8.</tt
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a
+          <span class="ph uicontrol">Push to Device</span> operation remained at
+          the state <span class="ph uicontrol">None</span> when performing a
+          selective push to device groups and templates that included both
+          connected and disconnected firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242910</b></div>
+        <div class="p">
+          <tt class="ph tt"
+            >This issue is resolved in this hotfix but not in PAN-OS 10.2.8.</tt
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a custom based non Superuser was unable to push
+          to firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242627</b></div>
+        <div class="p">
+          <tt class="ph tt"
+            >This issue is resolved in this hotfix but not in PAN-OS 10.2.8.</tt
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">Fixed an issue where selective push did not work.</div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242561</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect tunnels disconnected shortly after
+          being established when SSL was used as the transfer protocol.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242027</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all-task</a
+          >
+          process repeatedly restarted during memory allocation failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-239367</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where a memory leak associated with the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process occurred.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-238643</b></div>
+        <div class="p">
+          <tt class="ph tt"
+            >This issue is resolved in this hotfix but not in PAN-OS 10.2.8.</tt
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak caused multiple processes to stop
+          responding when VM Information Sources was configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237208</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >reportd</a
+          >
+          process stopped and the firewall rebooted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-235840</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after a configuration push from Panorama to
+          managed firewalls, the status displayed as
+          <span class="ph uicontrol">None</span> and the push took longer than
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-233789</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with commit and push and push operations where the user
+          was not correctly bound to the scope, which caused all device groups
+          to be selected for a selective push.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-231148</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where no DHCP option list was defined when using
+          GlobalProtect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-229090</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding during memory allocation failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-228515</b></div>
+        <div class="p">
+          <tt class="ph tt"
+            >This issue is resolved in this hotfix but not in PAN-OS 10.2.8.</tt
+          >
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Elasticsearch cluster health status displayed
+          as yellow or red due to Elasticsearch SSH tunnel flaps.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-223259</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where selective pushes failed with the error message
+          <span class="ph systemoutput"
+            >Failed to generate selective push configuration. Unable to retrieve
+            last in-sync configuration for the device, either a push was never
+            done or version is too old. Please try a full push</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-217293</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a rare issue where URLs were not accessible when the header
+          length was greater than 16,000 over HTTP/2.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-199070</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task</a
+          >
+          and
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          processes stopped responding, which impacted traffic.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

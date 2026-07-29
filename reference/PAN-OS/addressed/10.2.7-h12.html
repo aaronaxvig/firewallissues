@@ -1,0 +1,277 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-263226</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where decryption based traffic failed on Explicit Proxy
+          nodes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-261917</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where websites with a no-decrypt policy rule were
+          decrypted in traffic log when using a Google Chrome browser with PQC
+          enabled
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-258996</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall displayed the SFP ports as
+          <span class="ph systemoutput">PowerDown</span> when the SFP
+          transceiver was removed and reinserted or the port was shut down and
+          brought back up on the peer device.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-255868</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3400 Series firewalls only</tt>) Fixed an issue
+          where the firewall entered maintenance mode after enabling kernel data
+          collection during the silent reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-253546</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a TLS client hello was split into multiple
+          packets and arrived out of order, so the packets were dropped and the
+          session terminated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-252214</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2024-3400"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2024-3400</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251661</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory overwrite occurred during HTTP/2 header
+          inflation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251563</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Added CPLD enhancement to capture external power issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250152</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue related to shared-to-shared optimization. To utilize
+          this fix, contact Palo Alto Networks Tech Support.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-249814</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task</a
+          >
+          processes stopped responding, which caused the dataplane to fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-247257</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process stopped responding, which caused the firewall to reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244648</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when FIPS was enabled in maintenance mode, the
+          firewall rebooted and returned to maintenance mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240612</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">Fixed a kernel panic caused by a third-party issue.</div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244013</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the web interface did not display newly added
+          Anti-Spyware signatures or Vulnerability Signatures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-239662</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue with firewalls in active/passive HA configurations
+          where the NSSA default route from the active firewall was not
+          generated to advertise even though the backbone area default route was
+          advertised during a graceful restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-238625</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the physical interface went down, the
+          SD-WAN ethernet connection state still showed
+          <span class="ph uicontrol">UP/path-monitor</span> due to the Active
+          URL SaaS monitor connection state remaining UP/path-monitor.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233191</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5450 firewalls only</tt>) Fixed an issue where
+          the Data Processing Card (DPC) restarted due to path monitor failure
+          after QSFP28 disconnected from the Network Processing Card (NPC).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-226768</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when the GlobalProtect app was installed on iOS
+          endpoints and the gateway was configured to accept cookies, the app
+          remained in the <span class="ph uicontrol">Connecting</span> stage
+          after authentication, and the GlobalProtect log displayed the error
+          message
+          <span class="ph systemoutput">User is not in allow list</span>. This
+          occurred when the app was restarted or when the app attempted to
+          reconnect after disconnection.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
