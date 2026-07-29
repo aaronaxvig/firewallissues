@@ -35,6 +35,11 @@
                     <label>Release train
                         <select id="issue-plot-train"></select>
                     </label>
+                    <fieldset class="issue-plot-type">
+                        <legend>Issue type</legend>
+                        <label><input type="radio" name="issue-plot-type" value="addressed" checked> Addressed</label>
+                        <label><input type="radio" name="issue-plot-type" value="known"> Known</label>
+                    </fieldset>
                 </div>
             </div>
             <div class="issue-plot-frame">
@@ -44,6 +49,7 @@
             <div class="issue-plot-legend" aria-label="Dot colors">
                 <span><i class="issue-plot-key issue-plot-key-base"></i>Base release</span>
                 <span><i class="issue-plot-key issue-plot-key-hotfix"></i>Hotfix release</span>
+                <span><i class="issue-plot-key issue-plot-key-resolved"></i>Resolved known issue</span>
             </div>
             <p id="issue-plot-summary" class="issue-plot-summary" aria-live="polite"></p>
         </section>

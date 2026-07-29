@@ -26,6 +26,7 @@ document.addEventListener('click', event => {
 
 const productSelect = document.getElementById('issue-plot-product');
 const trainSelect = document.getElementById('issue-plot-train');
+const typeInputs = Array.from(document.querySelectorAll('input[name="issue-plot-type"]'));
 const canvas = document.getElementById('issue-plot-canvas');
 const tooltip = document.getElementById('issue-plot-tooltip');
 const summary = document.getElementById('issue-plot-summary');
@@ -37,6 +38,7 @@ let hoveredPoint = null;
 const initialParams = new URLSearchParams(window.location.search);
 const initialProduct = initialParams.get('product') || 'PAN-OS';
 const initialTrain = initialParams.get('train') || '11.1';
+const initialType = initialParams.get('type') === 'known' ? 'known' : 'addressed';
 let restoreInitialSelection = true;
 
 function releaseTrain(version) {
@@ -52,11 +54,26 @@ function fillSelect(select, options) {
     }));
 }
 
+function selectedIssueType() {
+    return typeInputs.find(input => input.checked)?.value ?? 'addressed';
+}
+
+function currentSeries() {
+    return currentProduct?.[selectedIssueType()] ?? { releases: [], points: [] };
+}
+
+function refreshTrainOptions(preferredTrain = trainSelect.value) {
+    const trains = Array.from(new Set(currentSeries().releases.map(releaseTrain))).reverse();
+    fillSelect(trainSelect, trains);
+    if (trains.includes(preferredTrain)) trainSelect.value = preferredTrain;
+}
+
 function updatePlotQuery() {
     if (!currentProduct || !trainSelect.value) return;
     const url = new URL(window.location.href);
     url.searchParams.set('product', currentProduct.product);
     url.searchParams.set('train', trainSelect.value);
+    url.searchParams.set('type', selectedIssueType());
     history.replaceState(null, '', url);
 }
 
@@ -77,6 +94,7 @@ function plotColors() {
         grid: styles.getPropertyValue('--border').trim() || '#d0d7de',
         base: styles.getPropertyValue('--plot-base').trim() || '#2e8b57',
         hotfix: styles.getPropertyValue('--plot-hotfix').trim() || '#2c7be5',
+        resolved: styles.getPropertyValue('--plot-resolved').trim() || '#8b5cf6',
         hover: styles.getPropertyValue('--plot-hover').trim() || '#d97706'
     };
 }
@@ -87,12 +105,14 @@ function formatIssueNumber(value) {
 
 function drawPlot() {
     if (!context || !currentProduct) return;
+    const issueType = selectedIssueType();
+    const series = currentSeries();
     const selectedTrain = trainSelect.value;
-    const releaseIndexes = currentProduct.releases
+    const releaseIndexes = series.releases
         .map((version, index) => ({ version, index }))
         .filter(item => releaseTrain(item.version) === selectedTrain);
     const indexPositions = new Map(releaseIndexes.map((item, position) => [item.index, position]));
-    const points = currentProduct.points.filter(point => indexPositions.has(point[0]));
+    const points = series.points.filter(point => indexPositions.has(point[0]));
 
     const bounds = canvas.getBoundingClientRect();
     const ratio = window.devicePixelRatio || 1;
@@ -112,9 +132,9 @@ function drawPlot() {
         context.fillStyle = colors.text;
         context.font = '14px system-ui, sans-serif';
         context.textAlign = 'center';
-        context.fillText('No addressed Issue-IDs in this release train.', bounds.width / 2, bounds.height / 2);
+        context.fillText(`No ${issueType} Issue-IDs in this release train.`, bounds.width / 2, bounds.height / 2);
         renderedPoints = [];
-        summary.textContent = `0 addressed issues across ${releaseIndexes.length.toLocaleString('en-US')} releases.`;
+        summary.textContent = `0 ${issueType} issues across ${releaseIndexes.length.toLocaleString('en-US')} releases.`;
         return;
     }
     const minimum = Math.min(...values);
@@ -174,7 +194,8 @@ function drawPlot() {
             y: yFor(point[1]) - Math.floor(overlap / 3) * 4,
             id: point[2],
             issueNumber: point[1],
-            release: currentProduct.releases[point[0]]
+            release: series.releases[point[0]],
+            resolved: Boolean(point[3])
         };
     });
 
@@ -184,12 +205,14 @@ function drawPlot() {
         context.arc(point.x, point.y, hovered ? 5 : 3, 0, Math.PI * 2);
         context.fillStyle = hovered
             ? colors.hover
-            : (/-h\d+(?:\D|$)/i.test(point.release) ? colors.hotfix : colors.base);
+            : (point.resolved
+                ? colors.resolved
+                : (/-h\d+(?:\D|$)/i.test(point.release) ? colors.hotfix : colors.base));
         context.globalAlpha = hovered ? 1 : 0.72;
         context.fill();
     });
     context.globalAlpha = 1;
-    summary.textContent = `${points.length.toLocaleString('en-US')} addressed issue${points.length === 1 ? '' : 's'} across ${releaseIndexes.length.toLocaleString('en-US')} release${releaseIndexes.length === 1 ? '' : 's'}.`;
+    summary.textContent = `${points.length.toLocaleString('en-US')} ${issueType} issue${points.length === 1 ? '' : 's'} across ${releaseIndexes.length.toLocaleString('en-US')} release${releaseIndexes.length === 1 ? '' : 's'}.`;
 }
 
 function pointNear(event) {
@@ -208,7 +231,7 @@ canvas?.addEventListener('pointermove', event => {
     hoveredPoint = point;
     canvas.style.cursor = point ? 'pointer' : 'default';
     if (point) {
-        tooltip.textContent = `${point.id} · ${point.release}`;
+        tooltip.textContent = `${point.id} · ${point.release}${point.resolved ? ' · resolved' : ''}`;
         tooltip.hidden = false;
         const frame = canvas.parentElement.getBoundingClientRect();
         tooltip.style.left = `${Math.min(event.clientX - frame.left + 12, frame.width - tooltip.offsetWidth - 8)}px`;
@@ -231,7 +254,8 @@ canvas?.addEventListener('click', event => {
         const params = new URLSearchParams({
             issue: point.id,
             product: currentProduct.product,
-            release: point.release
+            release: point.release,
+            type: selectedIssueType()
         });
         window.location.href = `index.html?${params}`;
     }
@@ -244,10 +268,22 @@ trainSelect?.addEventListener('change', () => {
     drawPlot();
 });
 
+typeInputs.forEach(input => {
+    input.checked = input.value === initialType;
+    input.addEventListener('change', () => {
+        if (!input.checked || !currentProduct) return;
+        hoveredPoint = null;
+        tooltip.hidden = true;
+        refreshTrainOptions();
+        updatePlotQuery();
+        drawPlot();
+    });
+});
+
 productSelect?.addEventListener('change', async () => {
     try {
         currentProduct = await loadProduct(productSelect.value);
-        fillSelect(trainSelect, Array.from(new Set(currentProduct.releases.map(releaseTrain))).reverse());
+        refreshTrainOptions(restoreInitialSelection ? initialTrain : '');
         if (restoreInitialSelection && initialProduct === currentProduct.product && initialTrain &&
             Array.from(trainSelect.options).some(option => option.value === initialTrain)) {
             trainSelect.value = initialTrain;

@@ -17,6 +17,7 @@
     --button-hover: #2e7d32;
     --plot-base: #2e8b57;
     --plot-hotfix: #2c7be5;
+    --plot-resolved: #8b5cf6;
     --plot-hover: #d97706;
     --shadow: rgba(20, 35, 50, 0.14);
 }
@@ -40,6 +41,7 @@
         --button-hover: #4ca653;
         --plot-base: #56b881;
         --plot-hotfix: #79b8ff;
+        --plot-resolved: #c4a7ff;
         --plot-hover: #f2a93b;
         --shadow: rgba(0, 0, 0, 0.35);
     }
@@ -337,6 +339,35 @@ li:hover {
     font: inherit;
 }
 
+.issue-plot-type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.issue-plot-type legend {
+    margin-bottom: 4px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.issue-plot-type label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.issue-plot-type input {
+    margin: 0;
+}
+
 .issue-plot-frame {
     position: relative;
 }
@@ -391,6 +422,10 @@ li:hover {
 
 .issue-plot-key-hotfix {
     background: var(--plot-hotfix);
+}
+
+.issue-plot-key-resolved {
+    background: var(--plot-resolved);
 }
 
 .stats-product {

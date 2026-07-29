@@ -4,7 +4,7 @@ import {
     initializeTree,
     renderProductTree,
     restoreTreeState,
-    selectAddressedRelease
+    selectIssueRelease
 } from './tree.js';
 import { applyIssueSearchFilter, getIssueTypeFilters, initializeUI } from './ui.js';
 import { expandFilePrefixLevel } from './product-tree-model.js';
@@ -33,7 +33,7 @@ function loadProductTree() {
             await renderProductTree(productsData);
             restoreTreeState();
             const params = new URLSearchParams(window.location.search);
-            selectAddressedRelease(params.get('product'), params.get('release'));
+            selectIssueRelease(params.get('product'), params.get('release'), params.get('type'));
             refreshIssuesForCurrentSelection();
         })
         .catch(error => console.error('Error loading products:', error));

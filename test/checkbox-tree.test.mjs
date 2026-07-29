@@ -9,7 +9,7 @@ globalThis.Element = dom.window.Element;
 globalThis.localStorage = dom.window.localStorage;
 
 const { CheckboxTree } = await import('../web/vendor/checkbox-tree/checkbox-tree.js');
-const { findAddressedReleaseNode } = await import('../web/js/tree.js');
+const { findAddressedReleaseNode, findIssueReleaseNode } = await import('../web/js/tree.js');
 
 function createTree(options = {}) {
     const container = document.createElement('div');
@@ -108,10 +108,18 @@ test('rejects duplicate node ids', () => {
 test('finds an addressed release leaf by product and exact filename', () => {
     const nodes = [
         { id: 'known', metadata: { path: ['PAN-OS'], addressed: [] } },
-        { id: 'release', metadata: { path: ['PAN-OS', '11', '11.1'], addressed: ['11.1.13-h3.md'] } },
+        {
+            id: 'release',
+            metadata: {
+                path: ['PAN-OS', '11', '11.1'],
+                addressed: ['11.1.13-h3.md'],
+                known: ['11.1.13.md']
+            }
+        },
         { id: 'other', metadata: { path: ['GlobalProtect'], addressed: ['11.1.13-h3.md'] } }
     ];
 
     assert.equal(findAddressedReleaseNode(nodes, 'PAN-OS', '11.1.13-h3')?.id, 'release');
     assert.equal(findAddressedReleaseNode(nodes, 'PAN-OS', '11.1.13'), undefined);
+    assert.equal(findIssueReleaseNode(nodes, 'PAN-OS', '11.1.13', 'known')?.id, 'release');
 });

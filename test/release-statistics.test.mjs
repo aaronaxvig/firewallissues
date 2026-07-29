@@ -4,6 +4,7 @@ import {
     buildIssuePlotProduct,
     buildReleaseStatistics,
     extractAddressedIssueIds,
+    extractIssuePlotEntries,
     renderStatisticsPage
 } from '../scripts/generate-release-statistics.mjs';
 
@@ -29,6 +30,31 @@ test('builds compact plot points in semantic release order', () => {
         [0, 100000, 'PAN-100000'],
         [0, 120000, 'WF500-120000'],
         [1, 130000, 'PAN-130000']
+    ]);
+});
+
+test('detects resolved only inside the issue own caveat block', () => {
+    const entries = extractIssuePlotEntries(`## PAN-100000
+
+\`\`\`caveat
+This issue is now resolved.
+\`\`\`
+
+## PAN-200000
+
+The word resolved appears in the description only.
+
+## PAN-300000
+
+\`\`\`caveat
+Applies to resolved DNS names.
+\`\`\`
+`, { detectResolved: true });
+
+    assert.deepEqual(entries, [
+        { id: 'PAN-100000', resolved: true },
+        { id: 'PAN-200000', resolved: false },
+        { id: 'PAN-300000', resolved: true }
     ]);
 });
 
@@ -65,5 +91,6 @@ test('renders the graph without displaying the legacy release tables', () => {
     assert.match(html, /id="issue-plot-canvas"/);
     assert.match(html, />Base release</);
     assert.match(html, />Hotfix release</);
+    assert.match(html, />Resolved known issue</);
     assert.doesNotMatch(html, /class="stats-product"/);
 });

@@ -38,31 +38,55 @@ export function extractAddressedIssueIds(markdown) {
     return Array.from(new Set(ids));
 }
 
+export function extractIssuePlotEntries(markdown, { detectResolved = false } = {}) {
+    const text = String(markdown);
+    const headings = Array.from(text.matchAll(ISSUE_HEADING_RE));
+    return headings.flatMap((heading, index) => {
+        const bodyStart = heading.index + heading[0].length;
+        const bodyEnd = headings[index + 1]?.index ?? text.length;
+        const body = text.slice(bodyStart, bodyEnd);
+        const resolved = detectResolved && Array.from(body.matchAll(/```caveat\s*\r?\n([\s\S]*?)```/gi))
+            .some(match => /\bresolved\b/i.test(match[1]));
+        return extractIssueIds(heading[1]).map(id => ({ id, resolved }));
+    });
+}
+
 export function buildIssuePlotProduct(product, releases) {
     const versions = Array.from(releases.keys()).sort(compareVersions);
     const points = [];
     versions.forEach((version, releaseIndex) => {
-        for (const id of releases.get(version)) {
+        for (const entry of releases.get(version)) {
+            const { id, resolved = false } = typeof entry === 'string' ? { id: entry } : entry;
             if (id === BLANK_ISSUE_ID) continue;
             const issueNumber = Number(id.match(/-(\d+)$/)?.[1]);
-            if (Number.isSafeInteger(issueNumber)) points.push([releaseIndex, issueNumber, id]);
+            if (Number.isSafeInteger(issueNumber)) {
+                points.push(resolved
+                    ? [releaseIndex, issueNumber, id, 1]
+                    : [releaseIndex, issueNumber, id]);
+            }
         }
     });
-    return { product, releases: versions, points };
+    return { releases: versions, points };
 }
 
 export async function buildIssuePlotData(records, issuesDir) {
     const products = new Map();
-    const addressed = records.filter(record => record.issueType === 'addressed');
-    await Promise.all(addressed.map(async record => {
-        const markdown = await readFile(join(issuesDir, record.product, 'addressed', record.filename), 'utf8');
-        const ids = extractAddressedIssueIds(markdown);
-        const releases = products.get(record.product) ?? new Map();
-        releases.set(record.version, ids);
-        products.set(record.product, releases);
+    await Promise.all(records.map(async record => {
+        const markdown = await readFile(join(issuesDir, record.product, record.issueType, record.filename), 'utf8');
+        const entries = extractIssuePlotEntries(markdown, { detectResolved: record.issueType === 'known' });
+        const product = products.get(record.product) ?? {
+            addressed: new Map(),
+            known: new Map()
+        };
+        product[record.issueType].set(record.version, entries);
+        products.set(record.product, product);
     }));
-    return Array.from(products, ([product, releases]) => buildIssuePlotProduct(product, releases))
-        .filter(item => item.points.length > 0)
+    return Array.from(products, ([product, issueTypes]) => ({
+        product,
+        addressed: buildIssuePlotProduct(product, issueTypes.addressed),
+        known: buildIssuePlotProduct(product, issueTypes.known)
+    }))
+        .filter(item => item.addressed.points.length > 0 || item.known.points.length > 0)
         .sort((a, b) => a.product.localeCompare(b.product));
 }
 
@@ -211,6 +235,11 @@ export function renderStatisticsPage(statistics) {
                     <label>Release train
                         <select id="issue-plot-train"></select>
                     </label>
+                    <fieldset class="issue-plot-type">
+                        <legend>Issue type</legend>
+                        <label><input type="radio" name="issue-plot-type" value="addressed" checked> Addressed</label>
+                        <label><input type="radio" name="issue-plot-type" value="known"> Known</label>
+                    </fieldset>
                 </div>
             </div>
             <div class="issue-plot-frame">
@@ -220,6 +249,7 @@ export function renderStatisticsPage(statistics) {
             <div class="issue-plot-legend" aria-label="Dot colors">
                 <span><i class="issue-plot-key issue-plot-key-base"></i>Base release</span>
                 <span><i class="issue-plot-key issue-plot-key-hotfix"></i>Hotfix release</span>
+                <span><i class="issue-plot-key issue-plot-key-resolved"></i>Resolved known issue</span>
             </div>
             <p id="issue-plot-summary" class="issue-plot-summary" aria-live="polite"></p>
         </section>
@@ -247,7 +277,9 @@ export async function generateReleaseStatistics({ issuesDir, outputPath, plotDat
     return {
         products: statistics.length,
         releases: statistics.reduce((sum, item) => sum + item.releases, 0),
-        points: plotData.reduce((sum, item) => sum + item.points.length, 0)
+        points: plotData.reduce((sum, item) =>
+            sum + item.addressed.points.length + item.known.points.length
+        , 0)
     };
 }
 

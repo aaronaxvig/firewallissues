@@ -65,8 +65,10 @@ function initializeIssueSearch() {
 function initializeIssueTypeFilters(onSelectionChange) {
     const addressedFilter = document.getElementById('filter-addressed');
     const knownFilter = document.getElementById('filter-known');
-    if (new URLSearchParams(window.location.search).has('release')) {
-        issueTypeFilters.addressed = true;
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('release')) {
+        const issueType = params.get('type') === 'known' ? 'known' : 'addressed';
+        issueTypeFilters[issueType] = true;
         saveTypeFilters();
     }
 

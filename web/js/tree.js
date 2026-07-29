@@ -63,8 +63,12 @@ export function getCheckedFileRefs() {
 }
 
 export function selectAddressedRelease(product, release) {
+    return selectIssueRelease(product, release, 'addressed');
+}
+
+export function selectIssueRelease(product, release, issueType = 'addressed') {
     if (!productTree || !product || !release) return false;
-    const node = findAddressedReleaseNode(productTree.nodesById.values(), product, release);
+    const node = findIssueReleaseNode(productTree.nodesById.values(), product, release, issueType);
     if (!node) return false;
 
     productTree.setSelectedIds([node.id]);
@@ -73,10 +77,15 @@ export function selectAddressedRelease(product, release) {
 }
 
 export function findAddressedReleaseNode(nodes, product, release) {
+    return findIssueReleaseNode(nodes, product, release, 'addressed');
+}
+
+export function findIssueReleaseNode(nodes, product, release, issueType = 'addressed') {
+    if (issueType !== 'addressed' && issueType !== 'known') return undefined;
     const filename = `${release}.md`;
     return Array.from(nodes).find(candidate =>
         candidate.metadata?.path?.[0] === product &&
-        candidate.metadata?.addressed?.includes(filename)
+        candidate.metadata?.[issueType]?.includes(filename)
     );
 }
 
