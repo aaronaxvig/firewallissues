@@ -63,5 +63,7 @@ test('renders the graph without displaying the legacy release tables', () => {
 
     assert.match(html, /src="js\/statistics\.js"/);
     assert.match(html, /id="issue-plot-canvas"/);
+    assert.match(html, />Base release</);
+    assert.match(html, />Hotfix release</);
     assert.doesNotMatch(html, /class="stats-product"/);
 });

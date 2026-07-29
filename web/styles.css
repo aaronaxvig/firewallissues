@@ -15,6 +15,9 @@
     --input-bg: #ffffff;
     --button: #388e3c;
     --button-hover: #2e7d32;
+    --plot-base: #2e8b57;
+    --plot-hotfix: #2c7be5;
+    --plot-hover: #d97706;
     --shadow: rgba(20, 35, 50, 0.14);
 }
 
@@ -35,6 +38,9 @@
         --input-bg: #101820;
         --button: #3f9145;
         --button-hover: #4ca653;
+        --plot-base: #56b881;
+        --plot-hotfix: #79b8ff;
+        --plot-hover: #f2a93b;
         --shadow: rgba(0, 0, 0, 0.35);
     }
 }
@@ -357,6 +363,34 @@ li:hover {
     min-height: 1.3em;
     margin-top: 8px;
     text-align: center;
+}
+
+.issue-plot-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.issue-plot-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.issue-plot-key {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.issue-plot-key-base {
+    background: var(--plot-base);
+}
+
+.issue-plot-key-hotfix {
+    background: var(--plot-hotfix);
 }
 
 .stats-product {

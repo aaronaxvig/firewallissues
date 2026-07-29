@@ -75,8 +75,9 @@ function plotColors() {
     return {
         text: styles.getPropertyValue('--text-muted').trim() || '#59636e',
         grid: styles.getPropertyValue('--border').trim() || '#d0d7de',
-        point: styles.getPropertyValue('--link').trim() || '#0969da',
-        hover: styles.getPropertyValue('--focus').trim() || '#bf8700'
+        base: styles.getPropertyValue('--plot-base').trim() || '#2e8b57',
+        hotfix: styles.getPropertyValue('--plot-hotfix').trim() || '#2c7be5',
+        hover: styles.getPropertyValue('--plot-hover').trim() || '#d97706'
     };
 }
 
@@ -181,7 +182,9 @@ function drawPlot() {
         context.beginPath();
         const hovered = point.issueNumber === hoveredPoint?.issueNumber;
         context.arc(point.x, point.y, hovered ? 5 : 3, 0, Math.PI * 2);
-        context.fillStyle = hovered ? colors.hover : colors.point;
+        context.fillStyle = hovered
+            ? colors.hover
+            : (/-h\d+(?:\D|$)/i.test(point.release) ? colors.hotfix : colors.base);
         context.globalAlpha = hovered ? 1 : 0.72;
         context.fill();
     });

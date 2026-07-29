@@ -216,6 +216,10 @@ export function renderStatisticsPage(statistics) {
                 <canvas id="issue-plot-canvas" role="img" aria-label="Scatter plot of addressed Issue-IDs by release"></canvas>
                 <div id="issue-plot-tooltip" class="issue-plot-tooltip" role="status" hidden></div>
             </div>
+            <div class="issue-plot-legend" aria-label="Dot colors">
+                <span><i class="issue-plot-key issue-plot-key-base"></i>Base release</span>
+                <span><i class="issue-plot-key issue-plot-key-hotfix"></i>Hotfix release</span>
+            </div>
             <p id="issue-plot-summary" class="issue-plot-summary" aria-live="polite"></p>
         </section>
     </main>
