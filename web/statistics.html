@@ -21,7 +21,28 @@
         </nav>
     </header>
     <main class="statistics-container">
-        <p class="statistics-intro">Unique releases represented in the issue data. Major and minor rows include all releases beneath them; patch rows count hotfix releases.</p>
+        <p class="statistics-intro">Explore addressed Issue-IDs by release, followed by counts of the releases represented in the issue data.</p>
+        <section class="issue-plot" aria-labelledby="issue-plot-heading">
+            <div class="issue-plot-heading">
+                <div>
+                    <h2 id="issue-plot-heading">Addressed issues by release</h2>
+                    <p>Each dot is an Issue-ID. Hover for details or select a dot to find that issue.</p>
+                </div>
+                <div class="issue-plot-controls">
+                    <label>Product
+                        <select id="issue-plot-product"></select>
+                    </label>
+                    <label>Release train
+                        <select id="issue-plot-train"></select>
+                    </label>
+                </div>
+            </div>
+            <div class="issue-plot-frame">
+                <canvas id="issue-plot-canvas" role="img" aria-label="Scatter plot of addressed Issue-IDs by release"></canvas>
+                <div id="issue-plot-tooltip" class="issue-plot-tooltip" role="status" hidden></div>
+            </div>
+            <p id="issue-plot-summary" class="issue-plot-summary" aria-live="polite"></p>
+        </section>
         <section class="stats-product">
             <h2>GlobalProtect <span class="stats-product-total">50 releases</span></h2>
             <div class="stats-table-wrap">

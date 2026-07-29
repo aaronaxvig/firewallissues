@@ -51,6 +51,11 @@ export function applyIssueSearchFilter() {
 
 function initializeIssueSearch() {
     const searchInput = document.getElementById('issue-search');
+    const initialQuery = new URLSearchParams(window.location.search).get('issue');
+    if (initialQuery) {
+        searchInput.value = initialQuery;
+        issueSearchTerms = initialQuery.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    }
     searchInput.addEventListener('input', () => {
         issueSearchTerms = searchInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
         applyIssueSearchFilter();

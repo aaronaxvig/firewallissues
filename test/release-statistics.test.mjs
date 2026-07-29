@@ -1,6 +1,36 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { buildReleaseStatistics, renderStatisticsPage } from '../scripts/generate-release-statistics.mjs';
+import {
+    buildIssuePlotProduct,
+    buildReleaseStatistics,
+    extractAddressedIssueIds,
+    renderStatisticsPage
+} from '../scripts/generate-release-statistics.mjs';
+
+test('extracts unique Issue-IDs only from Markdown issue headings', () => {
+    const markdown = `## PAN-123456
+
+Mentions PAN-999999 in the description.
+
+## GPC-001234
+
+## PAN-123456
+`;
+    assert.deepEqual(extractAddressedIssueIds(markdown), ['PAN-123456', 'GPC-001234']);
+});
+
+test('builds compact plot points in semantic release order', () => {
+    const plot = buildIssuePlotProduct('PAN-OS', new Map([
+        ['10.2.10-h1', ['PAN-130000']],
+        ['10.2.9', ['PAN-100000', 'WF500-120000']]
+    ]));
+    assert.deepEqual(plot.releases, ['10.2.9', '10.2.10-h1']);
+    assert.deepEqual(plot.points, [
+        [0, 100000, 'PAN-100000'],
+        [0, 120000, 'WF500-120000'],
+        [1, 130000, 'PAN-130000']
+    ]);
+});
 
 test('counts unique releases at major and minor levels and hotfixes at patch level', () => {
     const records = [
@@ -36,6 +66,7 @@ test('renders the nested levels into a static HTML page', () => {
     assert.match(html, /class="stats-patch"[^>]+hidden/);
     assert.match(html, /class="stats-toggle"[^>]+aria-expanded="false"/);
     assert.match(html, /src="js\/statistics\.js"/);
+    assert.match(html, /id="issue-plot-canvas"/);
     assert.match(html, />1 hotfix</);
 });
 

@@ -1,15 +1,68 @@
 #!/usr/bin/env node
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { collectIssueFiles } from './update-products-from-issues.mjs';
+import { extractIssueIds } from '../web/js/issue-id.js';
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const VERSION_RE = /^(?<major>\d+)(?:\.(?<minor>\d+))?(?:\.(?<patch>\d+))?(?<rest>.*)$/;
 const HOTFIX_RE = /-h\d+(?:\D|$)/i;
+const ISSUE_HEADING_RE = /^##\s+(.+?)\s*$/gm;
 
 function compareNumbers(left, right) {
     return Number(left) - Number(right);
+}
+
+function productDataFilename(product) {
+    const slug = product.replace(/[^a-z0-9.-]+/gi, '-').replace(/^-+|-+$/g, '');
+    return `${slug || 'product'}.json`;
+}
+
+function compareVersions(left, right) {
+    const leftParts = left.match(/\d+/g)?.map(Number) ?? [];
+    const rightParts = right.match(/\d+/g)?.map(Number) ?? [];
+    const length = Math.max(leftParts.length, rightParts.length);
+    for (let index = 0; index < length; index++) {
+        const difference = (leftParts[index] ?? -1) - (rightParts[index] ?? -1);
+        if (difference) return difference;
+    }
+    return left.localeCompare(right);
+}
+
+export function extractAddressedIssueIds(markdown) {
+    const ids = [];
+    for (const match of String(markdown).matchAll(ISSUE_HEADING_RE)) {
+        ids.push(...extractIssueIds(match[1]));
+    }
+    return Array.from(new Set(ids));
+}
+
+export function buildIssuePlotProduct(product, releases) {
+    const versions = Array.from(releases.keys()).sort(compareVersions);
+    const points = [];
+    versions.forEach((version, releaseIndex) => {
+        for (const id of releases.get(version)) {
+            const issueNumber = Number(id.match(/-(\d+)$/)?.[1]);
+            if (Number.isSafeInteger(issueNumber)) points.push([releaseIndex, issueNumber, id]);
+        }
+    });
+    return { product, releases: versions, points };
+}
+
+export async function buildIssuePlotData(records, issuesDir) {
+    const products = new Map();
+    const addressed = records.filter(record => record.issueType === 'addressed');
+    await Promise.all(addressed.map(async record => {
+        const markdown = await readFile(join(issuesDir, record.product, 'addressed', record.filename), 'utf8');
+        const ids = extractAddressedIssueIds(markdown);
+        const releases = products.get(record.product) ?? new Map();
+        releases.set(record.version, ids);
+        products.set(record.product, releases);
+    }));
+    return Array.from(products, ([product, releases]) => buildIssuePlotProduct(product, releases))
+        .filter(item => item.points.length > 0)
+        .sort((a, b) => a.product.localeCompare(b.product));
 }
 
 export function buildReleaseStatistics(records) {
@@ -143,7 +196,28 @@ export function renderStatisticsPage(statistics) {
         </nav>
     </header>
     <main class="statistics-container">
-        <p class="statistics-intro">Unique releases represented in the issue data. Major and minor rows include all releases beneath them; patch rows count hotfix releases.</p>
+        <p class="statistics-intro">Explore addressed Issue-IDs by release, followed by counts of the releases represented in the issue data.</p>
+        <section class="issue-plot" aria-labelledby="issue-plot-heading">
+            <div class="issue-plot-heading">
+                <div>
+                    <h2 id="issue-plot-heading">Addressed issues by release</h2>
+                    <p>Each dot is an Issue-ID. Hover for details or select a dot to find that issue.</p>
+                </div>
+                <div class="issue-plot-controls">
+                    <label>Product
+                        <select id="issue-plot-product"></select>
+                    </label>
+                    <label>Release train
+                        <select id="issue-plot-train"></select>
+                    </label>
+                </div>
+            </div>
+            <div class="issue-plot-frame">
+                <canvas id="issue-plot-canvas" role="img" aria-label="Scatter plot of addressed Issue-IDs by release"></canvas>
+                <div id="issue-plot-tooltip" class="issue-plot-tooltip" role="status" hidden></div>
+            </div>
+            <p id="issue-plot-summary" class="issue-plot-summary" aria-live="polite"></p>
+        </section>
 ${statistics.map(renderProduct).join('\n')}
     </main>
     <script type="module" src="js/statistics.js"></script>
@@ -152,12 +226,25 @@ ${statistics.map(renderProduct).join('\n')}
 `;
 }
 
-export async function generateReleaseStatistics({ issuesDir, outputPath }) {
+export async function generateReleaseStatistics({ issuesDir, outputPath, plotDataDir = join(dirname(outputPath), 'data/statistics') }) {
     const records = await collectIssueFiles(issuesDir);
     const statistics = buildReleaseStatistics(records);
+    const plotData = await buildIssuePlotData(records, issuesDir);
     await mkdir(dirname(outputPath), { recursive: true });
+    await mkdir(plotDataDir, { recursive: true });
+    const plotProducts = [];
+    for (const item of plotData) {
+        const filename = productDataFilename(item.product);
+        await writeFile(join(plotDataDir, filename), JSON.stringify(item), 'utf8');
+        plotProducts.push([item.product, filename]);
+    }
+    await writeFile(join(plotDataDir, 'products.json'), JSON.stringify(plotProducts), 'utf8');
     await writeFile(outputPath, renderStatisticsPage(statistics), 'utf8');
-    return { products: statistics.length, releases: statistics.reduce((sum, item) => sum + item.releases, 0) };
+    return {
+        products: statistics.length,
+        releases: statistics.reduce((sum, item) => sum + item.releases, 0),
+        points: plotData.reduce((sum, item) => sum + item.points.length, 0)
+    };
 }
 
 export async function runGenerateStatisticsCli() {
