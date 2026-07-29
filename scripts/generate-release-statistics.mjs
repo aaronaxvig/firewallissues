@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { collectIssueFiles } from './update-products-from-issues.mjs';
-import { extractIssueIds } from '../web/js/issue-id.js';
+import { BLANK_ISSUE_ID, extractIssueIds } from '../web/js/issue-id.js';
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const VERSION_RE = /^(?<major>\d+)(?:\.(?<minor>\d+))?(?:\.(?<patch>\d+))?(?<rest>.*)$/;
@@ -43,6 +43,7 @@ export function buildIssuePlotProduct(product, releases) {
     const points = [];
     versions.forEach((version, releaseIndex) => {
         for (const id of releases.get(version)) {
+            if (id === BLANK_ISSUE_ID) continue;
             const issueNumber = Number(id.match(/-(\d+)$/)?.[1]);
             if (Number.isSafeInteger(issueNumber)) points.push([releaseIndex, issueNumber, id]);
         }

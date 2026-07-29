@@ -22,7 +22,7 @@ Mentions PAN-999999 in the description.
 test('builds compact plot points in semantic release order', () => {
     const plot = buildIssuePlotProduct('PAN-OS', new Map([
         ['10.2.10-h1', ['PAN-130000']],
-        ['10.2.9', ['PAN-100000', 'WF500-120000']]
+        ['10.2.9', ['PAN-100000', 'WF500-120000', 'BLANK-000000']]
     ]));
     assert.deepEqual(plot.releases, ['10.2.9', '10.2.10-h1']);
     assert.deepEqual(plot.points, [

@@ -120,7 +120,7 @@ function drawPlot() {
     const minimum = Math.min(...values);
     const maximum = Math.max(...values);
     const range = Math.max(1, maximum - minimum);
-    const yMin = Math.max(0, minimum - range * 0.04);
+    const yMin = minimum - range * 0.04;
     const yMax = maximum + range * 0.04;
     const xFor = position => margin.left + (
         releaseIndexes.length === 1 ? plotWidth / 2 : position * plotWidth / (releaseIndexes.length - 1)
