@@ -65,6 +65,10 @@ function initializeIssueSearch() {
 function initializeIssueTypeFilters(onSelectionChange) {
     const addressedFilter = document.getElementById('filter-addressed');
     const knownFilter = document.getElementById('filter-known');
+    if (new URLSearchParams(window.location.search).has('release')) {
+        issueTypeFilters.addressed = true;
+        saveTypeFilters();
+    }
 
     // Restore checkbox state from persisted filters
     addressedFilter.checked = issueTypeFilters.addressed;

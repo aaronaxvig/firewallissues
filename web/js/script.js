@@ -1,5 +1,11 @@
 import { loadIssuesForCheckedPaths } from './issues.js';
-import { getCheckedFileRefs, initializeTree, renderProductTree, restoreTreeState } from './tree.js';
+import {
+    getCheckedFileRefs,
+    initializeTree,
+    renderProductTree,
+    restoreTreeState,
+    selectAddressedRelease
+} from './tree.js';
 import { applyIssueSearchFilter, getIssueTypeFilters, initializeUI } from './ui.js';
 import { expandFilePrefixLevel } from './product-tree-model.js';
 
@@ -26,6 +32,8 @@ function loadProductTree() {
             productsData = expandFilePrefixLevel(data);
             await renderProductTree(productsData);
             restoreTreeState();
+            const params = new URLSearchParams(window.location.search);
+            selectAddressedRelease(params.get('product'), params.get('release'));
             refreshIssuesForCurrentSelection();
         })
         .catch(error => console.error('Error loading products:', error));

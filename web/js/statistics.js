@@ -34,6 +34,10 @@ const productCache = new Map();
 let currentProduct = null;
 let renderedPoints = [];
 let hoveredPoint = null;
+const initialParams = new URLSearchParams(window.location.search);
+const initialProduct = initialParams.get('product') || 'PAN-OS';
+const initialTrain = initialParams.get('train') || '11.1';
+let restoreInitialSelection = true;
 
 function releaseTrain(version) {
     return version.match(/^\d+\.\d+/)?.[0] ?? version;
@@ -46,6 +50,14 @@ function fillSelect(select, options) {
         option.textContent = value;
         return option;
     }));
+}
+
+function updatePlotQuery() {
+    if (!currentProduct || !trainSelect.value) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('product', currentProduct.product);
+    url.searchParams.set('train', trainSelect.value);
+    history.replaceState(null, '', url);
 }
 
 async function loadProduct(filename) {
@@ -167,7 +179,7 @@ function drawPlot() {
 
     renderedPoints.forEach(point => {
         context.beginPath();
-        const hovered = point.id === hoveredPoint?.id && point.release === hoveredPoint?.release;
+        const hovered = point.issueNumber === hoveredPoint?.issueNumber;
         context.arc(point.x, point.y, hovered ? 5 : 3, 0, Math.PI * 2);
         context.fillStyle = hovered ? colors.hover : colors.point;
         context.globalAlpha = hovered ? 1 : 0.72;
@@ -212,12 +224,20 @@ canvas?.addEventListener('pointerleave', () => {
 
 canvas?.addEventListener('click', event => {
     const point = pointNear(event);
-    if (point) window.location.href = `index.html?issue=${encodeURIComponent(point.id)}`;
+    if (point) {
+        const params = new URLSearchParams({
+            issue: point.id,
+            product: currentProduct.product,
+            release: point.release
+        });
+        window.location.href = `index.html?${params}`;
+    }
 });
 
 trainSelect?.addEventListener('change', () => {
     hoveredPoint = null;
     tooltip.hidden = true;
+    updatePlotQuery();
     drawPlot();
 });
 
@@ -225,6 +245,12 @@ productSelect?.addEventListener('change', async () => {
     try {
         currentProduct = await loadProduct(productSelect.value);
         fillSelect(trainSelect, Array.from(new Set(currentProduct.releases.map(releaseTrain))).reverse());
+        if (restoreInitialSelection && initialProduct === currentProduct.product && initialTrain &&
+            Array.from(trainSelect.options).some(option => option.value === initialTrain)) {
+            trainSelect.value = initialTrain;
+        }
+        restoreInitialSelection = false;
+        updatePlotQuery();
         drawPlot();
     } catch (error) {
         summary.textContent = error.message;
@@ -245,6 +271,8 @@ if (canvas) {
                 option.textContent = product;
                 return option;
             }));
+            const requestedProduct = products.find(([product]) => product === initialProduct);
+            if (requestedProduct) productSelect.value = requestedProduct[1];
             productSelect.dispatchEvent(new Event('change'));
         })
         .catch(error => {

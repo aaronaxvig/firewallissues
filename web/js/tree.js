@@ -62,6 +62,24 @@ export function getCheckedFileRefs() {
     };
 }
 
+export function selectAddressedRelease(product, release) {
+    if (!productTree || !product || !release) return false;
+    const node = findAddressedReleaseNode(productTree.nodesById.values(), product, release);
+    if (!node) return false;
+
+    productTree.setSelectedIds([node.id]);
+    pushTreeState();
+    return true;
+}
+
+export function findAddressedReleaseNode(nodes, product, release) {
+    const filename = `${release}.md`;
+    return Array.from(nodes).find(candidate =>
+        candidate.metadata?.path?.[0] === product &&
+        candidate.metadata?.addressed?.includes(filename)
+    );
+}
+
 // State restoration now happens when setData renders the generic tree.
 export function restoreTreeState() {}
 

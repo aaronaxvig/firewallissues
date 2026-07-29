@@ -196,7 +196,7 @@ export function renderStatisticsPage(statistics) {
         </nav>
     </header>
     <main class="statistics-container">
-        <p class="statistics-intro">Explore addressed Issue-IDs by release, followed by counts of the releases represented in the issue data.</p>
+        <p class="statistics-intro">Explore addressed Issue-IDs by product and release.</p>
         <section class="issue-plot" aria-labelledby="issue-plot-heading">
             <div class="issue-plot-heading">
                 <div>
@@ -218,7 +218,6 @@ export function renderStatisticsPage(statistics) {
             </div>
             <p id="issue-plot-summary" class="issue-plot-summary" aria-live="polite"></p>
         </section>
-${statistics.map(renderProduct).join('\n')}
     </main>
     <script type="module" src="js/statistics.js"></script>
 </body>
