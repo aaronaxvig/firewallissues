@@ -1,0 +1,138 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 38%" />
+    <col style="width: 62%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry"><span class="ph uicontrol">PAN-218285</span></td>
+      <td class="entry relcol">
+        Fixed an issue where after switching the SPN by suspending the active
+        SPN, the forwarding rule was not correctly pointing to the new active
+        node when moved from 3 rules (TCP/UDP/ICMP) to 1 Layer 3 default rule in
+        GCP.
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-217484</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >rasmgr</a
+          >
+          process used 100% CPU due to a maximum duration timer not being set,
+          which caused the GlobalProtect gateway to be unavailable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><span class="ph uicontrol">PAN-217431</span></td>
+      <td class="entry relcol">
+        Fixed an issue with slot 2 DPCs where URL Filtering did not work as
+        expected after upgrading to PAN-OS 10.1.9.
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><span class="ph uicontrol">PAN-216710</span></td>
+      <td class="entry relcol">
+        Fixed an issue with firewalls in active/active HA configurations where
+        GlobalProtect disconnected when the original suspected active-primary
+        firewall became active-secondary.
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><span class="ph uicontrol">PAN-216036</span></td>
+      <td class="entry relcol">
+        Fixed an issue where the
+        <span class="ph codeph">all_pktproc</span> process stopped responding,
+        which caused the firewall to enter a nonfunctional state.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><span class="ph uicontrol">PAN-215823</span></td>
+      <td class="entry relcol">
+        Fixed an issue on log collectors where the
+        <span class="ph uicontrol">reportd</span> process stopped responding.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><span class="ph uicontrol">PAN-215496</span></td>
+      <td class="entry relcol">
+        Fixed an issue where 100G ports did not come up with BIDI QSFP modules.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><span class="ph uicontrol">PAN-214406</span></td>
+      <td class="entry relcol">
+        Fixed an issue with Elasticsearch where ES tunnels weren’t started and
+        were forked incorrectly, which caused them to fail.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><span class="ph uicontrol">PAN-213079</span></td>
+      <td class="entry relcol">
+        Fixed an issue with Captive Portal SAML authentication by increasing the
+        number of retries in the Nginx configuration.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <span class="ph uicontrol">PAN-212726</span>
+        <div class="p"><span class="ph uicontrol">PAN-211519</span></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where RTP/RTCP packets were dropped for SIP calls by SIP
+        ALG when the source NAT translation type was persistent
+        <span class="ph uicontrol">Dynamic IP And Port</span>.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><span class="ph uicontrol">PAN-211870</span></td>
+      <td class="entry relcol">
+        Fixed an issue where path monitoring failure occurred, which caused high
+        availability failover.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><span class="ph uicontrol">PAN-195912</span></td>
+      <td class="entry relcol">
+        Fixed an issue where connections from the firewall to
+        <span class="ph">Strata Logging Service</span> failed.
+      </td>
+    </tr>
+  </tbody>
+</table>

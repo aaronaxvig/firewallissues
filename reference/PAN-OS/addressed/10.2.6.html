@@ -1,0 +1,260 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-231823</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2024-5916"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2024-5916</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-229865</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-220 firewalls only</tt>) Fixed an issue where
+          upgrading to PAN-OS 10.2.5 failed if the firewall was on a PAN-OS 10.1
+          release.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-229705</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where running the
+          <span class="ph systemoutput">show rule-hit-count</span> CLI command
+          on Panorama displayed the error message
+          <span class="ph systemoutput"
+            >Server error : Timed out while getting config lock. Please try
+            again.</span
+          >
+          when attempting to log in or run CLI commands.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227639</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph uicontrol">ACC</span> displayed an incorrect DNS-base
+          application traffic byte count.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-227523</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address customer and internal bugs (<a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2023-38802"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2023-38802</a
+          >).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">
+          <b class="ph b"><b class="ph b">PAN-227376</b></b>
+        </div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory overrun caused the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task</a
+          >
+          process to stop responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-225240</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the OSPF neighbor state remained in
+          <span class="ph systemoutput">exstart</span> when the OSPF network had
+          more than 40 routes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-223787</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-400 Series and PA-1400 Series firewalls only</tt
+          >) Fixed an issue where commits failed with the error message
+          <span class="ph systemoutput"
+            >Error unserializing profile objects failed to handle
+            CONFIG_UPDATE_START</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-221728</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where selective pushes did not work after upgrading to
+          PAN-OS 10.2.4.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-216775</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >devsrvr</a
+          >
+          process stopped responding at
+          <span class="ph systemoutput"
+            >pan_cloud_agent_get_curl_connection()</span
+          >
+          and the URL cloud could not be connected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-214273</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Elasticsearch logs were not cleared, which caused
+          the root partition to fill up.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-205015</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where not all users were included in the user group
+          after an incremental sync between the firewall and the Cloud Identity
+          Engine.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-204868</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where disk utilization was continuously high due to the
+          log purger not sufficiently reducing the utilization level.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-198509</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commits failed due to insufficient CFG memory.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-198043</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a rare issue where a<span class="ph systemoutput"
+            >BuildXmlCache</span
+          >
+          job failed on the firewall.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
