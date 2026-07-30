@@ -1,0 +1,136 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-326705</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high CPU utilization occurred on one of the CPU
+          cores.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-318619</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Geneve ingress traffic did not use the correct
+          public IP address for return traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-316937</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect users intermittently received
+          incorrect private IP addresses after connecting to a gateway behind a
+          Network Load Balancer (NLB).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-312725</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where no warning message was displayed during commits
+          for improperly formatted FQDN or IP address values in the
+          GlobalProtect Enforcer configuration. This fix requires a compatible
+          content version on the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304840</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple firewalls experienced high management
+          CPU utilization after upgrading to an affected release due to repeated
+          index regeneration occurring every 15 minutes, which caused periodic
+          CPU spikes above 90%.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-303156</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the session timer for a custom application did
+          not transition from the initial 3-way handshake timer to the
+          application timeout when out-of-order 3-way handshake packets were
+          detected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-298788</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the /pancfg partition on the Azure Cloud NGFW
+          reached 100% utilization, which caused commit failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-292242</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where traffic logs were truncated when
+          they were forwarded using a TCP syslog configuration due to the
+          forwarding queue capacity being exceeded.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266843</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on airgapped firewalls where cloud connection errors
+          flooded the system logs.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,192 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-326705</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high CPU utilization occurred on one of the CPU
+          cores.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-325002</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Google Cloud NGFW Enterprise VM-Series firewalls only</tt
+          >) Fixed an issue where the HTTP2 threat logs did not include VPC ID,
+          Security_key, and Endpoint ID.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-323485</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multicast radio RTP based traffic was dropped
+          after an upgrade when the firewall performed Cloud Inline inspection,
+          which led to an exceeded session queue for Cloud Threat Detection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-318106</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SCM did not update device telemetry for the
+          firewall after upgrading to an affected release.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-317068</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the Panorama web interface where you were able to
+          enable IPv6 for IKE gateways and IPSec tunnels even when IPv6 WAN was
+          disabled, which resulted in an invalid configuration. To utilize this
+          fix, upgrade to the latest Panorama plugin.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-314624</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">useridd</span> process became
+          unresponsive and restarted when attempting to dump the Host
+          Information Profile (HIP) database via CLI while the system was
+          actively processing HIP reports. This was caused by a lock contention.
+          With this fix, the process now operates as expected under these
+          conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-313827</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak occurred related to the
+          <span class="ph systemoutput">reportd</span> process when custom
+          reports were run via API.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304840</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple firewalls experienced high management
+          CPU utilization after upgrading to an affected release due to repeated
+          index regeneration occurring every 15 minutes, which caused periodic
+          CPU spikes above 90%.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-303156</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the session timer for a custom application did
+          not transition from the initial 3-way handshake timer to the
+          application timeout when out-of-order 3-way handshake packets were
+          detected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-298788</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the /pancfg partition on the Azure Cloud NGFW
+          reached 100% utilization, which caused commit failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-293707</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >iotd</a
+          >
+          process failed to install DPI Cloud server FQDN due to a configuration
+          parsing failure, caused by the configuration XML memory buffer not
+          being NULL terminated. This resulted in the accumulation of EAL logs
+          and DLP forwarding being stopped.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266843</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on airgapped firewalls where cloud connection errors
+          flooded the system logs.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

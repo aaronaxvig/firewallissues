@@ -1,0 +1,75 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323501</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SWG Explicit Proxy Kerberos authentication bypass
+          did not occur for some URLs that matched a configured URL category.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314776</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding after pushing configuration changes from
+          Panorama to the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312618</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall was unable to activate GlobalProtect
+          client software and displayed
+          <span class="ph systemoutput">SW LIMIT</span> messages related to
+          max-profiles and unsupported major and minor versions in the downgrade
+          list, which prevented successful software installation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-307933</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama appliances in Log Collector mode only</tt
+          >) Fixed an issue where the log collectors became unstable for an
+          extended period of time when receiving large amounts of traffic.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
