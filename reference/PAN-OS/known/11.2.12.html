@@ -106,86 +106,6 @@
 
     <tr class="row">
       <td class="entry">
-        <div class="p"><b class="ph b">PAN-325120</b></div>
-        <div class="p">
-          <tt class="ph tt">This issue affects PAN-OS 11.2.11</tt>
-        </div>
-        <div class="p">
-          <tt class="ph tt">This issue is now resolved. See </tt
-          ><a
-            class="xref"
-            href="/content/techdocs/en_US/pan-os/11-2/pan-os-release-notes/pan-os-11-2-12-known-and-addressed-issues/pan-os-11-2-12-addressed-issues.html"
-            title=""
-            data-scope="local"
-            data-format="dita"
-            data-type=""
-            target="_self"
-            >PAN-OS 11.2.12 Addressed Issues</a
-          >
-        </div>
-      </td>
-      <td class="entry relcol">
-        <div dir="ltr" class="p">
-          On PA-415, PA-415-5G, PA-445, PA-455, and PA-455-5G platforms, certain
-          PAN-OS versions may cause intermittent connectivity issues on Eth1/1
-          SFP/RJ45 data port. Additionally, devices onboarded or managed via
-          Eth1/1 lose call-home connectivity post-upgrade. The dedicated
-          management port SFP or RJ45 are not affected.
-        </div>
-        <b class="ph b">Workaround</b>: Move the Eth1/1 connection to any other
-        dataport (Eth1/2 to 1/9). Devices managed via Eth1/1 require an on-site
-        administrator to manually move the connection from Eth1/1 to the
-        dedicated management port. Devices managed via Eth1/1 require an on-site
-        administrator to manually move the connection from Eth1/1 to the
-        dedicated management port.
-        <div dir="ltr" class="p">
-          On the following platforms, PoE ports will not supply power. Ethernet
-          traffic on PoE ports continues to function for devices that do not
-          require inline power.
-        </div>
-        <ul id="panos-known-issues-11.2.11_ul-nhq_f3r_gjc" class="ul">
-          <li dir="ltr" class="li">
-            <div dir="ltr" class="p">
-              Affected PoE ports on PA-415, PA-415-5G, PA-445: Eth1/6–Eth1/9
-            </div>
-          </li>
-          <li dir="ltr" class="li">
-            <div dir="ltr" class="p">
-              Affected PoE ports on PA-455, PA-455-5G: Eth1/5–Eth1/8
-            </div>
-          </li>
-        </ul>
-        <b class="ph b">Workaround</b>: If power is needed from impacted PoE
-        ports, downgrade to an unaffected PAN-OS version. See the
-        <a
-          class="xref"
-          href="http://security.paloaltonetworks.com"
-          title=""
-          data-scope="external"
-          data-format="html"
-          data-type=""
-          target="_blank"
-          >May Security Advisory</a
-        >
-        for additional mitigations.
-        <div class="p"><b class="ph b">All Affected PAN-OS Versions: </b></div>
-        <ul id="panos-known-issues-11.2.11_ul-n5c_kjr_gjc" class="ul">
-          <li class="li">
-            <div class="p">
-              <b class="ph b">11.1: </b>11.1.10-h23, 11.1.10-h24, 11.1.10-h25,
-              11.1.13-h4, 11.1.13-h5, 11.1.14
-            </div>
-          </li>
-          <li class="li">
-            <b class="ph b">11.2: </b>11.2.7-h12, 11.2.7-h13, 11.2.7-h14,
-            11.2.10-h5, 11.2.10-h6, 11.2.10-h7, 11.2.11
-          </li>
-        </ul>
-      </td>
-    </tr>
-
-    <tr class="row">
-      <td class="entry">
         <div class="p"><b class="ph b">PAN-317755</b></div>
       </td>
       <td class="entry relcol">
@@ -584,7 +504,7 @@
           revocation and deletion operations to fail with the following error
           messages:
         </div>
-        <ul id="panos-known-issues-11.2.11_ul-t2x_dxs_wgc" class="ul">
+        <ul id="pan_os_11_2_12_known_issues_ul-hby_2gs_jjc" class="ul">
           <li class="li">
             <span class="ph systemoutput"
               >db-serialno can be at most 40 characters</span
@@ -677,7 +597,7 @@
           <span class="ph systemoutput">active-primary</span> HA peer and then
           synchronize the HA configuration.
         </div>
-        <ol id="panos-known-issues-11.2.11_ol_aqy_kbp_qxb" class="ol">
+        <ol id="pan_os_11_2_12_known_issues_ol-iby_2gs_jjc" class="ol">
           <li class="li">
             <div class="p">
               <a
@@ -740,7 +660,7 @@
           <span class="ph systemoutput">mgmtsrvr</span> process on the Dedicated
           Log Collector.
         </div>
-        <ol id="panos-known-issues-11.2.11_ol_pdy_4bm_lvb" class="ol">
+        <ol id="pan_os_11_2_12_known_issues_ol-jby_2gs_jjc" class="ol">
           <li class="li">
             <div class="p">
               <a

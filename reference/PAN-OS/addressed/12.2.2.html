@@ -1,0 +1,38 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242777</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where running debug online diagnostics run on a 5G
+          supported PA-400 firewall models reported "Missing device on I2C bus"
+          errors and did not execute cellular modem diagnostic tests. This
+          occurred because the diagnostics script used an incorrect I2C device
+          list for the 5G supported PA-400 hardware variants and did not
+          recognize it as a cellular-capable platform. With this fix, the I2C
+          scan correctly reflects the 5G supported PA-400 hardware configuration
+          and cellular modem tests run as expected.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

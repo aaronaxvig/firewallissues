@@ -1,0 +1,317 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-330995</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Within GCP NSI environments, egress traffic logs fail to accurately
+          reflect the designated NAT IP addresses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-330964</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          In PA-VM deployed on GCP instances, it is observed that the gVNIC
+          interfaces appear inactive after enabling jumbo frames.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-330906</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Panorama, the configuration Push Scope might not include the shared
+          <span class="ph uicontrol">Devices</span> object entries, even though
+          these objects are visible in the staged configuration changes for the
+          specified administrator and device group.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-330902</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          After restarting MongoDB (mdb) on Panorama using the
+          <span class="ph userinput"
+            >request mongo set mongo-update-sort-limit</span
+          >
+          CLI command, push to devices (both full push and selective push)
+          fails.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround</b>: Restart
+          <span class="ph userinput">configd</span> on Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-330836</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series software firewalls with 16 GB of memory and 16 vCPUs
+            only</tt
+          >) Starting in PAN-OS 12.1.5, memory usage increases to approximately
+          6 GB for firewalls running a maximum configuration, compared to
+          approximately 5 GB in PAN-OS 12.1.2. This increase eliminates the
+          available memory buffer, leaving no capacity to absorb additional
+          memory demand during peak load. The firewall may become unstable or
+          unresponsive under high-load conditions.
+        </div>
+        <div class="p">
+          Firewalls operating with 12 dp cores, or processing more than 512K
+          sessions, are specifically at risk for memory issues. To ensure
+          continued stability for firewalls matching this criteria, Palo Alto
+          Networks recommends an increase of overall memory allocation by 2 GB.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-329146</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Within GCP NSI environments, it is observed that the Prisma AIRS
+          license activates geneve parsing as a
+          <i class="ph i">default setting</i>, permitting intraVPC traffic flow
+          regardless of NSI status. Hence, you will not be able to disable this
+          feature through CLI.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313669</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5500 Series firewalls in cluster configurations only) When a
+          firewall node is removed from a PA-5500 Series cluster, after the
+          cluster commit and reboot, the node starts in standalone mode with a
+          default virtual wire (vwire) configuration loaded. This default
+          configuration is missing zone assignments for ports eth1/1 and eth1/2,
+          which causes commit operations to fail. Even if zones are manually
+          assigned to these ports, subsequent commit attempts will fail with a
+          "no UUId for rule1" error.
+        </div>
+        <div class="p">
+          <span class="ph uicontrol">Workaround:</span> To resolve this, either:
+        </div>
+        <ul class="ul">
+          <li class="li">
+            Manually assign zone configurations to ports eth1/1 (e.g., untrust)
+            and eth1/2 (e.g., trust), then open and close security policy rule1
+            without making changes, and
+            <span class="ph uicontrol">Commit</span>.
+          </li>
+          <li class="li">
+            Delete the default rule and the default virtual wire Ethernet
+            interfaces, then commit.
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312143</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Firewalls in active/passive high availability (HA) configurations
+          only) When attempting to synchronize the running configuration with an
+          HA peer, particularly during script runs involving different topology
+          builds (e.g., during a smoke runlist), the synchronization process
+          fails. This results in an error indicating that the running
+          configuration could not be synchronized with the HA peer.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311601</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          If the node is seen stuck with fault "session clearing fault". Node
+          reboot is the workaround to get the node back in online state after
+          all other fault conditions are removed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310328</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          If the node is seen stuck with fault "session clearing fault". Node
+          reboot is the workaround to get the node back in online state after
+          all other fault conditions are removed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-300667</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Panorama cannot display Threat log entries (Monitor &gt; Logs &gt;
+          Threat) when the managed log collector is running a lower PAN-OS
+          release than Panorama. Workaround: Upgrade the log collectors to the
+          same version as Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-300230</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (NGFW Cluster) In an NGFW cluster, your pings to the HSCI-B link might
+          fail, even when the link indicates it is up. In the event that the
+          HSCI-A link is brought down or unplugged, the cluster node will
+          transition to failed state, avoiding split brain as both HSCI links
+          are down in this case. Workaround: Reboot the cluster node to resolve
+          the HSCI-B ping issue.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-299562</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          When a client sends a Client Hello with Transport Layer Security (TLS)
+          1.3 or TLS 1.2, using only the p-192 elliptic curve and some
+          non-perfect forward secrecy (PFS) ciphers, the firewall discards the
+          Client Hello. The firewall should allow the connection to proceed
+          using TLS 1.2, maintaining backward compatibility with previous
+          releases.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-298083</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Draft for review: After you change the system mode on an M-700
+          appliance from Panorama mode to PAN-DB private cloud mode, the snmpd
+          process fails to work.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-295946</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          When a Panorama appliance (running PAN-OS 12.1.2 or higher) manages
+          firewalls running PAN-OS versions lower than 12.1.2, and an NTP server
+          configuration template includes SHA256 or SHA512 as the authentication
+          mechanism, pushing this template to the firewalls running PAN-OS
+          versions lower than 12.1.2 will cause the commit operation to fail.
+          Workaround: Create two separate templates: one for firewalls running
+          PAN-OS 12.1.2 or higher (which can include SHA256/SHA512
+          authentication) and another for firewalls running PAN-OS versions
+          lower than 12.1.2 (which should use other authentication algorithms
+          such as SHA1, MD5, or Autokey). Then, push the appropriate template to
+          the corresponding devices from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-293718</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Draft for review: When high speed logging is enabled on a PA-5560
+          device, the expected warning message is not displayed on the web
+          interface. This prevents administrators from being notified that logs
+          can only be viewed from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-292601</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          PAN-OS 12.1.2 and later 12.1 releases support a Load Balanced DNS
+          configuration for an address object. If there are two address objects
+          with same FQDN, but one object has Load Balanced DNS enabled and other
+          object has Load Balanced DNS disabled, then the policy match for the
+          removed IP addresses doesn't work as expected. Workaround: Enable (or
+          disable) Load Balanced DNS consistently for an FQDN that is used with
+          multiple address objects.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-289524</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          In PAN-OS 12.1.2 and later 12.1 releases, PAN-OS can obtain resolved
+          IP addresses from a Load balanced DNS server and use them in a policy
+          match. However, this functionality does not work as intended when the
+          DNS cache reuse flag is enabled. When the DNS cache reuse flag is
+          enabled, the DNS resolution works as if the Load balanced DNS flag
+          (for an Address object) is disabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-283028</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          The following error is thrown when an existing template overrides the
+          SD-WAN configuration followed by the commit and push from Panorama to
+          the firewall.
+        </div>
+        <div class="p">
+          BGP is invalid. AS number does not fit in 2 byte AS format
+        </div>
+        <div class="p">
+          This issue occurs because different AS formats are present on the
+          Panorama and the firewall (the firewall configuration is generated by
+          the SD-WAN plugin). That is, both the hub and branch firewall must
+          have the same AS format in hub-and-spoke topology. In full mesh
+          topology, all the firewalls must have the same AS format.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

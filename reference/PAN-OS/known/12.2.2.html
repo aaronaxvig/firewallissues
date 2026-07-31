@@ -1,0 +1,573 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">PAN-332943</td>
+      <td class="entry relcol">
+        <div class="p">
+          When you upgrade a PA-450R, PA-450R-5G, PA-410R, or PA-410R-5G
+          firewall to PAN-OS 12.2.2 from an earlier release with Fail-to-Wire
+          enabled, subsequent manual commits fail with the following validation
+          error: network -&gt; interface -&gt; fail-open is invalid. This occurs
+          because PAN-OS 12.2.2 introduced a configuration schema change for the
+          Fail-to-Wire feature that is not automatically migrated during
+          upgrade. Fail-to-Wire also does not function correctly after the
+          upgrade.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b>Remove and re-add the Fail-to-Wire
+          configuration.
+        </div>
+        <div class="p">
+          <span class="keyword cmdname"
+            >delete network interface fail-open</span
+          >
+        </div>
+        <div class="p"><span class="keyword cmdname">commit</span></div>
+        <div class="p">
+          <span class="keyword cmdname">set network interface fail-open</span>
+        </div>
+        <div class="p"><span class="keyword cmdname">commit</span></div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-332874</td>
+      <td class="entry relcol">
+        <div class="p">
+          On 5G firewalls, Zero Touch Provisioning (ZTP) over cellular does not
+          complete when the cellular carrier MTU is 1428. During ZTP, the
+          firewall does not correctly account for cellular tunnel header
+          overhead when negotiating the TCP maximum segment size (MSS). The
+          firewall advertises an MSS value that is too large for the 1428 MTU
+          cellular link, causing the certificate server's response packets to
+          exceed the link MTU. The certificate fetch does not complete, and the
+          firewall does not finish provisioning.
+        </div>
+        <div class="p">
+          This issue occurs when using a cellular connection with a
+          carrier-negotiated MTU of 1428, which is the standard MTU for cellular
+          wireless. ZTP process will succeed when carrier provided Network MTU
+          is greater than or equal to 1500.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-332576</td>
+      <td class="entry relcol">
+        <div class="p">
+          On HA pairs running PAN-OS 12.2.2, the useridd process may exhaust its
+          ID manager (type 17) when the passive firewall accumulates more than
+          1,000,000 user entries. When this occurs, useridd consumes 100% CPU
+          and becomes unresponsive, causing commits to fail with the error
+          Management server failed to send phase 1 to client useridd or to stall
+          at 0%.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-332130</td>
+      <td class="entry relcol">
+        <div class="p">
+          On firewalls with cellular interfaces configured with parent and
+          sub-interfaces, APN authentication fails on sub-interfaces when the
+          PDP type is set to both (IPv4 and IPv6). Data sessions on the parent
+          interface establish successfully for both IPv4 and IPv6, but
+          sub-interfaces fail to bring up their data sessions when using PAP or
+          CHAP authentication with PDP type both.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Set the PDP type to IPv4 only on
+          sub-interfaces.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-331987</td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5450, PA-5500, and PA-7500 firewalls with PAN-OS Shield enabled)
+          When connecting to GlobalProtect Portal or Gateway, users receive a
+          `Portal unreachable` error. GlobalProtect connections are frequently
+          unsuccessful, though they may connect successfully after multiple
+          attempts.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Change the session distribution policy
+          to Round-robin.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-331722</td>
+      <td class="entry relcol">
+        <div class="p">
+          On PA-54R-POE (BH/Eagle) firewalls, the PAN-S-SFP-100BASE-FX
+          transceiver on fiber interfaces does not link up when the interface
+          link speed is explicitly set to 100 Mbps. The interface links up
+          correctly when the link speed is set to auto.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Set the interface link speed to auto.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-331659</td>
+      <td class="entry relcol">
+        <div class="p">
+          Running the CLI command debug dataplane packet-path-test counter on
+          PAN-OS 12.2.2 returns a server error instead of counter output.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-330995</td>
+      <td class="entry relcol">
+        <div class="p">
+          Within GCP NSI environments, egress traffic logs fail to accurately
+          reflect the designated NAT IP addresses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-330974</td>
+      <td class="entry relcol">
+        <div class="p">
+          If Azure hotplug events occur, the firewall may experience a crash and
+          data interfaces may transition to an unknown state, leading to traffic
+          disruption.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-330964</td>
+      <td class="entry relcol">
+        <div class="p">
+          In PA-VM deployed on GCP instances, gVNIC interfaces appear inactive
+          after enabling jumbo frames.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-330381</td>
+      <td class="entry relcol">
+        <div class="p">
+          When firewalls are configured in a cluster operating in default mode,
+          IP-Tag, User-Tag, and IP-Port mappings registered on the leader node
+          do not synchronize to the follower node. On the follower node,
+          commands such as `show object registered-ip all` and `show object
+          registered-user all` display no registered entries for these data
+          types, even though they are present on the leader. This prevents
+          Dynamic Address Group (DAG) and Dynamic User Group (DUG) based
+          security policies, which rely on these mappings, from functioning
+          correctly on the follower node. As a result, traffic routed through
+          the follower node does not match these policies, leading to an
+          inconsistent security posture across the cluster.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Configure the firewall cluster to
+          operate in ICD mode. This enables the correct synchronization of
+          IP-Tag, User-Tag, and IP-Port mappings between the leader and follower
+          nodes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-329606</td>
+      <td class="entry relcol">
+        <div class="p">
+          On PA-54R-POE (BH) firewalls, SCP export and import of cellular
+          firmware files fail from the CLI. Running
+          <span class="ph codeph">request cellular firmware scp-export</span> or
+          <span class="ph codeph">request cellular firmware scp-import</span>
+          returns a server error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-329515</td>
+      <td class="entry relcol">
+        <div class="p">
+          When scheduling cellular firmware downloads on Panorama (<b
+            class="ph b"
+            >Device Deployment &gt; Cellular Firmware &gt; Schedule</b
+          >), the Files and Devices fields are not populated in the UI for
+          PA-54R-POE-5G (BH/Eagle) devices. As a result, scheduled Download Only
+          and Download and Install operations for cellular firmware cannot be
+          configured through Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-329146</td>
+      <td class="entry relcol">
+        <div class="p">
+          Within GCP NSI environments, the Prisma® AIRS license activates geneve
+          parsing as a default setting, permitting intraVPC traffic flow
+          regardless of NSI status. You cannot disable this feature through CLI.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-328647</td>
+      <td class="entry relcol">
+        <div class="p">
+          When you configure ML7-CUID in a multi-vsys environment on PAN-OS
+          12.2.2, data upload only supports the hub vsys configuration. When a
+          publisher is configured on a non-hub vsys, data from that vsys is not
+          uploaded to the cloud. All vsys must share the same segment
+          configuration for data upload to function correctly in this release.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Configure the publisher on the hub
+          vsys and ensure all vsys use the same segment configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-327958</td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5450 Firewalls only) Basic authentication for web proxy is not
+          supported in 12.2.2.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-326791</td>
+      <td class="entry relcol">
+        <div class="p">
+          When a Hyperscale Security Fabric (HSF) cluster uses an offline
+          license, the system allows the removal of configuration and
+          uninstallation of the Security Fabric License (SFL) plugin. If the SFL
+          plugin is uninstalled under these conditions, subsequent undeploy
+          operations do not complete successfully.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> To allow the undeploy operation to
+          complete, reinstall the Security Fabric License (SFL) plugin.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-316972</td>
+      <td class="entry relcol">
+        <div class="p">
+          After downgrading a PA-520 firewall from PAN-OS 12.2.0 to 12.1.5 or
+          later 12.1.x releases, auto-commit repeatedly fails after the
+          downgrade completes, leaving the firewall unable to apply its
+          configuration automatically.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-314625</td>
+      <td class="entry relcol">
+        <div class="p">
+          The `useridd` process restarts when you attempt to dump the Host
+          Information Profile (HIP) database using the `debug user-id dump
+          hip-profile-database` command. This occurs while the firewall is
+          actively processing HIP reports, such as logouts or updates. The
+          command initially hangs and times out before the `useridd` process
+          restarts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-313669</td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5500 Series firewalls in cluster configurations only) When a
+          firewall node is removed from a PA-5500 Series cluster, after the
+          cluster commit and reboot, the node starts in standalone mode with a
+          default virtual wire (vwire) configuration loaded. This default
+          configuration is missing zone assignments for ports eth1/1 and eth1/2,
+          which causes commit operations to fail. Even if zones are manually
+          assigned to these ports, subsequent commit attempts fail with a "no
+          UUId for rule1" error.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Manually assign zone configurations to
+          ports eth1/1 (for example, untrust) and eth1/2 (for example, trust),
+          then open and close security policy rule1 without making changes, and
+          commit. Alternatively, delete the default rule and the default virtual
+          wire Ethernet interfaces, then commit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-312143</td>
+      <td class="entry relcol">
+        <div class="p">
+          (Firewalls in active/passive high availability (HA) configurations
+          only) When you synchronize the running configuration with an HA peer,
+          particularly during script runs involving different topology builds,
+          the synchronization process fails with an error indicating that the
+          running configuration could not be synchronized with the HA peer.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-311601</td>
+      <td class="entry relcol">
+        <div class="p">
+          If a node is stuck with a "session clearing fault," reboot the node to
+          restore it to an online state after all other fault conditions are
+          removed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-310328</td>
+      <td class="entry relcol">
+        <div class="p">
+          If a node is stuck with a "session clearing fault," reboot the node to
+          restore it to an online state after all other fault conditions are
+          removed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-309410</td>
+      <td class="entry relcol">
+        <div class="p">
+          Subscriber Identity and Equipment Identity values are missing from URL
+          filtering and Data Filtering logs for GTP mobility traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-305734</td>
+      <td class="entry relcol">
+        <div class="p">
+          On firewalls with 5G cellular interfaces, the default auto MTU value
+          of 1428 bytes causes IP fragmentation errors and out-of-order packets,
+          resulting in degraded throughput performance on cellular connections.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Manually set the cellular interface
+          MTU to 1500 bytes instead of using the auto MTU default.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-300667</td>
+      <td class="entry relcol">
+        <div class="p">
+          Panorama cannot display Threat log entries (<b class="ph b"
+            >Monitor &gt; Logs &gt; Threat</b
+          >) when the managed log collector is running a lower PAN-OS release
+          than Panorama.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Upgrade the log collectors to the same
+          version as Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-300230</td>
+      <td class="entry relcol">
+        <div class="p">
+          (NGFW Cluster) In an NGFW cluster, pings to the HSCI-B link may fail
+          even when the link indicates it is up. If the HSCI-A link is brought
+          down or unplugged, the cluster node transitions to a failed state,
+          avoiding split brain because both HSCI links are down.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Reboot the cluster node to resolve the
+          HSCI-B ping issue.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-299562</td>
+      <td class="entry relcol">
+        <div class="p">
+          When a client sends a Client Hello with TLS 1.3 or TLS 1.2 using only
+          the p-192 elliptic curve and some non-perfect forward secrecy (PFS)
+          ciphers, the firewall discards the Client Hello. The firewall should
+          allow the connection to proceed using TLS 1.2, maintaining backward
+          compatibility with previous releases.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-299286</td>
+      <td class="entry relcol">
+        <div class="p">
+          When configuring a PIM6 neighbor filter, you must include both the
+          primary and secondary IPv6 addresses of each neighbor in the prefix
+          list. Filtering on the primary address alone is not sufficient because
+          PIM6 Hello messages (Option 5) advertise both addresses to peers. A
+          filter that allows only the primary address will prevent neighbor
+          adjacency from forming.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-298083</td>
+      <td class="entry relcol">
+        <div class="p">
+          After you change the system mode on an M-700 appliance from Panorama
+          mode to PAN-DB private cloud mode, the snmpd process fails to work.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-295946</td>
+      <td class="entry relcol">
+        <div class="p">
+          When a Panorama appliance running PAN-OS 12.1.2 or later manages
+          firewalls running earlier PAN-OS versions, and an NTP server
+          configuration template includes SHA256 or SHA512 as the authentication
+          mechanism, pushing the template to firewalls running PAN-OS versions
+          earlier than 12.1.2 causes the commit operation to fail.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Create two separate templates: one for
+          firewalls running PAN-OS 12.1.2 or later (which can include
+          SHA256/SHA512 authentication) and another for firewalls running
+          earlier PAN-OS versions (which should use SHA1, MD5, or Autokey). Push
+          the appropriate template to the corresponding devices from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-294752</td>
+      <td class="entry relcol">
+        <div class="p">
+          In any 15-second interval, if connectivity (CI or management) on a
+          GW-Node (not P-Node) changes more than once, with each change
+          occurring on a different node and affecting a different link, the
+          cluster loses its leader, all routing protocols fail, and traffic is
+          blackholed if route changes occur in the network.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Reboot nodes that are in a FAILED
+          state or suspend and unsuspend any online GW-Node (not P-Node).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-293718</td>
+      <td class="entry relcol">
+        <div class="p">
+          When high-speed logging is enabled on a PA-5560 firewall, the expected
+          warning message does not appear on the web interface. This prevents
+          you from being notified that logs can only be viewed from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-292601</td>
+      <td class="entry relcol">
+        <div class="p">
+          PAN-OS 12.1.2 and later 12.1 releases support a load-balanced DNS
+          configuration for an address object. If two address objects share the
+          same FQDN but one has load-balanced DNS enabled and the other has it
+          disabled, the policy match for removed IP addresses does not work as
+          expected.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Enable or disable load-balanced DNS
+          consistently for any FQDN used with multiple address objects.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-289524</td>
+      <td class="entry relcol">
+        <div class="p">
+          In PAN-OS 12.1.2 and later and PAN-OS 12.2.2 and later releases,
+          PAN-OS can obtain resolved IP addresses from a load-balanced DNS
+          server and use them in a policy match. However, this functionality
+          does not work as intended when the DNS cache reuse flag is enabled.
+          When the DNS cache reuse flag is enabled, the DNS resolution works as
+          if the load-balanced DNS flag (for an address object) is disabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PAN-283028</td>
+      <td class="entry relcol">
+        <div class="p">
+          When an existing template overrides the SD-WAN configuration followed
+          by a commit and push from Panorama to the firewall, the following
+          error occurs: BGP is invalid. AS number does not fit in 2 byte AS
+          format. This issue occurs because different AS formats are present on
+          Panorama and the firewall (the firewall configuration is generated by
+          the SD-WAN plugin). In hub-and-spoke topology, both the hub and branch
+          firewall must have the same AS format. In full mesh topology, all
+          firewalls must have the same AS format.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PLUG-23656</td>
+      <td class="entry relcol">
+        <div class="p">
+          In Software Firewall Licensed HSF environments, serial numbers linked
+          to stale entries can be manually released for reuse. This procedure
+          allows for the recovery of Software Firewall License credits when
+          virtual instances are deleted without being formally decommissioned.
+          For optimal resource management, it is recommended to utilize
+          Orchestration plugin workflows for VM operations rather than manual
+          intervention.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
