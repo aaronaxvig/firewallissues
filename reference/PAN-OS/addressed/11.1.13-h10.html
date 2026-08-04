@@ -1,0 +1,208 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-329034</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where firewall restarted unexpectedly
+          while processing zip files.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-328822</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls in Azure with Accelerated Networking and Data
+            Plane Development Kit (DPDK) enabled</tt
+          >) Fixed an issue where firewalls experienced increasing interface
+          receive errors, which led to intermittent traffic impact and
+          application downtime.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-323842</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commits intermittently failed on some Prisma
+          Access nodes with the error message
+          <span class="ph systemoutput">client pppoed phase 1 failure</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-323501</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SWG Explicit Proxy Kerberos authentication bypass
+          did not occur for some URLs that matched a configured URL category.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-323141</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SD-WAN SaaS monitoring for HTTPS URLs
+          continuously flapped, which caused frequent traffic shifting between
+          ISPs. This occurred due to the firewall unexpectedly hitting resource
+          limits for monitoring.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-317648</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-5450 firewalls and PA-7000 Series firewalls with 100G NPCs
+            only</tt
+          >) Fixed an issue where intermittent packet loss occurred when
+          traversing the dataplane after upgrading the firewall. This occurred
+          when a dataplane HA interface was configured in an environment where
+          Slot 1 was unpopulated, which resulted in a wildcard entry being
+          created within the QMAP table.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-316721</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple EDL fetches were queued and did not
+          complete.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-314776</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding after pushing configuration changes from
+          Panorama to the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-314624</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">useridd</span> process became
+          unresponsive and restarted when attempting to dump the Host
+          Information Profile (HIP) database via CLI while the system was
+          actively processing HIP reports. This was caused by a lock contention.
+          With this fix, the process now operates as expected under these
+          conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-312618</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall was unable to activate GlobalProtect
+          client software and displayed
+          <span class="ph systemoutput">SW LIMIT</span> messages related to
+          max-profiles and unsupported major and minor versions in the downgrade
+          list, which prevented successful software installation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-309960</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process on the passive device led to an OOM condition.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-304840</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple firewalls experienced high management
+          CPU utilization after upgrading to an affected release due to repeated
+          index regeneration occurring every 15 minutes, which caused periodic
+          CPU spikes above 90%.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
