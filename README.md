@@ -6,22 +6,57 @@ Feel free to host your own version, or use [the one I host](https://firewallissu
 Inspired by [Pixi888's](https://www.reddit.com/user/Pixi888/) creation [bugidsearch.com](https://bugidsearch.com/).
 
 ## Data updates ##
-Known and addressed issues for newly released versions are easily added using the process.html page
-- Copy the issue table's HTML from the webpage using devtools.
-- Fill out the process.html page's fields and paste in the table HTML.
-- Download the Markdown file and put it into the correct folder.
-- Optionally run `npm run update:generated` locally to preview the generated
-  `products.json`, product-tree manifest slots, and rendered test fixtures.
-  Gitea Actions runs this command again before testing and deploying.
-- Submit a pull request.
 
-Generated files are intentionally committed so a clone of the repository
+The preferred way to add known and addressed issues for newly released versions
+is to save the full issue-table HTML from the release notes webpage as a
+reference file, then let the automated pipeline handle the rest.
+
+### Workflow (preferred) ###
+
+1. Navigate to the relevant Palo Alto Networks release notes page for the
+   product and version you want to add.
+2. Open DevTools, locate the `<table>` element containing the issue list, and
+   copy its outer HTML.
+3. Save the HTML as a file under `reference/<Product>/<addressed|known>/`.
+   Name it with the exact version string and a `.html` extension
+   (e.g. `reference/PAN-OS/addressed/11.1.13-h10.html`).
+4. Optionally update `reference/urls.json` with the source URL for the page
+   (currently tracked manually; the file is a reference for the deployment
+   workflow).
+5. Commit the reference HTML file(s) and submit a pull request.
+
+After a push to `main` (or a manual run from the Actions page), the Gitea
+Actions deployment workflow automatically runs `npm run update:generated`,
+which:
+- Reads all reference HTML files from `reference/` and converts them to
+  Markdown issue files in `web/data/issues/`.
+- Regenerates `web/data/products.json` and the product-tree manifest.
+- Rebuilds the rendered test fixtures.
+- Runs the test suite before deploying the site.
+
+You can also run these steps locally:
+```bash
+npm run update:generated   # regenerate all derived files
+npm test                   # verify everything is correct
+```
+
+### process.html ###
+
+The `web/process.html` page is a browser-based manual testing tool that was
+used historically to convert issue tables. It is **no longer the recommended
+path** for data updates, but it remains available for one-off experimentation
+or debugging the HTML-to-Markdown conversion logic.
+
+### Notes ###
+
+Generated files (`web/data/products.json`, `web/data/issues/`,
+`test/fixtures/`) are intentionally committed so a clone of the repository
 contains a ready-to-serve snapshot of the website without requiring Node.js or
-a build step. They may lag behind the issue source files when contributors do
-not regenerate them before committing. The issue source files are canonical;
-the Gitea deployment workflow regenerates the derived files before testing and
-publishing the site, so the hosted version does not depend on the committed
-snapshot being current.
+a build step. They may lag behind the reference source files when contributors
+do not regenerate them before committing. The reference source files are
+canonical; the Gitea deployment workflow regenerates the derived files before
+testing and publishing the site, so the hosted version does not depend on the
+committed snapshot being current.
 
 There is intentionally no automated scaping of Palo Alto's website, to avoid abuse of server resources.  Also releases are not that frequent.  A crawler to grab some data from the Common Crawl dataset was started but never really finished.
 
@@ -35,11 +70,10 @@ I have vague ideas of something similar for CVEs.
 
 ## Automatic deployment
 
-Gitea Actions tests and publishes the website after every push to `main`. The
-workflow in [`.gitea/workflows/deploy.yml`](.gitea/workflows/deploy.yml) syncs
-the contents of `web/` to
+The deployment workflow in
+[`.gitea/workflows/deploy.yml`](.gitea/workflows/deploy.yml) syncs the
+contents of `web/` to
 `firewallissues-deploy@<DEPLOY_HOST>:/var/www/html/firewallissues/web/`.
-It can also be run manually from the Actions page.
 
 Before the first deployment:
 
