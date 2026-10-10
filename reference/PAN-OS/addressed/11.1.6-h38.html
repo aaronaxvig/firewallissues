@@ -1,0 +1,127 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_1_6_h38_addressed_issues_ul-nwg_dxl_vjc" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0310"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0310</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0309"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0309</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332247</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy generated HTTP 503 errors for multiple
+          URLs, which prevented users from connecting to servers. With this fix,
+          the proxy now functions as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325151</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a system log was not generated when the proxy
+          reached its session limit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314624</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">useridd</span> process became
+          unresponsive and restarted when attempting to dump the Host
+          Information Profile (HIP) database via CLI while the system was
+          actively processing HIP reports. This was caused by a lock contention.
+          With this fix, the process now operates as expected under these
+          conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310476</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in HA configurations only</tt>) Fixed an
+          issue where CPLD did not power cycle the firewall after internal
+          packet path monitoring failures occurred, and both firewalls instead
+          became simultaneously non-functional after a reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-283774</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall placed UDP sessions into a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >Discard</a
+          >
+          state when a DNS Sinkhole/Block action occurred, which prevented
+          subsequent DNS requests from reusing the same session and caused
+          DNS-related outages.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

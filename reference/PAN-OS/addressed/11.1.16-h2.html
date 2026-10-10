@@ -1,0 +1,388 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_1_16_h2_addressed_issues_ul-nwg_dxl_vjc" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0310"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0310</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0309"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0309</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0308"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0308</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332608</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls intermittently disconnected from SLS.
+          With this fix, firewalls maintained a stable connection to SLS.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332247</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy generated HTTP 503 errors for multiple
+          URLs, which prevented users from connecting to servers. With this fix,
+          the proxy now functions as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332095</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a commit to add a new tunnel interface to an
+          existing Virtual Router caused BGP routes to be temporarily withdrawn,
+          which led to active traffic sessions being routed over incorrect paths
+          during the commit window. With this fix, adding a tunnel interface to
+          an existing Virtual Router no longer disrupts BGP route availability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331387</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IPsec tunnels frequently went down due to high
+          process memory utilization. With this fix, the system process now
+          manages memory correctly, preventing tunnel instability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-330196</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall unexpectedly terminated operations
+          and rebooted due to an internal software error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329793</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the characters in PDF Summary Reports did not
+          display correctly when the Locale was set as Japanese, Korean,
+          Simplified Chinese, or Traditional Chinese.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329637</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the push scope window did not display the target
+          devices when attempting to push configurations from Panorama, which
+          required manual selection of templates or device groups. With this
+          fix, the push scope window now correctly populates with the intended
+          push scope.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329612</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multicast routing entries for certain IPTV
+          streams were not correctly installed or populated with necessary
+          interface information, which prevented the proper forwarding of
+          multicast traffic. With this fix, multicast traffic now forwards as
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328770</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where BGP Graceful Restart (GR) capability continued to
+          be advertised to BGP peers after GR was disabled on a Logical Router
+          configured with the Advanced Routing Engine, which caused peers to
+          incorrectly believe the firewall supported GR. With this fix,
+          disabling BGP GR on a Logical Router correctly removes the capability
+          from BGP Open messages.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325151</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a system log was not generated when the proxy
+          reached its session limit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325057</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where TCP sessions were dropped due to an
+          ACK-out-of-window condition during TCP reassembly when SYN cookies
+          were enabled in a Zone Protection Profile. With this fix, TCP session
+          establishment with SYN cookies enabled correctly tracks sequence
+          numbers and no longer drops valid ACK packets from the Server.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-324336</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect iOS users were unable to connect
+          due to the firewall incorrectly reporting that the maximum number of
+          users was exceeded, even when the actual number of active users was
+          below the configured limit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-321204</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where FTP-DATA sessions did not match the installed
+          predict session, which led to session termination in HA
+          configurations.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316979</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted unexpectedly when
+          packet-diag logging was enabled. With this fix, the firewall maintains
+          stability when this logging is active.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316869</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where previously committed Security policy rules were
+          removed when a full commit was performed by a different administrator,
+          which led to the inadvertent loss of configuration changes. With this
+          fix, Security policy rules are retained as expected after a full
+          commit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-315683</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where certain permitted IP addresses, when pushed from
+          a Panorama template, remained editable on the firewall web interface.
+          With this fix, these template-managed IP addresses are no longer
+          editable on the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314873</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall intermittently stopped forwarding
+          traffic to the internet.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312844</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a TLSv1.3 handshake did not complete when SSL
+          Forward Proxy was enabled. This occurred when a large ClientHello
+          message was split across multiple TCP segments and the final segment
+          contained only one byte.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311988</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in FIPS mode only</tt>) Fixed decryption
+          issues that occurred after an upgrade to an affected release.
+        </div>
+        <div class="p">
+          To enable this fix, run the CLI command
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt low-memory-throttle enable</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310699</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stripped the Authentication Key
+          Identifier (AKID) from certificates using SSL decryption, which
+          prevented clients from authenticating server certificates and resulted
+          in decryption failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-307933</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Panorama appliances in Log Collector mode only) Fixed an issue where
+          the log collectors became unstable for an extended period of time when
+          receiving large amounts of traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-301756</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where ACC logs displayed a discrepancy in SSL traffic
+          information between Panorama and the firewall. With this fix, the SSL
+          traffic information in ACC logs now aligns correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-297880</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where WildFire Analysis reports failed to load,
+          displaying a
+          <span class="ph uicontrol">500 Internal Server Error</span> when the
+          system attempted to retrieve reports for certain files. With this fix,
+          WildFire Analysis reports load as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-291706</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the software tag descriptor was always at 100,
+          which led to resource unavailability errors and prevented users from
+          obtaining DHCP IP addresses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-283774</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall placed UDP sessions into a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >Discard</a
+          >
+          state when a DNS Sinkhole/Block action occurred, which prevented
+          subsequent DNS requests from reusing the same session and caused
+          DNS-related outages.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-264508</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Cloud Identity Engine did not fetch user-mapping
+          details for XML API users. This occurred when the firewall learned the
+          same IP-user mapping multiple times within a short period. With this
+          fix, the Cloud Identity Engine now accurately fetches these
+          user-mapping details.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

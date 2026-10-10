@@ -1,0 +1,165 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="pan_os_11_1_10_h33_addressed_issues_ul-nwg_dxl_vjc"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0310"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0310</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0309"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0309</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332247</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy generated HTTP 503 errors for multiple
+          URLs, which prevented users from connecting to servers. With this fix,
+          the proxy now functions as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329612</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multicast routing entries for certain IPTV
+          streams were not correctly installed or populated with necessary
+          interface information, which prevented the proper forwarding of
+          multicast traffic. With this fix, multicast traffic now forwards as
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325151</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a system log was not generated when the proxy
+          reached its session limit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313218</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Added the following CLI commands to address QoS packet drops due to
+          bursty traffic:
+        </div>
+        <ul class="ul">
+          <li class="li">
+            <span class="ph systemoutput"
+              >debug dataplane set qos-setting qos-param qlimit 300</span
+            >
+          </li>
+          <li class="li">
+            <span class="ph systemoutput"
+              >debug dataplane set qos-setting qos-param red low 50 high
+              90</span
+            >
+          </li>
+        </ul>
+        <div class="p">
+          To utilize this fix, change the parameters, disable QoS, commit
+          changes, enable QOS, and then re-commit changes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-307481</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a commit failure issue that occurred after migrating from Legacy
+          to Advanced routing on firewalls where an OSPF authentication profile
+          was configured to use a 16-character MD5 key with key-ID 10.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-291706</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the software tag descriptor was always at 100,
+          which led to resource unavailability errors and prevented users from
+          obtaining DHCP IP addresses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-283774</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall placed UDP sessions into a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >Discard</a
+          >
+          state when a DNS Sinkhole/Block action occurred, which prevented
+          subsequent DNS requests from reusing the same session and caused
+          DNS-related outages.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

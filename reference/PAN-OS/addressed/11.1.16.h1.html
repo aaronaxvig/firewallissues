@@ -1,0 +1,258 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">—</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2026-0301"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2026-0301</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329834</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak associated with some display CLI
+          commands caused instability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329698</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">OCTEON, MIPS, platforms only</tt>) Fixed an issue
+          where the dataplane became unresponsive. With this fix, the data
+          planeoperates stably.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329034</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where firewall restarted unexpectedly
+          while processing zip files.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328822</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls in Azure with Accelerated Networking and Data
+            Plane Development Kit (DPDK) enabled</tt
+          >) Fixed an issue where firewalls experienced increasing interface
+          receive errors, which led to intermittent traffic impact and
+          application downtime.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327460</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a
+          <span class="ph uicontrol">Commit and Push</span> operation on
+          Panorama did not successfully push configuration changes to Prisma
+          Access endpoints. This occurred when the system reported that not all
+          commit jobs were triggered. With this fix,
+          <span class="ph uicontrol">Commit and Push</span> operations now
+          correctly apply configurations to Prisma Access.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326056</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where ACE applications did not match the correct
+          Security policy rules when the service was not set to
+          <span class="ph uicontrol">Application Default</span> after an
+          upgrade, which caused traffic to be incorrectly denied.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325903</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading Panorama, a custom admin role
+          with Object Level Changes disabled did not automatically populate
+          out-of-sync firewalls in the push scope.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325724</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where importing PKCS12 certificates failed with the
+          error
+          <span class="ph systemoutput"
+            >Import of certificate and private-key failed. Failed to extract
+            certificate</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325496</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">KVM VM-Series firewalls only</tt>) Fixed an issue
+          where ARP entries were incomplete after an upgrade to an affected
+          release.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323974</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where you were unable to add logging drives to the
+          firewall, and validation errors occurred when pushing configurations
+          from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323842</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commits intermittently failed on some Prisma
+          Access nodes with the error message
+          <span class="ph systemoutput">client pppoed phase 1 failure</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323501</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SWG Explicit Proxy Kerberos authentication bypass
+          did not occur for some URLs that matched a configured URL category.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323141</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SD-WAN SaaS monitoring for HTTPS URLs
+          continuously flapped, which caused frequent traffic shifting between
+          ISPs. This occurred due to the firewall unexpectedly hitting resource
+          limits for monitoring.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-321937</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where an expired SD-WAN license caused SD-WAN tunnels
+          to become unavailable, which resulted in traffic interruptions. With
+          this fix, the device provides logs and commit messages about expired
+          licenses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316721</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple EDL fetches were queued and did not
+          complete.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312685</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where committing a scheduled configuration push on
+          Panorama caused the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process to stop responding unexpectedly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310476</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in HA configurations only</tt>) Fixed an
+          issue where CPLD did not power cycle the firewall after internal
+          packet path monitoring failures occurred, and both firewalls instead
+          became simultaneously non-functional after a reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310263</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          enabling TLS1.3 in a decryption profile prevented access to websites.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
