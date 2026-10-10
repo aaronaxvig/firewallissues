@@ -1,0 +1,365 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250686</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where selective push operations did not work when more
+          than one admin user simultaneously performed changes and partial
+          commits on Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-247403</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          the push scope CLI command took longer than expected, which caused the
+          web interface to be slow.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-246431</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a
+          <span class="ph uicontrol">Push to Device</span> operation remained at
+          the state <span class="ph uicontrol">None</span> when performing a
+          selective push to device groups and templates that included both
+          connected and disconnected firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-245701</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the returned values to SNMP requests for data
+          port statistics were incorrect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244836</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A knob was introduced to toggle the default behavior of BGP in the
+          Advanced Routing stack to not suppress duplicate updates. By default,
+          the prefix updates are suppressed for optimization.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244548</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where ECMP sessions changed destination MAC addresses
+          mid-session, which caused connections to be reset.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-244493</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a memory limitation with mapping subinterfaces to VPCE endpoints
+          for GCP IPS, Amazon Web Services (AWS) integration with GWLB, and NSX
+          service chain mapping.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-243463</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high Enhanced Application Log traffic used excess
+          system resources and caused processes to not work.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242910</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a custom based non-Superuser was unable to push
+          to firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242627</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">Fixed an issue where selective push did not work.</div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-241018</b></div>
+      </td>
+      <td class="entry relcol">
+        (<tt class="ph tt"
+          >VM-Series firewalls in Microsoft Azure environments only</tt
+        >) Fixed a Dataplane Development Kit (DPDK) issue where interfaces
+        remained in a link-down stage after an Azure hot plug event.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240477</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a temporary hardware issue that caused PAN-SFP-PLUS-CU-5M to not
+          be able to link up on PA-5400 Series, PA-3400 Series, and PA-1400
+          Series firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-240066</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a duplicate MAC address issue where an ethernet interface sent
+          out Gratuitous ARP (GARP) messages for an IP address that was not
+          configured on it.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-239722</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SNMP scans to the firewall took longer than
+          expected and intermittently timed out.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-238643</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak caused multiple processes to stop
+          responding when VM Information Sources was configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-237991</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the log collector sent fewer logs than expected
+          to the syslog server.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233692</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped, which caused performance issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-233684</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where
+          <span class="ph uicontrol">Push to Devices</span> or
+          <span class="ph uicontrol">Commit and Push</span> operations took
+          longer than expected on the web interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-231439</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when a VoIP call using dynamic IP and NAT was
+          put on hold, the audio became one-way due to early termination of NAT
+          ports.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-230746</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where device groups with a large
+          number of managed firewalls displayed the
+          <span class="ph uicontrol">Policy</span> page more slowly than
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-228515</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Elasticsearch cluster health status displayed
+          as yellow or red due to Elasticsearch SSH tunnel flaps.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-224500</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IPv6 addresses in XFF were displayed in Traffic
+          logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-222188</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A CLI command was introduced to address an issue where SNMP monitoring
+          performance was slower than expected, which resulted in
+          <span class="ph systemoutput">snmpwalk</span> timeouts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-215430</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where dynamic IP address NAT with SIP intermittently
+          failed to convert RTP Predict sessions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-212553</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >ikemgr</a
+          >
+          process stopped responding due to memory corruption, which caused VPN
+          tunnels to go down.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-207092</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where logging in using default credentials after
+          changing to FIPS-CC for NSX-T firewalls did not work.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

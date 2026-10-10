@@ -1,0 +1,624 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 46.728971962616825%" />
+    <col style="width: 53.27102803738318%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-297261</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy-protocol debug level was set to
+          <span class="ph systemoutput">verbose</span> on Prisma Access
+          instances, even when it was not explicitly configured, which caused
+          excessive logging by the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pan_task</a
+          >
+          process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-296519</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a stream receiving a reconnect signal with an
+          associated error in
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >Wifclient</a
+          >
+          caused the entire pool to close, which resulted in a complete
+          disconnection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b"> PAN-296478</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading to PAN-OS 10.2.13-h10,
+          GlobalProtect Clientless VPN on PA-3250 firewalls failed to execute
+          JavaScript links, resulting in an authorization error. This occurred
+          because the firewall was incorrectly injecting text into URLs when
+          JavaScript buttons or dropdown menus were clicked within the
+          Clientless VPN portal.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295812</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the throughput data on the Switch Card Module
+          (SCM) was not accurately reported. This issue affected Standard SC
+          USABN and USABN-2 when using Direct-IO deployment.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-291635</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where cookie surrogate cache entries remained
+          unresolved after an
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >idmgr</a
+          >
+          process reset due to the request not being retransmitted. This
+          occurred because the timestamp in the cache entry was refreshed even
+          when the UID was 0, which prevented the retransmission of the request
+          if the initial response was not received.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-290088</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak occurred related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process when pushing configurations from Panorama to a firewall. This
+          occurred when the configurations contained shared policy rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-289239 </b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where a new virtual system (vsys) was
+          automatically created with the name of a device group.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287818</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where sessions timed out sooner than expected due to
+          the <span class="ph systemoutput">pan_proxy_accumulation</span>
+          <span class="ph systemoutput">_restore_timeout</span> not initiating
+          when the accumulation<span class="ph systemoutput">session_init</span>
+          failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287023</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a large number of logs caused the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process to stop responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-287002</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-0133"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-0133</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-286296</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Prisma Access gateway experienced process
+          restarts and system reboots.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-285298</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall became unresponsive when the
+          <span class="ph systemoutput">show user user- ids user all</span> CLI
+          command was executed repeatedly on large scale LDAP group mappings,
+          and you were unable to connect to the gateways with the error message
+          <span class="ph systemoutput"
+            >The network connection is unreachable or the gateway is
+            unresponsive. Check the network connection and reconnect</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-284066 </b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after an upgrade, the SNMP polled values for
+          <span class="ph systemoutput">IF-MIB::ifInErrors</span> displayed a
+          high number of errors that did not match the values in the CLI show
+          interface command.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-284003</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where clients did not receive a valid response when
+          searching a website due to a compression error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279901</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          An issue was fixed where the firewall dropped fragmented TLS
+          ClientHello packets, which blocked access to certain websites. This
+          occurred because the packets arrived truncated, in varying sizes and
+          orders, and the firewall's heuristics failed to handle them correctly.
+        </div>
+        <div class="p">
+          To enable this fix, run:
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt accumulate-client-hello disjoined
+            yes</span
+          >
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279500</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where TLS connections failed to establish in asymmetric
+          routing environments if the firewall did not see server-to-client
+          (s2c) packets of the TLS handshake.
+        </div>
+        <div class="p">
+          To use this fix, run the following CLI command:
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt accumulate-client-hello
+            asym-disable yes</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-279191</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a GlobalProtect gateway stopped responding when
+          handling HTTP/1.1 traffic with web inspection enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-276795 </b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect client displayed an error
+          message when you clicked
+          <span class="ph uicontrol">Check Now</span> and
+          <span class="ph uicontrol">Preferred Releases</span> and
+          <span class="ph uicontrol">Base Releases</span> were unchecked (<span
+            class="ph uicontrol"
+            >Device &gt; Software</span
+          >).
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-274797</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a DPC on slot 3 failed intermittently due to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >pktlog_forwarding </a
+          >process restarting, which resulted in an unexpected HA failover.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-273597</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where logs in the cloud database displayed in the
+          <span class="ph uicontrol">Not-Resolved</span> category but not in the
+          local database.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271701</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Advanced Services, App-ID Cloud Engine (ACE), and
+          Enhanced Application Log stopped working due to incorrect memory usage
+          accounting, which caused memory usage to remain at 99% after an
+          extended period of time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-271215</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          A fix was made to address
+          <a
+            class="xref"
+            href="https://security.paloaltonetworks.com/CVE-2025-4230"
+            title=""
+            data-scope="external"
+            data-format="html"
+            data-type=""
+            target="_blank"
+            >CVE-2025-4230</a
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-266653</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where unexpected path monitor failures caused the
+          firewall to stop responding.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-264725</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Auto Quarantine did not work when simplified
+          logging was enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-263559</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the dataplane stopped responding and the firewall
+          unexpectedly rebooted due to multiple process restarts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-261825</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic was dropped when Data Loss Prevention or
+          Advanced URL Filtering were enabled. This occurred when the payload
+          size was greater than 3.5 KB.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259741</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall dropped GRE keepalive packets that
+          were encapsulated under another GRE tunnel.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-259076</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall displayed an OCSP/CRL check failure
+          when accessing websites.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-252706</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the URL filtering response page for
+          <span class="ph uicontrol">Continue</span> and
+          <span class="ph uicontrol">Override</span> did not work with IPv6
+          Router Advertisement (RA) or Multicast Listener Query (MLQ) for
+          IPv6-to-IPv6 and IPv6- to-IPv4 traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-251241</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue that blocked auto-discovery of the ICD Cloud server for
+          the configured Enforcer URL.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-250146</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the web interface where templates incorrectly showed
+          that telemetry was enabled when it was not enabled. With this fix, the
+          telemetry setting is not displayed in the template on the web
+          interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-248740</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-4000 and PA-5000 Series firewalls</tt>) Fixed an
+          issue where, when SSL decryption was enabled, you were unable to
+          interact with the login button on some websites due to a content
+          length mismatch error. This occurred because the firewall incorrectly
+          flagged the final packet in the replay as send
+          <span class="ph systemoutput">original</span> when it contained only a
+          gzip end marker and no data.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-247575</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the error message i<span class="ph systemoutput"
+            >mport of &lt;issuecert&gt; failed. Please check the validity of the
+            key pair and try again</span
+          >
+          for unmatched keys for EC certificates.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-242602 </b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect clients experienced slow SMB-V3
+          download throughput when passing through a Prisma IPSec tunnel and the
+          firewall and the SMB-V3 session owner dataplane was the same as the
+          IPSec-ESP tunnel on the multi-dataplane firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-241536</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where admin users with the Custom Panorama
+          Admin role were unable to add, edit, or delete route filters under
+          <span class="ph uicontrol">Routing Profiles</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-231386</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph uicontrol">configd</span> process stopped responding
+          during certificate verification.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-211910</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph uicontrol">dnsproxyd</span> process stopped responding
+          during stability tests.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-202905 </b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall web interface where the
+          <span class="ph uicontrol">Next Hop</span> value was not displayed in
+          the static route configuration, the
+          <span class="ph uicontrol">admin-dist</span> values were empty, and
+          the path-monitor parameters were not listed in the management server
+          web interface when the firewall was configured in FRR mode.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
