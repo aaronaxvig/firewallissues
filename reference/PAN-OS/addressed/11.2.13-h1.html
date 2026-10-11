@@ -1,0 +1,197 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329834</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak associated with some display CLI
+          commands caused instability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329698</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">OCTEON, MIPS, platforms only</tt>) Fixed an issue
+          where the dataplane became unresponsive. With this fix, the dataplane
+          operates stably.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329180</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not automatically resume syslog
+          forwarding over TCP after the syslog server became unavailable or was
+          restarted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327460</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a
+          <span class="ph uicontrol">Commit and Push</span> operation on
+          Panorama did not successfully push configuration changes to Prisma
+          Access endpoints. This occurred when the system reported that not all
+          commit jobs were triggered. With this fix,
+          <span class="ph uicontrol">Commit and Push</span> operations now
+          correctly apply configurations to Prisma Access.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326705</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high CPU utilization occurred on one of the CPU
+          cores.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325002</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Google Cloud NGFW Enterprise VM-Series firewalls only</tt
+          >) Fixed an issue where the HTTP2 threat logs did not include VPC ID,
+          Security_key, and Endpoint ID.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323485</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multicast radio RTP based traffic was dropped
+          after an upgrade when the firewall performed Cloud Inline inspection,
+          which led to an exceeded session queue for Cloud Threat Detection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-317648</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-5450 firewalls and PA-7000 Series firewalls with 100G NPCs
+            only</tt
+          >) Fixed an issue where intermittent packet loss occurred when
+          traversing the dataplane after upgrading the firewall. This occurred
+          when a dataplane HA interface was configured in an environment where
+          Slot 1 was unpopulated, which resulted in a wildcard entry being
+          created within the QMAP table.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-317068</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the Panorama web interface where you were able to
+          enable IPv6 for IKE gateways and IPSec tunnels even when IPv6 WAN was
+          disabled, which resulted in an invalid configuration. To utilize this
+          fix, upgrade to the latest Panorama plugin.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316721</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple EDL fetches were queued and did not
+          complete.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314776</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding after pushing configuration changes from
+          Panorama to the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314624</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">useridd</span> process became
+          unresponsive and restarted when attempting to dump the Host
+          Information Profile (HIP) database via CLI while the system was
+          actively processing HIP reports. This was caused by a lock contention.
+          With this fix, the process now operates as expected under these
+          conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313827</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak occurred related to the
+          <span class="ph systemoutput">reportd</span> process when custom
+          reports were run via API.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310736</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where importing a profile that included a source
+          address would not correctly display the source address on the policy
+          page. With this fix, the source address now displays as expected after
+          profile import.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

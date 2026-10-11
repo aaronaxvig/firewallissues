@@ -1,0 +1,250 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">—</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_2_7_h20_addressed_issues_ul-d2c_441_nkc" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0310"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0310</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0309"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0309</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-330016</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where enabling App Acceleration resulted in
+          connectivity disruption for GlobalProtect users and branches connected
+          through ION devices, which prevented access to applications. With this
+          fix, App Acceleration functions as expected without causing
+          connectivity issues.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326734</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a Security policy rule configured in the Shared
+          device group on Panorama was not displayed in the web interface for a
+          child device group, which caused a discrepancy between the displayed
+          configuration and the actual deployed configuration on the associated
+          device. With this fix, the user interface accurately reflects the
+          deployed security policy rules.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326056</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where ACE applications did not match the correct
+          Security policy rules when the service was not set to
+          <span class="ph uicontrol">Application Default</span> after an
+          upgrade, which caused traffic to be incorrectly denied.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-320324</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where incorrect source region information appeared in
+          GlobalProtect logs, which occurred because the location service lookup
+          did not consistently return region information for public IP
+          addresses. With this fix, accurate source region information is
+          consistently displayed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-319343</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Prisma Access Gateways only</tt>) Fixed an issue
+          where the global management plane stopped responding, which caused SSH
+          and HTML disconnections, HIP database lookup failures, and
+          significantly slower SCM commits. This occurred when egress IP allow
+          listing was enabled in SCM and changes were made to EDLs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316721</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multiple EDL fetches were queued and did not
+          complete.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312870</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where
+          <span class="ph uicontrol">Apps Seen</span> was not updated in
+          Security policy rules even when the firewall correclty recorded the
+          **Last App Seen* timestamp and Panorama received monitor logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-309960</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process on the passive device led to an OOM condition.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-308668</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Prisma Access Remote Network firewalls where high
+          CPU utilization caused slowness and command timeouts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-307933</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Panorama appliances in Log Collector mode only) Fixed an issue where
+          the log collectors became unstable for an extended period of time when
+          receiving large amounts of traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-296184</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process stopped responding during user-id-agent configuration when the
+          SSL context was not properly initialized to NULL after being freed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-295095</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, when you used a syslog forwarding profile with
+          the CEF format, an additional string was appended to the end of the
+          log message when viewing the log entry from the Universal Forwarder
+          directory.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-291984</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SSH/SFTP traffic was intermittently blocked by
+          URL filtering due to the firewall incorrectly applying URL categories
+          from previous sessions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-289652</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue related to external URL lists where pushing
+          configuration changes from Panorama failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-285862</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where repeated unexpected terminations of a system
+          component would cause the Data Plane to restart. With this fix, the
+          Data Plane maintained stability.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
