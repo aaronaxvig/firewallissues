@@ -1,0 +1,553 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27851</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect could not connect after an upgrade,
+          which occurred because the GlobalProtect service sent portal
+          configuration and gateway authentication requests to the portal's
+          connected IP address instead of its fully qualified domain name
+          (FQDN), causing certificate verification to not succeed. Users
+          encountered the error "The network connection is unreachable or the
+          gateway is unresponsive. Check the network connection and reconnect."
+          With this fix, GlobalProtect correctly routes requests to the portal
+          FQDN and connects as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27846</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (macOS devices) Fixed an issue where GlobalProtect authentication did
+          not complete during the portal sign-in process, which caused users to
+          encounter an "Authentication Failed" error. This occurred because the
+          GlobalProtect service stopped unexpectedly during SAML authentication.
+          With this fix, GlobalProtect authenticates and connects as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27555</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect user connections were disconnecting
+          after one hour, which occurred when the portal refresh process
+          initiated and the client encountered an error during its network
+          configuration update. With this fix, GlobalProtect connections now
+          refresh as expected without interruption.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27513</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect intermittently did not detect the
+          Real-time Protection (RTP) state of Windows Defender, which prevented
+          authorized users from accessing resources when Host Information
+          Profile (HIP) policies were applied. This behavior occurred after an
+          upgrade of Windows Defender. With this fix, GlobalProtect properly
+          detects the RTP state of Windows Defender.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27431</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app service did not start on
+          Windows 11 (Traditional Chinese Edition), which prevented the agent
+          from launching and displayed a memory read error. With this fix, the
+          GlobalProtect app now starts successfully on this operating system
+          configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27408</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, on Mac computers, previously configured proxy
+          settings were not restored after a fresh installation of GlobalProtect
+          6.3.3-830 or 6.3.3-H14, which occurred because a necessary
+          configuration file for proxy information was not installed during the
+          initial setup. With this fix, previously configured proxy settings are
+          correctly restored.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27403</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect client on Windows devices using SmartCard
+          authentication) Fixed an issue where the GlobalProtect client would
+          unexpectedly terminate and fail to establish a connection, which was
+          caused by inter-process communication issues during the authentication
+          process. With this fix, the client connects as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27394</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect gateway certificate verification
+          would fail after a software upgrade, which prevented connections to
+          the gateway. With this fix, gateway certificate verification proceeds
+          as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27281</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect Host Information Profile (HIP)
+          checks intermittently failed with an "Invalid authentication cookie"
+          error after machines woke up from modern standby, which caused traffic
+          to incorrectly match policies without HIP requirements or fall through
+          to default rules. With this fix, HIP checks proceed as expected, and
+          traffic correctly matches policies based on HIP requirements.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27149</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect connections would intermittently
+          stall, preventing internet access. With this fix, GlobalProtect
+          connections establish and maintain properly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27056</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where .pfx and .dat files were removed from the Native
+          store upon reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26994</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Host Information Profile (HIP) reports were not
+          sent to the gateway intermittently, which resulted in issues with
+          user-IP mapping. With this fix, HIP reports are sent consistently,
+          ensuring accurate user-IP mapping.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26933</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (macOS endpoints only) Fixed an issue where the GlobalProtect app
+          would not connect to the GlobalProtect service after a macOS upgrade
+          and a sleep-wake event. With this fix, the GlobalProtect app connects
+          as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26928</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect client would remain in a
+          connecting state after an initial authentication attempt failed, and
+          would not attempt to connect to alternate gateways. With this fix, the
+          GlobalProtect client now properly transitions out of the connecting
+          state and attempts alternate gateways when authentication fails.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26842</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect Host Information Profile (HIP)
+          checks for FileVault disk encryption produced incorrect reports on
+          certain macOS 27 version, which led to failed HIP checks and also
+          resulted in the macOS version being unexpectedly included in the
+          FileVault section of the report. With this fix, Host Information
+          Profile checks for FileVault disk encryption now populate correctly,
+          and the macOS version is no longer included in the FileVault section
+          of the report.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26811</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (On Ubuntu 20.04 systems) Fixed an issue where the GlobalProtect App
+          user interface would not launch after installation. With this fix, the
+          user interface launches as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26808</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect did not detect a specific version
+          of the Broadcom Endpoint Security Agent (ESA) on macOS endpoints. With
+          this fix, the agent is correctly detected, and administrators can
+          configure policies for it.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26790</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (macOS devices running GlobalProtect) Fixed an issue where
+          GlobalProtect would not connect, which caused users to encounter a
+          "Could not connect to the GlobalProtect service" error after a macOS
+          update or system reboot. This occurred because the GlobalProtect
+          service would not start or would stop unexpectedly. With this fix,
+          GlobalProtect connects successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26789</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect 6.3.3 Linux clients only) Fixed an issue where
+          GlobalProtect clients enforced Federal Information Processing Standard
+          Publication 140-2 Cryptographic Module Validation Program (FIPS-CC)
+          certificate validation despite FIPS-CC mode being disabled, which
+          prevented clients from establishing a connection. With this fix,
+          GlobalProtect clients correctly respect the FIPS-CC setting.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26780</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (macOS devices only) Fixed an issue where GlobalProtect would get
+          stuck in a connecting state after the device woke from sleep or
+          reconnected to a network, which resulted from GlobalProtect attempting
+          to resolve the gateway's fully qualified domain name (FQDN) using the
+          tunnel's DNS instead of the local internet service provider (ISP) DNS.
+          With this fix, GlobalProtect correctly uses the local ISP DNS for
+          gateway FQDN resolution when disconnected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26764</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect app on macOS devices) Fixed an issue where the
+          GlobalProtect app initiated unexpected portal requests after a manual
+          gateway selection. With this fix, the app behaves as expected after a
+          manual gateway selection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26699</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (macOS only) Fixed an issue where the GlobalProtect user interface
+          popover would not dismiss after a successful connection, which
+          occurred because the GlobalProtect menu bar icon became inaccessible
+          when hidden by the operating system. With this fix, the popover
+          automatically dismisses after a successful connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26696</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect Linux client failed to
+          initialize for users with high-range enterprise user IDs (UIDs), which
+          caused the <span class="ph systemoutput">gpa.service</span> systemd
+          unit to drop into a failed state immediately during execution. This
+          occurred because the client introduced a restrictive UID validation
+          that prevented the service from starting if the UID was greater than
+          60000. With this fix, the GlobalProtect Linux client now supports
+          valid non-system users regardless of their enterprise UID allocation
+          range.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26682</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where internet connectivity would stop working on macOS
+          when the GlobalProtect client was connected to certain mobile hotspots
+          that assigned IP addresses from a specific reserved range, which
+          occurred because the GlobalProtect client did not properly process
+          this particular IP address range used in some mobile network
+          environments. With this fix, internet connectivity is maintained in
+          these scenarios.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26657</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the HIP process repeatedly launched in a
+          rapid-fire loop, which triggered alerts. With this fix, the process
+          launches as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26619</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect app on macOS only) Fixed an issue where the
+          GlobalProtect app remained in a connecting state for approximately two
+          minutes after a local network-extension or route-change event, which
+          required a restart of the app to recover. With this fix, the
+          GlobalProtect app now connects as expected after such events.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26618</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect app on macOS) Fixed an issue where the GlobalProtect
+          app would fail to connect to gateways after a manual gateway
+          selection. With this fix, the GlobalProtect app connects successfully
+          to gateways after manual selection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26560</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect app connections experienced a delay
+          when Autonomous Digital Experience Management (ADEM) was disabled in
+          the portal, which occurred because the agent continued to search for
+          the ADEM configuration file. With this fix, the agent no longer
+          attempts to locate the ADEM configuration file when ADEM is disabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26558</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect App disconnect reason text was
+          truncated in the user interface when the GlobalProtect Portal was
+          configured with a custom disconnect reason, which prevented the full
+          message from being displayed. With this fix, the user interface now
+          properly displays the complete disconnect reason.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26537</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where an unauthorized user could disconnect a
+          GlobalProtect connection after interrupting Security Assertion Markup
+          Language (SAML) authentication during a connection refresh. With this
+          fix, the Disconnect button no longer appeared for unauthorized users
+          in this scenario.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26224</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect client stole focus when a user
+          entered a PIN for PINGID/Security Assertion Markup Language (SAML)
+          authentication. With this fix, the GlobalProtect client no longer
+          unexpectedly takes focus during this authentication process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26133</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph systemoutput">DisplayVersion</span> registry key for
+          GlobalProtect clients on Windows reported an incomplete version
+          string, which led to other software misidentifying the installed
+          GlobalProtect version. With this fix, the registry key now accurately
+          reflects the full client version.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26088</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect Enforcer did not unblock
+          network traffic after a GlobalProtect connection was established,
+          which resulted in the blocking of traffic not explicitly excluded from
+          enforcement. With this fix, the GlobalProtect Enforcer now correctly
+          unblocks traffic upon successful GlobalProtect connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25840</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where applications configured for split tunneling would
+          not function correctly after a network transition. With this fix,
+          applications would function as expected after network changes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25670</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app would intermittently get
+          stuck in a connecting state after a laptop woke up from standby,
+          preventing it from establishing a connection to the gateway. With this
+          fix, the GlobalProtect agent connects successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25575</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (macOS devices only) Fixed an issue where custom Host Information
+          Profile (HIP) checks did not correctly evaluate certain system
+          configuration parameters, which prevented macOS devices from matching
+          the intended HIP objects. With this fix, HIP checks accurately
+          evaluate the system configuration parameters.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25567</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect Client would intermittently not
+          complete Kerberos Single Sign-On (SSO) during pre-login. This occurred
+          when the client did not post the Kerberos token back after receiving
+          an initial authentication challenge from the portal, which prompted
+          users for credentials and displayed an error message indicating an
+          unreachable network or unresponsive portal. With this fix, Kerberos
+          SSO now succeeds consistently.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25432</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect client on Red Hat Enterprise Linux (RHEL) 8.10 systems)
+          Fixed an issue where the GlobalProtect client would not update the
+          resolv.conf file with configured Domain Name System (DNS) servers,
+          which resulted in internal DNS resolution not functioning correctly.
+          With this fix, the resolv.conf file updates as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25419</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect clients on Linux did not send Host
+          Information Profile (HIP) report checks to internal gateways, which
+          caused IP mappings to time out. With this fix, HIP report checks are
+          sent correctly to internal gateways.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25308</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app intermittently stopped
+          transmitting Host Information Profile (HIP) reports, which caused
+          User-ID entries to be cleared and resulted in missing user-to-IP
+          mappings. With this fix, the GlobalProtect app now consistently
+          transmits HIP reports, maintaining accurate user-to-IP mappings.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25219</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were unable to select the GlobalProtect
+          icon from the status bar on macOS.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

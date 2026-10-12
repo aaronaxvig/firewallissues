@@ -1,0 +1,67 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27119</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Windows clients only) Fixed an issue where, after waking from Modern
+          Standby in Always-On Hybrid mode with an expired Explicit Proxy (EP)
+          token, GlobalProtect moved to an "Enabled" (proxy-only) state instead
+          of returning to a "Connected" (tunnel) state following successful SAML
+          re-authentication. This occurred because the portal refresh process
+          incorrectly triggered a tunnel teardown while the VPN was already
+          connected. With this fix, GlobalProtect correctly reconnects and
+          reaches the "Connected" state after Modern Standby wake and
+          re-authentication.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">GPC-27179</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect portal registration was prevented
+          during SAML authentication hand-off, which caused agents to remain
+          disconnected despite successful authentication with an identity
+          provider. This occurred because an internal data buffer became
+          corrupted during the authentication token hand-off, which led to the
+          loss of session identity. With this fix, the authentication token is
+          correctly processed, allowing agents to register with the portal.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">GPC-27177</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect Host Information Profile (HIP)
+          reports had an invalid XML format. With this fix, HIP reports are
+          generated with the correct XML structure.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
