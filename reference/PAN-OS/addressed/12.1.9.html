@@ -1,0 +1,500 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-331636</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the web server failed to start after an upgrade,
+          which caused the management interface to become inaccessible.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329834</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak associated with some display CLI
+          commands caused instability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329180</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not automatically resume syslog
+          forwarding over TCP after the syslog server became unavailable or was
+          restarted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328742</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the dataplane silently dropped HTTP POST
+          payloads, which disrupted application integrations. This occurred due
+          to an internal error when processing XFF headers within the CTD
+          engine.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327590</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where BFD sessions did not reestablish on the newly
+          elected leader after a leader failover event that occurred when the
+          previous leader node was suspended.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327460</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a
+          <span class="ph uicontrol">Commit and Push</span> operation on
+          Panorama did not successfully push configuration changes to Prisma
+          Access endpoints. This occurred when the system reported that not all
+          commit jobs were triggered. With this fix,
+          <span class="ph uicontrol">Commit and Push</span> operations now
+          correctly apply configurations to Prisma Access.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326354</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >sslmgr</a
+          >
+          process stopped responding when attempting to display the OSCP host
+          cache.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325613</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-7500 firewalls in HA cluster configurations only</tt
+          >) Fixed an issue where interfaces intermittently remained offline
+          after a cluster failover.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325002</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Google Cloud NGFW Enterprise VM-Series firewalls only</tt
+          >) Fixed an issue where the HTTP2 threat logs did not include VPC ID,
+          Security_key, and Endpoint ID.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-324902</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where exporting Custom Reports to CSV failed with a
+          <span class="ph systemoutput">UnicodeEncodeError</span> message when
+          report entries contained multibyte characters.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323249</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">M-700 appliances only</tt>) Fixed an issue where
+          the Elasticsearch processes repeatedly restarted and log collectors
+          showed the Elasticsearch health status as red.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-320345</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall repeatedly restarted when the
+          monitored User-ID server became unreachable during Kerberos
+          authentication connection attempts, which caused the authentication
+          process to stop responding. On firewalls in HA configurations, both
+          peer firewalls entered maintenance mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-319838</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SFP ports did not establish a link with a
+          third-party peer device when forced speed was configured on the
+          firewall and the peer device was set to
+          <span class="ph systemoutput">nonegotiate</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-319504</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where telemetry data was not sent to the cloud due to
+          the firewall being unable to resolve the destination server's FQDN
+          even when a proxy server was configured. With this fix, the firewall
+          properly sends telemetry data through the configured proxy server
+          without requiring direct public DNS resolution for the telemetry
+          server's FQDN.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-318580</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where processes restarted and the firewall unexpectedly
+          rebooted when you configured a Security policy rule with
+          <span class="ph uicontrol">Source Device &gt; quarantine</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-318382</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in HA configurations only</tt>) Fixed an
+          issue where the secondary firewall remained at an
+          <span class="ph uicontrol">Initial</span> state after an upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-317598</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/active HA configurations only</tt
+          >) Fixed an issue where NAT failures occurred due to the IP pool not
+          releasing unused resources in the Active Secondary firewall. This
+          occurred because the secondary firewall attempts to release a
+          Persistent DIPP NATed port that was originally allocated by the NAT
+          policy from first firewall, leading to a ownership mismatch during the
+          session teardown process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-317214</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SNMP queries for TCP connections per second (CPS)
+          metrics on single vsys firewalls returned inconsistent values.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316720</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on log collectors where
+          <span class="ph uicontrol">Verify Update Server Identity</span> was
+          not consistently enabled and visible in the XML configuration after a
+          configuration push from Panorama.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PAN-315959</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">M-700 appliances only</tt>) Fixed an issue where
+          Panorama displayed an incorrect maximum recommended configuration size
+          when performing a commit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314776</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding after pushing configuration changes from
+          Panorama to the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314061</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic was disrupted during IPSec rekey
+          operations due to a 2 second delay in sending the DELETE message for
+          the previous Security Association (SA) to the peer gateway after a new
+          SA was negotiated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313850</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-1400 Series firewalls in HA configurations only</tt
+          >) Fixed an issue where a split-brain condition occurred and HA1/HA2
+          links went down while upgrading when the HA configuration used
+          dataplane interfaces for HA1 and a combination of HSCI and Ethernet
+          interfaces for HA2.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313218</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Added the following CLI commands to address QoS packet drops due to
+          bursty traffic:
+        </div>
+        <ul class="ul">
+          <li class="li">
+            <span class="ph systemoutput"
+              >debug dataplane set qos-setting qos-param qlimit 300</span
+            >
+          </li>
+          <li class="li">
+            <span class="ph systemoutput"
+              >debug dataplane set qos-setting qos-param red low 50 high
+              90</span
+            >
+          </li>
+        </ul>
+        <div class="p">
+          To utilize this fix, change the parameters, disable QoS, commit
+          changes, enable QOS, and then re-commit changes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313190</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">VM-Series firewalls only</tt>) Fixed an issue where
+          content updates and configuration commits failed with the error
+          message
+          <span class="ph systemoutput"
+            >client device phase 1 failure error</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312685</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where committing a scheduled configuration push on
+          Panorama caused the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process to stop responding unexpectedly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312330</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/passive HA configurations only</tt
+          >) Fixed an issue where the Clientless VPN applications failed to load
+          due to the firewall dataplane incorrectly processing session
+          information.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311988</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in FIPS mode only</tt>) Fixed decryption
+          issues that occurred after an upgrade to an affected release.
+        </div>
+        <div class="p">
+          To enable this fix, run the CLI command
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt low-memory-throttle enable</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311624</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where, when an Aggregate Ethernet interface
+          was configured in override mode within a template stack, changing its
+          management profile unexpectedly overrode other interface-specific
+          variables.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310699</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stripped the Authentication Key
+          Identifier (AKID) from certificates using SSL decryption, which
+          prevented clients from authenticating server certificates and resulted
+          in decryption failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-309306</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a rare issue on Octeon Dataplane platforms where the firewall
+          experienced an unexpected dataplane restart due to a race condition
+          that occurred during session teardown for traffic undergoing
+          software-based Content Threat detection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-308614</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >mgmt</a
+          >
+          process stopped responding after an upgrade during SSH Key Exchange
+          verification.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-302175</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading an LSVPN portal/gateway to an
+          affected release, the portal was unable to issue and transfer
+          certificates to the satellite firewalls, which led to repeated
+          certificate requests and prevented the satellite firewalls from
+          authenticating to the gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-297818</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where exporting managed device information
+          that included a PA-450R-5G appliance resulted in the
+          <span class="ph uicontrol">Cellular Firmware</span> field being
+          exported into multiple cells.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-252699</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where frequent session failures occurred due to CTD
+          resource exhaustion.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,408 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">—</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_12_1_10_addressed_issues_ul-d2c_441_nkc" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0310"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0310</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0309"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0309</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0308"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0308</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334722</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall introduced out-of-order packet
+          delivery for certain data streams, which resulted in clients receiving
+          data in an incorrect sequence.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332247</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the proxy generated HTTP 503 errors for multiple
+          URLs, which prevented users from connecting to servers. With this fix,
+          the proxy now functions as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331856</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall unexpectedly terminated the DNS
+          proxy process when it received TCP/53 DNS queries on an interface
+          configured for DNS proxy, which led to repeated firewall reboots and
+          temporary unavailability of the web interface. With this fix, the
+          firewall processes TCP/53 DNS queries without interruption.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-330000</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where SNMPv3 communication would fail after an upgrade
+          from PAN-OS 11.1 to PAN-OS 12.1.6 when using SHA-512 authentication
+          and AES-256 privacy. With this fix, SNMPv3 communication functions as
+          expected after the upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329809</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where testing an SCP server connection from the
+          Panorama web interface returned an error instead of prompting to allow
+          the host key, which prevented the successful establishment of the
+          connection. With this fix, the system now correctly prompts to allow
+          the host key.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329793</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the characters in PDF Summary Reports did not
+          display correctly when the Locale was set as Japanese, Korean,
+          Simplified Chinese, or Traditional Chinese.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329637</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the push scope window did not display the target
+          devices when attempting to push configurations from Panorama, which
+          required manual selection of templates or device groups. With this
+          fix, the push scope window now correctly populates with the intended
+          push scope.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329550</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall experienced unexpected process
+          terminations, which resulted in an HA failover and led to the
+          dataplane becoming unresponsive.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329407</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the cellular interface did not come up and
+          entered a <span class="ph uicontrol">Dead Zone</span> state after an
+          upgrade due to the management plane losing communication with the
+          modem hardware. With this fix, the cellular interface came up by
+          having an expected APN name based on the SIM card carrier.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329359</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Panorama web interface showed blank Host
+          Information Profile (HIP) Match log entries when opened in Detailed
+          Log View. With this fix, the Detailed Log View now displays the
+          expected information for HIP Match logs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328145</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a firewall functioning as an Area Border Router
+          did not correctly translate NSSA Type-7 LSAs to Type-5 LSAs when OSPF
+          neighbors set the Nt bit in the NSSA Area, and routes were not
+          advertised to upstream OSPF neighbors in the backbone area, which
+          resulted in traffic being silently discarded.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PAN-326424</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high memory utilization occurred in the
+          <span class="ph uicontrol">escd</span> process. With this fix, memory
+          utilization for the process remained stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325724</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where importing PKCS12 certificates failed with the
+          error
+          <span class="ph systemoutput"
+            >Import of certificate and private-key failed. Failed to extract
+            certificate</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325151</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a system log was not generated when the proxy
+          reached its session limit.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-324652</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where selective configuration pushes from Panorama
+          failed after an upgrade, which caused shared policy rules to go out of
+          sync. With this fix, selective configuration pushes complete
+          successfully and policies remain in sync.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-322398</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall sent a BFD admin down message during
+          an NGFW cluster failover, which caused BGP sessions to terminate and
+          routes to be lost.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-320324</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where incorrect source region information appeared in
+          GlobalProtect logs, which occurred because the location service lookup
+          did not consistently return region information for public IP
+          addresses. With this fix, accurate source region information is
+          consistently displayed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-319352</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall rebooted unexpectedly without any
+          configuration or power changes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314826</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the system failed to alert you when indices were
+          created before their corresponding templates loaded, which could lead
+          to unexpected data handling. With this fix, the system now proactively
+          identifies and alerts you to these situations.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314825</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect user authentication with
+          certificates from a new Public Key Infrastructure (PKI) would not
+          succeed when Certificate Revocation List (CRL) checking was enabled.
+          This occurred because the firewall did not properly retrieve the CRL
+          from the new PKI's Distribution Point URL. With this fix, the firewall
+          now successfully retrieves CRLs, allowing GlobalProtect users to
+          authenticate correctly with certificates from new PKIs.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314104</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where running BCM counter commands from the
+          administrative shell did not consistently return output, and commands
+          to modify queue sizes did not take effect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313393</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after you configured a proxy server, External
+          Dynamic Lists (EDL) and system software checks did not function
+          concurrently. This occurred when you configured service routes for
+          Palo Alto Networks services, which caused either EDL updates or system
+          software checks to fail, depending on the specific service route
+          configuration. With this fix, both EDL updates and system software
+          checks correctly utilize the configured proxy server.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312157</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, during a commit, the firewall intermittently
+          stopped sending SNMP messages, which caused interface counters to stop
+          updating for brief periods of time.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310627</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Inline Cloud Analyzer (ICA) did not correctly
+          apply custom URL categories configured as exceptions for traffic
+          detection. With this fix, ICA correctly applies the configured custom
+          URL category exceptions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-308812</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls using the Real-Time update setting for
+          WildFire intermittently generated system alerts indicating a failure
+          to connect to the WildFire real-time cloud. With this fix, these
+          alerts are no longer generated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-307590</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where some FQDNs could not be resolved by the firewall.
+          This occurred even when your configured Domain Name System (DNS)
+          servers successfully returned valid IP addresses for the FQDNs. With
+          this fix, the firewall correctly processes DNS responses and resolves
+          FQDNs as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-286889</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a website would intermittently fail to load in
+          Mozilla Firefox after authentication when AURL inline cloud was
+          active, which was caused by an interaction with the inline cloud
+          analysis process. With this fix, websites now load consistently.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-216054</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue that caused the firewall fan speed to increase while it
+          was idle.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,213 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead" data-sticky-top="62" style="top: 62px">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">—</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_12_2_3_addressed_issues_ul-d2c_441_nkc" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0310"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0310</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0309"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0309</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-334992</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a PA-455 firewall in FIPS-CC mode did not start
+          correctly after upgrading from PAN-OS 12.1.8 to 12.2.2.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-334724</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where installing WildFire® content updates disabled
+          PAN-OS Shield.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-334338</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a PA-450 firewall restarted with the error
+          <span class="ph codeph"
+            >general system-shutdown 1: The system is shutting down due to md
+            initiated dataplane restarts exhausted</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-331856</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the dnsproxyd process became unresponsive on
+          TCP/53 connections on VM-Series firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-329550</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where PA-5280 firewalls experienced multiple
+          all_pktproc process restarts, resulting in the dataplane going down
+          and an HA failover.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-329407</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading a PA-450R-5G firewall, the
+          cellular interface did not come up and entered a Dead Zone state.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-326056</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where some ACE applications did not match the correct
+          security policy when the service was set to Application Default on
+          PA-5450 firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-325724</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where importing a PKCS12 certificate on Panorama®
+          failed with the error
+          <span class="ph codeph"
+            >Import of certificate and private-key failed. Failed to extract
+            certificate</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-319343</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where management plane resource exhaustion caused
+          commit latency across Prisma® Access gateways.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-315630</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a PA-450 firewall dropped new connections with
+          the error
+          <span class="ph codeph"
+            >Packet dropped, session allocation failure</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-310218</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where hidden NFS files under
+          <span class="ph codeph">/opt/var/s7/lp/log/pan</span> filled up disk
+          space on PA-7080 firewalls.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-295806</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a memory leak in the connection handling process.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
