@@ -1,0 +1,441 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="topic-6fbdf639-ed1f-4f2e-9085-ba04de940936_ul-nwg_dxl_vjc"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0322"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0322</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0321"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0321</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0320"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0320</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0319"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0319</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0318"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0318</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0317"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0317</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0316"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0316</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PAN-337475</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          <tt class="ph tt">PA-5440 firewalls only</tt>) Fixed an issue where
+          SaaS applications were incorrectly blocked even when a higher-order
+          security rule should have allowed the traffic, which occurred due to
+          an unexpected policy rematch behavior. With this fix, security policy
+          rules are correctly applied during policy rematch, ensuring expected
+          traffic flow.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336085</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a commit to add a new tunnel interface to an
+          existing Virtual Router caused BGP routes to be temporarily withdrawn,
+          which led to active traffic sessions being routed over incorrect paths
+          during the commit window. With this fix, adding a tunnel interface to
+          an existing Virtual Router no longer disrupts BGP route availability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336014</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls intermittently lost their connection to
+          the Strata Logging Service, which caused logging to stop until the
+          connection was re-established. With this fix, firewalls maintain a
+          stable connection to the Strata Logging Service.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335750</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">M-700 firewalls in an HA configuration only</tt>)
+          Fixed an issue where Panorama was unable to display logs when
+          Elasticsearch was not running. With this fix, logs display as
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335077</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama-VM</tt>) Fixed an issue where adding an
+          interface to a logical router on Panorama via the interface
+          configuration removed other interfaces from the logical router, which
+          occurred when the interface was added through the interface
+          configuration rather than the logical router configuration. With this
+          fix, interfaces are retained as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334304</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Few configs which pushed from SCM to firewall were causing the
+          firewall to loose its internet connectivity and the firewall wasn't
+          able to connect to cloud and was getting stuck at discovery stage
+          retrying indefinitely without returning failure. And now ACR performs
+          the the config rollback once the 5 cloud connectivity check attempts
+          failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-333894</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where communication with Microsoft Azure services was
+          disrupted, which resulted in application outages. This occurred when
+          firewalls dropped SYN-ACK packets that were part of a SYN-ACK cookie
+          mechanism activated by Azure's DDoS mitigation. With this fix,
+          firewalls now maintain connectivity during such traffic events.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-333108</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama M-600 appliances only</tt>) Fixed an issue
+          where device telemetry uploads would fail on the Panorama, which led
+          to critical alerts in the system logs. With this fix, telemetry data
+          uploads complete successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332427</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where connections to the Strata Logging Service (SLS)
+          flapped frequently, which resulted in duplicate logs. With this fix,
+          connections to the Strata Logging Service remained stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331467</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commit validation on Panorama unexpectedly
+          applied template configuration changes to the firewall, which led to
+          an outage of FQDN resolution. With this fix, commit validation no
+          longer alters firewall behavior.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329965</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commit operations failed due to redis
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >idmgr</a
+          >
+          connection leaks. With this fix, commit operations complete as
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329738</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-VM firewalls only</tt>) Fixed an issue where
+          registered IP-Tag mappings did not correctly populate Dynamic Address
+          Group (DAG) membership after an upgrade, which caused security policy
+          rule mismatches and traffic to be incorrectly dropped. With this fix,
+          DAG membership correctly reflected registered IP-Tag mappings,
+          ensuring proper security policy enforcement.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329580</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5440 firewalls only</tt>) Fixed an issue where
+          traffic designated for no decryption was unexpectedly denied due to a
+          certificate validation error. With this fix, traffic designated for no
+          decryption is processed as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329511</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-400 Series Firewalls</tt>) Fixed an issue where
+          firewalls rebooted unexpectedly after an upgrade. With this fix,
+          firewalls now operate stably after an upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329180</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Panorama did not automatically resume syslog
+          forwarding over TCP after the syslog server became unavailable or was
+          restarted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328625</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/passive HA configurations only</tt
+          >) Fixed an issue where Genetec camera streaming experienced lag and
+          dropped video feeds due to the exhaustion of private RTP ports, which
+          led to their accumulation over time. With this fix, the firewall now
+          properly releases private RTP ports, preventing their exhaustion.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328414</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls would intermittently disconnect from
+          SLS. With this fix, connections to SLS remain stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327398</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall experienced high management plane
+          memory utilization, which led to inaccessibility of the management
+          interfaces (Web GUI, CLI, and console), disconnection from the High
+          Availability (HA) cluster, and repeated reboot cycles. This behavior
+          occurred after attempting to upgrade the PAN-OS software and applying
+          or restoring the firewall configuration. With this fix, the firewall
+          maintains stability and completes software upgrades successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327295</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where critical alerts related to registered IP address
+          updates appeared in system logs even when User-ID was not configured
+          due to a conflict during simultaneous updates of IP tags and EDLs.
+        </div>
+        <div class="p">
+          To enable this fix, run the CLI command
+          <span class="ph systemoutput"
+            >debug user-id regip-max-update-retry rate
+            &amp;lt;value&amp;gt;</span
+          >
+          with a value between 30 and 300.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326424</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high memory utilization occurred in the
+          <span class="ph uicontrol">escd</span> process. With this fix, memory
+          utilization for the process remained stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323154</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Real-time Transport Protocol (RTP) packets were
+          dropped after an upgrade, which occurred due to a predict session
+          conversion failure and resulted in delayed or absent video streams.
+          With this fix, RTP packets are processed correctly, and video streams
+          display without delay.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-321236</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect authentication override cookie
+          lifetimes were implicitly limited by the configured login lifetime,
+          which prevented administrators from setting a longer override period.
+          With this fix, the GlobalProtect authentication override cookie
+          lifetime can be configured to extend beyond the login lifetime. To
+          enable this fix, an operational command is available to revert to the
+          previous behavior.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316485</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where configuring security policies with IP External
+          Dynamic Lists (EDLs) across multiple Virtual Systems (vsys) would
+          prevent commit operations from completing, which was due to an
+          incorrect virtual system memory calculation. With this fix, commit
+          operations complete as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-303562</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3420 firewalls only</tt>) Fixed an issue where
+          the explicit proxy service would unexpectedly terminate when
+          processing Kerberos authentication bypass traffic over extended
+          periods. With this fix, the explicit proxy service maintains stability
+          under these conditions.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

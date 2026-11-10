@@ -1,0 +1,281 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_2_7_h21_addressed_issues_ul-ftr_dvw_wkc" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0322"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0322</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0321"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0321</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0320"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0320</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0319"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0319</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0318"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0318</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334757</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (RN-HP firewalls only) Fixed an issue where packet buffer resources
+          would leak during a temporary surge in packet buffer usage, which
+          caused tunnels to become unavailable. With this fix, packet buffer
+          resources are managed correctly during periods of high usage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334432</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect clients would fail to obtain a
+          private IP address during configuration loading, which prevented
+          successful connections when Customer Identity and Access Management
+          (CIAM) was enabled. With this fix, GlobalProtect clients can
+          successfully obtain private IP addresses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332638</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where enabling packet capture with non-matching filters
+          caused Geneve tunnels to go down. Tunnels now remain operational as
+          expected when packet capture is active.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332128</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Prisma Access GlobalProtect gateway nodes) Fixed an issue where
+          commit operations experienced significant delays, which occurred
+          because a configuration parsing process stalled during commit. With
+          this fix, commit operations complete within expected timeframes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331617</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic for certain websites was incorrectly
+          matched to a security policy, preventing access for users when using
+          specific web browsers, which occurred because the firewall used a
+          generic session category for policy matching. With this fix, traffic
+          correctly matches the intended security policy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325615</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Prisma Access GlobalProtect Gateways only) Fixed an issue where a
+          deleted custom anti-spyware signature continued to block traffic after
+          a successful commit operation, which caused the dataplane to
+          incorrectly enforce the deleted signature. With this fix, the
+          dataplane correctly removed deleted signatures and enforced the
+          updated policy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-319889</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a firewall became non-functional when dataplane
+          and control plane monitoring processes exited due to missed
+          heartbeats, which occurred after a dataplane crash. With this fix, the
+          firewall maintained operational stability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-318991</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-440 and PA-220 firewalls only) Fixed an issue where SNMP-reported
+          ingress traffic statistics for tunnel interfaces were approximately
+          doubled after a PAN-OS upgrade, which led to inaccurate monitoring
+          data. With this fix, SNMP traffic statistics for tunnel interfaces now
+          report accurate ingress traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-318472</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic to multiple websites intermittently
+          encountered a block page, which occurred because traffic was
+          incorrectly matched to a default security policy instead of the
+          intended allow policy. With this fix, traffic is processed according
+          to the configured security policies.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314873</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall intermittently stopped forwarding
+          traffic to the internet.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-312844</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a TLSv1.3 handshake did not complete when SSL
+          Forward Proxy was enabled. This occurred when a large ClientHello
+          message was split across multiple TCP segments and the final segment
+          contained only one byte.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311988</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Firewalls in FIPS mode only</tt>) Fixed decryption
+          issues that occurred after an upgrade to an affected release.
+        </div>
+        <div class="p">
+          To enable this fix, run the CLI command
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt low-memory-throttle enable</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-283774</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall placed UDP sessions into a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >Discard</a
+          >
+          state when a DNS Sinkhole/Block action occurred, which prevented
+          subsequent DNS requests from reusing the same session and caused
+          DNS-related outages.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-178207</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall's certificate verification logic did
+          not support the RSASSA-PSS signature algorithm, which prevented proper
+          validation of certificates using this algorithm. With this fix, the
+          firewall can verify certificates signed with RSASSA-PSS. RSASSA-PSS
+          support is disabled by default. Use the following operational mode
+          command to enable it on each firewall: set system setting ssl-decrypt
+          support-rsa-pss &gt; no disable (default) &gt; yes enable
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

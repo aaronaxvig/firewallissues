@@ -1,0 +1,381 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_2_16_addressed_issues_ul-cve-11-2-16" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0322"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0322</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0321"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0321</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0320"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0320</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0319"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0319</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0318"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0318</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0317"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0317</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338608</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5420 firewalls only) Fixed an issue where OSPFv3 routes were not
+          established on a peer device because the firewall incorrectly handled
+          route tags during advertisement. With this fix, route tags are handled
+          correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-337359</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5420 firewalls in active/passive High Availability (HA)
+          configuration only) Fixed an issue where the Forwarding Information
+          Base (FIB) would become stale after HA failover events, routine
+          configuration commits, or Equal-Cost Multi-Path (ECMP) toggles, which
+          led to traffic blackholing. This occurred due to connection refusals
+          between the routing control plane and the forwarding plane. With this
+          fix, routing entries are reliably synchronized to the forwarding
+          plane.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336014</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls intermittently lost their connection to
+          the Strata Logging Service, which caused logging to stop until the
+          connection was re-established. With this fix, firewalls maintain a
+          stable connection to the Strata Logging Service.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335750</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (M-700 firewalls in an HA configuration only) Fixed an issue where
+          Panorama was unable to display logs when Elasticsearch was not
+          running. With this fix, logs display as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334304</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Few configs which pushed from SCM to firewall were causing the
+          firewall to loose its internet connectivity and the firewall wasn't
+          able to connect to cloud and was getting stuck at discovery stage
+          retrying indefinitely without returning failure. And now ACR performs
+          the the config rollback once the 5 cloud connectivity check attempts
+          failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-333894</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where communication with Microsoft Azure services was
+          disrupted, which resulted in application outages. This occurred when
+          firewalls dropped SYN-ACK packets that were part of a SYN-ACK cookie
+          mechanism activated by Azure's DDoS mitigation. With this fix,
+          firewalls now maintain connectivity during such traffic events.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-333108</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where device telemetry uploads would fail, which led to
+          critical alerts in the system logs. With this fix, telemetry data
+          uploads complete successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332646</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-VM firewalls only) Fixed an issue where the firewall unexpectedly
+          rebooted, which occurred during Geneve protocol traffic processing.
+          With this fix, the firewall operates stably.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332128</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Prisma Access GlobalProtect gateway nodes) Fixed an issue where
+          commit operations experienced significant delays, which occurred
+          because a configuration parsing process stalled during commit. With
+          this fix, commit operations complete within expected timeframes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331617</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic for certain websites was incorrectly
+          matched to a security policy, preventing access for users when using
+          specific web browsers, which occurred because the firewall used a
+          generic session category for policy matching. With this fix, traffic
+          correctly matches the intended security policy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331467</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commit validation on Panorama unexpectedly
+          applied template configuration changes to the firewall, which led to
+          an outage of FQDN resolution. With this fix, commit validation no
+          longer alters firewall behavior.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-330780</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, with software cut-through enabled (the default),
+          a long-lived session continued forwarding traffic to an Address
+          Resolution Protocol (ARP) entry after that entry was released and
+          reassigned to a different host. As a result, traffic such as Session
+          Initiation Protocol (SIP) was delivered to an unintended destination,
+          which prevented sessions from establishing. With this fix, the
+          firewall forwards traffic to the correct destination after an ARP
+          entry is reassigned.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329612</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where multicast routing entries for certain IPTV
+          streams were not correctly installed or populated with necessary
+          interface information, which prevented the proper forwarding of
+          multicast traffic. With this fix, multicast traffic now forwards as
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329511</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-4xx Firewalls) Fixed an issue where firewalls rebooted
+          unexpectedly after an upgrade. With this fix, firewalls now operate
+          stably after an upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328414</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls would intermittently disconnect from
+          SLS. With this fix, connections to SLS remain stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328107</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the management plane CPU utilization appeared
+          high in the
+          <span class="ph systemoutput">show system resources</span> CLI command
+          output due to the calculation incorrectly including the CPU usage of
+          an internal process. With this fix, the reported MP CPU utilization
+          accurately reflects the actual load.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-325946</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, on firewalls with QoS configured, packet buffer
+          utilization gradually increased after a commit and did not
+          decrease—even after a high availability (HA) failover—which required a
+          reboot to restore normal operation. With this fix, QoS-related packet
+          buffer resources are now properly released.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316485</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where configuring security policies with IP External
+          Dynamic Lists (EDLs) across multiple Virtual Systems (vsys) would
+          prevent commit operations from completing, which was due to an
+          incorrect virtual system memory calculation. With this fix, commit
+          operations complete as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-286397</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the DNS proxy would intermittently stop resolving
+          DNS queries, which prevented users from accessing the internet, and
+          which was observed during periods of high CPU utilization for the
+          dnsproxy process. With this fix, the DNS proxy consistently resolves
+          queries, ensuring reliable internet access.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-261628</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Data Plane (DP) continued to write
+          packet-diag logs even when packet-diag logging was disabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-248390</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5450 firewalls only</tt>) Fixed an issue on the
+          web interface where unused log interfaces were incorrectly displayed
+          on the dashboard as configured and down.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-178207</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall's certificate verification logic did
+          not support the RSASSA-PSS signature algorithm, which prevented proper
+          validation of certificates using this algorithm. With this fix, the
+          firewall can verify certificates signed with RSASSA-PSS. RSASSA-PSS
+          support is disabled by default. Use the following operational mode
+          command to enable it on each firewall: set system setting ssl-decrypt
+          support-rsa-pss &gt; no disable (default) &gt; yes enable
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

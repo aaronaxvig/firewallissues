@@ -1,0 +1,219 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="pan_os_11_1_10_h35_addressed_issues_ul-nwg_dxl_vjc"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0322"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0322</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0321"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0321</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0320"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0320</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0319"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0319</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0318"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0318</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PAN-337475</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5440 firewalls only</tt>) Fixed an issue where
+          SaaS applications were incorrectly blocked even when a higher-order
+          security rule should have allowed the traffic, which occurred due to
+          an unexpected policy rematch behavior. With this fix, security policy
+          rules are correctly applied during policy rematch, ensuring expected
+          traffic flow.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336014</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls intermittently lost their connection to
+          the Strata Logging Service, which caused logging to stop until the
+          connection was re-established. With this fix, firewalls maintain a
+          stable connection to the Strata Logging Service.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332608</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls intermittently disconnected from SLS.
+          With this fix, firewalls maintained a stable connection to SLS.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329738</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-VM firewalls only</tt>) Fixed an issue where
+          registered IP-Tag mappings did not correctly populate Dynamic Address
+          Group (DAG) membership after an upgrade, which caused security policy
+          rule mismatches and traffic to be incorrectly dropped. With this fix,
+          DAG membership correctly reflected registered IP-Tag mappings,
+          ensuring proper security policy enforcement.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329580</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5440 firewalls only</tt>) Fixed an issue where
+          traffic designated for no decryption was unexpectedly denied due to a
+          certificate validation error. With this fix, traffic designated for no
+          decryption is processed as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329511</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-400 Series firewalls only</tt>) Fixed an issue
+          where firewalls rebooted unexpectedly after an upgrade. With this fix,
+          firewalls operate stably after an upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328414</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls would intermittently disconnect from
+          SLS. With this fix, connections to SLS remain stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-327398</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall experienced high management plane
+          memory utilization, which led to inaccessibility of the management
+          interfaces (Web GUI, CLI, and console), disconnection from the High
+          Availability (HA) cluster, and repeated reboot cycles. This behavior
+          occurred after attempting to upgrade the PAN-OS software and applying
+          or restoring the firewall configuration. With this fix, the firewall
+          maintains stability and completes software upgrades successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-324275</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where requesting logging service forwarding
+          certification information via the CLI did not work.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-303562</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3420 firewalls only</tt>) Fixed an issue where
+          the explicit proxy service would unexpectedly terminate when
+          processing Kerberos authentication bypass traffic over extended
+          periods. With this fix, the explicit proxy service maintains stability
+          under these conditions.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,204 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="pan_os_12_1_10_h2_addressed_issues_ul-cve-12-1-10-h2"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0322"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0322</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0321"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0321</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0320"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0320</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0319"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0319</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0318"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0318</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0317"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0317</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0316"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0316</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-337475</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5440 firewalls only) Fixed an issue where SaaS applications were
+          incorrectly blocked even when a higher-order security rule should have
+          allowed the traffic, which occurred due to an unexpected policy
+          rematch behavior. With this fix, security policy rules are correctly
+          applied during policy rematch, ensuring expected traffic flow.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-333108</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where device telemetry uploads would fail, which led to
+          critical alerts in the system logs. With this fix, telemetry data
+          uploads complete successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329511</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-4xx Firewalls) Fixed an issue where firewalls rebooted
+          unexpectedly after an upgrade. With this fix, firewalls now operate
+          stably after an upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329356</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-520, PA-545-POE, PA-555-POE, PA-550 firewalls only) Fixed an issue
+          where a commit operation would fail, which was caused by incorrectly
+          updated capacity numbers. With this fix, commit operations complete
+          successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-320963</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (VM-100 firewalls in FIPS mode only) Fixed an issue where SSL sessions
+          were discarded when forward proxy decryption was enabled, which
+          occurred when the random number generator experienced resource
+          exhaustion under high load. With this fix, the firewall maintains SSL
+          sessions as expected during periods of high decryption activity.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-307933</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Panorama appliances in Log Collector mode only) Fixed an issue where
+          the log collectors became unstable for an extended period of time when
+          receiving large amounts of traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-286397</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the DNS proxy would intermittently stop resolving
+          DNS queries, which prevented users from accessing the internet, and
+          which was observed during periods of high CPU utilization for the
+          dnsproxy process. With this fix, the DNS proxy consistently resolves
+          queries, ensuring reliable internet access.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
