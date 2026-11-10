@@ -1,0 +1,162 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead" data-sticky-top="61.2" style="top: 61.2px">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15020</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          In Strata Cloud Manager, when you open the Users panel from the Shared
+          Workstation column in
+          <span class="ph menucascade"
+            ><span class="ph uicontrol">Configuration</span
+            ><span class="ph uicontrol">Endpoint Management</span></span
+          >
+          and the workstation has more than 10 users, the Users panel shakes or
+          shifts horizontally. Additionally, clicking the Shared Workstation
+          column header to group the devices with shared workstations does not
+          change the sort order.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15003</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Windows endpoints with Advanced DNS Security Resolver enabled, when
+          the Prisma Agent tunnel is in connected internally, DNS queries that
+          use TCP get no response and fail to resolve.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15001</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On macOS endpoints that use TCP-based DNS for bypass domains, the
+          Prisma Agent traffic log can fill with many duplicate "Resolution of
+          &lt;hostname&gt;" entries for the same host when Advanced DNS Security
+          resolution is enabled on the tenant.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14972</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On a Windows endpoint, granular Peripheral Control policies for
+          Endpoint DLP cannot differentiate between personal and work Google
+          Drive accounts on the same endpoint. If conflicting policies are
+          configured, such as blocking personal Google Drive accounts while
+          allowing work accounts, the Prisma Agent applies the most restrictive
+          forwarding rule (Block) across both account types. Users attempting to
+          access a permitted Google Drive work account will be blocked if a
+          separate Peripheral Control policy is set to restrict personal Google
+          Drive accounts on the same device.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Configure a unified Peripheral Control
+          policy for Google Drive across all accounts on the endpoint, or avoid
+          applying conflicting blocks and allow rules simultaneously for
+          personal and work account profiles.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14962</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Windows and macOS endpoints, when a Prisma Access gateway is
+          configured to advertise public IPv6 addresses, Prisma Agent cannot
+          establish IPsec or SSL tunnel connections to that gateway over the
+          underlay (Physical) network. Endpoints running Prisma Agent will fail
+          to connect securely to gateways advertising public IPv6 addresses,
+          preventing network connectivity.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Ensure Prisma Access gateways are
+          configured to advertise compatible IPv4 addresses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14931</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Prisma Access dual-stack deployments where IPv4 and IPv6 DNS
+          servers are assigned for the overlay (tunnel) connection, traffic
+          routing for bypassed destinations is impacted on Windows endpoints.
+          This affects both explicitly configured bypass rules in Forwarding
+          Profiles and implicit bypass rules handled automatically by the Prisma
+          Agent (such as Endpoint Manager traffic). Windows endpoints on
+          dual-stack overlay networks may experience connectivity failures when
+          trying to access bypassed destinations and critical agent
+          communications.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Configure the Prisma Access overlay
+          (tunnel) connection to use only IPv4 DNS servers.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14905</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p"></div>
+        <div class="p">
+          On Windows endpoints, when the tunnel disconnects and reconnects
+          repeatedly in rapid succession, the Advanced DNS Security
+          DNS-over-HTTPS (DoH) channel does not re-establish after the repeated
+          transitions. DNS queries to the Advanced DNS Security server fail, and
+          DNS resolution through Advanced DNS Security Resolver remains
+          unavailable for the duration of the rapid cycling.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-11469</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On macOS endpoints, the Prisma Agent service (PASrv) may
+          intermittently consume high CPU resources for a short period, which
+          causes macOS to generate a cpu_resource diagnostic report. The
+          elevated CPU usage may affect battery life on laptop endpoints.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,283 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead" data-sticky-top="61.2" style="top: 61.2px">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14916</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where end-user coaching
+          notifications did not appear after endpoint DLP (EDLP) blocked a file
+          transfer, even though DLP incidents were generated correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14859</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where endpoint DLP (EDLP) did not correctly block file
+          transfers to USB drives or network shares when a large number of files
+          were copied in a single operation. Some files at the start of a batch
+          copy were allowed to transfer to the destination even when DLP
+          policies should have blocked them.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14824</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows and macOS endpoints where, when pre-logon
+          with persistent tunnel was enabled, the agent did not transition from
+          pre-logon mode to user-based authentication after an OS session logon.
+          The agent remained in pre-logon mode until authentication was
+          completed manually.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14822</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where traffic configured to bypass
+          <span class="ph">Prisma Agent</span> and use a coexisting third-party
+          VPN client was incorrectly routed through the
+          <span class="ph">Prisma Agent</span> tunnel instead.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14789</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where the
+          <span class="ph">Prisma Agent</span> service became unresponsive and
+          restarted repeatedly, causing a continuous connect and disconnect
+          cycle approximately every 30 seconds.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14776</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after a fresh installation
+          with pre-logon enabled, the agent did not establish the pre-logon
+          tunnel and displayed a "Failed authentication" error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14775</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after installing
+          <span class="ph">Prisma Agent</span> with pre-logon enabled, the
+          <span class="ph">Prisma Agent</span> credential provider was set as
+          the default Windows sign-in method. On the Windows login screen, users
+          were presented with the <span class="ph">Prisma Agent</span> sign-in
+          option instead of the standard Windows password prompt and were
+          required to click "Sign-in options" to select the password method
+          before signing in.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14772</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after an OS session logoff
+          followed by logon, SAML authentication was significantly delayed and
+          multiple browser windows opened during the authentication process.
+          This issue was specific to <span class="ph">Prisma Agent</span> 26.4.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14629</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where upgrading
+          <span class="ph">Prisma Agent</span> reset the embedded browser's DNS
+          settings to a default value, overwriting any administrator-configured
+          override. In deployments where administrators configured the embedded
+          browser DNS mode to allow resolution against internal or split-horizon
+          identity providers, the setting was reverted on each upgrade, causing
+          the embedded browser authentication page to fail to load with a DNS
+          resolution error after upgrading.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14582</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, when the re-authentication
+          frequency timer expired, the agent silently dropped back to pre-logon
+          mode instead of prompting the user to sign in again. The login prompt
+          did not appear automatically; users were required to manually click
+          "Sign In" to reconnect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14429</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where files copied to USB drives
+          through endpoint DLP (EDLP) enforcement were written with
+          all-lowercase filenames, regardless of the original filename casing.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14368</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where files copied to external APFS
+          or HFS drives were left as zero-byte (empty) files. The destination
+          file appeared to be created but contained no data.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14320</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after the pre-logon tunnel
+          connected, the agent did not display a user login prompt and did not
+          transition to a user tunnel. Clicking "Login" had no effect; disabling
+          and re-enabling the agent was required to initiate user
+          authentication.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14258</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where a failed major version
+          upgrade left the agent services in a disabled state, causing all
+          subsequent uninstall attempts to fail immediately. After a failed
+          upgrade, the previous version remained listed in "Add or Remove
+          Programs" but could not be removed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14220</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where renaming folders on a network share drivereturned
+          an "Invalid Device" error when Endpoint DLP was enabledon the Prisma
+          Agent. Renaming text files on the same networkshare was not affected.
+          Folder rename operations on network sharedrives now complete
+          successfully when Endpoint DLP is enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14130</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where clicking the session
+          extension banner approximately one hour before session expiry had no
+          effect. The session disconnected at the scheduled expiry time,
+          requiring the user to manually reconnect the tunnel.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14126</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where the agent displayed a
+          connected status but all traffic bypassed security policy enforcement.
+          This condition occurred silently following authentication errors or
+          pre-logon timeout events and persisted until the user signed out and
+          signed back in.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-13919</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where DNS root zone queries caused
+          all system DNS resolution to stop responding for approximately 5
+          seconds per query. Systems that issued frequent DNS root zone queries
+          experienced repeated network interruptions affecting all applications.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

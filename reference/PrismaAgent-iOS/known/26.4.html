@@ -1,0 +1,89 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead" data-sticky-top="61.2" style="top: 61.2px">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15575</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On iOS endpoints, when a full tunnel is configured with an internal
+          DNS server, the Host Information Profile (HIP) report cannot be sent
+          to the endpoint management portal after the tunnel connects. When the
+          tunnel is up, iOS routes DNS through the internal DNS server, which is
+          only reachable through the tunnel. Because the HIP report upload goes
+          directly outside the tunnel, it cannot resolve the endpoint management
+          portal hostname and the upload does not complete. The gateway HIP
+          check still passes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15420</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On iOS endpoints, when you disconnect from an active VPN session, the
+          Prisma Agent app does not send a logout notification to the gateway.
+          The gateway session remains active until it times out on the server
+          side, which may result in inaccurate active session counts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15419</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On iOS endpoints, when the gateway resolves to an IPv6 address, IPSec
+          tunnel establishment times out after approximately 5 seconds and the
+          Prisma Agent app falls back to SSL VPN. IPSec connects successfully
+          when the gateway resolves to an IPv4 address.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15146</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On iOS endpoints in Always-On mode, Prisma Agent connection failure
+          notifications are not consistently received even when the notification
+          setting is enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15129</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On iOS endpoints connected to a Prisma Access gateway behind a Network
+          Load Balancer (NLB), the IP address in the Prisma Agent app's Settings
+          screen displays as 127.127.127.127 instead of the actual gateway IP
+          address.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

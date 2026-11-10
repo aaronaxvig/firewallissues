@@ -1,0 +1,37 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead" data-sticky-top="61.2" style="top: 61.2px">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14997</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Android endpoints where HIP report traffic was
+          routed through the physical network interface instead of through the
+          VPN tunnel. On deployments using a Network Load Balancer (NLB), this
+          caused HIP report submissions to time out because the in-tunnel
+          gateway IP was unreachable from the physical interface. HIP report
+          submissions and logout API requests are now routed through the VPN
+          tunnel.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

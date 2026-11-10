@@ -1,0 +1,434 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead" data-sticky-top="61.2" style="top: 61.2px">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15306</div>
+      </td>
+      <td class="entry relcol">
+        DNS-over-TCP to any upstream server is not exempt from fail-safe
+        enforcement when the tunnel is down. This can occur regardless of
+        whether IPv4 or IPv6 DNS servers are configured, whenever the system
+        resolver uses TCP, such as when a UDP DNS response is truncated or TCP
+        is otherwise required.
+        <div class="p">
+          <b class="ph b">Workaround:</b> Configure the system resolver to
+          prefer IPv4 DNS servers.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15265</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, container-to-container traffic on Podman networks
+          and Docker bridge networks with names that do not start with
+          <span class="ph codeph">br-</span>,
+          <span class="ph codeph">docker</span>, or
+          <span class="ph codeph">virbr</span> is tunneled through Prisma Agent
+          instead of bypassed as local LAN traffic. This includes Podman's
+          default bridge network and any custom-named bridge network.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15263</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, containers that were running while the tunnel was
+          connected may experience a 5-second delay on DNS lookups after the
+          Prisma Agent service is restarted while disconnected. DNS resolution
+          returns to normal after the agent reconnects and disconnects again
+          normally.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15262</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, two issues occur when switching between network
+          interfaces. When you disconnect from a wired network while Wi-Fi is
+          also connected, the agent may remain in "Connected internally" status
+          even though the internal network is no longer reachable. When you
+          connect to a wired network from Wi-Fi, the user location is not
+          re-detected and forwarding profile rules scoped to that location are
+          not applied.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Run
+          <span class="ph userinput">pacli traffic user-location refresh</span>
+          or manually reconnect to re-detect user location.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15254</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, after you disconnect from a Prisma Access gateway
+          behind a Network Load Balancer (NLB), the gateway may continue to show
+          you as connected. The logout request times out because it is sent to
+          an internal tunnel address that is no longer reachable after the
+          tunnel closes.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15246</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, if your sign-in to the endpoint management portal
+          falls back to SAML authentication after a certificate attempt,
+          subsequent gateway connections skip the PKCS#11 PIN prompt and send no
+          client certificate. Gateways that require a client certificate reject
+          the connection. This behavior persists across service restarts until
+          you sign out and sign back in.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15244</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, when the authentication mode requires a client
+          certificate with SAML fallback and no certificate is present, clicking
+          the session expiry banner to re-authenticate displays a "Certificate
+          validation failed" error instead of opening the SAML browser flow.
+          Re-authentication cannot be completed from the session expiry banner.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Sign out and sign back in to
+          re-authenticate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15238</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Fedora and RHEL Linux endpoints on private IP networks, connecting
+          in "Best Gateway Available" mode may immediately fail and return a
+          Disconnected state. Connecting to a specific gateway by name succeeds.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Connect to a specific gateway by name
+          instead of using Best Available.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15231</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On KDE desktops, session timeout notifications may remain visible in
+          the notification center after you sign out. Additionally, "Unable to
+          Connect" error notifications accumulate as separate entries in the
+          notification center rather than replacing each other, requiring you to
+          dismiss each one individually.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15166</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On KDE desktops, when MFA is required to access a protected resource,
+          clicking OK in the MFA dialog closes the dialog but does not
+          automatically bring a browser window to the foreground.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> If a browser window is already open,
+          switch to it to complete MFA. If no browser is open, it launches
+          automatically.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15148</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, the active gateway tunnel may disconnect and
+          reconnect repeatedly during normal use, even when the network
+          connection is working. The agent incorrectly interprets a single
+          transient network check failure as a full loss of connectivity and
+          tears down the tunnel unnecessarily.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15130</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, when a forwarding profile uses user-location
+          rules, the first connection opened immediately after the agent detects
+          the user location may be routed to the wrong destination. Subsequent
+          connections to the same destination are routed correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15102</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, upgrading from Prisma Agent 26.3 to 26.4.0.35
+          while the tunnel is connected may leave network routing and DNS
+          configuration in an inconsistent state. After the upgrade, DNS
+          resolution may stop working. The agent interface may also become
+          unresponsive during the upgrade process.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Restart the system after upgrading to
+          restore network connectivity and DNS resolution.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15088</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, if the system was connected to an internal network
+          before entering sleep mode for more than 30 minutes, the agent does
+          not reconnect automatically after the system wakes and moves to an
+          external network.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Manually reconnect by clicking Connect
+          in the Prisma Agent interface or running
+          <span class="ph userinput">pacli connect</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15077</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, when a PKCS#11 or TPM client certificate with a
+          PIN is used for authentication, the agent cannot reconnect
+          automatically after a reboot or service restart. You must enter the
+          certificate PIN each time the system restarts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15070</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, if you change the system color scheme between dark
+          and light mode while an MFA authentication dialog is open, the dialog
+          retains its original colors and does not update to match the new
+          theme.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15069</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, running
+          <span class="ph userinput">sudo pacli switchto PAA</span> to switch
+          from GlobalProtect to Prisma Agent always returns an error and leaves
+          both agents disabled. The endpoint has no active tunnel until you
+          manually re-enable Prisma Agent.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15041</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, TPM2 PKCS#11 tokens created using
+          <span class="ph userinput">tpm2_ptool</span> without specifying a
+          custom path are stored in the user's personal directory and are not
+          visible to Prisma Agent. The agent service runs as root and reads the
+          system-wide token store at
+          <span class="ph filepath">/etc/tpm2_pkcs11</span> instead.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Create TPM2 tokens in the system-wide
+          store as root, or set the
+          <span class="ph codeph">tpm_store_path</span> configuration value to
+          point to your token store location:
+        </div>
+        <pre
+          id="prisma-agent-26-4-known-issues_screen-oct_wc5_tkc"
+          class="pre screen"
+        >
+sudo tpm2_ptool init --path /etc/tpm2_pkcs11</pre
+        >
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15021</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On RHEL 9.8 x86_64 endpoints, the Prisma Agent interface does not
+          support dark mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14994</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, when you authenticate using a client certificate,
+          the session expiry notification banner is not displayed before your
+          session times out. The session expires without warning and you are
+          disconnected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14966</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, if you initially authenticated using SAML and
+          later added client certificates to the system certificate store,
+          clicking the session expiry banner to re-authenticate fails with a
+          certificate error. The session expiry banner is disabled after the
+          failure and cannot be used to retry authentication.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Sign out and sign back in to
+          re-authenticate with your client certificate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14957</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints connecting to on-premises GlobalProtect gateways
+          running PAN-OS 12.1.x, the tunnel may disconnect approximately every
+          60 seconds with a "Login failed: invalid gateway auth token" error.
+          The agent reconnects automatically but disconnects again at the same
+          interval.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14954</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, the first connection attempt after restarting the
+          Prisma Agent service may return to a disconnected state with no error
+          message displayed due to a stale cached token. A second connection
+          attempt completes successfully.
+        </div>
+        <div class="p">
+          <b class="ph b">Workaround:</b> Click Connect or Log In a second time
+          to complete the connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14581</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, the first connection attempt to an IPv6 address
+          using a literal IP address fails immediately when the tunnel is
+          disconnected or when the address is covered by a Direct forwarding
+          rule. Subsequent connection attempts to the same address succeed.
+          Connections to hostnames are not affected. Applications that retry
+          automatically, such as browsers, are not affected; command-line tools
+          and scripts that dial IPv6 literal addresses directly without retrying
+          will encounter the failure.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14518</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On Linux endpoints, rapidly switching between gateways may briefly put
+          the agent in a Disconnected state before it reconnects to the selected
+          gateway. The agent recovers automatically.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,50 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14811</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where Cisco AnyConnect VPN's
+          secondary UDP/DTLS 1.2 tunnel was terminated shortly after being
+          established when <span class="ph">Prisma Agent</span> was installed
+          and disabled or you were signed out. The primary TLS-based TCP tunnel
+          was not affected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14481</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where the HIP report did not include
+          CrowdStrike Falcon's definition version. HIP policies that required a
+          valid CrowdStrike Falcon definition version failed, which could deny
+          or restrict network access even when CrowdStrike was installed and up
+          to date.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
