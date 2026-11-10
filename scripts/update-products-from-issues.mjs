@@ -66,6 +66,16 @@ function pickTargetLeafPath(products, product, version) {
     for (const path of [[product, major, minor], [product, major], [product]]) {
         if (isIssueLeaf(getPath(products, path))) return path;
     }
+    // Preserve each product's existing grouping when a new release train arrives.
+    const productNode = products[product];
+    if (productNode && /^\d+(?:\.\d+)*/.test(version)) {
+        const majorLeaves = Object.values(productNode).some(isIssueLeaf);
+        const path = majorLeaves ? [product, major] : [product, major, minor];
+        let node = productNode;
+        for (const key of path.slice(1, -1)) node = node[key] ??= {};
+        node[path.at(-1)] = { addressed: [], known: [] };
+        return path;
+    }
     return null;
 }
 
@@ -100,6 +110,12 @@ function compareIssueFilenames(left, right) {
 
 export function rebuildProducts(products, records) {
     clearLeafIssueArrays(products);
+    // New products should become selectable without hand-editing products.json.
+    for (const { product } of records) {
+        if (!Object.hasOwn(products, product)) {
+            products[product] = { addressed: [], known: [] };
+        }
+    }
     const unmatched = [];
     records.sort((left, right) =>
         left.product.localeCompare(right.product) ||

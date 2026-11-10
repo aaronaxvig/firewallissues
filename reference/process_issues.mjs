@@ -6,7 +6,7 @@
  *   node reference/process_issues.mjs
  *
  * After this script, run:
- *   python scripts/update_products_from_issues.py
+ *   npm run update:products
  */
 
 import { JSDOM } from 'jsdom';
@@ -30,6 +30,13 @@ const { buildIssueMarkdownDocument } = await import(
 
 const OUTPUT_ROOT = join(REPO_ROOT, 'web', 'data', 'issues');
 const MODIFIED_FILE_LABEL = 'Modified file:';
+// Reference folder shorthand maps to the website's existing product key.
+const PRODUCT_ALIASES = {
+    PrismaAgent: 'Prisma Access Agent',
+    'PrismaAgent-Android': 'Prisma Access Agent-Android',
+    'PrismaAgent-iOS': 'Prisma Access Agent-iOS',
+    'PrismaAgent-Linux': 'Prisma Access Agent-Linux',
+};
 
 function readHtmlFiles(dirPath) {
     try {
@@ -111,7 +118,7 @@ export function processIssues({
     const noChangeReporter = createNoChangeReporter(stdout);
 
     for (const entry of allEntries) {
-        const product = entry.product;
+        const product = PRODUCT_ALIASES[entry.product] ?? entry.product;
         if (!seenProducts.has(product)) {
             seenProducts.add(product);
             processedProducts++;
@@ -142,7 +149,7 @@ export function processIssues({
         mkdirSync(outDir, { recursive: true });
 
         const outFile = join(outDir, `${version}.md`);
-        if (existsSync(outFile) && readFileSync(outFile, 'utf-8') === markdown) {
+        if (existsSync(outFile) && readFileSync(outFile, 'utf-8').replace(/\r\n/g, '\n') === markdown) {
             noChangeReporter.increment();
             continue;
         }
@@ -179,7 +186,7 @@ export function processIssues({
         logger.log(`Skipped ${skippedNoIssues} file(s) with no parsed issues.`);
     }
     if (writtenCount > 0) {
-        logger.log('Next step: python scripts/update_products_from_issues.py');
+        logger.log('Next step: npm run update:products');
     }
 
     return {

@@ -20,6 +20,12 @@ reference file, then let the automated pipeline handle the rest.
 3. Save the HTML as a file under `reference/<Product>/<addressed|known>/`.
    Name it with the exact version string and a `.html` extension
    (e.g. `reference/PAN-OS/addressed/11.1.13-h10.html`).
+   Prisma Access Agent references use `PrismaAgent` (Windows/macOS),
+   `PrismaAgent-Android`, `PrismaAgent-iOS`, or `PrismaAgent-Linux` as the
+   product folder. These map to the website's `Prisma Access Agent` product
+   names, with a platform suffix for Android, iOS, and Linux. Keep the
+   version filename numeric (for example, `26.4.html`); the platform belongs
+   in the product folder.
 4. Optionally update `reference/urls.json` with the source URL for the page
    (currently tracked manually; the file is a reference for the deployment
    workflow).

@@ -4,7 +4,25 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import test from 'node:test';
 import { buildProductTree, enumerateTreePaths } from '../web/js/product-tree-model.js';
-import { updateProductsFromIssues } from '../scripts/update-products-from-issues.mjs';
+import { rebuildProducts, updateProductsFromIssues } from '../scripts/update-products-from-issues.mjs';
+
+test('registers new platforms and release trains while preserving product grouping', () => {
+    const products = {
+        'Prisma Access Agent': { 26: { addressed: [], known: [] } },
+        'PAN-OS': { 12: { '12.1': { addressed: [], known: [] } } }
+    };
+    const records = [
+        ['Prisma Access Agent-Linux', '26.4'],
+        ['Prisma Access Agent', '27.1'],
+        ['PAN-OS', '12.2.2'],
+        ['PAN-OS', '13.1.0']
+    ].map(([product, version]) => ({ product, version, issueType: 'known', filename: `${version}.md` }));
+    assert.deepEqual(rebuildProducts(products, records).unmatched, []);
+    assert.deepEqual(products['Prisma Access Agent-Linux'].known, ['26.4.md']);
+    assert.deepEqual(products['Prisma Access Agent'][27].known, ['27.1.md']);
+    assert.deepEqual(products['PAN-OS'][12]['12.2'].known, ['12.2.2.md']);
+    assert.deepEqual(products['PAN-OS'][13]['13.1'].known, ['13.1.0.md']);
+});
 
 test('product updater rebuilds products and append-only manifest idempotently', async t => {
     const root = await mkdtemp(join(tmpdir(), 'firewallissues-update-'));

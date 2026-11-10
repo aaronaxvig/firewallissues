@@ -41,7 +41,7 @@ fixtures.forEach(fixtureId => {
 
     test(`parses ${testName}`, () => {
         const inputHtml = readFileSync(inputPath, 'utf-8');
-        const expectedMarkdown = readFileSync(expectedPath, 'utf-8');
+        const expectedMarkdown = readFileSync(expectedPath, 'utf-8').replace(/\r\n/g, '\n');
 
         // Extract metadata from expected markdown frontmatter
         const frontmatterMatch = expectedMarkdown.match(/^---\n([\s\S]*?)\n---/);
@@ -140,11 +140,11 @@ test('processIssues reports unchanged, modified, and new files distinctly', () =
         assert.ok(logs.includes(formatFileStatusLine('new', 'PAN-OS-12.1.2')));
         assert.equal(
             readFileSync(join(outputRoot, 'PAN-OS', 'known', '10.1.11.md'), 'utf-8').trim(),
-            readFileSync(join(modifiedFixtureRoot, 'expected.md'), 'utf-8').trim()
+            readFileSync(join(modifiedFixtureRoot, 'expected.md'), 'utf-8').replace(/\r\n/g, '\n').trim()
         );
         assert.equal(
             readFileSync(join(outputRoot, 'PAN-OS', 'addressed', '12.1.2.md'), 'utf-8').trim(),
-            readFileSync(join(newFixtureRoot, 'expected.md'), 'utf-8').trim()
+            readFileSync(join(newFixtureRoot, 'expected.md'), 'utf-8').replace(/\r\n/g, '\n').trim()
         );
     } finally {
         rmSync(tempRoot, { recursive: true, force: true });
