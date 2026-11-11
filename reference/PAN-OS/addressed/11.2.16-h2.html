@@ -1,0 +1,277 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_2_16_h2_addressed_issues_ul-16_h2" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0331"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0331</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0330"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0330</a
+              >
+              (Panorama)
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0329"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0329</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0328"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0328</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0327"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0327</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0326"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0326</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0325"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0325</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-339281</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Anti-virus content packages do not appear under
+          Device &gt; Dynamic Updates when you select Check Now on firewalls
+          licensed exclusively with an Advanced Threat Prevention Plus add-on.
+          The web interface does not check for or display available Anti-virus
+          updates because it does not recognize the Advanced Threat Prevention
+          Plus license as a valid entitlement for Anti-virus content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338767</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Inline Cloud Analysis tab does not appear in
+          the Vulnerability Protection profile in the web interface on firewalls
+          licensed exclusively with the Advanced Threat Prevention Plus add-on.
+          The Advanced Threat Prevention Plus license is a unified license that
+          enables Threat Prevention and Advanced Threat Prevention features, as
+          well as Frontier Virtual Patching, but the web interface does not
+          recognize it as a valid entitlement for the Inline Cloud Analysis
+          configuration. The underlying Inline Cloud Analysis functionality is
+          not affected, however, the web interface tab is unavailable for
+          configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338764</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the licensing message on the Security Profiles
+          page does not list Advanced Threat Prevention Plus as a valid license
+          option firewalls without a Threat Prevention or Advanced Threat
+          Prevention license. The message references only Threat Prevention and
+          Advanced Threat Prevention, which may cause confusion for customers
+          who have an Advanced Threat Prevention Plus add-on.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-337681</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where sessions were prematurely terminated due to
+          resource unavailability, which occurred even when the platform had not
+          reached its capacity limits. This issue was observed when decryption
+          was enabled for traffic from multiple remote network sites. With this
+          fix, sessions now utilize available resources correctly and are not
+          prematurely terminated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336966</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the system encountered a parsing error for the
+          Authority Key Identifier (AKID) extension in certificates, which
+          prevented the AKID from being correctly processed when it began with a
+          specific value. With this fix, the AKID extension is now correctly
+          parsed and processed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336965</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Palo Alto Networks virtual machine (VM) firewalls with Advanced
+            Routing Engine enabled</tt
+          >) Fixed an issue where Border Gateway Protocol (BGP) prefixes
+          advertised to the firewall that contained Attribute 40 (SRv6 /
+          Prefix-SID) were not installed in the routing table, which occurred
+          because the Advanced Routing Engine incorrectly discarded these routes
+          instead of processing the attribute transparently. With this fix, the
+          firewall properly processes BGP Attribute 40 and installs the routes
+          as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335567</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama appliances only</tt>) Fixed an issue where
+          tracebacks appeared in the
+          <span class="ph systemoutput">raid.log</span> file, accompanied by
+          messages indicating that a redundant array of independent disks (RAID)
+          pair had disappeared. This occurred due to an internal processing
+          error when handling RAID device paths during system boot, which could
+          lead to incorrect reporting of RAID status. With this fix, the system
+          correctly processes RAID device paths, preventing these log errors and
+          ensuring accurate RAID status.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334616</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">Panorama appliances only</tt>) Fixed an issue where
+          the system was unable to add new RAID disks to existing arrays, which
+          resulted in disk pairs remaining in a degraded state. The system would
+          detect the drives but would not properly initialize them for inclusion
+          in the RAID array. With this fix, the system now correctly initializes
+          and adds new RAID disks, allowing for proper array rebuilds.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311854</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Advanced WildFire cloud status would show as
+          disconnected after a software upgrade, which prevented the firewall
+          from maintaining a connection to the service. With this fix, the
+          firewall properly maintained its connection to the Advanced WildFire
+          cloud.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-303562</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3420 firewalls only</tt>) Fixed an issue where
+          the explicit proxy service would unexpectedly terminate when
+          processing Kerberos authentication bypass traffic over extended
+          periods. With this fix, the explicit proxy service maintains stability
+          under these conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-264980</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the traffic log user interface displayed an error
+          when accessed. With this fix, the traffic log user interface functions
+          as expected.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

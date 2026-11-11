@@ -1,0 +1,349 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="pan_os_11_1_10_h37_addressed_issues_ul-ypz_ito_unz"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0331"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0331</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0330"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0330</a
+              >
+              (Panorama)
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0329"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0329</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0328"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0328</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-339281</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Anti-virus content packages do not appear under
+          Device &gt; Dynamic Updates when you select Check Now on firewalls
+          licensed exclusively with an Advanced Threat Prevention Plus add-on.
+          The web interface does not check for or display available Anti-virus
+          updates because it does not recognize the Advanced Threat Prevention
+          Plus license as a valid entitlement for Anti-virus content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338767</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Inline Cloud Analysis tab does not appear in
+          the Vulnerability Protection profile in the web interface on firewalls
+          licensed exclusively with the Advanced Threat Prevention Plus add-on.
+          The Advanced Threat Prevention Plus license is a unified license that
+          enables Threat Prevention and Advanced Threat Prevention features, as
+          well as Frontier Virtual Patching, but the web interface does not
+          recognize it as a valid entitlement for the Inline Cloud Analysis
+          configuration. The underlying Inline Cloud Analysis functionality is
+          not affected, however, the web interface tab is unavailable for
+          configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338764</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the licensing message on the Security Profiles
+          page does not list Advanced Threat Prevention Plus as a valid license
+          option firewalls without a Threat Prevention or Advanced Threat
+          Prevention license. The message references only Threat Prevention and
+          Advanced Threat Prevention, which may cause confusion for customers
+          who have an Advanced Threat Prevention Plus add-on.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335763</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where system disk space was rapidly consumed by a log
+          file, and attempts to clear disk space using the cleanup command would
+          not complete. This occurred when internal logging processes
+          encountered data processing errors, which led to continuous log
+          generation and prevented successful disk cleanup operations. With this
+          fix, system logging processes handle data errors gracefully, and disk
+          cleanup operations function as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335060</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where WildFire submission logs incorrectly displayed
+          multiple files with different names as having the same file digest,
+          which led to inaccurate malicious verdicts and prevented the display
+          of analysis reports for those files. With this fix, WildFire
+          accurately identifies and logs unique file digests and provides
+          correct analysis reports.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334302</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >PA-VM firewalls in an Azure environment with 3 data plane
+            interfaces in an HA configuration</tt
+          >) Fixed an issue where the Accelerated Networking status was
+          incorrectly displayed as disabled on a data plane interface of a
+          passive virtual machine after a reboot, which occurred when the Data
+          Plane Development Kit (DPDK) was disabled. With this fix, the
+          Accelerated Networking status is reported accurately.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-333611</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3250 firewalls only</tt>) Fixed an issue where
+          firewalls experienced unexpected reboots and transitioned to a high
+          availability (HA) Non-Functional state, which was caused by
+          instability in dataplane processes. With this fix, the firewalls
+          maintain stable operation and HA functionality.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-333250</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the graphical user interface (GUI) displayed an
+          incorrect count of blocked categories for User Credential Submission
+          in the default URL filtering profile and in unedited URL filtering
+          profiles copied from the default profile. With this fix, the GUI now
+          accurately reflects the number of blocked categories.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331947</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/passive HA configuration only</tt
+          >) Fixed an issue where DHCP clients on interfaces remained in a
+          rebooting state long after a device reboot or failover, which was
+          caused by a race condition. With this fix, DHCP clients properly
+          acquired IP addresses after reboots or failovers.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331180</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where User-ID distribution experienced delays, which
+          occurred due to congestion in the Host Information Profile (HIP)
+          report queue. With this fix, User-ID information distributes without
+          delay.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328822</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >VM-Series firewalls in Azure with Accelerated Networking and Data
+            Plane Development Kit (DPDK) enabled</tt
+          >) Fixed an issue where firewalls experienced increasing interface
+          receive errors, which led to intermittent traffic impact and
+          application downtime.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-322407</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect app intermittently did not
+          connect to the gateway under aggressive TCP port reuse conditions.
+          With this fix, the GlobalProtect app connects to the gateway reliably
+          under these conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-315639</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7500 firewalls only</tt>) Fixed an issue where
+          session information was not being logged in the dp-monitor logs. With
+          this fix, session information is now correctly logged.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-315326</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-7500 firewalls only</tt>) Fixed an issue where
+          zone protection threshold values per dataplane were unexpectedly low.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311040</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >all_task</a
+          >
+          process stopped responding and caused the firewall to reboot
+          unexpectedly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-309170</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall silently rebooted due to the DDR
+          memory operating at 1866 MHz. With this fix, the frequency is reduced
+          to 1600 MHz to improve device stability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-306214</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-VM KVM firewalls only</tt>) Fixed an issue where
+          the Data Handling Agent (DHA) process crashed after an IPv6 address
+          was configured on a loopback interface, High Availability was enabled,
+          and the firewall was rebooted.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-289413</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where dataplane interfaces went down and configurations
+          were lost after a reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-278611</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where software images were not purged from
+          the /opt/pancfg/mgmt/sw-images folder.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-267067</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where VXLAN traffic failed and packet loss occurred in
+          networks sensors after upgrading to an affected release.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

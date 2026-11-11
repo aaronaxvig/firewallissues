@@ -1,0 +1,353 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="pan_os_12_1_7_h12_addressed_issues_ul-cve-12-1-7-h12"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0331"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0331</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0330"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0330</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0329"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0329</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0328"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0328</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-341570</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where NAT64 client-to-server (c2s) packet IP addresses
+          were corrupted during 6-to-4 translation after hardware offload.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-341332</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where selectively disabling offload for filtered
+          traffic did not function as expected, and sessions continued to be
+          offloaded. With this fix, offload is correctly disabled for filtered
+          traffic.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-341207</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-7500 firewalls only) Fixed an issue where NAT64 server-to-client
+          traffic failed on sessions using hardware session offload, causing the
+          firewall to translate the destination port incorrectly after a session
+          was offloaded and resetting the connection. With this fix, NAT64
+          translates server-to-client traffic correctly on sessions using
+          hardware session offload.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-339281</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Anti-virus content packages do not appear under
+          Device &gt; Dynamic Updates when you select Check Now on firewalls
+          licensed exclusively with an Advanced Threat Prevention Plus add-on.
+          The web interface does not check for or display available Anti-virus
+          updates because it does not recognize the Advanced Threat Prevention
+          Plus license as a valid entitlement for Anti-virus content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338501</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-5540 firewalls only) Fixed an issue where BGP, BFD, and OSPF
+          peering sessions became unavailable on the firewall and later
+          restored. With this fix, peering sessions no longer experienced
+          unexpected interruptions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335567</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (Panorama appliances only) Fixed an issue where tracebacks appeared in
+          the <span class="ph systemoutput">raid.log</span> file, accompanied by
+          messages indicating that a redundant array of independent disks (RAID)
+          pair had disappeared. This occurred due to an internal processing
+          error when handling RAID device paths during system boot, which could
+          lead to incorrect reporting of RAID status. With this fix, the system
+          correctly processes RAID device paths, preventing these log errors and
+          ensuring accurate RAID status.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-335037</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (All firewalls and panorama deployments that include syslog clients in
+          logrcvr/logd) Fixed an issue where traffic logs were not forwarded to
+          CloudWatch. With this fix, traffic logs are forwarded as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-334304</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Few configs which pushed from SCM to firewall were causing the
+          firewall to loose its internet connectivity and the firewall wasn't
+          able to connect to cloud and was getting stuck at discovery stage
+          retrying indefinitely without returning failure. And now ACR performs
+          the the config rollback once the 5 cloud connectivity check attempts
+          failed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332389</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a RAID array could not be rebuilt after a disk
+          replacement because the data copy operation timed out. With this fix,
+          RAID array rebuild operations complete successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331617</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic for certain websites was incorrectly
+          matched to a security policy, preventing access for users when using
+          specific web browsers, which occurred because the firewall used a
+          generic session category for policy matching. With this fix, traffic
+          correctly matches the intended security policy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-331387</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IPsec tunnels frequently went down due to high
+          process memory utilization. With this fix, the system process now
+          manages memory correctly, preventing tunnel instability.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-330876</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where auto-commit operations would fail during boot-up
+          or after a reboot. With this fix, auto-commit operations complete as
+          expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-330196</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall unexpectedly terminated operations
+          and rebooted due to an internal software error.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-329034</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue where firewall restarted unexpectedly
+          while processing zip files.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328742</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the dataplane silently dropped HTTP POST
+          payloads, which disrupted application integrations. This occurred due
+          to an internal error when processing XFF headers within the CTD
+          engine.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326424</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high memory utilization occurred in the escd
+          process. With this fix, memory utilization for the process remained
+          stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323154</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Real-time Transport Protocol (RTP) packets were
+          dropped after an upgrade, which occurred due to a predict session
+          conversion failure and resulted in delayed or absent video streams.
+          With this fix, RTP packets are processed correctly, and video streams
+          display without delay.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-317614</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high throughput and increased packet rates caused
+          high dataplane CPU usage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313036</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall dataplane continuously accumulated
+          packets in the <span class="ph systemoutput">ctd_pkt_queue</span> and
+          packet buffers, which caused resource exhaustion and prematurely
+          terminated sessions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-309960</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a memory leak related to the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process on the passive device led to an OOM condition.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-283774</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall placed UDP sessions into a
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >Discard</a
+          >
+          state when a DNS Sinkhole/Block action occurred, which prevented
+          subsequent DNS requests from reusing the same session and caused
+          DNS-related outages.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

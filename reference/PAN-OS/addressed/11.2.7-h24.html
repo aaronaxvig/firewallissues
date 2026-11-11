@@ -1,0 +1,269 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_2_7_h24_addressed_issues_ul-7_h24" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0331"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0331</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0330"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0330</a
+              >
+              (Panorama)
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0329"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0329</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0328"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0328</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-339281</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Anti-virus content packages do not appear under
+          Device &gt; Dynamic Updates when you select Check Now on firewalls
+          licensed exclusively with an Advanced Threat Prevention Plus add-on.
+          The web interface does not check for or display available Anti-virus
+          updates because it does not recognize the Advanced Threat Prevention
+          Plus license as a valid entitlement for Anti-virus content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338767</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Inline Cloud Analysis tab does not appear in
+          the Vulnerability Protection profile in the web interface on firewalls
+          licensed exclusively with the Advanced Threat Prevention Plus add-on.
+          The Advanced Threat Prevention Plus license is a unified license that
+          enables Threat Prevention and Advanced Threat Prevention features, as
+          well as Frontier Virtual Patching, but the web interface does not
+          recognize it as a valid entitlement for the Inline Cloud Analysis
+          configuration. The underlying Inline Cloud Analysis functionality is
+          not affected, however, the web interface tab is unavailable for
+          configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338764</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the licensing message on the Security Profiles
+          page does not list Advanced Threat Prevention Plus as a valid license
+          option firewalls without a Threat Prevention or Advanced Threat
+          Prevention license. The message references only Threat Prevention and
+          Advanced Threat Prevention, which may cause confusion for customers
+          who have an Advanced Threat Prevention Plus add-on.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-337681</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where sessions were prematurely terminated due to
+          resource unavailability, which occurred even when the platform had not
+          reached its capacity limits. This issue was observed when decryption
+          was enabled for traffic from multiple remote network sites. With this
+          fix, sessions now utilize available resources correctly and are not
+          prematurely terminated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336966</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the system encountered a parsing error for the
+          Authority Key Identifier (AKID) extension in certificates, which
+          prevented the AKID from being correctly processed when it began with a
+          specific value. With this fix, the AKID extension is now correctly
+          parsed and processed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336014</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls intermittently lost their connection to
+          the Strata Logging Service, which caused logging to stop until the
+          connection was re-established. With this fix, firewalls maintain a
+          stable connection to the Strata Logging Service.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328414</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls would intermittently disconnect from
+          SLS. With this fix, connections to SLS remain stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323842</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where commits intermittently failed on some Prisma
+          Access nodes with the error message
+          <span class="ph systemoutput">client pppoed phase 1 failure</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-318580</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where processes restarted and the firewall unexpectedly
+          rebooted when you configured a Security policy rule with
+          <span class="ph uicontrol">Source Device &gt; quarantine</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313443</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls acting as an accumulation proxy sent a
+          server hello with an earlier TCP timestamp value than a preceding ACK
+          packet, which prevented successful session establishment. This
+          occurred when the client hello messages were split across multiple
+          network segments.
+        </div>
+        <div class="p">
+          To use this fix, run the CLI command
+          <span class="ph systemoutput"
+            >debug dataplane set ssl-decrypt accumulate-client-hello ts-relay
+            yes</span
+          >.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311822</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where system processes would unexpectedly terminate on
+          Prisma Access instances during a configuration commit operation when
+          TLS 1.3 proxy settings were configured. With this fix, system
+          processes remain stable during configuration commits.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310699</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stripped the Authentication Key
+          Identifier (AKID) from certificates using SSL decryption, which
+          prevented clients from authenticating server certificates and resulted
+          in decryption failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-286397</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the DNS proxy would intermittently stop resolving
+          DNS queries, which prevented users from accessing the internet, and
+          which was observed during periods of high CPU utilization for the
+          dnsproxy process. With this fix, the DNS proxy consistently resolves
+          queries, ensuring reliable internet access.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-258328</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Domain Name System (DNS) Security did not utilize
+          user-configured fully qualified domain names (FQDNs) for cloud
+          connections, which occurred because it used hard-coded FQDNs instead.
+          With this fix, DNS Security now properly reads and translates
+          user-configured FQDNs for cloud connections.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,474 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_11_2_10_h18_addressed_issues_ul-10_h18" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0331"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0331</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0330"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0330</a
+              >
+              (Panorama)
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0329"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0329</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0328"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0328</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-339281</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Anti-virus content packages do not appear under
+          Device &gt; Dynamic Updates when you select Check Now on firewalls
+          licensed exclusively with an Advanced Threat Prevention Plus add-on.
+          The web interface does not check for or display available Anti-virus
+          updates because it does not recognize the Advanced Threat Prevention
+          Plus license as a valid entitlement for Anti-virus content.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338767</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Inline Cloud Analysis tab does not appear in
+          the Vulnerability Protection profile in the web interface on firewalls
+          licensed exclusively with the Advanced Threat Prevention Plus add-on.
+          The Advanced Threat Prevention Plus license is a unified license that
+          enables Threat Prevention and Advanced Threat Prevention features, as
+          well as Frontier Virtual Patching, but the web interface does not
+          recognize it as a valid entitlement for the Inline Cloud Analysis
+          configuration. The underlying Inline Cloud Analysis functionality is
+          not affected, however, the web interface tab is unavailable for
+          configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-338764</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the licensing message on the Security Profiles
+          page does not list Advanced Threat Prevention Plus as a valid license
+          option firewalls without a Threat Prevention or Advanced Threat
+          Prevention license. The message references only Threat Prevention and
+          Advanced Threat Prevention, which may cause confusion for customers
+          who have an Advanced Threat Prevention Plus add-on.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-337681</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where sessions were prematurely terminated due to
+          resource unavailability, which occurred even when the platform had not
+          reached its capacity limits. This issue was observed when decryption
+          was enabled for traffic from multiple remote network sites. With this
+          fix, sessions now utilize available resources correctly and are not
+          prematurely terminated.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-337475</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-5440 firewalls only</tt>) Fixed an issue where
+          SaaS applications were incorrectly blocked even when a higher-order
+          security rule should have allowed the traffic, which occurred due to
+          an unexpected policy rematch behavior. With this fix, security policy
+          rules are correctly applied during policy rematch, ensuring expected
+          traffic flow.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336966</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the system encountered a parsing error for the
+          Authority Key Identifier (AKID) extension in certificates, which
+          prevented the AKID from being correctly processed when it began with a
+          specific value. With this fix, the AKID extension is now correctly
+          parsed and processed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-336014</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls intermittently lost their connection to
+          the Strata Logging Service, which caused logging to stop until the
+          connection was re-established. With this fix, firewalls maintain a
+          stable connection to the Strata Logging Service.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-332646</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (PA-VM firewalls only) Fixed an issue where the firewall unexpectedly
+          rebooted, which occurred during Geneve protocol traffic processing.
+          With this fix, the firewall operates stably.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328742</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the dataplane silently dropped HTTP POST
+          payloads, which disrupted application integrations. This occurred due
+          to an internal error when processing XFF headers within the CTD
+          engine.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328625</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt"
+            >Firewalls in active/passive HA configurations only</tt
+          >) Fixed an issue where Genetec camera streaming experienced lag and
+          dropped video feeds due to the exhaustion of private RTP ports, which
+          led to their accumulation over time. With this fix, the firewall now
+          properly releases private RTP ports, preventing their exhaustion.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-328414</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where firewalls would intermittently disconnect from
+          SLS. With this fix, connections to SLS remain stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-326424</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where high memory utilization occurred in the escd
+          process. With this fix, memory utilization for the process remained
+          stable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-323154</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Real-time Transport Protocol (RTP) packets were
+          dropped after an upgrade, which occurred due to a predict session
+          conversion failure and resulted in delayed or absent video streams.
+          With this fix, RTP packets are processed correctly, and video streams
+          display without delay.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-318580</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where processes restarted and the firewall unexpectedly
+          rebooted when you configured a Security policy rule with
+          <span class="ph uicontrol">Source Device &gt; quarantine</span>.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316631</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue BGP sessions experienced short disruptions across all
+          peers, interfaces, and slots when a multicast event persisted longer
+          than the NGP negotiated hold timers.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-316556</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a race condition between the session ager and
+          packet processing resulted in memory corruption and caused the
+          pan_task process to stop responding, which resulted in the firewall
+          becoming unresponsive
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314776</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >configd</a
+          >
+          process stopped responding after pushing configuration changes from
+          Panorama to the firewall.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-314365</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >logrcvr</a
+          >
+          process stopped responding for traffic containing multiple XFF headers
+          when URL XFF header logging was enabled along with additional XFF
+          header logging, which caused subsequent commits to fail.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-313036</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall dataplane continuously accumulated
+          packets in the <span class="ph systemoutput">ctd_pkt_queue</span> and
+          packet buffers, which caused resource exhaustion and prematurely
+          terminated sessions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-311854</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Advanced WildFire cloud status would show as
+          disconnected after a software upgrade, which prevented the firewall
+          from maintaining a connection to the service. With this fix, the
+          firewall properly maintained its connection to the Advanced WildFire
+          cloud.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-310699</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall stripped the Authentication Key
+          Identifier (AKID) from certificates using SSL decryption, which
+          prevented clients from authenticating server certificates and resulted
+          in decryption failures.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-308461</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the CLI command
+          <span class="ph systemoutput"
+            >request system software download to-version
+            &amp;lt;version&amp;gt;</span
+          >
+          failed to download multiple software images due with a
+          <span class="ph systemoutput"
+            >Download terminated due to timeout</span
+          >
+          error message.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-306225</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >sslmgr</a
+          >
+          process memory utilization continually increased due to memory
+          fragmentation.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-303826</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where scheduled software upgrades from the Software
+          Change Management (SCM) server to the firewall failed with a timeout
+          error during download.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-303562</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (<tt class="ph tt">PA-3420 firewalls only</tt>) Fixed an issue where
+          the explicit proxy service would unexpectedly terminate when
+          processing Kerberos authentication bypass traffic over extended
+          periods. With this fix, the explicit proxy service maintains stability
+          under these conditions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-297819</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall was unable to send device telemetry
+          files to Cortex Data Lake due to the firewall receiving an invalid
+          upload token.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-295470</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on the firewall where the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >useridd</a
+          >
+          process continuously increased its memory consumption, which resulted
+          in an OOM condition that caused the firewall to restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-286397</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the DNS proxy would intermittently stop resolving
+          DNS queries, which prevented users from accessing the internet, and
+          which was observed during periods of high CPU utilization for the
+          dnsproxy process. With this fix, the DNS proxy consistently resolves
+          queries, ensuring reliable internet access.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

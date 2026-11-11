@@ -1,0 +1,142 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul id="pan_os_10_2_10_h43_addressed_issues_ul-nov-cves" class="ul">
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0331"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0331</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0330"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0330</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0329"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0329</a
+              >
+            </li>
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-0328"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-0328</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-320324</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where incorrect source region information appeared in
+          GlobalProtect logs, which occurred because the location service lookup
+          did not consistently return region information for public IP
+          addresses. With this fix, accurate source region information is
+          consistently displayed.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-303156</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the session timer for a custom application did
+          not transition from the initial 3-way handshake timer to the
+          application timeout when out-of-order 3-way handshake packets were
+          detected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-284067</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a cumulative memory leak in the
+          <a
+            class="term"
+            href="#"
+            title=""
+            data-scope=""
+            data-format="dita"
+            data-type=""
+            target="_self"
+            >devsrvr</a
+          >
+          process that occurred whenever the CLI command
+          <span class="ph systemoutput"
+            >show running application statistics</span
+          >
+          was issued. This memory leak would gradually consume system memory and
+          produce an OOM condition, causing the firewall to reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-251024</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect logs did not show the correct
+          region for the IP address due to content updates not retrieving the
+          latest configuration.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
