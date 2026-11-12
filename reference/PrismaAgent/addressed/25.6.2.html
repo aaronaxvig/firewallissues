@@ -1,0 +1,112 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 33.33333333333333%" />
+    <col style="width: 66.66666666666666%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-9620</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where users were unable to sign in after upgrading the
+          <span class="ph">Prisma Agent</span> to version 25.6.1 on macOS 15.x
+          Sequoia. The login window failed to render after upgrade, showing only
+          a blank page, and sign-in could only be completed using SSO.
+        </div>
+        <div class="p">
+          Users can now sign in using username and password after upgrading.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-9630</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Linux where the
+          <span class="ph">Prisma Agent</span> failed to establish a connection
+          to the gateway when no client certificate was configured and the
+          connection relied on endpoint manager (EM) cookies for authentication.
+          The agent now successfully connects when using EM cookies without a
+          client certificate.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-9276</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Linux where the
+          <span class="ph">Prisma Agent</span> would fail to reconnect after
+          waking from sleep, requiring a service restart or device reboot to
+          restore connectivity. The agent now reconnects automatically when the
+          device wakes from sleep.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-9220</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where, after a device resumed from
+          sleep, the <span class="ph">Prisma Agent</span> failed to update its
+          connection status in the UI. The UI showed an incorrect status that
+          didn't reflect the actual connection state. The agent UI now correctly
+          reflects the connection state after resuming from sleep.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-9092</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where the
+          <span class="ph">Prisma Agent</span> failed to automatically reconnect
+          after network transitions (such as switching between Wi-Fi networks or
+          going from Wi-Fi to LAN). Users had to manually reconnect. The agent
+          now reconnects automatically after network transitions.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-9067</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows where the
+          <span class="ph">Prisma Agent</span> failed to complete HIP data
+          collection and upload a HIP report when:
+        </div>
+        <ol id="paa-25.6.2_ul-k23_qqg_hhc" class="ol">
+          <li class="li">
+            The HIP profile included a check for specific applications using the
+            <span class="ph uicontrol">Running Processes</span> criteria.
+          </li>
+          <li class="li">
+            The process list on the Windows endpoint was very large (greater
+            than 450 running processes).
+          </li>
+        </ol>
+        <div class="p">
+          The agent now successfully collects and uploads HIP reports when
+          checking for running processes, regardless of the number of processes
+          on the endpoint.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

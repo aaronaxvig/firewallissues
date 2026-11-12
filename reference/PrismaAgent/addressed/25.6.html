@@ -1,0 +1,42 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 33.33333333333333%" />
+    <col style="width: 66.66666666666666%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">PANG-8845</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> would
+          stop sending HIP reports after the user's session token expired.
+          Although the agent successfully obtained a new session token, it
+          failed to resume HIP report submissions. The agent now continues to
+          send HIP reports after reauthentication.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-8200</div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where running the
+        <span class="ph codeph">pasrv debug</span> command in
+        <span class="ph uicontrol">Debug</span> mode caused the
+        <span class="ph">Prisma Agent</span> daemon to crash. This command is no
+        longer supported and has been removed from the agent.
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,56 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 33.33333333333333%" />
+    <col style="width: 66.66666666666666%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">PANG-9242</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where DNS resolution failed when the
+          <span class="ph">Prisma Agent</span> was connected on Linux devices.
+          The agent now maintains DNS resolution functionality when connected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-8945</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Linux endpoints where the
+          <span class="ph">Prisma Agent</span> system tray icon disappeared
+          after the user's display went to sleep and then woke up. This occurred
+          because the system tray application exited when the display went to
+          sleep, and did not restart when the display woke up.
+        </div>
+        <div class="p">
+          The system tray icon now remains present after the display wakes from
+          sleep.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-8929</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Linux endpoints where the
+          <span class="ph">Prisma Agent</span> failed to connect when the agent
+          was enrolled but the user had not yet completed sign-in. The agent now
+          successfully connects in this scenario.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,524 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry"><div class="p">Issue ID</div></th>
+      <th class="entry"><div class="p">Description</div></th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14220</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where renaming folders on a network share drive
+          returned an "Invalid Device" error when Endpoint DLP was enabled on
+          the <span class="ph">Prisma Agent</span>. Renaming text files on the
+          same network share was not affected. Folder rename operations on
+          network share drives now complete successfully when Endpoint DLP is
+          enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14123</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where the
+          <span class="ph">Prisma Agent</span> UI process became unresponsive
+          during a pre-logon connection attempt, causing the pre-logon request
+          to time out and the agent to fall back to a different gateway. The
+          agent now properly handles pre-logon connection requests.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13965</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where <span class="ph">Prisma Agent</span> installer
+          packages were not removed from the agent's temporary folder after
+          upgrade or downgrade cycles, which would cause the folder to
+          accumulate significant disk space over time. The agent now
+          periodically removes stale installer packages from the temporary
+          folder, preventing them from accumulating.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13743</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> failed
+          to establish a pre-logon connection and displayed a "Disconnected"
+          status even after endpoint manager enrollment succeeded. This occurred
+          because a CIE token authentication call during the pre-logon process
+          returned a 400 Bad Request error. Pre-logon connections now establish
+          successfully after enrollment.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13731</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS where the
+          <span class="ph">Prisma Agent</span> initiated HIP report submissions
+          to the gateway using TLS 1.0, which the gateway rejected, causing HIP
+          submission to fail immediately after a successful gateway connection.
+          HIP report submissions now use a TLS version accepted by the gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13713</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an intermittent issue on Windows endpoints where the
+          <span class="ph">Prisma Agent</span> appeared to connect successfully
+          with no visible errors, but users were unable to access any sites.
+          Restarting the agent or rebooting the device restored connectivity.
+          The agent now maintains connectivity after establishing a connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13697</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> re-authentication notification
+          did not appear automatically from the system tray when the configured
+          notification time was reached. Users had to manually open the agent to
+          see the notification and take action before their session expired. The
+          re-authentication notification now appears automatically as
+          configured.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13681</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS 26.5.1 (Tahoe) where users experienced
+          connectivity failures when connected through the
+          <span class="ph">Prisma Agent</span>, with traffic resulting in TCP
+          connection resets. This issue affected the network extension and did
+          not occur when GlobalProtect was used on the same operating system
+          version. Connectivity through the
+          <span class="ph">Prisma Agent</span> on macOS 26.5.1 now operates
+          reliably.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13644</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where the
+          <span class="ph">Prisma Agent</span> failed to reconnect after the
+          device woke from Modern Standby (S0 Low Power Idle) sleep. When the
+          device entered Modern Standby, the endpoint manager access token was
+          cleared, and on wake the agent entered an indefinite reconnection loop
+          without recovering. The reconnect button in the system tray had no
+          effect, and a device restart was required to restore connectivity. The
+          agent now retains a valid access token across Modern Standby and
+          reconnects automatically after waking.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13580</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after a restart, the
+          <span class="ph">Prisma Agent</span> login button would be grayed out
+          and unavailable when saved credentials were stale or rejected by the
+          server, leaving users unable to start a new login session. The agent
+          now keeps the login prompt available in this situation so users can
+          sign in.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13517</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Endpoint DLP did not correctly process file and
+          folder names that contained uppercase or special characters on network
+          share drives, causing rename and move operations to fail. File and
+          folder operations on network share drives now succeed regardless of
+          character case or special characters in file names when Endpoint DLP
+          is enabled.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13460</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue in pre-logon mode where users were unable to enter
+          their password at the Windows login screen after signing out and
+          locking the device. Keyboard input in the password field was blocked,
+          while biometric authentication continued to work. Users can now enter
+          their password at the login screen when the
+          <span class="ph">Prisma Agent</span> is in pre-logon mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13429</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> intermittently failed to detect
+          the internal network upon network transitions, such as switching
+          between a wired LAN connection and Wi-Fi. When this occurred, the
+          agent defaulted to an external state and tunneled internal application
+          traffic instead of routing it directly. The agent now reliably detects
+          network transitions and applies the correct routing.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13354</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where a stale DNS cache caused the
+          <span class="ph">Prisma Agent</span> to incorrectly detect the network
+          as internal when users were working remotely from a non-corporate
+          network, so the agent treated the connection as internal instead of
+          connecting to the intended gateway. The agent now correctly determines
+          the network location when connecting from remote networks.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13260</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> failed
+          to establish a connection with the gateway and displayed a "client
+          certificate not found" error during SSL session setup. This occurred
+          because the endpoint manager authentication token was not accepted by
+          the gateway. The agent now successfully authenticates and establishes
+          gateway connections.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13248</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS where the
+          <span class="ph">Prisma Agent</span> security extension caused
+          unnecessarily high CPU usage by blocking and generating security
+          alerts for directory enumeration events from Prisma Browser helper
+          processes. Because these processes were not in the security
+          extension's allow list, the extension repeatedly denied their requests
+          and generated synchronous alert calls that increased CPU load. The
+          security extension now correctly allows Prisma Browser helper
+          processes to access the agent database directory without triggering
+          unnecessary alerts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13240</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where Prisma Agent displayed a
+          session timeout notification requiring users to click to
+          re-authenticate, even when Windows Hello for Business (WHFB) and
+          Windows SSO were configured to enable silent background
+          re-authentication. When the user refresh token approached expiration,
+          the agent always showed the notification without checking whether
+          silent re-authentication was available through SSO. The agent now
+          silently re-authenticates in the background when WHFB and Windows SSO
+          are enabled, and shows the notification only if silent
+          re-authentication is unavailable or does not complete successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13110</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS where the
+          <span class="ph">Prisma Agent</span> network extension spawned a log
+          monitoring process that streamed all kernel log messages without
+          filtering. On machines with high kernel log volume, this caused the
+          monitoring process and the macOS logging subsystem to consume up to
+          90–99% CPU. The network extension no longer runs this log monitoring
+          process, eliminating the excess CPU usage.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13108</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after resuming from an
+          extended suspension, the <span class="ph">Prisma Agent</span> reported
+          "Connected Internally" but TCP-based connections such as RDP were
+          blocked, while basic ICMP connectivity to the same addresses
+          succeeded. Restarting the device was required to restore full
+          connectivity. This occurred because an expired internal gateway
+          authentication token left the agent in an inconsistent state. The
+          agent now properly handles token expiration on resume and restores
+          full connectivity.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13072</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic to internal resources was incorrectly
+          routed as bypassed instead of being sent directly. This occurred when
+          the <span class="ph">Prisma Agent</span> attempted to bind an IPv6
+          connection to the physical interface but no physical IPv6 address was
+          present, causing the agent to downgrade the routing decision from
+          Direct to Bypass. The agent now correctly routes traffic to internal
+          resources when the endpoint does not have a physical IPv6 address.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-13046</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Improved the resilience of gateway connection attempts on macOS
+          endpoints following a sleep/wake cycle. Previously, redundant
+          connection retries in the agent's macOS HTTPS client interfered with
+          the gateway connection flow, so the agent would fail to establish a
+          gateway connection after the device woke from sleep even though
+          authentication succeeded. The agent now issues a single request per
+          gateway API attempt and relies on one coordinated retry sequence with
+          progressively increasing timeouts, reducing transient failures when
+          establishing a gateway connection after the device wakes from sleep.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12944</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where traffic to certain destinations was incorrectly
+          routed through Prisma Access instead of being sent directly to those
+          destinations. The agent now correctly routes traffic according to the
+          configured split tunneling policy.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12929</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where users experienced application
+          failures—specifically with VoIP applications—after installing the
+          <span class="ph">Prisma Agent</span>. The failures were caused by
+          network extension conflicts between the agent and the affected
+          applications. The agent now operates without interfering with VoIP
+          applications.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12875</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where downgrading the
+          <span class="ph">Prisma Agent</span> resulted in a timeout error in
+          the UI during the downgrade operation. Agent downgrade operations now
+          complete successfully.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12874</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where an unexpected "Choose
+          application" dialog appeared during the
+          <span class="ph">Prisma Agent</span> authentication process,
+          interrupting the authentication flow. The agent authentication flow no
+          longer triggers this dialog.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12670</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Endpoint DLP did not generate an incident when a
+          specific printer was configured as the scope target in the DLP policy.
+          Despite the printer model being detected as supported, DLP incidents
+          were not triggered for print operations matching the configured scope.
+          Endpoint DLP now generates incidents for print operations when a
+          specific printer is configured as the policy scope target.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12647</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> "Best
+          Available" gateway selection could connect users to a distant gateway.
+          The "Best Available" selection now uses fresher performance data to
+          more accurately connect users to the gateway with the lowest latency
+          for their location.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12569</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where a blocking SSL tunnel handshake would freeze the
+          agent's tunnel controller, causing tunnel teardown to time out and
+          leaving the agent in a stuck state that rejected all new tunnel
+          connections until the service was restarted. This would surface during
+          rapid reconnection cycles, such as after a device wakes from sleep.
+          The SSL handshake now runs asynchronously, and pending socket
+          operations are canceled promptly during disconnect, so tunnel teardown
+          completes cleanly and the agent recovers on its own without requiring
+          a service restart.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12488</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where HIP notification messages that contained
+          non-ASCII characters—such as accented characters used in French and
+          other languages—were not rendered correctly and appeared as garbled
+          text. HIP notification messages now display non-ASCII characters
+          correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-12121</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> did not
+          fall back to an SSL tunnel when IPSec was blocked by the network,
+          resulting in a loss of connectivity. The agent now correctly falls
+          back to an SSL tunnel when IPSec connectivity is unavailable.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-11902</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a performance issue where the
+          <span class="ph">Prisma Agent</span> sent packets that exceeded the
+          configured tunnel MTU, causing a significant reduction in throughput.
+          This occurred because the agent's optimized MTU setting overrode a
+          manually configured MTU value. The agent now respects the configured
+          MTU and ensures that outgoing packets do not exceed the specified
+          size.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-11790</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where the
+          <span class="ph">Prisma Agent</span> would become stuck on the loading
+          screen after switching from the GlobalProtect app. When the endpoint
+          manager was unreachable during enrollment, the agent's UI would fail
+          to advance to a valid screen and remain in the loading state. The
+          agent now falls back to the appropriate screen when the endpoint
+          manager is unavailable during enrollment, instead of becoming stuck.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-11680</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> attempted to establish a
+          pre-logon tunnel even when the connection mode was configured as
+          on-demand, causing tunnel establishment to fail. This occurred because
+          the connection mode from a previous session was persisted in the
+          configuration database and not updated when the endpoint manager
+          configuration was changed. The agent now correctly applies the
+          connection mode from the endpoint manager configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-11665</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> could
+          not connect to the configured favorite gateway, eventually connecting
+          to a different gateway only after an extended wait. The agent now
+          connects to the favorite gateway as expected without unnecessary
+          delays.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-10008</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> could
+          not connect to a gateway hosted on an NGFW in Azure when the gateway
+          used a private IP address behind NAT. This occurred because the agent
+          used the internal private IP address returned in the gateway's tunnel
+          configuration response rather than the public IP address required for
+          NAT traversal. The agent now correctly handles gateways that use
+          private IP addresses behind NAT.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

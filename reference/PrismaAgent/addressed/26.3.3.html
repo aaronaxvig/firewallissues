@@ -1,0 +1,55 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry"><div class="p">Issue ID</div></th>
+      <th class="entry"><div class="p">Description</div></th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14824</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows and macOS endpoints where, when pre-logon
+          with persistent tunnel was enabled, the agent did not transition from
+          pre-logon mode to user-based authentication after an OS session logon.
+          The agent remained in pre-logon mode until authentication was
+          completed manually.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14822</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where traffic configured to bypass
+          <span class="ph">Prisma Agent</span> and use a coexisting third-party
+          VPN client was incorrectly routed through the
+          <span class="ph">Prisma Agent</span> tunnel instead.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14472</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, when both expired and valid
+          client certificates matching the configured issuer were present in the
+          certificate store, the Prisma Agent selected the expired certificate
+          for gateway authentication, causing a repeated authentication loop
+          that prevented users from connecting. The agent now automatically
+          selects a valid certificate for authentication.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

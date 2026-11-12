@@ -1,0 +1,172 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15390</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after a pre-logon tunnel
+          connected and the user logged in to Windows, the tunnel intermittently
+          remained a pre-logon tunnel. Traffic was dropped because of the
+          security policy restrictions that apply to the pre- logon user. The
+          agent now correctly converts the pre-logon tunnel to a user tunnel
+          after login.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15374</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints in pre-logon mode where, after the
+          user logged in to Windows, internet and internal network access was
+          blocked for up to one hour (the default HIP check interval) until a
+          HIP report was resent. The agent now sends a new HIP report after the
+          pre-logon tunnel changes to a user tunnel and restores connectivity.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15369</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after the user logged in,
+          the agent displayed a user session but the gateway continued to treat
+          the connection as pre-logon and logs showed a blank source user. This
+          occurred when the request to convert the pre-logon tunnel to a user
+          tunnel was blocked on the endpoint. The agent now disconnects and
+          reconnects to establish the user tunnel when the conversion does not
+          complete.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15302</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints with Always On and persistent
+          pre-logon configured, where the agent remained in pre-logon after
+          Windows login when Certificate and SAML authentication used the system
+          default browser. Users could not start a new SAML sign-in until the
+          endpoint was shut down. The agent now cancels the current
+          authentication when a new authentication starts, so users can sign in
+          again.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15084</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where the agent did not recover
+          when the HIP compliance libraries were missing from the endpoint and
+          reported the condition as a signature failure. The agent now detects
+          the missing libraries and restores them through a HIP library update.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15083</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where the Check Point VPN virtual
+          network adapter remained in a loading state and the Check Point VPN
+          client stopped functioning when the agent was enabled. The agent now
+          allows the Check Point VPN adapter to load and connect when
+          Third-Party Co-Existence is enabled in the forwarding profile.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-15056</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Self-Healing "Analyzing Your Issue" dialog
+          displayed indefinitely without returning a result when the agent
+          received several configuration requests at the same time. The analysis
+          now completes and displays a result.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14919</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where, after an extended idle
+          period and a user login, the agent waited about 60 seconds for a
+          gateway prelogin timeout before it connected. The agent now reconnects
+          without this delay.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14207</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows and macOS endpoints where IPv4-only and
+          dual-stack clients received only an IPv4 tunnel address when the
+          gateway allocated both IPv4 and IPv6 addresses from a static IP pool.
+          The agent now receives the tunnel IPv6 address and IPv6 DNS
+          configuration, and IPv6 traffic works.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12422</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the agent ignored the optimized path MTU setting
+          and applied a static MTU of 1400 to IPsec and SSL tunnels. Users on
+          internet providers that use carrier-grade NAT (CGNAT) lost
+          connectivity to resources routed through the agent. The agent now
+          applies the optimized path MTU when the setting is enabled.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

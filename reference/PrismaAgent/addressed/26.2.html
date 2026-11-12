@@ -1,0 +1,62 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PANG-11346</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where on Ubuntu operating systems, Docker containers
+          experienced a "Network is unreachable" error when attempting to send
+          curl traffic, despite the host system having full connectivity, if the
+          <span class="ph">Prisma Agent</span> was connected on the host.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PANG-10947</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> on Linux
+          devices (such as ArchLinux and Ubuntu) failed to automatically
+          reconnect to the gateway in on-demand mode after the internet
+          connection was temporarily lost and then restored.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PANG-10668</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> settings
+          page appeared half blank on ArchLinux devices running KDE Plasma
+          desktop when a Dark OS theme was enabled, preventing relevant data
+          from displaying.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

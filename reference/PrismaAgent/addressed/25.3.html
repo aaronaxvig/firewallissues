@@ -1,0 +1,42 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 33.33333333333333%" />
+    <col style="width: 66.66666666666666%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">PANG-6738</td>
+      <td class="entry relcol">
+        Fixed an issue where certificate authentication failed on Windows
+        devices when certificates were stored in the machine certificate store,
+        preventing the <span class="ph">Prisma Agent</span> from properly
+        authenticating users with machine-level certificates. The agent now
+        correctly accesses and utilizes client certificates from the machine
+        certificate store, eliminating the need to manually import certificates
+        to the user's personal certificate store as a workaround.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">EPM-4616</td>
+      <td class="entry relcol">
+        Fixed an issue where newly added internal gateways weren't visible in
+        existing <span class="ph">Prisma Agent</span> settings, preventing
+        administrators from updating agent configurations with recently added
+        internal gateways. The agent settings now automatically refresh to
+        display all available internal gateways, including those added after the
+        initial configuration, eliminating the need to create new agent settings
+        to access newly added gateways.
+      </td>
+    </tr>
+  </tbody>
+</table>

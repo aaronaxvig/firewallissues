@@ -1,0 +1,107 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry"><div class="p">Issue ID</div></th>
+      <th class="entry"><div class="p">Description</div></th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14781</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the ADEM icon did not appear in the Prisma Agent
+          interface and ADEM telemetry data was not available in the ADEM
+          dashboard after upgrading to Prisma Agent 26.3 or 26.3.1. The ADEM
+          service continued running on the endpoint but could not transmit
+          telemetry data.
+        </div>
+        <div class="note" data-label="NOTE">
+          <!-- FM Dita Overlay for Notes Component-->
+          <div>
+            <div style="display: inline">
+              <div class="p">
+                To address this issue, upgrade to 26.3.2 from a version earlier
+                than 26.3 (such as 26.2) rather than upgrading from 26.3 or
+                26.3.1. If you are currently running 26.3 or 26.3.1, perform a
+                fresh installation of 26.3.2.
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14592</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where, after upgrading macOS to
+          26.6.2, the Prisma Agent could not retrieve the client certificate
+          from the macOS keychain and did not send a client certificate during
+          gateway authentication. All gateway pre-logon attempts were rejected
+          with a client certificate validation error. The agent now correctly
+          retrieves certificates from the macOS keychain and authenticates to
+          gateways.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14559</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where
+          <span class="ph">Prisma Agent</span> 26.3 repeatedly disconnected and
+          reconnected when a third-party agent that uses a virtual network
+          adapter was also running.
+          <span class="ph">Prisma Agent</span> incorrectly identified the
+          virtual network adapter's routes as the physical network interface,
+          causing repeated connection interruptions.
+          <span class="ph">Prisma Agent</span> now correctly identifies the
+          physical network interface and maintains a stable connection when
+          third-party agents with virtual adapters are active.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14525</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on macOS endpoints where, after upgrading to
+          <span class="ph">Prisma Agent</span> 26.3, users received repeated
+          macOS keychain password prompts. The prompts appeared even when the
+          agent was not connected to a gateway and affected other applications
+          that accessed the keychain. The agent now correctly accesses macOS
+          keychain entries without triggering repeated password prompts.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry"><div class="p">PANG-14501</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where DNS resolution for internal
+          domains configured as bypass traffic took significantly longer on
+          <span class="ph">Prisma Agent</span> 26.3 compared to previous
+          versions. In deployments where
+          <span class="ph">Prisma Agent</span> handled internet access and a
+          third-party agent handled internal traffic, DNS queries for bypassed
+          internal domains were not correctly routed through the third-party
+          agent, causing resolution delays that slowed access to internal
+          applications. DNS queries for bypassed domains are now correctly
+          routed.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

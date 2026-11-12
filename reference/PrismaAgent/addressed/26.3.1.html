@@ -1,0 +1,57 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14469</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Windows endpoints where Endpoint DLP did not upgrade
+          automatically after upgrading the
+          <span class="ph">Prisma Agent</span> to version 26.3.0.x. Endpoint DLP
+          remained on the previously installed version rather than upgrading to
+          the bundled version. This issue affected upgrade scenarios only; fresh
+          installations were not affected. Endpoint DLP now upgrades correctly
+          as part of the agent upgrade process.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-14273</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where connecting to the Endpoint Manager briefly
+          displayed a "maximum allowed users reached" notification, even when
+          the user limit had not been reached. When this occurred, the
+          <span class="ph">Prisma Agent</span> entered a "Connecting" state that
+          persisted for 10 or more minutes, the disconnect option became
+          unavailable, and a subsequent connection attempt or device restart was
+          required to establish connectivity. The agent now correctly interprets
+          endpoint manager responses and only displays the user limit
+          notification when the Endpoint Manager explicitly reports that the
+          maximum number of users has been reached.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

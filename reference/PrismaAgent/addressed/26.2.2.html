@@ -1,0 +1,189 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-13419</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span>, when
+          configured in always-on mode, did not automatically reconnect after a
+          network status change, such as when an endpoint resumed from sleep and
+          network connectivity became available. The agent remained unable to
+          connect, requiring users to manually initiate the connection. This
+          occurred because the agent attempted to connect before network
+          connectivity was fully established, which prevented subsequent
+          automatic connection attempts. The agent now properly detects network
+          status changes and automatically reconnects.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PANG-13210</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> pre-logon tunnel disconnected and
+          did not automatically reconnect when an endpoint resumed from an
+          extended suspension in pre-logon mode. The tunnel now automatically
+          reconnects after the endpoint resumes from suspension.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PANG-13116</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> frequently disconnected, causing
+          the tunnel to tear down when an access token expired and the agent
+          failed to refresh the token for re-authentication. The agent now
+          properly handles token refreshes to maintain a stable connection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p">PANG-12959</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> intermittently received an "Agent
+          Configuration Not Found" message after an endpoint upgrade. The agent
+          now correctly retrieves its configuration after an upgrade.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12945</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Endpoint DLP blocked a
+          <span class="ph">Prisma Agent</span>
+          worker thread in the control manager, which prevented proper operation
+          of the agent. Endpoint DLP no longer interferes with
+          <span class="ph">Prisma Agent</span> worker threads, ensuring
+          continuous and correct functionality.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12928</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where Windows endpoints could not connect to the
+          <span class="ph">Prisma Agent</span> in pre-logon mode and the
+          <span class="ph">Prisma Agent</span> icon doesn't show up in the
+          credentials provider, preventing successful pre-logon connections.
+          Endpoints now connect to the agent as expected in pre-logon mode.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12884</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          On endpoints running macOS, fixed an issue where the
+          <span class="ph">Prisma Agent</span>
+          <span class="ph uicontrol">Connected</span> window lacked
+          configuration options for its visibility or display duration.
+          Administrators can now manage the display of the connection window.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12883</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          For <span class="ph">Prisma Agents</span> on macOS and Windows
+          devices, fixed an issue where when the device was in sleep mode,
+          running the <span class="ph userinput">pacli status</span> command
+          resulted in an invalid JSON string response and a timeout error,
+          preventing the retrieval of Endpoint Manager (EPM) status. With this
+          fix, the command now provides the correct EPM status.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12882</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> app on
+          macOS endpoints remained open after users signed out. This occurred if
+          the app lost focus when a user clicked another application or window
+          after initiating sign-out from the Settings page. The app now closes
+          as expected after sign-out.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12484</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> pre-logon tunnel did not connect
+          automatically after users logged off the operating system, preventing
+          them from establishing the connection from the
+          <span class="ph">Prisma Agent</span> app in pre-logon mode. The
+          pre-logon tunnel now establishes automatically after users log off.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-12422</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where IPSec tunnels did not use optimized Path Maximum
+          Transmission Unit (MTU) settings when enabled. IPSec tunnels now
+          correctly apply the optimized Path MTU.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

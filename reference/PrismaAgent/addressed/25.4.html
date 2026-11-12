@@ -1,0 +1,78 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 33.33333333333333%" />
+    <col style="width: 66.66666666666666%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">PANG-7949</td>
+      <td class="entry relcol">
+        Fixed an issue where the Dynamic Privilege Access enabled
+        <span class="ph">Prisma Agent</span> was unable to connect to a gateway
+        after upgrading an endpoint to Windows 11 24H2. Following the Windows
+        upgrade, the <span class="ph">Prisma Agent</span> would lose the ability
+        to establish gateway connections, even though the Endpoint Manager (EPM)
+        connection remained functional. This issue occurred consistently across
+        systems that had undergone the Windows 11 24H2 upgrade, affecting the
+        agent's ability to connect to any configured gateways while maintaining
+        normal endpoint manager connectivity.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-7865</td>
+      <td class="entry relcol">
+        Fixed an issue where the <span class="ph">Prisma Agent</span> on Windows
+        did not properly honor updated session timers after a user extended
+        their session through the embedded browser. The agent now correctly
+        adopts the newly extended session duration when users authenticate
+        through the session expiry banner, preventing premature session
+        termination and ensuring the <span class="ph">Prisma Agent</span> icon
+        remains responsive in the system tray throughout the extended session
+        period.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-7960</td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> on
+          Windows blocked authentication in the embedded browser due to the
+          <span class="ph uicontrol">Best Available - Fail Safe</span> mechanism
+          in the forwarding profile triggering during the initial connection
+          attempt. The embedded browser now properly bypasses the fail-safe
+          mechanism when the agent is configured to run in on-demand mode,
+          enabling successful authentication on the first attempt without
+          requiring users to cancel and retry the authentication process after a
+          reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">PANG-7309</td>
+      <td class="entry relcol">
+        Fixed an issue where the <span class="ph">Prisma Agent</span> on Windows
+        failed to automatically switch from an external gateway to an internal
+        gateway when the user's device woke from sleep mode after being
+        connected to different network environments. The agent now properly
+        detects network changes upon waking from sleep. It also automatically
+        switches to the appropriate internal gateway without requiring manual
+        sign-out via the
+        <span class="ph userinput">pacli epm signout</span> command and
+        subsequent reauthentication through the
+        <span class="ph">Prisma Agent</span> app.
+      </td>
+    </tr>
+  </tbody>
+</table>

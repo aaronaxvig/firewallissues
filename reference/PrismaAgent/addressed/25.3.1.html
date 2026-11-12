@@ -1,0 +1,29 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 33.33333333333333%" />
+    <col style="width: 66.66666666666666%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">PANG-7012</td>
+      <td class="entry relcol">
+        Fixed an issue where the embedded browser for
+        <span class="ph">Prisma Agent</span> did not reuse the Windows Hello
+        token for reauthentication, forcing users to manually enter their
+        credentials despite having Windows Hello enabled on their devices. The
+        embedded browser now properly leverages existing Windows Hello
+        authentication tokens for seamless reauthentication without requiring
+        manual credential entry.
+      </td>
+    </tr>
+  </tbody>
+</table>

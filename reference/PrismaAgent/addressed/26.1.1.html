@@ -1,0 +1,63 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 33.33333333333333%" />
+    <col style="width: 66.66666666666666%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">Issue ID</th>
+      <th class="entry">Description</th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-11201</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on <span class="ph">Prisma Agents</span> for Linux
+          where the <span class="ph">Prisma Agent</span> connection profile
+          became stuck in an "activating" state when NetworkManager was
+          configured not to manage the tunnel interface, resulting in a tunnel
+          connect and disconnect loop that prevented successful establishment of
+          the tunnel.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-11153</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the <span class="ph">Prisma Agent</span> on Linux
+          experienced recurring PASrv process crashes approximately every 20
+          seconds due to abnormal termination during agent upgrade operations,
+          causing the agent to become unresponsive and preventing log
+          collection.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p">PANG-10723</div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the
+          <span class="ph">Prisma Agent</span> installer script on Linux
+          incorrectly modified permissions of the entire
+          <span class="ph filepath">/opt</span> installation directory. The
+          installer script now only modifies
+          <span class="ph filepath">/opt/paloaltonetworks</span>.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
