@@ -1,0 +1,144 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-25609</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect Client on Linux platforms,
+          including version 6.2.8-243, failed to receive the RADIUS
+          authentication challenge response from the firewall, resulting in
+          authentication failures. This was due to a stale state issue where the
+          `m_bGatewayChallenge` flag was not reset before
+          `GetConfigFromPortal()` when users reconnected after machine logout or
+          login cycles.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-25315</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect Linux clients on Ubuntu 22.04
+          experienced overnight tunnel disconnects, indicated by the PanGPS
+          process receiving a SIGTERM, and were subsequently unable to
+          auto-reconnect due to gateway configuration.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-25091</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect client version 6.2.9 on Fedora 42
+          displayed an incorrect login time and an extremely large, meaningless
+          login lifetime in the user interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24832</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect Linux clients running version 6.2.8
+          on Ubuntu 24.04 displayed an "unknown" user IP mapping in the gateway,
+          which caused traffic to be routed to incorrect security policies. This
+          occurred due to SSL certificate validation failures when the
+          GlobalProtect client attempted to send Host Information Profile (HIP)
+          reports to the gateway, and the client did not properly clear the
+          invalid certificates and retry sending the HIP report.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24664</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect client (version 6.2.9) on Linux
+          (Ubuntu) devices would crash unexpectedly, displaying a 'PanGPUI
+          crashed with SIGSEGV' error. This occurred during the authentication
+          process, specifically after the user was prompted for Duo multi-factor
+          authentication twice, and prevented the client from connecting to the
+          gateway due to a stalled authentication process where the agent did
+          not receive the SAML response.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24088</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect App versions 6.2.7-1050 and
+          6.2.9-407 running on Rocky Linux 9.4, 9.5, and 9.6 did not add
+          gateway-pushed DNS servers when connected to the GlobalProtect
+          gateway.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-24083</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect clients intermittently failed
+          RADIUS authentication due to treating the portal challenge response as
+          a gateway challenge response. This resulted in incorrect handling of
+          the OTP response back to the server.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23903</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect client on Linux devices failed
+          to correctly route traffic for configured 'include domains' through
+          the VPN tunnel. Although the client attempted to mark this traffic for
+          inclusion using `iptables` rules, underlying issues with `iptables`
+          rule management, specifically related to the `PANGPSTCHAIN` and the
+          removal of exclude markings, prevented the traffic from being properly
+          redirected, causing it to bypass the tunnel and use the physical
+          interface instead.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

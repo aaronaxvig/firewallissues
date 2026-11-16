@@ -1,0 +1,113 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23773</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the disconnect password was not masked when a
+          user attempted to disable GlobalProtect on a Linux machine, even
+          though password protection was enabled on the GlobalProtect app.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23647</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect for Linux clients running Ubuntu
+          24.04.2 LTS did not automatically reconnect to the portal after a
+          system reboot, even when configured to automatically connect.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23452</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect 6.2.7 clients on RHEL endpoints
+          failed to generate or send Host Information Profile (HIP) reports,
+          resulting in OPSWAT errors and the HIP notification tab missing from
+          the GlobalProtect client.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23447</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect agent tray icon did not display
+          on Ubuntu 22.04.5 LTS with GNOME shell version 46.0 after installing
+          the GlobalProtect agent.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23405</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect version 6.2.7 on Fedora 41 was
+          unable to identify the installed antivirus software, preventing users
+          from connecting to the VPN.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-23208</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after connecting GlobalProtect on Linux, the
+          gpd0 tunnel interface was not created and all traffic was routed
+          through the physical interface.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-21049</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect GUI icon could not be opened on
+          Ubuntu instances running in Amazon Workspaces. This was due to the
+          Amazon Workspace environment not allowing GlobalProtect to shut down
+          gracefully, resulting in a corrupted state upon restart.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

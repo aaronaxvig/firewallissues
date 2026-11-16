@@ -1,0 +1,110 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27555</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect user connections were disconnecting
+          after one hour, which occurred when the portal refresh process
+          initiated and the client encountered an error during its network
+          configuration update. With this fix, GlobalProtect connections now
+          refresh as expected without interruption.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-27056</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where .pfx and .dat files were removed from the Native
+          store upon reboot.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26811</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (On Ubuntu 20.04 systems) Fixed an issue where the GlobalProtect App
+          user interface would not launch after installation. With this fix, the
+          user interface launches as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26789</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect 6.3.3 Linux clients only) Fixed an issue where
+          GlobalProtect clients enforced Federal Information Processing Standard
+          Publication 140-2 Cryptographic Module Validation Program (FIPS-CC)
+          certificate validation despite FIPS-CC mode being disabled, which
+          prevented clients from establishing a connection. With this fix,
+          GlobalProtect clients correctly respect the FIPS-CC setting.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-26696</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect Linux client failed to
+          initialize for users with high-range enterprise user IDs (UIDs), which
+          caused the <span class="ph systemoutput">gpa.service</span> systemd
+          unit to drop into a failed state immediately during execution. This
+          occurred because the client introduced a restrictive UID validation
+          that prevented the service from starting if the UID was greater than
+          60000. With this fix, the GlobalProtect Linux client now supports
+          valid non-system users regardless of their enterprise UID allocation
+          range.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25432</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          (GlobalProtect client on Red Hat Enterprise Linux (RHEL) 8.10 systems)
+          Fixed an issue where the GlobalProtect client would not update the
+          resolv.conf file with configured Domain Name System (DNS) servers,
+          which resulted in internal DNS resolution not functioning correctly.
+          With this fix, the resolv.conf file updates as expected.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">GPC-25419</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect clients on Linux did not send Host
+          Information Profile (HIP) report checks to internal gateways, which
+          caused IP mappings to time out. With this fix, HIP report checks are
+          sent correctly to internal gateways.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
