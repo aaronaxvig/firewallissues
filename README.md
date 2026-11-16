@@ -26,6 +26,9 @@ reference file, then let the automated pipeline handle the rest.
    names, with a platform suffix for Android, iOS, and Linux. Keep the
    version filename numeric (for example, `26.4.html`); the platform belongs
    in the product folder.
+   GlobalProtect platforms use `GlobalProtect-Android`, `GlobalProtect-iOS`,
+   and `GlobalProtect-Linux`; these folder names match their website product
+   names directly. Use `GlobalProtect` for Windows/macOS release notes.
 4. Optionally update `reference/urls.json` with the source URL for the page
    (currently tracked manually; the file is a reference for the deployment
    workflow).

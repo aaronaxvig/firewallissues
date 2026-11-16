@@ -21,16 +21,26 @@ const cases = [
     ['PrismaAgent-Android', 'Prisma Access Agent-Android', 'addressed', '26.4', 1],
     ['PrismaAgent-Android', 'Prisma Access Agent-Android', 'known', '26.4', 7],
     ['PrismaAgent-iOS', 'Prisma Access Agent-iOS', 'known', '26.4', 5],
-    ['PrismaAgent-Linux', 'Prisma Access Agent-Linux', 'known', '26.4', 25]
+    ['PrismaAgent-Linux', 'Prisma Access Agent-Linux', 'known', '26.4', 25],
+    ['GlobalProtect-Android', 'GlobalProtect-Android', 'addressed', '6.3.5', 2],
+    ['GlobalProtect-Android', 'GlobalProtect-Android', 'addressed', '6.3.6-h15', 1],
+    ['GlobalProtect-iOS', 'GlobalProtect-iOS', 'addressed', '6.3.5', 1],
+    ['GlobalProtect-Linux', 'GlobalProtect-Linux', 'addressed', '6.3.3', 7],
+    ['GlobalProtect-Linux', 'GlobalProtect-Linux', 'addressed', '6.3.3-h1', 1],
+    ['GlobalProtect-Linux', 'GlobalProtect-Linux', 'addressed', '6.3.3-h2', 8],
+    ['GlobalProtect-Linux', 'GlobalProtect-Linux', 'addressed', '6.3.3-h15', 7]
 ];
 
-test('Prisma references convert, appear in the tree, render, and populate statistics', async t => {
+test('Prisma and GlobalProtect platform references convert, appear in the tree, render, and populate statistics', async t => {
     const root = await mkdtemp(join(tmpdir(), 'firewallissues-prisma-'));
     t.after(() => rm(root, { recursive: true, force: true }));
     const references = join(root, 'reference');
     await mkdir(references);
-    for (const folder of new Set(cases.map(item => item[0]))) {
-        await cp(join(referenceRoot, folder), join(references, folder), { recursive: true });
+    // Select only the regression cases so adding releases cannot change test counts.
+    for (const [folder, , type, version] of cases) {
+        const destination = join(references, folder, type);
+        await mkdir(destination, { recursive: true });
+        await cp(join(referenceRoot, folder, type, `${version}.html`), join(destination, `${version}.html`));
     }
     const issuesDir = join(root, 'issues');
     const options = {
@@ -38,19 +48,22 @@ test('Prisma references convert, appear in the tree, render, and populate statis
         stdout: { write() {} }, logger: { log() {}, warn() {}, error() {} }
     };
     const converted = processIssues(options);
-    assert.equal(converted.newCount, 8);
+    assert.equal(converted.newCount, cases.length);
     assert.equal(converted.skippedNoIssues, 0);
 
     const productsPath = join(root, 'products.json');
     const manifestPath = join(root, 'manifest.json');
     await writeFile(productsPath, JSON.stringify({
-        'Prisma Access Agent': { 26: { addressed: [], known: [] } }
+        'Prisma Access Agent': { 26: { addressed: [], known: [] } },
+        'GlobalProtect-Linux': { 6: { '6.3': { addressed: [], known: [] } } }
     }));
     await writeFile(manifestPath, JSON.stringify({ schema: 1, nodes: [] }));
     const updated = await updateProductsFromIssues({ issuesDir, productsPath, manifestPath });
     assert.equal(updated.unmatched.length, 0);
     const products = JSON.parse(await readFile(productsPath, 'utf8'));
-    assert.equal(Object.keys(products).length, 4);
+    assert.equal(Object.keys(products).length, 7);
+    assert.deepEqual(products['GlobalProtect-Linux'][6]['6.3'].addressed,
+        ['6.3.3.md', '6.3.3-h1.md', '6.3.3-h2.md', '6.3.3-h15.md']);
     const nodes = [];
     function visit(children) {
         for (const node of children) { nodes.push(node); visit(node.children ?? []); }
@@ -61,8 +74,8 @@ test('Prisma references convert, appear in the tree, render, and populate statis
     const statistics = await generateReleaseStatistics({
         issuesDir, outputPath: join(root, 'statistics.html'), plotDataDir
     });
-    assert.equal(statistics.products, 4);
-    assert.equal(statistics.points, 71);
+    assert.equal(statistics.products, 7);
+    assert.equal(statistics.points, 98);
     const plotProducts = new Map(JSON.parse(await readFile(join(plotDataDir, 'products.json'), 'utf8')));
     for (const [, product, type, version, count] of cases) {
         assert.ok(findIssueReleaseNode(nodes, product, version, type), `${product}/${type}/${version} selectable`);
@@ -71,7 +84,7 @@ test('Prisma references convert, appear in the tree, render, and populate statis
         const issues = parseMarkdownIssues(markdown);
         assert.equal(issues.length, count, `${product}/${type}/${version} issue count`);
         for (const issue of issues) {
-            assert.match(issue.id, /^PANG-\d+$/);
+            assert.match(issue.id, /^(?:PANG|GPC)-\d+$/);
             assert.ok(markdownSummaryToHtml(issue.summary, issue.resolved, issue.caveat).length > 0);
         }
         const plot = JSON.parse(await readFile(join(plotDataDir, plotProducts.get(product)), 'utf8'));
@@ -80,6 +93,6 @@ test('Prisma references convert, appear in the tree, render, and populate statis
         assert.equal(plot[type].points.filter(point => point[0] === releaseIndex).length, count);
     }
     const second = processIssues(options);
-    assert.equal(second.noChangeCount, 8);
+    assert.equal(second.noChangeCount, cases.length);
     assert.equal(second.modifiedCount, 0);
 });
