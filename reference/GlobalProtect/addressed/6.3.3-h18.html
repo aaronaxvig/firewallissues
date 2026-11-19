@@ -1,0 +1,115 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-27564</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect® did not install multicast
+          exclude-access-routes into the routing table. This prevented User
+          Datagram Protocol (UDP) multicast traffic from bypassing the
+          GlobalProtect tunnel, which resulted in applications that rely on this
+          traffic not functioning as expected. With this fix, multicast
+          exclude-access-routes are installed correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-27640</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect® on Windows 11 24H2 machines would
+          cause a Blue Screen of Death (BSOD) after a workstation lock following
+          a network route change, and where an OpenSSL FIPS DRBG selftest would
+          fail. With this fix, these issues are resolved.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-27828</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where GlobalProtect® would not connect when both the
+          portal and gateway required multi-factor authentication (MFA), which
+          occurred because the gateway returned an HTML challenge page instead
+          of an XML challenge response. With this fix, GlobalProtect processes
+          the challenge request correctly.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-27956</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the GlobalProtect® app did not maintain the
+          bypass status for certain Fully Qualified Domain Names (FQDNs)
+          configured for Explicit Proxy (EP) bypass, which led to traffic being
+          incorrectly intercepted by the Transparent Proxy. This occurred when
+          FQDNs resolved to multiple IP addresses with a short Domain Name
+          System (DNS) Time To Live (TTL), and the app did not correctly refresh
+          all IP addresses upon TTL expiration. With this fix, the GlobalProtect
+          app correctly refreshes and maintains the bypass status for all
+          associated IP addresses.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-28092</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the firewall lost IP-to-user mapping and denied
+          traffic due to skipped and delayed Host Information Profile (HIP)
+          submissions from GlobalProtect® endpoints on macOS and Linux after
+          waking from modern standby. With this fix, the GlobalProtect app sends
+          HIP reports immediately after the tunnel is restored following a wake
+          from modern standby.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">GPC-28113</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where, after upgrading the GlobalProtect Portal,
+          subsequent refresh-connection attempts would stall at "Connecting...
+          Retrieving Portal Configuration" following an initial successful
+          GlobalProtect connection. With this fix, refresh-connection attempts
+          complete as expected.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
