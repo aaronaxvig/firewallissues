@@ -1,0 +1,62 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry">
+        <div class="p"><b class="ph b">—</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixes were made to address the following CVEs:
+          <ul
+            id="pan_os_11_2_10_h19_addressed_issues_ul-ies_dna_nim"
+            class="ul"
+          >
+            <li class="li">
+              <a
+                class="xref"
+                href="https://security.paloaltonetworks.com/CVE-2026-123633"
+                title=""
+                data-scope="external"
+                data-format="html"
+                data-type=""
+                target="_blank"
+                >CVE-2026-123633</a
+              >
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-342422</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Simple Network Management Protocol (SNMP)
+          daemon would remain in a stopped state, which prevented SNMP polling
+          capabilities. This occurred when specific non-ASCII characters were
+          present in the SNMP configuration fields, which led to an error when
+          the firewall processed the configuration. With this fix, the SNMP
+          daemon now starts as expected, ensuring proper SNMP functionality.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

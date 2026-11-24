@@ -1,0 +1,45 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row">
+      <th class="entry">
+        <div class="p">Issue ID</div>
+      </th>
+      <th class="entry">
+        <div class="p">Description</div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-340201</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed a timing issue that caused the Ethernet/HSCI port to remain in a
+          DOWN state after a physical fiber reconnection or system reboot. The
+          port now properly recovers to an UP state after the fix.
+        </div>
+      </td>
+    </tr>
+
+    <tr class="row rowsep">
+      <td class="entry"><div class="p">PAN-342422</div></td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue where the Simple Network Management Protocol (SNMP)
+          daemon would remain in a stopped state, which prevented SNMP polling
+          capabilities. This occurred when specific non-ASCII characters were
+          present in the SNMP configuration fields, which led to an error when
+          the firewall processed the configuration. With this fix, the SNMP
+          daemon now starts as expected, ensuring proper SNMP functionality.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

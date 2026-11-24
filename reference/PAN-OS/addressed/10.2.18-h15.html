@@ -1,0 +1,46 @@
+<table class="table colsep rowsep table-striped">
+  <!--cq:include script="../../common/tablestack.jsp" /-->
+
+  <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+  </colgroup>
+  <thead class="thead">
+    <tr class="row rowsep">
+      <th class="entry">
+        <div class="p"><b class="ph b">Issue ID</b></div>
+      </th>
+      <th class="entry">
+        <div class="p"><b class="ph b">Description</b></div>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="tbody">
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-342422</b></div>
+      </td>
+      <td class="entry relcol">
+        Fixed an issue where the Simple Network Management Protocol (SNMP)
+        daemon would remain in a stopped state, which prevented SNMP polling
+        capabilities. This occurred when specific non-ASCII characters were
+        present in the SNMP configuration fields, which led to an error when the
+        firewall processed the configuration. With this fix, the SNMP daemon now
+        starts as expected, ensuring proper SNMP functionality.
+      </td>
+    </tr>
+
+    <tr class="row">
+      <td class="entry">
+        <div class="p"><b class="ph b">PAN-278611</b></div>
+      </td>
+      <td class="entry relcol">
+        <div class="p">
+          Fixed an issue on Panorama where software images were not purged from
+          the /opt/pancfg/mgmt/sw-images folder.
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
